@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.70.2-2012062819 (TeX Live 2012) (format=lualatex 2012.10.10)  16 NOV 2012 15:00
+This is LuaTeX, Version beta-0.70.2-2012062819 (TeX Live 2012) (format=lualatex 2012.10.10)  16 NOV 2012 18:31
  restricted \write18 enabled.
 **selnolig.tex
 (./selnolig.tex
@@ -1732,7 +1732,7 @@ atn)
 luaotfload | load font: font family='ebgaramond12italic', subfamily='regular' f
 ound: /Users/mico/Library/Fonts/EBGaramond12-Italic.otf [9]
 LaTeX Font Info:    Font shape `EU2/HelveticaNeue(0)/m/n' will be
-(Font)              scaled to size 13.2358pt on input line 294.
+(Font)              scaled to size 13.2358pt on input line 293.
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='helveticaneue', subfamily='regular' found:
@@ -1756,7 +1756,7 @@ atn)
 luaotfload | load font: font family='garamondpremierpro', subfamily='regular' f
 ound: /Library/Fonts/GaramondPremrPro.otf
 LaTeX Font Info:    Font shape `EU2/Consolas(0)/m/n' will be
-(Font)              scaled to size 8.84523pt on input line 522.
+(Font)              scaled to size 8.84523pt on input line 521.
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='consolas', subfamily='regular' found: /Lib
@@ -1809,14 +1809,14 @@ lar' found: /Library/Fonts/GaramondPremrPro-It.otf [46
 
 ]
 [47] [48] [49] [50] [51] [52] [53] [54] [55]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 568.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 567.
  [56
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 568.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 567.
  (./selnolig.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 568.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 568.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 567.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 567.
 Package rerunfilecheck Info: File `selnolig.out' has not changed.
 (rerunfilecheck)             Checksum: 79695070796B3583B4930187F306143C;2806.
 
@@ -1834,14 +1834,14 @@ t, 4 action, 1 write, 1 user_defined nodes
    avail lists: 1:1,2:13011,3:202,4:1107,5:1530,6:3914,7:67,8:19,9:376,10:335,1
 2:1
  27917 multiletter control sequences out of 65536+200000
- 204 fonts using 56994891 bytes
+ 203 fonts using 56606175 bytes
  54i,11n,81p,1677b,563s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/mico/Library/Fonts/UnifrakturMaguntia.ttf></Users/mico/Library/Fonts/EB
-Garamond12-Italic.otf></Library/Fonts/Microsoft/Consolas.ttf><./HelveticaNeue.Z
-OEekq></Library/Fonts/GaramondPremrPro-It.otf></Users/mico/Library/Fonts/EBGara
+Garamond12-Italic.otf></Library/Fonts/Microsoft/Consolas.ttf><./HelveticaNeue.v
+R2pPJ></Library/Fonts/GaramondPremrPro-It.otf></Users/mico/Library/Fonts/EBGara
 mond12-Regular.otf></Library/Fonts/GaramondPremrPro.otf></usr/local/texlive/201
 2/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-Output written on selnolig.pdf (56 pages, 248701 bytes).
+Output written on selnolig.pdf (56 pages, 248711 bytes).
 
 PDF statistics: 582 PDF objects out of 1000 (max. 8388607)
  497 compressed objects within 5 object streams
