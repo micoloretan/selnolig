@@ -1,0 +1,1017 @@
+% !TeX root = selnolig.tex
+% !TEX TS-program = lualatex
+
+\ProvidesPackage{selnolig-english-patterns}%
+[2012/11/15]
+
+% This entire package is placed under the
+% terms of the LaTeX Project Public License,
+% version 1.3 or later
+% (http://www.latex-project.org/lppl.txt).
+% It has the status "maintained".
+%
+% Author: Mico Loretan
+%   (loretan dot mico at gmail dot com)
+
+
+% Part 1: "Basic" f-ligature patterns
+% ===================================
+
+% (a) ff -> f-f
+
+\nolig{lfful}{lf|ful}
+ % shelfful bookshelffuls -- TeXBook, p. 19
+
+
+% (b) fi -> f-i
+ % no cases in 'basic' group
+
+
+% (c) fl -> f-l
+
+\nolig{fless}{f|less}
+ % beefless leafless ...
+ % Also: cuffless stuffless
+
+\nolig{flike}{f|like}
+ % dwarflike elflike ...
+ % Also: rufflike clifflike
+
+\nolig{flife}{f|life}
+ % halflife shelflife
+
+\nolig{flive}{f|live}
+ % halflives shelflives
+
+\nolig{fline}{f|line}
+ % halfline roofline offline
+
+\nolig{leaflet}{leaf|let}
+\nolig{Leaflet}{Leaf|let}
+ % leaflet(-s, -ed) leafleting
+ % leafletting leafletted
+ % leafleteer(s)
+
+\nolig{pdflatex}{pdf|latex}
+\nolig{Pdflatex}{Pdf|latex}
+ % better to write 'pdf\LaTeX', right? 
+
+
+% (d) ffi -> ff-i
+
+\nolig{faffian}{faff|ian}
+ % Pfaffian
+ % (must avoid picking up 'affianced')
+
+\nolig{lffian}{lff|ian}
+ % Wolffian Wulffian
+
+
+% (e) ffl -> ff-l
+
+\nolig{fflaw}{ff|law}
+ % scofflaw scofflaws
+
+\nolig{fflink}{ff|link}
+ % cufflink cufflinks
+
+\nolig{ffload}{ff|load}
+ % offload offloads offloaded
+
+
+% (f) ffi -> f-fi
+
+\nolig{haffinch}{haf|finch}
+ % chaffinch(es)
+
+\nolig{lffish}{lf|fish}
+ % wolffish
+
+
+% (g) ffl -> f-fl
+ % no cases in 'basic' group
+
+
+% (h) ft -> f-t
+
+\nolig{ieftain}{ief|tain}
+\nolig{alftime}{alf|time}
+\nolig{alftone}{alf|tone}
+\nolig{ooftop}{oof|top}
+\nolig{ooftree}{oof|tree}
+ % chieftain halftime halftone
+ % rooftop rooftree
+
+\nolig{ifth}{if|th}
+\nolig{lfth}{lf|th}
+ % fifth(s) twelfth(s)
+ % (Obscuring the 'th' pair with an 
+ % 'ft' ligature just looks weird!)
+
+\nolig{lftr}{lf|tr}
+ % wolftrap calftrap
+
+\nolig{eaftr}{eaf|tr}
+ % leaftrap (gutters, pools ...)
+
+\nolig{fftr}{ff|tr}
+ % offtrack
+
+
+
+
+% Part 2: Additional f-ligature suppression
+% patterns if 'broad' option is set.
+% =========================================
+
+\if@broadset
+
+% (a) ff -> f-f
+ % no cases in 'broad' group
+
+
+% (b) fi -> f-i
+
+\nolig{elfin}{elf|in}
+\nolig{Elfin}{Elf|in}
+
+\nolig{afing}{af|ing}
+ % chafing leafing loafing sheafing
+ % strafing vouchsafing
+
+\nolig{eefing}{eef|ing}
+ % beefing reefing
+
+\nolig{iefing}{ief|ing}
+ % briefing debriefing
+
+\nolig{ifing}{if|ing}
+ % coifing fifing jackknifing knifing
+ % midwifing waifing wifing
+
+\nolig{oofing}{oof|ing}
+ % goofing hoofing roofing ...
+
+\nolig{lfing}{lf|ing}
+ % golfing rolfing ...
+
+\nolig{arfing}{arf|ing}
+ % barfing bedwarfing dwarfing...
+
+\nolig{serfing}{serf|ing}
+\nolig{Serfing}{Serf|ing}
+\nolig{kerfing}{kerf|ing}
+\nolig{Kerfing}{Kerf|ing}
+% Don't specify 'erfing' search string
+%   b/c of 'butterfinger'
+
+\nolig{urfing}{urf|ing}
+ % (wind-) surfing turfing
+
+\nolig{rfism}{rf|ism}
+ % dwarfism
+\nolig{rfist}{rf|ist}
+ % dwarfist
+
+\nolig{deafish}{deaf|ish}
+\nolig{dwarfish}{dwarf|ish}
+\nolig{elfish}{elf|ish}
+ % elfish selfish unselfish, etc.
+\nolig{oafish}{oaf|ish}
+\nolig{serfish}{serf|ish}
+\nolig{wolfish}{wolf|ish}
+
+\nolig{Deafish}{Deaf|ish}
+\nolig{Dwarfish}{Dwarf|ish}
+\nolig{Elfish}{Elf|ish}
+\nolig{Oafish}{Oaf|ish}
+\nolig{Serfish}{Serf|ish}
+\nolig{Wolfish}{Wolf|ish}
+
+\nolig{beefier}{beef|ier}
+\nolig{comfier}{comf|ier}
+\nolig{goofier}{goof|ier}
+\nolig{gulfier}{gulf|ier}
+\nolig{leafier}{leaf|ier}
+\nolig{reefier}{reef|ier}
+\nolig{surfier}{surf|ier}
+\nolig{turfier}{turf|ier}
+
+\nolig{Beefier}{Beef|ier}
+\nolig{Comfier}{Comf|ier}
+\nolig{Goofier}{Goof|ier}
+\nolig{Gulfier}{Gulf|ier}
+\nolig{Leafier}{Leaf|ier}
+\nolig{Reefier}{Reef|ier}
+\nolig{Surfier}{Surf|ier}
+\nolig{Turfier}{Turf|ier}
+ % (Mustn't perform 'fier -> f-ier'
+ % substitution because of words
+ % such as pacifier, reifier, etc.)
+
+\nolig{afiest}{af|iest}
+\nolig{efiest}{ef|iest}
+\nolig{lfiest}{lf|iest}
+\nolig{mfiest}{mf|iest}
+\nolig{ofiest}{of|iest}
+\nolig{rfiest}{rf|iest}
+ % leafiest beefiest reefiest ...
+ % (Mustn't do 'fiest -> f-iest'
+ %   subst. b/c of 'fiesta')
+
+\keeplig{amselfish}
+\keeplig{stelfink}
+
+\nolig{fily}{f|ily}
+ % beefily goofily
+ % This rule also catches the
+ %    ffily -> ff-ily case:
+ % daffily fluffily gruffily ...
+
+\nolig{oofiness}{oof|iness}
+ % goofiness
+ % (Mustn't do 'finess -> f-iness'
+ % substitution b/c of 'finesse')
+
+
+% (c) fl -> f-l
+
+\nolig{aloofly}{aloof|ly}
+\nolig{briefly}{brief|ly}
+\nolig{chiefly}{chief|ly}
+\nolig{deafly}{deaf|ly}
+\nolig{liefly}{lief|ly}
+
+\nolig{Aloofly}{Aloof|ly}
+\nolig{Briefly}{Brief|ly}
+\nolig{Chiefly}{Chief|ly}
+\nolig{Deafly}{Deaf|ly}
+\nolig{Liefly}{Lief|ly}
+ % (Mustn't perform 'fly -> f-ly' subst.
+ % b/c of 'fly' 'butterfly' ...)
+
+
+% (d) ffi -> ff-i
+
+\nolig{affish}{aff|ish}
+\nolig{offish}{off|ish}
+\nolig{iffish}{iff|ish}
+\nolig{uffish}{uff|ish}
+ % draffish offish sniffish gruffish
+
+\nolig{ffing}{ff|ing}
+ % baffing biffing bluffing...
+
+\nolig{ffier}{ff|ier}
+ % buffier chaffier ...
+
+%\nolig{ffily}{ff|ily}
+ % Caught by 'fily -> f-ily' rule
+
+\nolig{ffiness}{ff|iness}
+ % fluffiness huffiness ...
+
+\nolig{waffie}{waff|ie}
+\nolig{Waffie}{Waff|ie}
+
+\nolig{ffies}{ff|ies}
+ % baffies biffies jiffies ...
+ % buffiest chaffiest ...
+
+
+% (e) ffl -> ff-l
+
+\nolig{ffly}{ff|ly}
+ % bluffly gruffly ruffly ...
+
+
+% (f) ffi -> f-fi
+ % nothing additional in 'broad' group
+
+
+% (g) ffl -> f-fl
+
+\nolig{afflower}{af|flower}
+ % safflower safflowers
+
+
+% (h) ft -> f-t
+
+\nolig{ifteen}{if|teen}
+ % fifteen fifteens fifteenth
+
+\nolig{fifti}{fif|ti}
+\nolig{Fifti}{Fif|ti}
+ % fifties fiftieth fiftieths
+
+\nolig{fifty}{fif|ty}
+\nolig{Fifty}{Fif|ty}
+ % fifty fiftyish
+
+
+% (i) fb, fh, fj, and fk ligatures
+
+% suppress these ligatures globally, but 
+% make exception for Kafka, fjord, and fjell
+\nolig{fb}{f|b}
+\nolig{fh}{f|h}
+\nolig{fj}{f|j}
+\nolig{fk}{f|k}
+
+\keeplig{Kafka}
+\keeplig{fjord}
+\keeplig{fjell}
+
+
+
+
+\fi % end of \if@broadset block
+
+
+
+
+% Part 3: Discretionary ligatures crossing
+% morpheme boundaries
+% ct, st, sp, 
+% th, at, et, as, is, us, ta, ll, sk
+% ----------------------------------------
+
+\if@hdligset
+
+
+% (A) st -> s-t
+% -------------
+
+\nolig{osstalk}{oss|talk}
+ % crosstalk
+\nolig{gstai}{gs|tai}
+ % dogstail
+\nolig{nstak}{ns|tak}
+ % painstaker painstaking
+\nolig{stight}{s|tight}
+ % gastight
+\nolig{stooth}{s|tooth}
+ % houndstooth
+\nolig{steeth}{s|teeth}
+ % houndsteeth
+
+%%% dis-t... words
+\nolig{dista}{dis|ta}
+\nolig{Dista}{Dis|ta}
+ % distant distasteful 
+\nolig{distem}{dis|tem}
+\nolig{Distem}{Dis|tem}
+ % distemperate 
+\nolig{disten}{dis|ten}
+\nolig{Disten}{Dis|ten}
+ % distended
+\nolig{istil}{is|til}
+ % distil distillation 
+\nolig{distin}{dis|tin}
+\nolig{Distin}{Dis|tin}
+ % distinct distinguish
+\nolig{disto}{dis|to}
+\nolig{Disto}{Dis|to}
+ % distort distortion 
+\nolig{distr}{dis|tr}
+\nolig{Distr}{Dis|tr}
+ % distract distribution distrust
+\nolig{distu}{dis|tu}
+\nolig{Distu}{Dis|tu}
+ % disturb
+
+%%% mis-t... words
+\nolig{mista}{mis|ta}
+\nolig{Mista}{Mis|ta}
+ % mistake mistaken mistaught unmistakable
+\nolig{mistea}{mis|tea}
+\nolig{Mistea}{Mis|tea}
+ % misteach
+\nolig{istend}{is|tend}
+ % mistend distend
+\nolig{isterm}{is|term}
+ % misterm misterms
+\nolig{isth}{is|th}
+ % misthink misthought misthrew misthrow
+ % isthmus calisthenic
+\nolig{istime}{is|time}
+ % mistime mistimed
+\nolig{istitl}{is|titl}
+ % mistitle 
+\nolig{istook}{is|took}
+ % mistook
+\nolig{istouc}{is|touc}
+ % mistouch 
+\nolig{mistrac}{mis|trac}
+\nolig{Mistrac}{Mis|trac}
+ % Mistrace 
+\nolig{mistran}{mis|tran}
+\nolig{Mistran}{Mis|tran}
+ % Mistranscribe Mistranslate 
+\nolig{istrea}{is|trea}
+ % mistreat mistreatment
+\nolig{mistru}{mis|tru}
+\nolig{Mistru}{Mis|tru}
+ % mistrust mistruth
+\nolig{istrys}{is|trys}
+ % mistryst 
+\nolig{mistu}{mis|tu}
+\nolig{Mistu}{Mis|tu}
+ % mistune Mistutor 
+\nolig{istyp}{is|typ}
+ % mistype
+
+\nolig{aastricht}{aas|tricht}
+ % Maastricht
+
+
+% (B) ct -> c-t
+% -------------
+
+\nolig{rctan}{rc|tan}
+ % arctangent
+\nolig{rctat}{rc|tat}
+ % coarctation
+\nolig{rctic}{rc|tic}
+ % arctic antarctic Antarctica subarctic
+
+
+% (C) sp -> s-p
+% -------------
+
+\nolig{othesp}{othes|p}
+ % clothespin clothespress
+\nolig{speople}{s|people}
+ % business- congress- crafts-
+ % dis- news- sales- spokes-
+ % towns- trades- tribes- people
+\nolig{sperson}{s|person}
+ % business- congress- crafts- drafts-
+ % news- sales- spokes- person
+\nolig{espas}{es|pas}
+ % trespass trespassing
+\nolig{isplat}{is|plat}
+ % cisplatin
+
+\nolig{disp}{dis|p}
+\nolig{Disp}{Dis|p}
+ % disparage disparaging ...
+
+\nolig{misp}{mis|p}
+\nolig{Misp}{Mis|p}
+ % misplace misperception misprint
+
+\nolig{susp}{sus|p}
+\nolig{Susp}{Sus|p}
+ % suspend suspension suspicious
+\nolig{sph}{s|ph} % 'ph' from Greek 'phi'!
+ % atmosphere biosphere hemisphere
+ % spherical asphodel phosphorous phosphate
+ % blaspheme blasphemy
+
+\nolig{transpa}{trans|pa}
+ % transparent transpacific
+\nolig{transpe}{trans|pe}
+ % transpersonal
+\nolig{transpie}{trans|pie}
+ % transpierce
+\nolig{transpl}{trans|pl}
+ % transplant
+\nolig{transpol}{trans|pol}
+ % transpolar 
+\nolig{transpor}{trans|por}
+ % transport transportation
+\nolig{transpos}{trans|pos}
+ % transpose transposon
+
+\nolig{risprud}{ris|prud}
+ % jurisprudence
+\nolig{spiec}{s|piec}
+ % crosspiece frontispiece
+
+\nolig{ewspa}{ews|pa}
+ % newspaper 
+\nolig{ewspr}{ews|pr}
+ % newsprint
+
+
+% (D) th -> t-h
+% -------------
+
+\nolig{eethov}{eet|hov}
+ % Beethoven
+\nolig{thook}{t|hook}
+ % boathook meathook pothook
+\nolig{thouse}{t|house}
+ % boathouse cathouse courthouse ...
+\nolig{othol}{ot|hol}
+ % foothold knothole potholder ...
+\nolig{lthol}{lt|hol}
+ % bolthole
+\nolig{sthol}{st|hol}
+ % posthole pesthole
+\nolig{athol}{at|hol}
+ % rathole
+\nolig{arthog}{art|hog}
+ % warthog
+\nolig{stha}{st|ha}
+ % firsthand postharvest posthaste
+\nolig{thawk}{t|hawk}
+ % nighthawk
+\nolig{horth}{hort|h}
+ % shorthair shorthand shorthorn
+\nolig{arthei}{art|hei}
+ % apartheid antiapartheid
+\nolig{thead}{t|head}
+ % bolthead cathead fathead ...
+\nolig{therd}{t|herd}
+ % goatherd neatherd
+\nolig{theap}{t|heap}
+ % dustheap
+\nolig{theart}{t|heart}
+ % fainthearted sweetheart ...
+\nolig{uthear}{ut|hear}
+ % outhear outheard
+\nolig{thill}{t|hill}
+ % anthill foothill
+\nolig{thood}{t|hood}
+ % adulthood knighthood ...
+\nolig{thunt}{t|hunt}
+ % pothunt outhunt
+\nolig{rthol}{rt|hol}
+ % porthole
+\nolig{sthum}{st|hum}
+ % posthumous
+\nolig{uthau}{ut|hau}
+ % outhaul
+\nolig{uthit}{ut|hit}
+ % outhit
+\nolig{uthom}{ut|hom}
+ % outhomer
+\nolig{uthow}{ut|how}
+ % outhowl
+\nolig{uthum}{ut|hum}
+ % outhumor
+\nolig{uthust}{ut|hust}
+ % outhustle
+\nolig{tthour}{tt|hour}
+ % watthour kilowatthour
+\nolig{sthm}{s|thm}
+ % asthma isthmus
+
+
+% (E) at -> a-t
+% -------------
+
+\nolig{lbatr}{lba|tr}
+ % albatross
+\nolig{atroop}{a|troop}
+ % paratrooper
+\nolig{eatra}{ea|tra}
+ % seatrain seatransport
+
+
+% (F) et -> e-t
+% -------------
+
+\nolig{ninet}{nine|t}
+\nolig{Ninet}{Nine|t}
+ % ninetieth ninetieths ninety nineteen nineties
+
+\nolig{ametag}{ame|tag}
+ % nametag
+\nolig{beta}{be|ta}
+\nolig{Beta}{Be|ta}
+ % betake betatter beta
+\nolig{betr}{be|tr}
+\nolig{Betr}{Be|tr}
+ % betray betroth
+
+\nolig{deta}{de|ta}
+ % detach detain detail 
+\nolig{etect}{e|tect}
+ % detect undetectable detective
+\nolig{detent}{de|tent}
+\nolig{Detent}{De|tent}
+ % detent detention 
+\nolig{detest}{de|test}
+\nolig{Detest}{De|test}
+ % detest
+\nolig{detr}{de|tr}
+\nolig{Detr}{De|tr}
+ % detract detrain detriment detritus
+
+\nolig{etail}{e|tail}
+ % bristletail detail dovetail horsetail 
+\nolig{etah}{e|tah}
+ % cheetah chetah 
+\nolig{etak}{e|tak}
+ % betake retake caretaker 
+\nolig{eteach}{e|teach}
+ % reteach
+\nolig{etell}{e|tell}
+ % foretell fortunetelling
+\nolig{eterg}{e|terg}
+ % detergent
+\nolig{eterio}{e|terio}
+ % deteriorate
+\nolig{eterm}{e|term}
+ % determent determinant preterm 
+\nolig{etext}{e|text}
+ % pretext retext teletext
+\nolig{etick}{e|tick}
+ % bluetick detick
+\nolig{etide}{e|tide}
+ % betide yuletide
+\nolig{etigh}{e|tigh}
+ % retighten
+\nolig{etime}{e|time}
+ % betime lifetime peacetime sometime
+\nolig{etrain}{e|train}
+ % detrain drivetrain housetrain retrain 
+\nolig{etrap}{e|trap}
+ % firetrap livetrap mousetrap
+\nolig{etree}{e|tree}
+ % axletree saddletree shoetree
+
+\nolig{imetable}{ime|table}
+ % timetable 
+
+\nolig{reteen}{re|teen}
+ % preteen
+\nolig{retend}{re|tend}
+ % pretend 
+\nolig{retenc}{re|tenc}
+ % pretence 
+\nolig{retens}{re|tens}
+ % pretense pretension
+\nolig{retent}{re|tent}
+\nolig{Retent}{Re|tent}
+ % pretentious retention retentive 
+\nolig{retest}{re|test}
+\nolig{Retest}{Re|test}
+ % pretest retest 
+
+\nolig{reta}{re|ta}
+\nolig{Reta}{Re|ta}
+ % retag retape retake 
+ % foretaste caretaker
+ % pretaste pretape pretaxretain
+ % retain retake retaliate retard 
+ % retarget retaste wiretap 
+ \keeplig{pretable} % interpretable 
+ \keeplig{cretar}   % secretary 
+\nolig{retie}{re|tie}
+\nolig{Retie}{Re|tie}
+ % retie entireties sureties
+\nolig{retil}{re|til}
+\nolig{Retil}{Re|til}
+ % retile
+\nolig{retim}{re|tim}
+\nolig{Retim}{Re|tim}
+ % retime beforetime 
+\nolig{retint}{re|tint}
+\nolig{Retint}{Re|tint}
+ % retint
+\nolig{retir}{re|tir}
+\nolig{Retir}{Re|tir}
+ % retire retiring
+\nolig{retitl}{re|titl}
+\nolig{Retitl}{Re|titl}
+ % retitle pretitling
+\nolig{retra}{re|tra}
+\nolig{Retra}{Re|tra}
+ % retrace retrack retract retrans retransmit
+\nolig{retre}{re|tre}
+\nolig{Retre}{Re|tre}
+ % pretreat retread retreat retrench
+\nolig{retri}{re|tri}
+\nolig{Retri}{Re|tri}
+ % pretrim pretrial retrieve retribution 
+ % retries retrim
+\nolig{retu}{re|tu}
+\nolig{Retu}{Re|tu}
+ % return retune unreturnable
+
+\nolig{uetooth}{ue|tooth}
+ % bluetooth
+
+\nolig{deter}{de|ter}
+\nolig{Deter}{De|ter}
+ % deter determine deteriorate undeterred
+\nolig{ceties}{ce|ties}
+ % niceties
+\nolig{feties}{fe|ties}
+ % safeties unsafeties biosafeties
+
+\nolig{fety}{fe|ty}
+ % safety
+\nolig{lety}{le|ty}
+ % subtlety teletype teletypewriter
+\nolig{rety}{re|ty}
+ % surety entirety retype pretype
+\nolig{etyp}{e|typ}
+ % archetype archetypal retype pretype
+
+
+% (G) as -> a-s 
+% -------------
+
+\nolig{eastran}{ea|stran}
+ % seastrand
+\nolig{aspore}{a|spore}
+ % diaspora megaspore tetraspore
+\nolig{aseps}{a|seps}
+ % asepsis
+\nolig{asept}{a|sept}
+ % aseptic aseptically
+\nolig{asund}{a|sund}
+\nolig{Asund}{A|sund}
+ % asunder
+\nolig{infras}{infra|s}
+\nolig{Infras}{Infra|s}
+ % infrastructure infraspecific
+\nolig{megast}{mega|st}
+\nolig{Megast}{Mega|st}
+ % megastructure megastar
+\nolig{megasp}{mega|sp}
+\nolig{Megasp}{Mega|sp}
+ % megaspores megascopic
+\nolig{aspoon}{a|spoon}
+ % teaspoon
+
+% how to do 'asea'?
+
+
+% (H) is -> i-s 
+% -------------
+
+% (a) not across morpheme boundaries
+% (The following may be a bug in fontspec)
+
+\nolig{fish}{fi|sh}
+\nolig{fist}{fi|st}
+\nolig{Fist}{Fi|st}
+
+
+% (b) across morpheme boundaries
+
+%% Mustn't do global \nolig{antis}{anti|s}
+%% because of words such as sycophantism, 
+%% vigilantism, and mantissa.
+
+\nolig{antisa}{anti|sa}
+\nolig{Antisa}{Anti|sa}
+ % antisag antisatellite
+\nolig{antisc}{anti|sc}
+\nolig{Antisc}{Anti|sc}
+ % antiscience 
+\nolig{antise}{anti|se}
+\nolig{Antise}{Anti|se}
+ % antisecrecy antisense antiseptic
+\nolig{antisha}{anti|sha}
+\nolig{Antisha}{Anti|sha}
+ % antishark antiship antishock
+\nolig{antishi}{anti|shi}
+\nolig{Antishi}{Anti|shi}
+ % antishark antiship antishock
+\nolig{antisho}{anti|sh}
+\nolig{Antisho}{Anti|sh}
+ % antishark antiship antishock
+\nolig{antisk}{anti|sk}
+\nolig{Antisk}{Anti|sk}
+ % antiskid
+\nolig{antisl}{anti|sl}
+\nolig{Antisl}{Anti|sl}
+ % antislavery antislip 
+\nolig{antismo}{anti|smo}
+\nolig{Antismo}{Anti|smo}
+ % antismog antismoke 
+\nolig{antismu}{anti|smu}
+\nolig{Antismu}{Anti|smu}
+ % antismuggling antismut
+\nolig{antisn}{anti|sn}
+\nolig{Antisn}{Anti|sn}
+ % antisnob
+\nolig{antiso}{anti|so}
+\nolig{Antiso}{Anti|so}
+ % antisocial antisolar
+\nolig{antisp}{anti|sp}
+\nolig{Antisp}{Anti|sp}
+ % antispasmodic antispeculative
+\nolig{antist}{anti|st}
+\nolig{Antist}{Anti|st}
+ % antistatic antistick antistress antistrike
+\nolig{antisu}{anti|su}
+\nolig{Antisu}{Anti|su}
+ % antisubmarine antisubversion 
+\nolig{antisy}{anti|sy}
+\nolig{Antisy}{Anti|sy}
+ % antisymmetric antisyphilitics 
+
+\nolig{multis}{multi|s}
+\nolig{Multis}{Multi|s}
+ % multiscreen multisense multisensory
+ % multiservice multisided multisite
+ % multisize multiskilled multisource
+ % multispecies multispectral multispeed
+ % multisport multistage multistate 
+ % multistemmed multistep multistoried
+ % multistory multistranded multisyllabic
+ % multisystem
+\nolig{isph}{i|sph}
+ % hemisphere planisphere hemispheric
+
+
+
+% (I) us -> u-s
+% -------------
+
+% %% (no examples yet)
+
+
+
+% (J) sk -> s-k
+% (available in EB Garamond font)
+% -------------------------------
+
+\nolig{skeep}{s|keep}
+ % greenskeeper groundskeeper miskeep
+\nolig{iskai}{is|kai}
+ % triskaidekaphobia
+\nolig{thsk}{ths|k}
+ % rathskeller
+\nolig{misk}{mis|k}
+\nolig{Misk}{Mis|k}
+ % miskeep miskept miskick misknow
+
+
+% (K) ll -> l-l
+% -------------
+
+\nolig{llike}{l|like}
+ % animallike soullike
+\nolig{lless}{l|less}
+ % soulless tailless
+
+
+% (L) fr -> f-r
+% -------------
+
+\nolig{oofr}{oof|r}
+ % proofread proofroom proofrock
+
+
+
+
+% Part 4: Disabling one discretionary
+% ligature so that a subsequent, more
+% important one doesn't get pre-empted
+% ------------------------------------
+
+
+% (i) as, is, and us preceding st
+% ..............................
+
+\nolig{ast}{a|st}
+\nolig{ust}{u|st}
+
+\nolig{ist}{i|st}
+
+
+% (ii) as, is, and us preceding sp
+% ..............................
+
+\nolig{lasp}{la|sp}
+ % clasp unclasp beclasp enclasp
+\nolig{aspar}{a|spar}
+\nolig{Aspar}{A|spar}
+ % asparagus Caspar aspartame asparkle
+\nolig{asper}{a|sper}
+\nolig{Asper}{A|sper}
+ % aspersion Casper Jasper exasperate
+\nolig{aspir}{a|spir}
+\nolig{Aspir}{A|spir}
+ % aspire aspirator aspirin
+\nolig{gasp}{ga|sp}
+\nolig{Gasp}{Ga|sp}
+ % gasp
+\nolig{hasp}{ha|sp}
+\nolig{Hasp}{Ha|sp}
+ % hasp
+\nolig{rasp}{ra|sp}
+\nolig{Rasp}{Ra|sp}
+ % grasp rasp raspberry
+\nolig{wasp}{wa|sp}
+\nolig{Wasp}{Wa|sp}
+ % wasp waspish
+
+\nolig{risp}{ri|sp}
+ % crisp 
+\nolig{ispani}{i|spani}
+ % hispanic
+\nolig{lisp}{li|sp}
+\nolig{Lisp}{Li|sp}
+ % lisp lisping 
+\nolig{whisp}{whi|sp}
+\nolig{Whisp}{Whi|sp}
+ % whisper
+\nolig{wisp}{wi|sp}
+\nolig{Wisp}{Wi|sp}
+ % wisp
+
+\nolig{cusp}{cu|sp}
+\nolig{Cusp}{Cu|sp}
+ % cusp bicuspid tricuspid
+\nolig{ausp}{au|sp}
+\nolig{Ausp}{Au|sp}
+ % auspicious inauspicious 
+
+
+% (iii) at and et preceding th
+% ............................
+
+%% If you have 'at' and 'et' ligatures as
+%% well as the 'th' ligature -- and want 
+%% the 'th' ligature to take precedence,
+%% make sure the following macros are 
+%% active (i.e., not commented out).
+
+\nolig{ath}{a|th}
+\nolig{eth}{e|th}
+
+% The preceding instructions are a bit too  
+% broad as they also suppress the at ligature
+% for words such as boathook, flathead, 
+% greathearted, goatherd, and neatherd,
+% and the 'et' ligature in words such as
+% Beethoven, prophethood, and sweetheart.
+% To address these cases, we provide \keeplig
+% macros to deliberately let the 'at' and 'et' 
+% ligatures pre-empt the 'th' ligatures:
+
+\keeplig{oathook} % boathook
+\keeplig{eathook} % meathook
+\keeplig{athouse} % bathouse boathouse cathouse
+\keeplig{athole} % rathole
+\keeplig{athead} % cathead fathead flathead meathead
+\keeplig{atherd} % goatherd neatherd
+\keeplig{eatheart} % greathearted
+
+\keeplig{Beethoven}
+\keeplig{ophethood}
+\keeplig{eetheart}
+
+% Specifying a group of narrower \nolig
+% commands to avoid catching 
+% these words turns out to be quite 
+% involved. The following list is but a
+% start. If anyone feels inclined to edit 
+% and augment this list, please be my guest. 
+% For now, the macros are commented out.
+
+%\nolig{trath}{tra|th}
+% % ultrathin intrathoracic strath
+%\nolig{athera}{a|thera}
+% % aromatherapy  
+%\nolig{athero}{a|thero}
+% % atherosclerosis
+%\nolig{athl}{a|thl}
+% % athlete triathlon heathland
+%\nolig{athei}{a|thei}
+% % atheism atheist
+%\nolig{death}{dea|th}
+% % death deathbed ...
+%\nolig{heath}{hea|th}
+% % heath heather heathen sheath
+%\nolig{feath}{fea|th}
+% % feather featherbed
+%\nolig{weath}{wea|th}
+% % weather 
+%\nolig{gath}{ga|th}
+% % gather 
+%\nolig{bath}{ba|th}
+% % bath bathyscaph
+%\nolig{path}{pa|th}
+% % path empathy telepathy
+%\nolig{cathed}{ca|thed}
+% % cathedral unscathed
+%\nolig{cathet}{ca|thet}
+% % catheter  
+%\nolig{cathod}{ca|thod}
+% % cathode 
+%\nolig{wath}{wa|th}
+% % swath swathe 
+
+
+% (iv) at and et preceding ta
+% ...........................
+
+% These cases all seem to involve 'at'
+% or 'et' crossing a ligature boundary.
+% As such, these cases should be dealt
+% with in Part 3 of this file.
+
+
+
+\fi  %% end of \@ifdiscr

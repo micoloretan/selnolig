@@ -1,0 +1,53 @@
+% !TEX TS-program = lualatex
+\documentclass[ngerman]{article}
+
+% Test program: Apply the 'selnolig' package, with
+% 'german' language option set, to a list of German words
+% which contain one or more non-ligation points. The list 
+% of test words is in 'selnolig-german-wordlist.tex'.
+%
+% Author: Mico Loretan (loretan dot mico at gmail dot com)
+% Date: 2012/11/15
+
+
+% Check first that we're running lua(la)tex.
+\usepackage{ifluatex}
+\ifluatex\else
+  \typeout{==============================================}
+  \typeout{The file selnolig-german-test must be compiled}
+  \typeout{     using lualatex. Exiting immediately.     }
+  \typeout{==============================================}
+  \endinput
+\fi
+
+\usepackage[vmargin=1in,hmargin=0.75in]{geometry}
+\usepackage{fontspec}
+\defaultfontfeatures{%
+   Ligatures={TeX,Common},
+   Numbers  = OldStyle}
+\setmainfont{EB Garamond 12 Regular}
+\newfontfamily\gbp{Garamond Premier Pro}
+
+\setlength\parindent{0pt}
+\parskip=0.3\baselineskip
+\usepackage{babel}
+\usepackage{selnolig}
+\usepackage{showhyphens}
+\usepackage{multicol}
+  \setlength\columnseprule{.4pt}
+
+
+\begin{document}
+\section*{selnolig-german-test}
+
+\begin{tabular}{@{} *{9}{l} }
+Erscheinungsbild der f-Ligaturen
+   &ff &fi &fl &ffi &ffl &ft & fj &\mbox{fk}\\
+Beispiele
+   &Affe &finden &flink &offiziell &soufflieren & Luft & Sogne\-fjord &Kafka\\
+\end{tabular}
+
+\begin{multicols}{2}
+\input selnolig-german-wordlist
+\end{multicols}
+\end{document}

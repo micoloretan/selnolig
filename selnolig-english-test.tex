@@ -1,0 +1,72 @@
+% !TEX TS-program = lualatex
+\documentclass{article}
+
+% Test program: Apply the 'selnolig' package, with
+% 'english' language option set, to a list of English
+% words which contain various character pairs that
+% should not be ligated. The list of English words is 
+% in the companion file 'selnolig-english-wordlist.tex'.
+%
+% Author: Mico Loretan (loretan dot mico at gmail dot com)
+% Date: 2012/11/15
+
+
+% Check first that we're running lua(la)tex.
+\usepackage{ifluatex}
+\ifluatex\else
+  \typeout{===============================================}
+  \typeout{The file selnolig-english-test must be compiled}
+  \typeout{     using lualatex. Exiting immediately.      }
+  \typeout{===============================================}
+  \endinput
+\fi
+
+\usepackage[margin=1in]{geometry}
+\usepackage{showhyphens}
+\setlength\parindent{0pt}
+\parskip=0.3\baselineskip
+\usepackage{multicol}
+  \setlength\columnseprule{.4pt}
+
+\righthyphenmin=2 % set this to either 3 (normal) or 2
+
+\usepackage{fancyvrb}
+
+\usepackage{fontspec}
+\setmainfont[Numbers    = OldStyle,
+  Ligatures = {TeX,Common,Discretionary},
+  ItalicFont = {Garamond Premier Pro Italic}]
+  {Garamond Premier Pro}
+\setmonofont[Scale=MatchLowercase]{Consolas}
+\newfontfamily\ebg[Numbers    = OldStyle,
+  Ligatures = {TeX,Common,Discretionary},
+  ItalicFont = {EB Garamond 12 Italic}]
+  {EB Garamond 12 Regular}
+
+\usepackage[english,broad-f]{selnolig}
+\debugon
+
+\begin{document}
+\section*{selnolig-english-test}
+
+\begin{tabular}{@{}*{8}{l}}
+Appearance of f-ligatures in current font
+   &ff &fi &fl &ffi &ffl &ft \\
+Sample words containing these ligatures
+   &off &fit &fly &office &baffle &lift \\
+\end{tabular}
+
+\bigskip
+\makeatletter
+\begin{tabular}{@{}ll}
+Options and other parameters\\
+Righthyphenmin               & \the\righthyphenmin\\
+Extent of suppressing f-ligatures: basic or broad?  & \if@broadset broad \else basic \fi \\
+Treat hist./discr.\ ligatures? (ct, st, sp, \emph{th}, \emph{et}, etc.)    & \if@hdligset yes \else no \fi         \\
+\end{tabular}
+\makeatother
+
+\begin{multicols}{2}
+\input selnolig-english-wordlist
+\end{multicols}
+\end{document}

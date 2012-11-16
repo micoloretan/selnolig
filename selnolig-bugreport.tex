@@ -1,0 +1,35 @@
+% !TEX TS-program = lualatex
+% selnolig-bugreport.tex, 2012/11/15
+
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+
+% Specify non-default text font, if any:
+%\setmainfont{EB Garamond 12 Regular}
+\setmainfont{Latin Modern Roman}
+
+% comment out the next instruction if you don't use babel
+\usepackage[ngerman]{babel} 
+
+% choose either ngerman or english as the language option
+\usepackage[ngerman]{selnolig}
+
+\begin{document}
+\subsection*{Version of selnolig package used:}
+
+(See the log file for this piece of information.)
+
+\subsection*{Type-I errors: Words for which ligatures are incorrectly not being suppressed}
+
+(List words here)
+
+\subsection*{Type-II errors: Words for which ligatures are suppressed incorrectly}
+
+(List words here)
+
+\subsection*{Other issues}
+
+Examples: problems with user guide; problems caused by the package's lua code 
+(and, please, suggestions for bug fixes)
+\end{document}

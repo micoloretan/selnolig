@@ -1,0 +1,43 @@
+% !TEX TS-program = lualatex
+\documentclass{article}
+
+% This is a minimally-modified version of the file
+% testfile.tex provided by the "rmligs" package.
+% It is minimally modified to make it compile under
+% LuaLaTeX: (i) use 'babel' instead of 'ngerman', 
+% (ii) use 'fontspec' instead of 'inputenc', and
+% (iii) use the 'selnolig' package (what else?!).
+% Last updated on: 2012/11/15
+
+
+%\usepackage[utf8]{inputenc}
+\usepackage{fontspec}
+
+%\usepackage{ngerman} 
+\usepackage[ngerman]{babel}
+
+\usepackage[ngerman]{selnolig}
+
+\newcommand{\auffahre}{mytrash}
+\newcommand{\kopflos}{MYTRASH}
+
+
+\begin{document}
+
+Dies ist eine Beispiel-\TeX-Datei, die auffallend dumme Sätze auflistet.
+Treffliche Dinge kann ich hier nicht schreiben.
+
+Dies ist eine Zeile, die kein Wort enthält, das ligaturisiert werden kann.
+
+Eigentlich zweifle ich an, dass es zu Ligatur ein passendes Verb gibt.
+\auffahre\ oder \kopflos{} sind tatsächlich \LaTeX{} Befehle, wobei \\kopflos
+natürlich kopflos im neuen Paragraph ist. \\\kopflos\ wiederum ist ein
+\LaTeX{} Befehl auf neuer Zeile.
+
+Ein \emph{kampflustiger}, übertariflich bezahlter Waldorflehrer bekommt
+ein übertarifliches Gehalt.
+
+Als schweizer Hunde die "`hilflose Auflage"' auffrassen \ldots
+
+\end{document}
+

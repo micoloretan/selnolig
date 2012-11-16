@@ -1,0 +1,228 @@
+% !TeX root = selnolig.tex
+% !TEX TS-program = lualatex
+
+\ProvidesPackage{selnolig}[2012/11/15]
+\RequirePackage{luatexbase,luacode}
+
+% This entire package is placed under the terms of the
+% LaTeX Project Public License, version 1.3 or later
+% (http://www.latex-project.org/lppl.txt).
+% It has the status "maintained".
+%
+% Author: Mico Loretan (loretan dot mico at gmail dot com)
+
+% Part 1: Preliminaries
+% ---------------------
+
+\def\pname{selnolig}
+\def\pversion{0.151}
+\def\pdate{2012/11/16}
+
+% Announce who we are. Exit immediately if not running
+% under lua(la)tex.
+\typeout{----Package \pname, Version \pversion, Date \pdate----}
+
+\RequirePackage{ifluatex}
+\ifluatex\else
+  \typeout{=========================================}
+  \typeout{The package selnolig requires LuaLaTeX.  }
+  \typeout{       Exiting immediately.              }
+  \typeout{=========================================}
+  \endinput
+\fi
+
+% A couple of ancillary macros to check if various ligature
+% features (specifically: liga, clig, rlig, hlig, and dlig)
+% are available and/or enabled for the text font in use.
+% (These macros are courtesy of Clemens Niederberger; see
+% also http://tex.stackexchange.com/a/82443/5001.)
+\ExplSyntaxOn 
+\cs_new_eq:NN \IfFontFeatureExists \fontspec_if_feature:nTF
+
+\cs_new:Npn \mico_fontfeature_if_active:nTF #1
+  { \tl_if_in:NnTF \l_fontspec_rawfeatures_sclist { #1 } }
+
+\cs_new_eq:NN \IfFontFeatureActive \mico_fontfeature_if_active:nTF
+\ExplSyntaxOff
+
+
+% If the 'fontspec' package isn't loaded by the time
+% LaTeX executes the '\begin{document}' directive,
+% exit with an error message.
+
+\AtBeginDocument{%
+  \@ifpackageloaded{fontspec}{}{%
+    \typeout{=========================================}
+    \typeout{ The selnolig package requires the       }
+    \typeout{ 'fontspec' package, but it doesn't      }
+    \typeout{ seem to be loaded. Exiting now...       }
+    \typeout{=========================================}
+    \endinput}
+}
+
+
+% Set up some fundamental Boolean variables, their
+% default values, and define user-selectable options.
+
+% The two main language options are 'english' and 
+% 'german'. We provide the 'otherlang' option just 
+% in case a user some day wants to provide ligature 
+% suppression patterns for languages other than 
+% English and German.
+
+\newif\if@english\@englishfalse
+\newif\if@german\@germanfalse
+\newif\if@otherlang\@otherlangfalse
+
+\DeclareOption{english}{\@englishtrue}
+% synonymous options...
+\DeclareOption{usenglish}{\@englishtrue}
+\DeclareOption{ukenglish}{\@englishtrue}
+\DeclareOption{USenglish}{\@englishtrue}
+\DeclareOption{UKenglish}{\@englishtrue}
+\DeclareOption{american}{\@englishtrue}
+\DeclareOption{british}{\@englishtrue}
+\DeclareOption{canadian}{\@englishtrue}
+\DeclareOption{australian}{\@englishtrue}
+\DeclareOption{newzealand}{\@englishtrue}
+
+\DeclareOption{ngerman}{\@germantrue}
+% synonymous options...
+\DeclareOption{german}{\@germantrue}
+\DeclareOption{austrian}{\@germantrue}
+\DeclareOption{naustrian}{\@germantrue}
+\DeclareOption{swiss}{\@germantrue}
+\DeclareOption{swissgerman}{\@germantrue}
+
+\DeclareOption{otherlang}{\@otherlangtrue}
+\DeclareOption{otherlanguage}{\@otherlangtrue}
+
+
+% For English, the default is to load only a fairly small
+% or 'basic' set of non-ligation rules pertaining to 
+% f-ligatures. Among them are the "standard five" (ff,
+% fi, fl, ffi, and ffl) as well as the ft ligature.
+%
+% Two options to override this "basic" setting:
+% - broad-f  many more non-ligation rules for f-ligatures,
+%            incl fb, fh, fj, and fk character pairs
+% - hdlig    non-ligation rules for 'historic' and/or 
+%            'discretionary' ligatures, e.g., ct, sp, st,
+%            sk, th, as, is, us, fr, ll, et, at, and ta 
+
+\newif\if@broadset\@broadsetfalse
+\newif\if@hdligset\@hdligsetfalse
+
+\DeclareOption{broad-f}{\@broadsettrue}
+\DeclareOption{hdlig}{\@hdligsettrue}
+
+% The package also provides hyphenation exception 
+% patterns for English and German language words. 
+% Loading these patterns is enabled by default. This
+% can be disabled by providing the option
+% 'noadditionalhyphenationpatterns'.
+
+\newif\if@addhyph\@addhyphtrue
+\DeclareOption{noadditionalhyphenationpatterns}{\@addhyphfalse}
+
+% Check if 'historic' and/or 'discretionary' ligatures 
+% are enabled; if yes, set @hdligset to true.
+% Perform this test only if fontspec is already loaded.
+% Perform a two-step test in case only a "basic" font,
+% such as Latin Modern Roman, is loaded.
+\@ifpackageloaded{fontspec}{%
+  \IfFontFeatureExists{hlig}{%
+    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}
+    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}
+  }{}
+}{} 
+
+% The 'basic' option automatically sets the
+% preceding Booleans to 'false', even if historic
+% and/or discretionary ligatures are enabled.
+
+\DeclareOption{basic}{\@broadsetfalse\@hdligsetfalse}
+
+% Last but not least, an option to set all Boolean
+% variables (other than '@addhyph') to 'true' 
+% simultaneously.
+
+\DeclareOption{all}{%
+   \@englishtrue   
+   \@broadsettrue \@hdligsettrue
+   \@germantrue    
+   \@otherlangtrue}
+
+% Finally, process all options
+\ProcessOptions\relax
+
+
+% Part 2: Load the lua code and set up the user macros
+% ----------------------------------------------------
+
+\directlua{  require("selnolig.lua")  }
+
+% The main user macro is called '\nolig':
+\newcommand\nolig[2]{
+   \directlua{
+      suppress_liga( "\luatexluaescapestring{#1}",
+                     "\luatexluaescapestring{#2}" )
+   }
+}
+
+% A second user macro allows global overriding of
+% rules set up by '\nolig':
+\newcommand\keeplig[1]{
+   \directlua{
+      always_keep_liga( "\luatexluaescapestring{#1}" )
+   }
+}
+
+% A third user macro: '\breaklig'. This is hopefully 
+% easier to remember than '\-\hspace{0pt}'
+\newcommand\breaklig{\-{\hspace{0pt}}}
+
+% Record operations of selnolig package to the log file:
+% enabled via '\debugon' command
+
+\newcommand\debugon{%
+   \directlua{
+      debug=true
+   }
+}
+
+
+% Part 3: What to do if 'english' option is set
+% ---------------------------------------------
+
+\if@english
+   % load English-language ligature suppression rules
+   \usepackage{selnolig-english-patterns}
+
+   % load additional hyphenation exception patterns
+   \if@addhyph
+      \usepackage{selnolig-english-hyphex}
+   \fi
+\fi
+
+
+% Part 4: What to do if 'german' option is set
+% --------------------------------------------
+
+\if@german
+   % load German-language ligature suppression rules
+   \usepackage{selnolig-german-patterns}
+
+   % load additional hyphenation exception patterns
+   \if@addhyph
+      \usepackage{selnolig-german-hyphex}
+   \fi
+\fi
+
+
+% Part 5: What to do if 'otherlang' option is set
+% -----------------------------------------------
+
+\if@otherlang
+    % currently nothing included
+\fi
