@@ -3,27 +3,27 @@
 \contentsline {section}{\numberline {2}I'm in a hurry! How do I start using this package?}{4}{section.2}
 \contentsline {subsection}{\numberline {2.1}How do I load the selnolig package?}{4}{subsection.2.1}
 \contentsline {subsection}{\numberline {2.2}Any hints on how to get started with Lua\textlatin {\LaTeX }?}{5}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Anything else I need do to get started with selnolig?}{6}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.3}Anything else I need do to get started?}{6}{subsection.2.3}
 \contentsline {section}{\numberline {3}Acknowledgments and license}{7}{section.3}
 \contentsline {section}{\numberline {4}Structure of the package}{8}{section.4}
-\contentsline {section}{\numberline {5}The selnolig package's approach to breaking up ligatures}{10}{section.5}
+\contentsline {section}{\numberline {5}The selnolig package's approach to breaking up ligatures}{11}{section.5}
 \contentsline {section}{\numberline {6}Options that govern the package's behavior}{12}{section.6}
-\contentsline {subsection}{\numberline {6.1}Language options}{12}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.1}Main language options}{12}{subsection.6.1}
 \contentsline {subsection}{\numberline {6.2}Other options}{12}{subsection.6.2}
 \contentsline {subsubsection}{\numberline {6.2.1}English language case: The broad-f and hdlig options}{12}{subsubsection.6.2.1}
-\contentsline {subsubsection}{\numberline {6.2.2}Additional hyphenation exception patterns}{13}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.2}Additional hyphenation exception patterns}{14}{subsubsection.6.2.2}
 \contentsline {subsubsection}{\numberline {6.2.3}Controlling how much is written to the .log file}{14}{subsubsection.6.2.3}
 \contentsline {section}{\numberline {7}Further issues}{15}{section.7}
 \contentsline {subsection}{\numberline {7.1}Known bugs}{15}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Composite words made up of two different sets of primitive words}{16}{subsection.7.2}
 \contentsline {subsection}{\numberline {7.3}Lists of words fitting German and English language non-ligation patterns}{16}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}How to provide additional ligature suppression patterns}{16}{subsection.7.4}
+\contentsline {subsection}{\numberline {7.4}How to provide additional ligature suppression patterns}{17}{subsection.7.4}
 \contentsline {subsection}{\numberline {7.5}How to use the selnolig package to suppress ligatures for certain character pairs globally}{17}{subsection.7.5}
 \contentsline {subsection}{\numberline {7.6}What if one ligature pre-empts a subsequent, more appropriate ligature?}{18}{subsection.7.6}
-\contentsline {subsubsection}{\numberline {7.6.1}Ligatures for \emph {as}, \emph {is}, and \emph {us} that pre-empt an \emph {st} ligature}{18}{subsubsection.7.6.1}
-\contentsline {subsubsection}{\numberline {7.6.2}Ligatures for \emph {as}, \emph {is}, and \emph {us} that pre-empt an \emph {sp} ligature}{19}{subsubsection.7.6.2}
-\contentsline {subsubsection}{\numberline {7.6.3}Ligatures for \emph {at} and \emph {et} that pre-empt a \emph {th} ligature}{19}{subsubsection.7.6.3}
-\contentsline {subsubsection}{\numberline {7.6.4}Ligatures for \emph {at} and \emph {et} that pre-empt a \emph {ta} ligature}{20}{subsubsection.7.6.4}
+\contentsline {subsubsection}{\numberline {7.6.1}Ligatures for \emph {as}, \emph {is}, and \emph {us} that pre-empt an \emph {st} ligature}{19}{subsubsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.2}Ligatures for \emph {as}, \emph {is}, and \emph {us} that pre-empt an \emph {sp} ligature}{20}{subsubsection.7.6.2}
+\contentsline {subsubsection}{\numberline {7.6.3}Ligatures for \emph {at} and \emph {et} that pre-empt a \emph {th} ligature}{20}{subsubsection.7.6.3}
+\contentsline {subsubsection}{\numberline {7.6.4}Ligatures for \emph {at} and \emph {et} that pre-empt a \emph {ta} ligature}{21}{subsubsection.7.6.4}
 {\vspace \baselineskip }
 {\mdseries Appendices\par }
 \contentsline {section}{\numberline {A}The package's main style file: selnolig.sty}{22}{appendix.A}

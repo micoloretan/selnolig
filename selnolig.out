@@ -2,12 +2,12 @@
 \BOOKMARK [1][-]{section.2}{I'm in a hurry! How do I start using this package?}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{How do I load the selnolig package?}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Any hints on how to get started with LuaLaTeX?}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Anything else I need do to get started with selnolig?}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Anything else I need do to get started?}{section.2}% 5
 \BOOKMARK [1][-]{section.3}{Acknowledgments and license}{}% 6
 \BOOKMARK [1][-]{section.4}{Structure of the package}{}% 7
 \BOOKMARK [1][-]{section.5}{The selnolig package's approach to breaking up ligatures}{}% 8
 \BOOKMARK [1][-]{section.6}{Options that govern the package's behavior}{}% 9
-\BOOKMARK [2][-]{subsection.6.1}{Language options}{section.6}% 10
+\BOOKMARK [2][-]{subsection.6.1}{Main language options}{section.6}% 10
 \BOOKMARK [2][-]{subsection.6.2}{Other options}{section.6}% 11
 \BOOKMARK [3][-]{subsubsection.6.2.1}{English language case: The broad-f and hdlig options}{subsection.6.2}% 12
 \BOOKMARK [3][-]{subsubsection.6.2.2}{Additional hyphenation exception patterns}{subsection.6.2}% 13

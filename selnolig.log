@@ -1,4 +1,4 @@
-This is LuaTeX, Version beta-0.70.2-2012062819 (TeX Live 2012) (format=lualatex 2012.10.10)  16 NOV 2012 12:04
+This is LuaTeX, Version beta-0.70.2-2012062819 (TeX Live 2012) (format=lualatex 2012.10.10)  16 NOV 2012 15:00
  restricted \write18 enabled.
 **selnolig.tex
 (./selnolig.tex
@@ -1686,7 +1686,7 @@ atn)
 luaotfload | load font: font family='helveticaneue', subfamily='regular' found:
  /System/Library/Fonts/HelveticaNeue.dfont [3]
 LaTeX Font Info:    Font shape `EU2/Consolas(0)/m/n' will be
-(Font)              scaled to size 9.69342pt on input line 135.
+(Font)              scaled to size 9.69342pt on input line 137.
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='consolas', subfamily='regular' found: /Lib
@@ -1703,15 +1703,21 @@ luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='garamondpremierpro', subfamily='regular' f
 ound: /Library/Fonts/GaramondPremrPro.otf
+LaTeX Font Info:    Font shape `EU2/HelveticaNeue(0)/m/n' will be
+(Font)              scaled to size 11.02982pt on input line 150.
+luaotfload | load font: auto-selecting default features for script: dflt (was l
+atn)
+luaotfload | load font: font family='helveticaneue', subfamily='regular' found:
+ /System/Library/Fonts/HelveticaNeue.dfont [4]
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='garamondpremierpro', subfamily='regular' f
-ound: /Library/Fonts/GaramondPremrPro.otf [4] [5]
+ound: /Library/Fonts/GaramondPremrPro.otf [5]
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='garamondpremierpro', subfamily='regular' f
-ound: /Library/Fonts/GaramondPremrPro.otf
-Underfull \hbox (badness 1448) in paragraph at lines 207--208
+ound: /Library/Fonts/GaramondPremrPro.otf [6]
+Underfull \hbox (badness 1448) in paragraph at lines 211--212
 [][][][]\EU2/GaramondPremierPro(0)/m/n/10 (+20) See e\EU2/GaramondPremierPro(0)
 /m/n/10 s-p\EU2/GaramondPremierPro(0)/m/n/10 (+20) e-cially the que\EU2/Garamon
 dPremierPro(0)/m/n/10 s-t\EU2/GaramondPremierPro(0)/m/n/10 (+20) ions [][]$\EU2
@@ -1720,17 +1726,17 @@ dPremierPro(0)/m/n/10 s-t\EU2/GaramondPremierPro(0)/m/n/10 (+20) ions [][]$\EU2
 / / tex . stackexchange .
  []
 
-[6] [7] [8]
+[7] [8]
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='ebgaramond12italic', subfamily='regular' f
 ound: /Users/mico/Library/Fonts/EBGaramond12-Italic.otf [9]
 LaTeX Font Info:    Font shape `EU2/HelveticaNeue(0)/m/n' will be
-(Font)              scaled to size 13.2358pt on input line 290.
+(Font)              scaled to size 13.2358pt on input line 294.
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='helveticaneue', subfamily='regular' found:
- /System/Library/Fonts/HelveticaNeue.dfont [10] [11] [12] [13] [14] [15]
+ /System/Library/Fonts/HelveticaNeue.dfont [10] [11] [12] [13] [14] [15] [16]
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='unifrakturmaguntia', subfamily='regular' f
@@ -1741,7 +1747,6 @@ Maguntia'.
 (microtype)                For optimal results, create font-specific settings.
 (microtype)                See the microtype manual for details.
 
-[16]
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='garamondpremierproitalic', subfamily='regu
@@ -1751,7 +1756,7 @@ atn)
 luaotfload | load font: font family='garamondpremierpro', subfamily='regular' f
 ound: /Library/Fonts/GaramondPremrPro.otf
 LaTeX Font Info:    Font shape `EU2/Consolas(0)/m/n' will be
-(Font)              scaled to size 8.84523pt on input line 518.
+(Font)              scaled to size 8.84523pt on input line 522.
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='consolas', subfamily='regular' found: /Lib
@@ -1759,8 +1764,7 @@ rary/Fonts/Microsoft/Consolas.ttf [22
 
 ] [23] [24] [25] [26] [27] [28
 
-] [29] [30]
-[31]
+] [29] [30] [31]
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: pdftex
 * paper: <default>
@@ -1793,27 +1797,28 @@ rary/Fonts/Microsoft/Consolas.ttf [22
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
- [32
+
+[32
 
 
 ] [33] [34] [35] [36] [37] [38] [39] [40] [41] [42] [43] [44] [45]
 luaotfload | load font: auto-selecting default features for script: dflt (was l
 atn)
 luaotfload | load font: font family='garamondpremierproitalic', subfamily='regu
-lar' found: /Library/Fonts/GaramondPremrPro-It.otf
-[46
+lar' found: /Library/Fonts/GaramondPremrPro-It.otf [46
 
-] [47] [48] [49] [50] [51] [52] [53] [54] [55]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 564.
+]
+[47] [48] [49] [50] [51] [52] [53] [54] [55]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 568.
  [56
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 564.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 568.
  (./selnolig.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 564.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 564.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 568.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 568.
 Package rerunfilecheck Info: File `selnolig.out' has not changed.
-(rerunfilecheck)             Checksum: 483D3200D1D82320BF7608DF6CFFD5D6;2815.
+(rerunfilecheck)             Checksum: 79695070796B3583B4930187F306143C;2806.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -1821,25 +1826,25 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  )
 
 Here is how much of LuaTeX's memory you used:
- 25377 strings out of 494982
+ 25381 strings out of 494982
  100000,662416 words of node,token memory allocated
- 533 words of node memory still in use:
+ 535 words of node memory still in use:
    4 hlist, 1 vlist, 1 rule, 2 glue, 5 attribute, 71 glue_spec, 5 attribute_lis
 t, 4 action, 1 write, 1 user_defined nodes
-   avail lists: 1:1,2:12531,3:200,4:1107,5:1502,6:3874,7:166,8:19,9:376,10:325,
-12:1
- 27915 multiletter control sequences out of 65536+200000
- 203 fonts using 56761547 bytes
+   avail lists: 1:1,2:13011,3:202,4:1107,5:1530,6:3914,7:67,8:19,9:376,10:335,1
+2:1
+ 27917 multiletter control sequences out of 65536+200000
+ 204 fonts using 56994891 bytes
  54i,11n,81p,1677b,563s stack positions out of 5000i,500n,10000p,200000b,50000s
 </Users/mico/Library/Fonts/UnifrakturMaguntia.ttf></Users/mico/Library/Fonts/EB
-Garamond12-Italic.otf></Library/Fonts/Microsoft/Consolas.ttf><./HelveticaNeue.C
-QiZBY></Library/Fonts/GaramondPremrPro-It.otf></Users/mico/Library/Fonts/EBGara
+Garamond12-Italic.otf></Library/Fonts/Microsoft/Consolas.ttf><./HelveticaNeue.Z
+OEekq></Library/Fonts/GaramondPremrPro-It.otf></Users/mico/Library/Fonts/EBGara
 mond12-Regular.otf></Library/Fonts/GaramondPremrPro.otf></usr/local/texlive/201
 2/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-Output written on selnolig.pdf (56 pages, 247427 bytes).
+Output written on selnolig.pdf (56 pages, 248701 bytes).
 
-PDF statistics: 577 PDF objects out of 1000 (max. 8388607)
- 492 compressed objects within 5 object streams
- 124 named destinations out of 1000 (max. 131072)
+PDF statistics: 582 PDF objects out of 1000 (max. 8388607)
+ 497 compressed objects within 5 object streams
+ 125 named destinations out of 1000 (max. 131072)
  241 words of extra memory for PDF output out of 10000 (max. 10000000)
 
