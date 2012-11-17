@@ -6,7 +6,7 @@
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
 --    (with crucial contributions by Taco Hoekwater, 
 --    Patrick Gundlach, and Steffen Hildebrandt)
--- Date: 2012/11/15
+-- Date: 2012/11/17
 --
 -- This entire package is placed under the terms of the
 -- LaTeX Project Public License, version 1.3 or later
