@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/11/17
+% Date: 2012/11/19
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -50,7 +50,7 @@
 \nolig{streif}{s|treif}      % streifte
 \nolig{instru}{ins|tru}      % Zupfinstrument
 \nolig{justiz}{jus|tiz}      % Strafjustiz
-\nolig{Konstanz}{Kon|stanz}	
+\nolig{Konstanz}{Kons|tanz}	
 
 \usepackage{geometry}
 \usepackage[english=american]{csquotes}
@@ -132,12 +132,12 @@ What has \emph{not} been available so far is a \LaTeX\ package that (i) specifie
 
 The \pkg{selnolig} package also provides additional hyphenation exception lists for both English and German language words. It is straightforward to extend the package to let it handle ligature suppression rules for other languages besides English and German. 
 
-For both English and German language documents, the \pkg{selnolig} package provides macrs to suppress selectively the following f-ligatures: ff, fi, fl, ffi, and ffl\textemdash the \enquote{standard} f-ligatures that should be familiar to most users of Computer Modern fonts\textemdash as well as the~ft and~fft ligatures. The latter two ligatures, while not provided by the Computer Modern font family, are available frequently in \enquote{oldstyle} or \enquote{Garalde} font families.
+For both English and German language documents, the \pkg{selnolig} package provides macros to suppress selectively the following f-ligatures: ff, fi, fl, ffi, and ffl\textemdash the \enquote{standard} f-ligatures that should be familiar to most users of Computer Modern fonts\textemdash as well as the~ft (or~\char"E18D) and~\char"E187\ ligatures. The latter two ligatures, while not provided by the Computer Modern font family, are available frequently in \enquote{oldstyle} or \enquote{Garalde} font families.
 
 For English language documents, the package's default setting is to suppress f-ligatures for only a fairly basic set of words. However, by providing the option \opt{broad-f}, additional f-ligatures can be suppressed, including for words that contain the {\ebg \mbox{fb}, \mbox{fh}, \mbox{fj}, and \mbox{fk}} character pairs. The package also recognizes an option called \opt{hdlig} to suppress selectively historic and discretionary ligatures, such as those for the ct, st, sp, \emph{th}, \emph{et}, and~\emph{as} character pairs. 
 
 
-For German language documents, all instances of {\ebg \mbox{fb}, \mbox{fh}, \mbox{fj}, and~\mbox{fk}} ligatures are suppressed globally, see \cref{sec:global-nolig}. However, exceptions are provided in order \emph{not} to suppress these ligatures for selected words of non-German origin such as fjord, fjell, {\ebg Kafka}, and Prokofjew. At this time, no macros for the selective suppression of historic and/or discretionary ligatures are provided for German language documents.
+For German language documents, all instances of {\ebg \mbox{fb}, \mbox{fh}, \mbox{fj}, and~\mbox{fk}} ligatures are suppressed globally, see \cref{sec:global-nolig}. However, exceptions are provided in order \emph{not} to suppress these ligatures for selected words of \emph{non-German} origin\textemdash such as fjord, fjell, {\ebg Kafka}, and Prokofjew. At this time, no macros for the selective suppression of historic and/or discretionary ligatures are provided for German language documents.
 
 Of course, if the fonts you employ for your documents do not provide these typographic ligatures, the presence of the ligature suppression rules will have no effect\textemdash other than to slow down compilation speed.
 
@@ -559,7 +559,7 @@ Introductory notes:
 \end{multicols}
 
 \clearpage
-\section[Reporting bugs and other issues with the selnolig package: A suggested template]{Reporting bugs and other issues with the selnolig package:\\A suggested template} \label{sec:template}
+\section[Reporting bugs and other issues with the selnolig package: A suggested template]{Reporting bugs and other issues with the \pkg{selnolig} package:\\A suggested template} \label{sec:template}
 
 \VerbatimInput{selnolig-bugreport.tex}
 

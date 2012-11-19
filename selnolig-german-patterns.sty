@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2012/11/17]
+[2012/11/19]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -12,6 +12,16 @@
 %
 % Author: Mico Loretan
 %   (loretan dot mico at gmail dot com)
+
+
+%% Note use of %%%%% for \nolig commands 
+%% with an Umlaut in first part of search 
+%% string: they're commented out because
+%% of lingering bugs in the lua code that
+%% prevents the correct application of the
+%% required searches that involve Umlaute.
+%% (The comments will be removed once the
+%% bugs in the lua code are removed.)
 
 
 % 1. ff -> f-f
@@ -180,11 +190,11 @@
 \nolig{pfleist}{pf|leist}
  % Dampfleistung Knopfleiste
  % Kopfleiste
+
 \nolig{fleit}{f|leit}
  % Dampfleitung Hofleitung Baufhofleiter
  % Kaufleitung Notrufleitung aufleiten
  % inbegriffleitend Kraftstoffleitung
-
 \keeplig{Kaltefleiter}
  % a surname...
 
@@ -236,9 +246,6 @@
 \nolig{auflad}{auf|lad}
 \nolig{Auflad}{Auf|lad}
  % aufladbar aufladen Sauf-laden
- % (Nicht 'uflad' direkt suchen, wegen
- % gewissen Wörtern die in 'ufladen'
- % enden.)
 \nolig{orflad}{orf|lad}
  % Dorfladen
 \nolig{urflad}{urf|lad}
@@ -276,14 +283,11 @@
 \nolig{uflieg}{uf|lieg}
  % aufliegende
 \nolig{aufliess}{auf|liess}
- % aufliesset
-\nolig{aufließ}{auf|ließ}
- % aufließet
 \nolig{Aufliess}{Auf|liess}
  % aufliesset
+\nolig{aufließ}{auf|ließ}
 \nolig{Aufließ}{Auf|ließ}
  % aufließet
- %% be careful with "zufliessen"
 \nolig{flist}{f|list}
  % auflisten Prüfliste
 \nolig{uflock}{uf|lock}
@@ -308,6 +312,7 @@
  % bezweifle verzweifle
 \nolig{weiflu}{weif|lu}
  % Verzweiflungsakt
+
 \nolig{flich}{f|lich}
  % tariflich reiflich unbegreiflich
  % glimpflich schimpflich behilflich 
@@ -317,8 +322,8 @@
  % käuflich unverkäuflich
  % höflich bischöflich
  % unerschöpflich dörflich
-
-%% Need to avoid catching Pflicht and pflicht:
+ % vortrefflich begrifflich
+% Vorsicht mit Pflicht and pflicht:
 	\keeplig{Pflicht}
 	\keeplig{pflicht}
 
@@ -360,9 +365,6 @@
 % 6. ffl -> ff-l
 % --------------
 
-%\nolig{fflich}{ff|lich}
-% -- see \nolig{flich}{f|lich}
- % vortrefflich begrifflich
 \nolig{fflig}{ff|lig}
  % knifflig mufflig
 \nolig{offline}{off|line}
@@ -434,11 +436,6 @@
 % 8. ft -> f-t
 % ------------
 
-%% Note use of %%%%% for words with an
-%% Umlaut in first part of search string
-%% (The comments will be removed once the
-%% bugs in the lua code are removed.)
-
 \nolig{aufta}{auf|ta}
 \nolig{Aufta}{Auf|ta}
  % auftat Auftakt
@@ -482,15 +479,17 @@
  % Hälfte elfte zwölfte
  % zwölfter elfter
 
-%%%%%\nolig{fünfte}{ünf|te}
+%%%%%\nolig{fünfte}{fünf|te}
 %%%%%\nolig{Fünfte}{Fünf|te}
+ %% Vorsicht, Zünfte
 
 %%%%%\nolig{üfte}{üf|te}
  % prüfte überprüfte
 
 \nolig{rfte}{rf|te}
- % durfte bedurfte surfte
- % dürfte schlürfte unbedarfte
+ % durfte bedurfte surfte 
+ % dürfte schlürfte 
+ % unbedarfte
  % schärfte verschärfte 
 
 \nolig{lfto}{lf|to}
@@ -539,7 +538,7 @@
 \nolig{ftrunk}{f|trunk}
  % schlaftrunken
 \nolig{rftig}{rf|tig}
- % dürftig Surftipps 
+ % dürftig  
 
 \nolig{ftag}{f|tag}
  % Tauftag Fünftagewoche
@@ -604,12 +603,11 @@
 %%%%%\nolig{Prüfte}{Prüf|te}
 
 
-
 % 9. fb -> f-b, fh -> f-h, fk -> f-k
 % ----------------------------------
 
  % Disable these ligatures globally.
- % I can't think of a single German word
+ % I can't think of a single *German* word
  % for which these ligatures would not
  % cross a morpheme boundary.
 
@@ -617,10 +615,10 @@
 \nolig{fh}{f|h}
 \nolig{fk}{f|k}
 
- % However, there are some words (mainly proper
- % names) of non-German origin for which the
- % 'fk' ligature shouldn't be suppressed. Use
- % \keeplig macros to define such as cases.
+ % However, there are words of *non-German* 
+ % origin for which the 'fk' ligature 
+ % shouldn't be suppressed. Use \keeplig macros 
+ % to define such as cases.
 	\keeplig{Kafka}
 	\keeplig{kafka}
 	\keeplig{Safka}
@@ -637,10 +635,10 @@
 % Suppress this ligature globally
 \nolig{fj}{f|j}
 
- % Once more, there are some words of non-German
+ % Once more, there are some words of *non-German*
  % (e.g., Nordic and Slavic) origin for which the
- % 'fk' ligature shouldn't be suppressed. Use
- % \keeplig macros to define such as cases.
+ % 'fk' ligature should not be suppressed. Use
+ % \keeplig macros to define such cases.
 
 	\keeplig{fjord}
 	\keeplig{fjell}
@@ -657,8 +655,6 @@
 	\keeplig{Ísafjarðarbær} % city in Iceland
 	
 
-
-
 % 11. fff -> ff-f
 % ---------------
  % Just in case there's a font that has a
@@ -670,7 +666,7 @@
  % This macro will also break up any 'fffl'
  % ligatures into 'ff' and 'fl' parts.
  % Example words: Sauerstoffflasche, 
- %   Schlifffläche, Stofffleck
+ %    Schlifffläche, Stofffleck
  %   Kunststoffflügel, Kunststofffläche
 
 
