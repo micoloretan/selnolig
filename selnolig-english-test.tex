@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/11/19
+% Date: 2012/11/21
 
 
 % Check first that we're running lua(la)tex.
@@ -39,7 +39,7 @@
   {Garamond Premier Pro}
 \setmonofont[Scale=MatchLowercase]{Consolas}
 \newfontfamily\ebg[Numbers = OldStyle,
-  Ligatures  = {TeX,Common,Discretionary},
+  Ligatures  = {TeX,Common,Historic,Discretionary},
   ItalicFont = {EB Garamond 12 Italic}]
   {EB Garamond 12 Regular}
 
@@ -49,22 +49,25 @@
 \begin{document}
 \section*{selnolig-english-test}
 
-\begin{tabular}{@{}*{8}{l}}
-Appearance of f-ligatures in current font
-   &ff &fi &fl &ffi &ffl &ft \\
-Sample words containing these ligatures
-   &off &fit &fly &office &baffle &lift \\
+\begin{tabular}{@{}*{12}{l}}
+Appearance of ligatures 
+   &ff &fi &fl &ffi &ffl &ft & st & ct & sp & {\ebg\emph{sk}}\\
+Sample words with these ligatures
+   &off &fit &fly &office &baffle &lift 
+ & stay & act & spot & {\ebg\emph{sky}}\\
 \end{tabular}
 
 \bigskip
 \makeatletter
 \begin{tabular}{@{}ll}
-Options and other parameters\\
-Righthyphenmin               & \the\righthyphenmin\\
-Extent of suppressing f-ligatures: basic or broad?  & \if@broadset broad \else basic \fi \\
-Treat hist./discr.\ ligatures? (ct, st, sp, \emph{th}, \emph{et}, etc.)    & \if@hdligset yes \else no \fi         \\
+Options and other parameters:\\
+Value of \textbackslash righthyphenmin parameter & \the\righthyphenmin\\
+Extent of suppressing f-ligatures: basic or broad-f?  & \if@broadset broad-f \else basic \fi \\
+
 \end{tabular}
 \makeatother
+
+\bigskip
 
 \begin{multicols}{2}
 \input selnolig-english-wordlist
