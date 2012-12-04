@@ -1,7 +1,7 @@
 % !TeX root = selnolig.tex
 % !TEX TS-program = lualatex
 
-\ProvidesPackage{selnolig}[2012/11/21]
+\ProvidesPackage{selnolig}[2012/12/04]
 \RequirePackage{luatexbase,luacode}
 
 % This entire package is placed under the terms of the
@@ -14,13 +14,15 @@
 % Part 1: Preliminaries
 % ---------------------
 
-\def\pname{selnolig}
-\def\pversion{0.154}
-\def\pdate{2012/11/21}
+\def\selnoligpackagename{selnolig}
+\def\selnoligpackageversion{0.156}
+\def\selnoligpackagedate{2012/12/04}
 
 % Announce who we are. Exit immediately if not running
 % under lua(la)tex.
-\typeout{----Package \pname, Version \pversion, Date \pdate----}
+\typeout{---- Package \selnoligpackagename, 
+ Version \selnoligpackageversion, 
+ Date \selnoligpackagedate ----}
 
 \RequirePackage{ifluatex}
 \ifluatex\else
@@ -31,11 +33,13 @@
   \endinput
 \fi
 
-% A couple of ancillary macros to check if various ligature
-% features (specifically: liga, clig, rlig, hlig, and dlig)
-% are available and/or enabled for the text font in use.
+% A couple of ancillary macros to check if various 
+% ligature features (specifically: liga, clig, rlig, hlig, 
+% and dlig) are available and/or enabled for the text font 
+% in use.
 % (These macros are courtesy of Clemens Niederberger; see
 % also http://tex.stackexchange.com/a/82443/5001.)
+\usepackage{expl3}
 \ExplSyntaxOn 
 \cs_new_eq:NN \IfFontFeatureExists \fontspec_if_feature:nTF
 

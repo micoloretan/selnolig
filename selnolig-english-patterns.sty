@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-english-patterns}%
-[2012/11/21]
+[2012/12/04]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -89,7 +89,9 @@
 
 
 % (g) ffl -> f-fl
- % no cases in 'basic' group
+
+\nolig{afflower}{af|flower}
+ % safflower
 
 
 % (h) ft -> f-t
@@ -103,8 +105,9 @@
  % rooftop rooftree
 
 \nolig{ifth}{if|th}
-\nolig{lfth}{lf|th}
- % fifth(s) twelfth(s)
+ % fifth(s) 
+\nolig{elfth}{elf|th}
+ % twelfth(s)
  % (Obscuring the 'th' pair with an 
  % 'ft' ligature just looks weird!)
 
@@ -275,7 +278,7 @@
 \nolig{Waffie}{Waff|ie}
 
 \nolig{ffies}{ff|ies}
- % baffies biffies jiffies ...
+ % baffies biffies jiffies stuffies ...
  % buffiest chaffiest ...
 
 
@@ -290,9 +293,7 @@
 
 
 % (g) ffl -> f-fl
-
-\nolig{afflower}{af|flower}
- % safflower safflowers
+ % nothing additional in 'broad' group
 
 
 % (h) ft -> f-t
@@ -311,8 +312,8 @@
 
 % (i) fb, fh, fj, and fk ligatures
 
-% suppress these ligatures globally, but 
-% make exception for Kafka, fjord, and fjell
+% suppress these ligatures globally, but make
+% exceptions for Kafka, fjord, and fjell
 \nolig{fb}{f|b}
 \nolig{fh}{f|h}
 \nolig{fj}{f|j}
@@ -322,9 +323,6 @@
 \keeplig{fjord}
 \keeplig{fjell}
 
-
-
-
 \fi % end of \if@broadset block
 
 
@@ -332,12 +330,11 @@
 
 % Part 3: Discretionary ligatures crossing
 % morpheme boundaries
-% ct, st, sp, 
+% st, ct, sp, 
 % th, at, et, as, is, us, ta, ll, sk
 % ----------------------------------------
 
 \if@hdligset
-
 
 % (A) st -> s-t
 % -------------
@@ -365,7 +362,8 @@
 \nolig{disten}{dis|ten}
 \nolig{Disten}{Dis|ten}
  % distended
-\nolig{istil}{is|til}
+\nolig{distil}{dis|til}
+\nolig{Distil}{Dis|til}
  % distil distillation 
 \nolig{distin}{dis|tin}
 \nolig{Distin}{Dis|tin}
@@ -424,6 +422,11 @@
 \nolig{aastricht}{aas|tricht}
  % Maastricht
 
+\nolig{esthet}{es|thet}
+\nolig{aesthet}{aes|thet}
+\nolig{Esthet}{Es|thet}
+\nolig{Aesthet}{Aes|thet}
+ % aesthetic esthetic unesthetic
 
 % (B) ct -> c-t
 % -------------
@@ -432,10 +435,6 @@
  % arctangent
 \nolig{rctat}{rc|tat}
  % coarctation
-%\nolig{rctic}{rc|tic}
-% commented out on Felix Lehmann's suggestion
-% % arctic antarctic Antarctica subarctic
-
 
 % (C) sp -> s-p
 % -------------
@@ -495,7 +494,6 @@
 \nolig{ewspr}{ews|pr}
  % newsprint
 
-
 % (D) th -> t-h
 % -------------
 
@@ -540,7 +538,7 @@
  % adulthood knighthood ...
 \nolig{thunt}{t|hunt}
  % pothunt outhunt
-\nolig{rthol}{rt|hol}
+\nolig{l}{ort|hol}
  % porthole
 \nolig{sthum}{st|hum}
  % posthumous
@@ -561,7 +559,6 @@
 \nolig{sthm}{s|thm}
  % asthma isthmus
 
-
 % (E) at -> a-t
 % -------------
 
@@ -571,7 +568,6 @@
  % paratrooper
 \nolig{eatra}{ea|tra}
  % seatrain seatransport
-
 
 % (F) et -> e-t
 % -------------
@@ -717,7 +713,6 @@
 \nolig{etyp}{e|typ}
  % archetype archetypal retype pretype
 
-
 % (G) as -> a-s 
 % -------------
 
@@ -732,6 +727,10 @@
 \nolig{asund}{a|sund}
 \nolig{Asund}{A|sund}
  % asunder
+\nolig{aspec}{a|spec}
+\nolig{Aspec}{A|spec}
+ % aspect infraspecific intraspecies
+ % intraspecific
 \nolig{infras}{infra|s}
 \nolig{Infras}{Infra|s}
  % infrastructure infraspecific
@@ -746,7 +745,6 @@
 
 % how to do 'asea'?
 
-
 % (H) is -> i-s 
 % -------------
 
@@ -756,7 +754,6 @@
 \nolig{fish}{fi|sh}
 \nolig{fist}{fi|st}
 \nolig{Fist}{Fi|st}
-
 
 % (b) across morpheme boundaries
 
@@ -805,7 +802,7 @@
  % antispasmodic antispeculative
 \nolig{antist}{anti|st}
 \nolig{Antist}{Anti|st}
- % antistatic antistick antistress antistrike
+ % antistatic antistick antistress 
 \nolig{antisu}{anti|su}
 \nolig{Antisu}{Anti|su}
  % antisubmarine antisubversion 
@@ -823,16 +820,14 @@
  % multistemmed multistep multistoried
  % multistory multistranded multisyllabic
  % multisystem
+
 \nolig{isph}{i|sph}
  % hemisphere planisphere hemispheric
-
-
 
 % (I) us -> u-s
 % -------------
 
 % %% (no examples yet)
-
 
 
 % (J) sk -> s-k
@@ -849,7 +844,6 @@
 \nolig{Misk}{Mis|k}
  % miskeep miskept miskick misknow
 
-
 % (K) ll -> l-l
 % -------------
 
@@ -857,7 +851,6 @@
  % animallike soullike
 \nolig{lless}{l|less}
  % soulless tailless
-
 
 % (L) fr -> f-r
 % -------------
@@ -873,21 +866,16 @@
 % important one doesn't get pre-empted
 % ------------------------------------
 
-
 % (i) as, is, and us preceding st
 % ..............................
 
 \nolig{ast}{a|st}
 \nolig{ust}{u|st}
-
 \nolig{ist}{i|st}
-
 
 % (ii) as, is, and us preceding sp
 % ..............................
 
-\nolig{lasp}{la|sp}
- % clasp unclasp beclasp enclasp
 \nolig{aspar}{a|spar}
 \nolig{Aspar}{A|spar}
  % asparagus Caspar aspartame asparkle
@@ -903,6 +891,8 @@
 \nolig{hasp}{ha|sp}
 \nolig{Hasp}{Ha|sp}
  % hasp
+\nolig{lasp}{la|sp}
+ % clasp unclasp beclasp enclasp
 \nolig{rasp}{ra|sp}
 \nolig{Rasp}{Ra|sp}
  % grasp rasp raspberry
@@ -931,7 +921,6 @@
 \nolig{Ausp}{Au|sp}
  % auspicious inauspicious 
 
-
 % (iii) at and et preceding th
 % ............................
 
@@ -947,12 +936,10 @@
 % The preceding instructions are a bit too  
 % broad as they also suppress the at ligature
 % for words such as boathook, flathead, 
-% greathearted, goatherd, and neatherd,
-% and the 'et' ligature in words such as
+% etc., and the 'et' ligature in words such as
 % Beethoven, prophethood, and sweetheart.
 % To address these cases, we provide \keeplig
-% macros to deliberately let the 'at' and 'et' 
-% ligatures pre-empt the 'th' ligatures:
+% macros:
 
 \keeplig{oathook} % boathook
 \keeplig{eathook} % meathook
@@ -967,56 +954,14 @@
 \keeplig{ophethood}
 \keeplig{eetheart}
 
-% Specifying a group of narrower \nolig
-% commands to avoid catching 
-% these words turns out to be quite 
-% involved. The following list is but a
-% start. If anyone feels inclined to edit 
-% and augment this list, please be my guest. 
-% For now, the macros are commented out.
-
-%\nolig{trath}{tra|th}
-% % ultrathin intrathoracic strath
-%\nolig{athera}{a|thera}
-% % aromatherapy  
-%\nolig{athero}{a|thero}
-% % atherosclerosis
-%\nolig{athl}{a|thl}
-% % athlete triathlon heathland
-%\nolig{athei}{a|thei}
-% % atheism atheist
-%\nolig{death}{dea|th}
-% % death deathbed ...
-%\nolig{heath}{hea|th}
-% % heath heather heathen sheath
-%\nolig{feath}{fea|th}
-% % feather featherbed
-%\nolig{weath}{wea|th}
-% % weather 
-%\nolig{gath}{ga|th}
-% % gather 
-%\nolig{bath}{ba|th}
-% % bath bathyscaph
-%\nolig{path}{pa|th}
-% % path empathy telepathy
-%\nolig{cathed}{ca|thed}
-% % cathedral unscathed
-%\nolig{cathet}{ca|thet}
-% % catheter  
-%\nolig{cathod}{ca|thod}
-% % cathode 
-%\nolig{wath}{wa|th}
-% % swath swathe 
-
-
 % (iv) at and et preceding ta
 % ...........................
 
-% These cases all seem to involve 'at'
+\nolig{Loretan}{Lore|tan} % :-)
+
+% All other cases seem to involve 'at'
 % or 'et' crossing a ligature boundary.
 % As such, these cases should be dealt
 % with in Part 3 of this file.
-
-
 
 \fi  %% end of \@ifhdligset

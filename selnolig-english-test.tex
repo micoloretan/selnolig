@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/11/21
+% Date: 2012/12/04
 
 
 % Check first that we're running lua(la)tex.
@@ -49,15 +49,31 @@
 \begin{document}
 \section*{selnolig-english-test}
 
-\begin{tabular}{@{}*{12}{l}}
-Appearance of ligatures 
-   &ff &fi &fl &ffi &ffl &ft & st & ct & sp & {\ebg\emph{sk}}\\
+\begin{tabular}{@{}*{10}{l}}
+Appearance of f-ligatures 
+   &ff &fi &fl &ffi &ffl &ft & \mbox{fj} & {\ebg\mbox{fk}} 
+   & \emph{fr}\\
 Sample words with these ligatures
-   &off &fit &fly &office &baffle &lift 
- & stay & act & spot & {\ebg\emph{sky}}\\
+   &off &fit &fly &office &baffle &often & fjord 
+   &{\ebg Kafka} &\emph{from}\\
 \end{tabular}
 
 \bigskip
+
+\begin{tabular}{@{}*{13}{l}}
+Appearance of other ligatures 
+ & st & ct & sp  
+ & \emph{as} & \emph{is, th, us} [!]
+ & \emph{at} & \emph{et} & {\ebg\emph{sk}}& \emph{ll}\\
+Sample words with these ligatures
+ & stay & act & spy 
+ & \emph{was} & \emph{\mbox{is}thmus} & \emph{cat} & \emph{net} 
+ & {\ebg\emph{ask}} & \emph{ill}\\
+\end{tabular}
+
+
+\bigskip
+
 \makeatletter
 \begin{tabular}{@{}ll}
 Options and other parameters:\\

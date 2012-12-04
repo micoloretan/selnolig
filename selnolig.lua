@@ -1,16 +1,16 @@
--- lua code for the selnolig package,
--- to be loaded with an instruction such as 
+-- lua code for the selnolig package, to be loaded
+-- with an instruction such as 
 --    \directlua{  require("selnolig.lua")  }
 -- from a (Lua)LaTeX .sty file.
 --
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
 --    (with crucial contributions by Taco Hoekwater, 
 --    Patrick Gundlach, and Steffen Hildebrandt)
--- Date: 2012/11/21
+-- Date: 2012/12/04
 --
--- This entire package is placed under the terms of the
--- LaTeX Project Public License, version 1.3 or later
--- (http://www.latex-project.org/lppl.txt).
+-- The entire selnolig package is placed under the terms 
+-- of the LaTeX Project Public License, version 1.3 or 
+-- later. (http://www.latex-project.org/lppl.txt).
 -- It has the status "maintained".
 
 
@@ -51,17 +51,17 @@ function process_ligatures(nodes,tail)
       p[i]=0
     end
     for k,v in pairs(t) do
-      debug_info("Match: "..v[3])
+      -- debug_info("Match: "..v[3])
       local c= string.find(noliga[v[3]],"|")
       local correction=1
       while c~=nil do
-         debug_info("Position "..(v[1]+c))
+         --debug_info("Position "..(v[1]+c))
          p[v[1]+c-correction] = 1
          c = string.find(noliga[v[3]],"|",c+1)
          correction=correction+1
       end
     end
-    debug_info("Liga table: "..table.concat(p, ""))
+    --debug_info("Liga table: "..table.concat(p, ""))
     return p
   end
   local apply_ligatures=function(head,ligatures)
@@ -120,21 +120,21 @@ function process_ligatures(nodes,tail)
       --  debug_info("No ligature suppression for: "..f)
       else
         debug_info("Do ligature suppression for: "..f)
-        local ligabreaks=build_liga_table(f:len(),throwliga)
+        local ligabreaks = build_liga_table(f:len(),throwliga)
         apply_ligatures(current_node,ligabreaks)
       end
-      s={}
-      current_node=t
+      s = {}
+      current_node = t
     end
   end
 end -- end of function process_ligatures(nodes,tail)
 
 function suppress_liga(s,t)
-  noliga[s]=t
+  noliga[s] = t
 end
 
 function always_keep_liga(s)
-  keepliga[s]=true
+  keepliga[s] = true
 end
 
 function drop_special_nodes (nodes,tail)

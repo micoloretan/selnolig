@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2012/11/21]
+[2012/12/04]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -27,118 +27,173 @@
 % 1. ff -> f-f
 % ------------
 
+\nolig{Brieff}{Brief|f}
+\nolig{brieff}{brief|f}
+ % Brief-f... (viele Fälle)
+\nolig{Cheff}{Chef|f}
+\nolig{cheff}{chef|f}
+ % Cheffahrer Cheffront ...
+\nolig{Golff}{Golf|f}
+\nolig{golff}{golf|f}
+ % many words...
+\nolig{Hanff}{Hanf|f}
+\nolig{hanff}{hanf|f}
+ % Hanffasern Hanffeld
+\nolig{Schilff}{Schilf|f}
+ % Schilffeld Schilfflöte Schilffloß
+\nolig{Senff}{Senf|f}
+\nolig{senff}{senf|f}
+ % Senffabrik senffleck 
+\nolig{Tieff}{Tief|f}
+\nolig{tieff}{tief|f}
+ % Brief-f... (viele Fälle)
+
+\nolig{auff}{auf|f}
+\nolig{Auff}{Auf|f}
+ % Dozens (hundreds?) or words that start
+ % with auf-, Kauf-f-, and Lauf-f-
+ % Need to provide a few \keeplig macros
+ % to deal with historic names and words
+ % of French origin.
+\keeplig{Stauffach} % Stauffacher
+\keeplig{Stauffer}  % Stauffer
+\keeplig{Hohenstauffen}
+\keeplig{chauffier}
+\keeplig{Chauffier}
+\keeplig{chauffeur}
+\keeplig{Chauffeur}
+
 \nolig{affall}{af|fall}
  % Straffall
 \nolig{haffell}{haf|fell}
  % Schaffell (Vorsicht: Staffellauf...)
 \nolig{affris}{af|fris}
  % Schlaffrisur
-\nolig{riffall}{rif|fall}
- % Tariffalle
-\nolig{effahr}{ef|fahr}
- % Cheffahrer
+\nolig{iffall}{if|fall}
+ % Tariffalle Streiffall
+
 \nolig{ffunk}{f|funk}
  % Brieffunktion Abruffunktion
-\nolig{ffach}{f|fach}
- % elffach zwölffach fünffach Brieffach
-\nolig{pffront}{pf|front}
+\nolig{ffrosch}{f|frosch}
+\nolig{ffrösch}{f|frösch}
+ % Pfeiffrosch Pfeiffrösche
+\nolig{ffahr}{f|fahr}
+ % Schifffahrt Schleiffahrt Tariffahrplan
+\nolig{ffant}{f|fant}
+ % Schleiffantasie
+\nolig{ffens}{f|fens}
+ % Schlaffenster Tariffenster
+\nolig{ffami}{ffami}
+ % Zwölffamilienhäuser
+\nolig{ffarb}{f|farb}
+ % Zwölffarbenmaschine zwölffarbig
+
+\nolig{lffach}{lf|fach}
+ % elffach zwölffach  
+\nolig{nffach}{nf|fach}
+ % fünffach
+
+\nolig{pffront}{pf|}
  % Kampffront
-\nolig{heffront}{hef|front}
- % Cheffront
-\nolig{iffront}{if|front}
+\nolig{iffront}{if|} % {if|front}
  % Tariffront
 \nolig{mpffüh}{mpf|füh}
  % Kampfführung
 \nolig{opffris}{opf|fris}
  % Topffrisur Zopffrisur
-\nolig{uffahr}{uf|fahr}
- % auffahren, Auffahrunfall
-\nolig{uffall}{uf|fall}
- % auffallen Anruffallen
-\nolig{uffalt}{uf|falt}
- % auffalten selbstauffaltend
-\nolig{ffand}{f|fand}
- % auffand auffanden
-\nolig{uffang}{uf|fang}
- % auffangen Auffanglager
-\nolig{ffass}{f|fass}
- % auffassbar, Lebensauffassung
-\nolig{ffaß}{f|faß}
- % auffaßte
-\nolig{uffeue}{uf|feue}
- % Lauffeuer
-\nolig{rffeue}{rf|feue}
- % Dorffeuerwehr Torffeuer
+
+\nolig{ffall}{f|fall}
+ % Anruffallen auffallen
+\keeplig{Oppenhoffallee}
+
+\nolig{ffeue}{f|feue}
+ % Dorffeuerwehr Torffeuer Lauffeuer
 \nolig{ffolg}{f|folg}
- % darauffolgen Impffolgen
-\nolig{ufford}{uf|ford}
- % auffordern
+ % Impffolgen
 \nolig{rafford}{raf|ford}
  % Strafforderung
 \nolig{rifford}{rif|ford}
  % Tarifforderung
 \nolig{fform}{f|form}
- % Laufform Kopfform Gugelhupfform
-\nolig{fforst}{f|forst}
- % aufforsten
+ % Kopfform Gugelhupfform aufformen
+\nolig{fförm}{f|förm}
+ % reifförmig schweifförmig
+\nolig{ffrag}{f|frag}
+ % Streiffragen
+\nolig{ffond}{f|fond}
+ % Tariffondslösung
+\nolig{ffrei}{f|frei}
+ % tariffrei
+\nolig{ffried}{f|fried}
+ % Dorffrieden Dorffrieden
+\nolig{ffürst}{f|fürst}
+
 \nolig{fforsch}{f|forsch}
  % Schlafforschung Impfforschung
-\nolig{ffrau}{f|frau}
- % Kauffrau, Kauffrauen
-\nolig{uffrass}{uf|frass}
- % auffrassen
-\nolig{uffraß}{uf|fraß}
- % auffraßen
-\nolig{uffress}{uf|fress}
- % auffressen
-\nolig{uffreß}{uf|freß}
- % auffreßt
-\nolig{ffrisch}{f|frisch}
- % Auffrischung
-\nolig{uffrisi}{uf|frisi}
- % auffrisieren
-\nolig{uffriss}{uf|friss}
- % auffrisste
 \nolig{ffrist}{f|frist}
  % Prüffrist Ablauffrist
-\nolig{uffriß}{uf|friß}
- % auffrißt
-\nolig{uffräss}{uf|fräss}
- % auffrässe
-\nolig{uffräß}{uf|fräß}
- % auffräße
-\nolig{ffuhr}{f|fuhr}
- % auffuhren
+
+\nolig{ffund}{f|fund}
+ % Brückenkopffundament
+\keeplig{iffund}
+ % diffundieren
+
 \nolig{ffäch}{f|fäch}
- % auffächern Brieffächer
+ % Brieffächer
 \nolig{ffäh}{f|fäh}
- % auffährt lauffähig hoffähig
- % kampffähig
+ % hoffähig kampffähig 
+ % auffährt lauffähig 
 \nolig{ffäll}{f|fäll}
- % unauffällig straffällig
-\nolig{ffäng}{f|fäng}
- % auffängt
+ % straffällig unauffällig 
+\nolig{fförd}{f|förd}
+ % ruffördernd kreislauffördernd schaffördernd
 \nolig{fführ}{f|führ}
- % aufführen, Uraufführung
-\nolig{ffüll}{f|füll}
- % auffüllen
-%%%%%\nolig{üffeld}{üf|feld}
- % Prüffeld % but: Schnüffeldienst
-\nolig{lffeld}{lf|feld}
- % Schilffeld
-\nolig{mpffeld}{mpf|feld}
- % Kampffeld
-\nolig{ffreund}{f|freund}
- % Brieffreund
+ % Kampffführung aufführen
+\nolig{ffrei}{f|frei}
+ % Schlaffrei
+\nolig{ffreq}{f|freq}
+ % Schlaffrequenz
+\nolig{ffestl}{f|festl}
+ % Straffestlegung
+\nolig{ffreu}{f|freu}
+ % Straffreude Brieffreund
+%\nolig{ffälsch}{f|fälsch}
+% % Brieffälschung
+\nolig{ffeinde}{ffeinde}
+ % -feinde
+\nolig{ffeindsch}{ffeindsch}
+ % -feindschaft
+\nolig{ffeindl}{ffeindl}
+ % -feindlich
+\nolig{ffetz}{ffetz}
+ % Brieffetzen Stofffetzen
+
+\nolig{ffirm}{f|firm}
+ % Brieffirmen Tariffirmen
+\keeplig{affirm}
+\keeplig{Affirm}
+
+\nolig{ffeld}{f|feld}
+ % Prüffeld Schilffeld Kampffeld
+\keeplig{ffeldien} % Schnüffeldienst
+\keeplig{offeldru} % Kartoffeldruck
 
 
 % 2. fi -> f-i
 % ------------
 
-\nolig{hefideo}{hef|ideo}
- % Chefideologe
+\nolig{Chefi}{Chef|i}
+\nolig{chefi}{chef|i}
+ % Chefideologe Chefindianer Chefinformatiker
+\nolig{chafi}{chaf|i}
+ % Schafimperium Schafinnereien 
+\nolig{chlafi}{chlaf|i}
+ % Schlafiglu schlafinduzierend  
+
 \nolig{pfinst}{pf|inst}
- % Zupfinstrumente Wahlkampfinstitution
+ %  Wahlkampfinstitution
+\nolig{finstru}{f|instru}
+ % Zupfinstrumente Schleifinstrument Greifinstrument
 \nolig{findex}{f|index}
  % Kaufindex Pfandbriefindex
 \nolig{ufindi}{uf|indi}
@@ -148,34 +203,102 @@
 \nolig{fingenieur}{f|ingenieur}
  % Prüfingenieur Kaufingenieur
 \nolig{finsel}{f|insel}
- % Schilfinsel Schafinsel
+ % Schafinsel Schilfinsel 
 \nolig{fintrig}{f|intrig}
  % Briefintrige Hofintrige
+\nolig{ufiss}{uf|iss}
+ % aufisst
+\nolig{finfo}{f|info}
+ % Tarifinformation Telefoninformation
+
+
 
 
 % 3. fl -> f-l
 % ------------
 
+\nolig{aufl}{auf|l}
+\keeplig{bauflä}  % Anbaufläche
+\keeplig{Bauflä}  % Anbaufläche
+\keeplig{hauflug} % Schauflug
+\keeplig{hauflüg} % Schauflüge
+\keeplig{nauflut} % Donauflut
+\keeplig{lauflüg} % Blauflügel (Libelle)
+
+\nolig{Aufl[aäeioöuü]}{Auf|}
+ % mustn't do \nolig{Aufl}{Auf|l} b/c
+ % of "Aufl." (abbrev/ w/ ligature!)
+
+
+ % auflachen
+ % aufladbar aufladen Sauf-laden
+ % auflandig auflanden Kaufland 
+ % auflassen, auflassende
+ % auflauern, auflauerte
+ % Auflauf Auflaufform Aufläufe
+ % auflaure auflaßt auflebend auflegend
+ % auflehnend auflesen
+ % Kaufleidenschaft Kaufleute
+ % aufleuchten aufliegende
+ % aufliesset aufließet
+ % auflisten 
+ % auflockern
+ % auflodern
+ % drauflos
+ % Auflösung
+ % auflüde
+
+
+\keeplig{zuflach} % abzuflachen
+\keeplig{uflachs} % anzuflachsen
+%\nolig{auflad}{auf|lad}
+%\nolig{Auflad}{Auf|lad}
+%\nolig{uflan}{uf|lan}
+%\nolig{uflass}{uf|lass}
+%\nolig{uflauer}{uf|lauer}
+\nolig{fläuf}{f|läuf}
+%\nolig{uflaur}{uf|laur}
+%\nolig{uflaß}{uf|laß}
+%\nolig{ufleb}{uf|leb}
+%\nolig{ufleg}{uf|leg}
+%\nolig{uflehn}{uf|lehn}
+%\nolig{ufleid}{uf|leid}
+%\nolig{ufles}{uf|les}
+%\nolig{ufleuch}{uf|leuch}
+%\nolig{uflieg}{uf|lieg}
+%\nolig{aufliess}{auf|liess}
+%\nolig{Aufliess}{Auf|liess}
+%\nolig{aufließ}{auf|ließ}
+%\nolig{Aufließ}{Auf|ließ}
+%\nolig{uflock}{uf|lock}
+\nolig{flod}{f|lod}
+%\nolig{uflos}{uf|los}
+%\nolig{uflust}{uf|lust}
+%\nolig{uflös}{uf|lös}
+%\nolig{uflüd}{uf|lüd}
+
+
+\nolig{Chefl}{Chef|l}
+\nolig{chefl}{chef|l}
+ %Cheflieferant -limousine -lobbyist -los
+\nolig{fleut}{f|leut}
+ % Hofleute
+\nolig{flist}{f|list}
+ % Prüfliste Rufliste Kaufliste
+\nolig{flauf}{f|lauf}
+ % Auflauf
 \nolig{afleder}{af|leder}
  % Schafleder
 \nolig{aflos}{af|los}
- % straflos, schlaflos
-\nolig{aflan}{af|lan}
- % Staflandesgericht Graafland
+ % straflos schlaflos
 \nolig{flein}{f|lein}
  % Laufleine Scherflein Wölflein 
  % Köpflein Zöpflein
-\nolig{eflig}{ef|lig}
- % schweflig
+\nolig{flig}{f|lig}
+ % schweflig würflig knifflig mufflig
 \nolig{flisch}{f|lisch}
  % teuflisch Tüpflischeißer 
-\nolig{iefla}{ief|la}
- % schieflachen Tieflage Tieflager
- % schieflaufen Brieflaufzeiten
-\nolig{ieflieg}{ief|lieg}
- % Tieflieger
-\nolig{iefländ}{ief|länd}
- % Tiefländer
+
 \nolig{fläuf}{f|läuf}
  % Tiefläufer Aufläufe
 \nolig{flöff}{f|löff}
@@ -185,11 +308,28 @@
  % Schlaflied
 \nolig{lflos}{lf|los}
  % hilflos
-\nolig{pfland}{pf|land}
- % Sumpfland
 \nolig{pfleist}{pf|leist}
  % Dampfleistung Knopfleiste
  % Kopfleiste
+\nolig{iefl}{ief|l}
+ % Tieflage Tieflager Tieflieger
+ % schieflachen schieflaufen schieflegt schieflief
+ % brieflich
+ % Briefleistung Brieflesen Brieflaufzeiten
+\keeplig{iefluss}
+\keeplig{ieflüss}
+ % Energiefluss Energieflüsse Batterieflüssigkeit 
+\keeplig{iefläch}
+ % Karosseriefläche Deponiefläche 
+\keeplig{ieflosk}
+ % Melodiefloskel
+\keeplig{ieflut}
+ % Euphorieflut Nostalgieflut
+\keeplig{ieflaute}
+ % Chemieflaute
+\keeplig{ieflügel}
+ % Akademieflügel Jalousieflügel
+
 
 \nolig{fleit}{f|leit}
  % Dampfleitung Hofleitung Baufhofleiter
@@ -202,36 +342,37 @@
  % Natriumdampfleuchten Kopfleuchte
 \nolig{pflied}{pf|lied}
  % Kampflied
-\nolig{pflok}{pf|lok}
+\nolig{flok}{f|lok}
  % Dampflokomotive
 \nolig{mpflos}{mpf|los}
  % kampflos kopflos
-\nolig{pflust}{pf|lust}
- % Kampflust Impflust
-\nolig{pfländ}{pf|länd}
- % Sumpfländer
-\nolig{ofland}{of|land}
- % Hoflandwirtschaft
-\nolig{ofleb}{of|leb}
- % Hofleben
-\nolig{ofländ}{of|länd}
- % hofländlich
+\nolig{flust}{f|lust}
+ % Kampflust Impflust kauflustig Rauflust
+
+\nolig{fland}{f|land}
+ % Hofland Kaufland Sumpfland Tiefland
+ % Straflandesgericht Dorflandwirtschaft
+\keeplig{flandern} % Ostflandern
+\keeplig{flandrisch}
+
+\nolig{fländ}{f|länd}
+ % hofländlich Sumpfländer Tiefländer 
+
+\nolig{fleb}{f|leb}
+ % Hofleben Kopfleben Druckkopflebensdauer
+\keeplig{huffleb}
+ % shuffleboard
+
 \nolig{opflast}{opf|last}
  % kopflastig
-\nolig{opfleb}{opf|leb}
- % Kopfleben, Druckkopflebensdauer
-\nolig{opflos}{opf|los}
- % kopflos
-\nolig{rfland}{rf|land}
- % Dorflandwirtschaft
+\nolig{pflos}{pf|los}
+ % kopflos kampflos
 \nolig{pfloch}{pf|loch}
  % Knopfloch
 \nolig{pflöch}{pf|löch}
  % Knopflöcher
 \nolig{flehr}{f|lehr}
  % Dorflehrer Eislauflehrerin
-\nolig{rflig}{rf|lig}
- % würflig
 \nolig{flohn}{f|lohn}
  % Tariflohn Tieflohnland
 \nolig{flöhn}{f|löhn}
@@ -239,75 +380,31 @@
 \nolig{fler}{f|ler}
  % Freiberufler Schaufler 
  % Löffler Büffler Schnüffler
-\nolig{uflach}{uf|lach}
- % auflachen
 \nolig{oflad}{of|lad}
  % Biohofladen
-\nolig{auflad}{auf|lad}
-\nolig{Auflad}{Auf|lad}
- % aufladbar aufladen Sauf-laden
 \nolig{orflad}{orf|lad}
  % Dorfladen
 \nolig{urflad}{urf|lad}
  % Surfladen
+\nolig{ufleu}{uf|leu}
+ % Kaufleute aufleuchten 
+
+
 \nolig{flage}{f|lage}
- % Auflage Rohstofflager Straflager
-\nolig{ufland}{uf|land}
- % auflandig
-\nolig{uflass}{uf|lass}
- % auflassen, auflassende
-\nolig{uflauer}{uf|lauer}
- % auflauern, auflauerte
-\nolig{flauf}{f|lauf}
- % Auflauf Auflauf[form]
+ % Rohstofflager Straflager Auflage 
+\keeplig{siflage}
+ % Persiflage -persiflage
+
 \nolig{flaun}{f|laun}
  % Kauflaune Wurflaune Kampflaune
-\nolig{uflaur}{uf|laur}
- % auflaure
-\nolig{uflaß}{uf|laß}
- % auflaßt
-\nolig{ufleb}{uf|leb}
- % auflebend
-\nolig{ufleg}{uf|leg}
- % auflegend
-\nolig{uflehn}{uf|lehn}
- % auflehnend
-\nolig{ufleid}{uf|leid}
- % Kaufleidenschaft
-\nolig{ufles}{uf|les}
- % auflesen
-\nolig{ufleuch}{uf|leuch}
- % aufleuchten
-\nolig{fleut}{f|leut}
- % Kaufleute Hofleute
-\nolig{uflieg}{uf|lieg}
- % aufliegende
-\nolig{aufliess}{auf|liess}
-\nolig{Aufliess}{Auf|liess}
- % aufliesset
-\nolig{aufließ}{auf|ließ}
-\nolig{Aufließ}{Auf|ließ}
- % aufließet
-\nolig{flist}{f|list}
- % auflisten Prüfliste
-\nolig{uflock}{uf|lock}
- % auflockern
-\nolig{flod}{f|lod}
- % auflodern
-\nolig{uflos}{uf|los}
- % drauflos
-\nolig{uflust}{uf|lust}
- % Kauflust, Rauflust
+\nolig{uflaut}{uf|laut}
+ % Ruflaute Ruflautstärke
 \nolig{ofläd}{of|läd}
  % Biohofläden
 \nolig{rfläd}{rf|läd}
  % Dorfläden
 \nolig{ufläd}{uf|läd}
  % Kaufläden auflädt
-\nolig{uflös}{uf|lös}
- % Auflösung
-\nolig{uflüd}{uf|lüd}
- % auflüde
 \nolig{weifle}{weif|le}
  % bezweifle verzweifle
 \nolig{weiflu}{weif|lu}
@@ -323,9 +420,13 @@
  % höflich bischöflich
  % unerschöpflich dörflich
  % vortrefflich begrifflich
+
 % Vorsicht mit Pflicht and pflicht:
 	\keeplig{Pflicht}
 	\keeplig{pflicht}
+% Sonderregel fuer Sumpflicht(er):
+\nolig{Sumpflicht}{Sumpf|licht}
+
 
 \nolig{fling}{f|ling}
  % Prüfling Fünfling Sträfling Täufling
@@ -340,33 +441,45 @@
 \nolig{ffieb}{f|fieb}
  % Sumpffieber Wahlkampffieber
 \nolig{nffing}{nf|fing}
- % fünffingrig
-\nolig{uffiel}{uf|fiel}
- % auffielen
-\nolig{uffind}{uf|find}
- % auffinden auffindbar
-\nolig{uffing}{uf|fing}
- % auffing
-\nolig{uffisch}{uf|fisch}
- % auffischen
-\nolig{mpffisch}{mpf|fisch}
- % Kampffisch
+ % fünffingrig Fünffingergebirge
+\nolig{ffisch}{f|fisch}
+ % Kampffisch Wolffisch
+\nolig{iffing}{if|fing}
+ % Greiffinger
+\nolig{ffilm}{f|film}
+ % Werwolffilm
+\nolig{ffüß}{f|füß}
+ % Greiffüße
+\nolig{ffüss}{f|füss}
+ % Greiffüsse (Schweizer...)
+\nolig{ffuss}{ffuss}
+ % Grieffuss
+\nolig{ffigu}{ffigu}
+ % Streiffigur
+
+
+\nolig{ffind}{f|find}
+ % Straffindung
+\nolig{offing}{of|fing}
+ % Bischoffinger
+
+\nolig{ffisch}{f|fisch}
 
 
 % 5. ffi -> ff-i
 % --------------
 
-\nolig{offind}{off|ind}
- % Rohstoffindustrieller
-\nolig{toffing}{toff|ing}
+\nolig{Stoffi}{Stoff|i}
+\nolig{stoffi}{stoff|i}
+ % Rohstoffindustrieller Rohstoffimporte
  % Baustoffingenieur Kunststoffingenieur
+\nolig{Schiffi}{Schiff|i}
+ % Schiffinstandsetzung Luftschiffidee
 
 
 % 6. ffl -> ff-l
 % --------------
 
-\nolig{fflig}{ff|lig}
- % knifflig mufflig
 \nolig{offline}{off|line}
 \nolig{Offline}{Off|line}
  % offline, Offline
@@ -380,8 +493,12 @@
  % Kompaktleuchtstofflampe
 \nolig{fflung}{ff|lung}
  % Stafflung
+\nolig{afflu}{aff|lu}
+ % Gafflust
 \nolig{ifflo}{iff|lo}
  % Schifflogbuch grifflos Griffloch
+\nolig{ifflö}{iff|lö}
+ % Grifflöcher
 \nolig{offlo}{off|lo}
  % wirkstofflos Sauerstoffloch
 \nolig{offlö}{off|lö}
@@ -390,6 +507,30 @@
  % Iffland Rifflandschaft Kunststofflandschaft
 \nolig{fflast}{ff|last}
  % Rohstofflastigkeit Treibstofflaster
+\nolig{ffleist}{ff|leist}
+ % Griffleiste Stoffleiste 
+\nolig{uffloch}{uff|loch}
+ % Suffloch
+\nolig{ufflon}{uff|lon}
+ % Mufflon
+
+
+\nolig{Treffl}{Treff|l}
+ % Trefflokal
+\nolig{Pfiffl}{Pfiff|l}
+ % Pfifflaute
+\nolig{Schiffl}{Schiff|l}
+\nolig{schiffl}{schiff|l}
+ % Schifflache Schiffladung Schifflinie 
+\nolig{Griffl}{Griff|l}
+\nolig{griffl}{griff|l}
+ % Grifflängen grifflos Grifflaschen Griffleiste
+ % angrifflustig
+\nolig{Stoffl}{Stoff|l}
+\nolig{stoffl}{stoff|l}
+
+\nolig{fflieb}{ff|lieb}
+ % Riffliebende 
 
 
 % 7. ffl -> f-fl
@@ -401,8 +542,10 @@
  % aufflechten
 \nolig{fflasch}{f|flasch}
  % Wegwerfflasche
-\nolig{fflach}{f|flach}
- % Zwölfflach Fünfflach
+\nolig{lfflach}{lf|flach}
+ % Zwölfflach 
+\nolig{nfflach}{nf|flach}
+ % Fünfflach
 \nolig{ffläch}{f|fläch}
  % Lauffläche Kampfflächen 
  % Zwölfflächner (dodecahedron)
@@ -413,65 +556,94 @@
 \nolig{fflimm}{f|flimm}
  % Vorhofflimmern
 \nolig{fflug}{f|flug}
- % Chefflugleiter Tiefflug Kampfflugzeug
-\nolig{fflieg}{f|flieg}
- % tieffliegend Kampfflieger
- % auffliegen
+ % Tiefflug Kampfflugzeug Chefflugleiter 
+\nolig{iefflieg}{ief|flieg}
+ % tieffliegend
+ 
 \nolig{iefflog}{ief|flog}
  % tiefflog
-\nolig{fflüg}{f|flüg}
- % Tiefflüge Hofflügel 
-\nolig{pffl}{pf|fl}
+\nolig{iefflüg}{ief|flüg}
+ % Tiefflüge 
+\nolig{Hofflüg}{Hof|flüg}
+ % Hofflügel 
+\nolig{mpffl}{mpf|fl}
  % Sumpffläche Sturzkampfflieger 
-\nolig{ufflack}{uf|flack}
- % aufflackern
-\nolig{fflamm}{f|flamm}
- % aufflammen
-\nolig{ufflog}{uf|flog}
- % aufflog
-\nolig{ufflög}{uf|flög}
- % aufflöge
+\nolig{opffl}{opf|fl}
+ % Totenkopfflagge
+
+%\keeplig{Knoepff} % Knoepffler
+
+\nolig{iffleck}{if|fleck}
+ % Schleifflecklein
+\nolig{fflüs}{f|flüs}
+ % Schleifflüsigkeit}
+\nolig{fflex}{f|flex}
+ % Tarifflexibilitat
+\nolig{ffluch}{f|fluch}
+ % Tarifflucht Werwolffluch
+\nolig{fflüch}{f|flüch}
+ % Tarifflüchtling
 
 
 % 8. ft -> f-t
 % ------------
 
+\nolig{Auft}{Auf|t}
+
 \nolig{aufta}{auf|ta}
-\nolig{Aufta}{Auf|ta}
  % auftat Auftakt
 \nolig{aufte}{auf|te}
-\nolig{Aufte}{Auf|te}
  % aufteilen
 \nolig{aufti}{auf|ti}
-\nolig{Aufti}{Auf|ti}
  % auftischen
 \nolig{aufto}{auf|to}
-\nolig{Aufto}{Auf|to}
  % auftoupiern
 \nolig{auftr}{auf|tr}
-\nolig{Auftr}{Auf|tr}
  % auftreiben auftreten Sauftrottel
 \nolig{auftu}{auf|tu}
-\nolig{Auftu}{Auf|tu}
  % auftun
 \nolig{auftä}{auf|tä}
-\nolig{Auftä}{Auf|tä}
  % auftäten auftätowieren
 \nolig{auftö}{auf|tö}
-\nolig{Auftö}{Auf|tö}
  % herauftönen 
 \nolig{auftü}{auf|tü}
-\nolig{Auftü}{Auf|tü}
  % auftürmen kauftüchtig
-\nolig{aftat}{af|tat}
- % Straftat
-\nolig{aftät}{af|tät}
- % Straftäter
-\nolig{aftabl}{af|tabl}
- % Schlaftablette
+%\nolig{traftat}{traf|tat}
+% % Straftat
+%\nolig{aftät}{af|tät}
+% % Straftäter
+
+\nolig{ftheor}{f|theor}
+ % Golftheorie Kampftheorien Auflauftheorien
+
+\nolig{Schlaft}{Schlaf|t}
+\nolig{schlaft}{schlaf|t}
+ % Schlaftablette -teddy -tee -temperatur 
+ % -therapeut -therapie -tier -tod -trank
+ 
+\nolig{Straft}{Straf|t}
+ % Straftarif - team -technisch -tendenz
+ % -termin -theologisch -tilgung -tor -tribunal
+
+\nolig{strafta}{straf|ta}
+\nolig{straftä}{straf|tä}
+\nolig{strafte}{straf|te}
+\nolig{strafti}{straf|ti}
+\nolig{strafto}{straf|to}
+\nolig{straftö}{straf|tö}
+\nolig{straftu}{straf|tu}
+\nolig{straftü}{straf|tü}
+ % don't suppress ft liga for words such as
+ % bestraft, vorbestraft, etc.
+
+\nolig{Brieft}{Brief|t}
+ % Brieftasche Brieftaube 
+
+\nolig{Cheft}{Chef|t}
+ % Cheftheoretiker Cheftestpilot Cheftrainer
 
 \nolig{iefta}{ief|ta}
- % Brieftasche Brieftaube Tieftaucher
+ % Tieftaucher Brieftasche Brieftaube 
 \nolig{iefte}{ief|te}
  % vertiefte verbriefte Brieftext
 
@@ -479,54 +651,69 @@
  % Hälfte elfte zwölfte
  % zwölfter elfter
 
-%%%%%\nolig{fünfte}{fünf|te}
-%%%%%\nolig{Fünfte}{Fünf|te}
- %% Vorsicht, Zünfte
+\nolig{nfte}{nf|te}
+ % Fünfte fünfter
+\keeplig{Zünft} % Zünfte
+\keeplig{zünft} % zünftig
+\keeplig{künft} % Unterkünfte
 
 %%%%%\nolig{üfte}{üf|te}
  % prüfte überprüfte
+%\keeplig{lüfte}
+%\keeplig{Lüfte}
+%\keeplig{düfte}
+%\keeplig{Düfte}
+%\keeplig{hüfte}
+%\keeplig{Hüfte}
 
 \nolig{rfte}{rf|te}
  % durfte bedurfte surfte 
  % dürfte schlürfte 
  % unbedarfte
  % schärfte verschärfte 
+\keeplig{werft}
+\keeplig{Werft}
+\keeplig{Warft}
 
 \nolig{lfto}{lf|to}
  % Zwölftonmusik Elftonner Golftour
 \nolig{nftopf}{nf|topf}
  % Senftopf
-\nolig{rftor}{rf|tor}
- % Freiwurftor
-\nolig{rftou}{rf|tou}
- % Surftour
-
-%%%%%\nolig{ünfter}{ünf|ter}
- % fünfter
+\nolig{urfto}{urf|to}
+ % Freiwurftor Surftour
+\nolig{orfto}{orf|to}
+ % Dorftourismus
 
 \nolig{lftö}{lf|tö}
  %  zwölftönend
 \nolig{nftö}{nf|tö}
  % Senftöpfchen
+
+\nolig{Dorft}{Dorf|t}
+
 \nolig{rftö}{rf|tö}
  % Dorftölpel
-\nolig{orftr}{orf|tr}
- % Dorftrottel Dorftratsch Dorftradition
-\nolig{urftr}{urf|tr}
+\nolig{rftr}{rf|tr}
  % Wurftraining Surftrip Freiwurftreffer
+ % Dorftrottel Dorftratsch Dorftradition
+\nolig{rftu}{rftu}
+ % Wurftuch
+\nolig{rftü}{rftü}
+ % Dorftümpel
 
 \nolig{fton}{f|ton}
  % Pfeifton Zwölftonmusik Rufton
 \nolig{urfta}{urf|ta}
  % Wurftalent Auswurftaste Surftalent
+\keeplig{durfta} % Notdurftanlage 
 
 \nolig{ftyp}{f|typ}
- % Schifftyp, Cheftyp, Stofftyp
+ % Schifftyp Stofftyp waldorftypisch
 \nolig{ftyr}{f|tyr}
- % Dorftyrann
+ % Dorftyrann Hoftyrann 
 
 \nolig{ftrain}{f|train}
- % Cheftrainer Lauftrainer
+ % Lauftrainer
 \nolig{eiftr}{eif|tr}
  % Eingreiftruppe Nadelstreifträger 
 \nolig{eifte}{eif|te}
@@ -538,7 +725,9 @@
 \nolig{ftrunk}{f|trunk}
  % schlaftrunken
 \nolig{rftig}{rf|tig}
- % dürftig  
+ % dürftig bedürftig
+\keeplig{otdurft}
+ % notdürftig 
 
 \nolig{ftag}{f|tag}
  % Tauftag Fünftagewoche
@@ -547,16 +736,33 @@
 \nolig{nftü}{nf|tü}
  % fünftürig Senftüte
 
+\keeplig{nftüb}
+ % Vernunftüberlegung Zunftüberlieferung
+
 \nolig{oftü}{of|tü}
  % Hoftür
 \nolig{lfta}{lf|ta}
  % elftausend zwölftausend Golftasche 
+
 \nolig{uftas}{uf|tas}
  % Ruftaste Vorlauftaste
-\nolig{uftax}{uf|tax}
+\keeplig{luftas} % luftasketisch
+\keeplig{duftas} % duftaspektgleich
+\keeplig{Duft}
+\keeplig{Düft}
+\keeplig{Hüft}
+\keeplig{lüft}
+\keeplig{Luft}
+\keeplig{Lüft}
+\keeplig{lüft}
+\keeplig{Gruft} % Gruftasseln
+\keeplig{grüft} % Holzkammergrüfte
+\keeplig{Kraft}
+\keeplig{Notdurft}
+
+\nolig{ftax}{f|tax}
  % Ruftaxi
-\nolig{eftak}{ef|tak}
- % Cheftaktiker
+
 
 \nolig{pfta}{pf|ta}
  % Wettkampftag Kampftaktik 
@@ -621,6 +827,7 @@
  % to define such as cases.
 	\keeplig{Kafka}
 	\keeplig{kafka}
+   \keeplig{Piefke}
 	\keeplig{Safka}
 	\keeplig{Potrafke}
 	\keeplig{Sprafke}
@@ -707,4 +914,6 @@
 % % weithergeholt
 %\nolig{sther}{st|her}
 % % selbsthergestellt selbstherrlich
+%\nolig{späth}{spät|h}
+%\nolig{Späth}{Spät|h}
 %\fi

@@ -1,7 +1,7 @@
 % !TeX root = selnolig-english-test.tex
 % !TEX TS-program = lualatex
 
-% Last updated: 2012/11/21
+% Last updated: 2012/12/04
 % For use with the 'selnolig' package and the
 % driver program 'selnolig-english-test.tex'.
 
@@ -11,12 +11,16 @@
 
 \begin{itemize}
 
-\item ff to f-f
+\item ff to f\hspace{0pt}f
 
-shelfful shelffuls bookshelfful mantelshelfful selffulfilling
+shelfful shelffuls bookshelfful selffulfilling
 
 
-\item fl to f-l
+\item fi to f\hspace{0pt}i
+
+(None in basic set)
+
+\item fl to f\hspace{0pt}l
 
 beefless briefless hoofless leafless roofless selfless turfless selflessly selflessness
 
@@ -30,15 +34,15 @@ halflines rooflines
 
 leaflet leaflets leafleted leafleting leafletting leafletted leafleteer
 
-pdflatex
+pdflatex (even better: pdfLaTeX or pdf\LaTeX\ldots)
 
 
-\item ffi to ff-i
+\item ffi to ff\hspace{0pt}i
 
 Pfaffian Wolffian Wulffian
 
 
-\item ffl to ff-l
+\item ffl to ff\hspace{0pt}l
 
 cuffless stuffless cufflessly stufflessness
 
@@ -51,12 +55,17 @@ offload offloads offloading offloaded
 rufflike clifflike
 
 
-\item ffi to f-fi
+\item ffi to f\hspace{0pt}fi
 
 chaffinch chaffinches wolffish wolffishly
 
+\item ffl to f\hspace{0pt}fl
 
-\item ft to f-t
+safflower
+
+
+
+\item ft to f\hspace{0pt}t
 
 chieftain chieftaincy chieftaincies chieftainship chieftainships
 
@@ -64,14 +73,13 @@ halftime halftone halftimes halftones
 
 rooftop rooftops rooftree rooftrees
 
-\emph{fifth fifths fifthly twelfth twelfths}
-
-(The preceding words are set in italics because the upright font shape doesn't feature a th-ligature.)
-
 wolftrap calftrap leaftrap offtrack
 
+fifth fifths fifthly twelfth twelfths
 
-\item \emph{fr} to \emph{f-r} (italic font shape only)
+
+
+\item \emph{fr} to \emph{f\hspace{0pt}r} (italic font shape only)
 
 \emph{proofread proofreader proofroom}
 
@@ -83,7 +91,12 @@ wolftrap calftrap leaftrap offtrack
 
 \begin{itemize}
 
-\item fi to f-i
+\item ff to f\hspace{0pt}f
+
+(No extra cases in broad-f set)
+
+
+\item fi to f\hspace{0pt}i
 
 elfin
 
@@ -114,12 +127,12 @@ beefiest comfiest goofiest gulfiest leafiest surfiest turfiest
 beefily goofily goofiness
 
 
-\item fl to f-l
+\item fl to f\hspace{0pt}l
 
 aloofly briefly chiefly deafly liefly
 
 
-\item ffi to ff-i
+\item ffi to ff\hspace{0pt}i
 
 baffing biffing outbluffing bluffing boffing buffing chaffing cheffing chuffing coffing coiffing handcuffing uncuffing cuffing daffing doffing enfeoffing infeoffing feoffing fluffing gaffing gruffing huffing luffing miffing muffing offing piaffing puffing quaffing rebuffing reffing restaffing restuffing riffing crossruffing overruffing underruffing ruffing sclaffing scoffing scuffing shroffing sluffing sniffing snuffing spiffing overstaffing understaffing staffing stiffing overstuffing stuffing tariffing tiffing waffing whiffing yaffing
 
@@ -135,20 +148,25 @@ daffily fluffily gruffily huffily puffily scruffily sniffily snuffily spiffily s
 
 fluffiness huffiness iffiness puffiness scruffiness sniffiness spiffiness stuffiness
 
-baffies biffies jiffies taffies toffies waffie waffies
+baffies biffies jiffies stuffies taffies toffies waffie waffies
 
 
-\item ffl to ff-l
+\item ffl to ff\hspace{0pt}l
 
 bluffly gruffly ruffly snuffly stiffly
 
 
-\item ffl to f-fl
+\item ffi to f\hspace{0pt}fi
 
-safflower
+(No extra cases in broad-f set)
 
 
-\item ft to f-t
+\item ffl to f\hspace{0pt}fl
+
+(No extra cases in broad-f set)
+
+
+\item ft to f\hspace{0pt}t
 
 fifty fiftyish
 
@@ -184,22 +202,27 @@ offkey
 
 \begin{itemize}
 
-\item ct ligatures
+\item ct to c\hspace{0pt}t
 
 arctangent coarctation 
 
 
-\item st ligatures
+\item st to s\hspace{0pt}t
+
+First, some words with ``th'' (from $\theta$ or $\vartheta$) after ``s'':
+
+asthma isthmus aesthetic
+
+
+\medskip
+Other reasons for suppressing st ligature:
 
 painstaker painstaking dogstail crosstalk gastight
 
-distant distasteful distillation distemperate distended distort
-
-distract distraught distribute distrust disturb
+distant distasteful distillation distemperate distended distort distract distraught distribute distributed distribution district distrust disturb
 
 Maastricht
 
-asthma isthmus (italic font shape: \emph{asthma isthmus} )
 
 
 
@@ -208,17 +231,22 @@ asthma isthmus (italic font shape: \emph{asthma isthmus} )
 
 
 
-\item sp ligatures
+\item sp to s\hspace{0pt}p
+
+First, some words with ``ph'' (from $\phi$ or $\varphi$) after ``s'':
 
 asphalt asphodel asphyxiate blaspheme blasphemy
 
-dysphagia dysphoria sphagnum sphinx
+dysphagia dysphonia dysphoria sphagnum sphinx
 
-atmosphere bathysphere biosphere blogosphere ecosphere exosphere hemisphere hydrosphere ionosphere magnetosphere
+atmosphere bathysphere biosphere blogosphere ecosphere exosphere hemisphere hydrosphere ionosphere magnetosphere stratosphere
 
-spherical sphericity
+spherical sphericity spheroid 
 
 phosphorous phosphates phosphorescent
+
+\medskip
+Words with other reasons for suppressing sp ligature:
 
 clothespin clothespress
 
@@ -330,21 +358,19 @@ Note: The test words in the remainder of this document are generally set in \emp
 
 \begin{itemize}
 
-\item \emph{th} ligature
+\item \emph{th} to \emph{t\hspace{0pt}h}
 
 \bgroup \em
 
-bathouse boathouse cathouse courthouse guesthouse hothouse lighthouse nuthouse
-   oasthouse outhouse penthouse pesthouse pilothouse pothouse
+bathouse boathouse cathouse courthouse hothouse lighthouse nuthouse outhouse penthouse pilothouse pothouse
 
-bolthead cathead fathead flathead gilthead hothead lightheaded masthead
-   meathead pithead pothead printhead softhead softheaded
+guesthouse oasthouse pesthouse 
 
-fainthearted greathearted lighthearted softhearted stouthearted sweetheart
-   sweethearts
+bolthead cathead fathead flathead gilthead hothead lightheaded masthead meathead pithead pothead printhead softhead softheaded
 
-adulthood aunthood knighthood parenthood priesthood prophethood sainthood
-   servanthood
+fainthearted greathearted lighthearted softhearted stouthearted sweetheart sweethearts
+
+adulthood aunthood knighthood parenthood priesthood prophethood sainthood servanthood
 
 bolthole knothole porthole posthole pesthole pothole rathole
 
@@ -370,23 +396,29 @@ posthumous posthumously pothunt warthog watthour kilowatthour
 \egroup
 
 
-\item \emph{at} ligature
+\item \emph{at} to \emph{a\hspace{0pt}t}
 
 \bgroup \em
 
 anathema aromatherapy intrathoracic metathesis ultrathin ultrathick 
 \egroup
 
-\item \emph{et} ligature
+\item \emph{et} to \emph{e\hspace{0pt}t}
 
 \bgroup \em
 ninetieth ninetieths ninety nineteen
 
 nametag  
 
-betake betatter beta betray betroth 
+betake betatter betray betroth 
 
-detach detain detail detect undetectable detective detent detention detest detract detrain detribalize detriment detritus
+detach detain detail 
+
+detect undetectable detective 
+
+detent detention detest 
+
+detract detrain detribalize detriment detritus
 
 bristletail dovetail horsetail 
 
@@ -402,7 +434,9 @@ retext teletext
 
 bluetick detick
 
-betide yuletide retighten betime beforetime lifetime peacetime sometime
+betide yuletide 
+
+betime beforetime lifetime peacetime sometime
 
 detrain drivetrain housetrain pretrain retrain 
 
@@ -410,13 +444,15 @@ firetrap livetrap mousetrap
 
 axletree saddletree shoetree
 
-timetable beforetime 
+timetable 
 
 preteen pretend pretence pretense pretentious pretest pretext pretitling 
 
-retag retape retake reteach retie retile retime retint retire retiring retitle retrace retrack retract retrans retransmit pretreat retread retreat retrench pretrim pretrial retrieve retribution retries retrim return retune 
+pretreat pretrim pretrial 
 
-unreturnable
+retag retape retake reteach retie retile retime retint retire retiring retitle retrace retrack retract retrans retransmit retread retreat retrench retrieve retribution retries retrim retune 
+
+return  unreturnable
 
 entirety entireties surety sureties safety safeties
 
@@ -427,16 +463,18 @@ subtlety teletype teletypewriter
 \egroup
 
 
-\item \emph{as} ligature
+\item \emph{as} to \emph{a\hspace{0pt}s}
 
 \bgroup \em
 
 teaspoon infrastructure seastrand 
 
+infraspecific intraspecies intraspecific
+
 \egroup
 
 
-\item \emph{is} ligature
+\item \emph{is} to \emph{i\hspace{0pt}s}
 
 \bgroup \em
 
@@ -446,7 +484,7 @@ antisag antisatellite antiscience antisecrecy antisense antiseptic antishark ant
 
 \egroup
 
-\item {\ebg\emph{sk}} ligature (EB Garamond)
+\item {\ebg\emph{sk}} to {\ebg{emph{s\hspace{0pt}k}}} (EB Garamond)
 
 \bgroup \ebg \em
 greenskeeper groundskeeper 
@@ -459,7 +497,7 @@ miskeep miskept miskick misknow
 
 
 
-\item \emph{ll} ligature
+\item \emph{ll} to \emph{l\hspace{0pt}}
 
 \bgroup \em
 animallike bowllike eellike jewellike owllike petallike seallike snaillike soullike taillike tunnellike veillike woollike
@@ -534,13 +572,15 @@ atheism athlete
 
 beneath bequeath blather breath 
 
-catharsis catheter cathode 
+catharsis catheter cathode catholic catholicism
 
 death empathy father fathom feather 
 
 gather heath heathen loath
 
-marathon oath rather rathskeller
+marathon oath pathetic pathology
+
+rather rathskeller
 
 scathe sheath slather strath swath 
 
@@ -556,7 +596,11 @@ Words for which the \emph{at} ligature need \emph{not} be suppressed in favor of
 \item \emph{et} ligature preempting the \emph{th} ligature
 
 \bgroup \em
-bethank bethink bethorn bethought bethump dethrone doublethink firethorn flamethrower forethought freethinker methinks nonetheless nonethical rethink rethread something whitethroat
+bethank bethink bethorn bethought bethump 
+
+dethrone doublethink firethorn flamethrower forethought freethinker methinks nonetheless nonethical 
+
+rethink rethread something whitethroat
 
 twentieth thirtieth fortieth fiftieth sixtieth seventieth eightieth ninetieth hundreth 
 
@@ -573,14 +617,14 @@ Words for which the \emph{et}-ligature need \emph{not} be suppressed:
 \subsection*{Cases of \emph{as}-, \emph{is}-, and \emph{us}-ligatures pre-empting use an \emph{sp}-ligature}
 
 \bgroup \em
-asp asparagus aspect aspire Casper Caspar clasp gasp grasp hasp Jasper rasp raspberry wasp  
+asparagus aspect aspire Casper Caspar clasp gasp grasp hasp Jasper rasp raspberry wasp \emph{(but what to do about } asp?\emph{)}
 
 megaspores tetraspore
 
 crisp lisp whisper wisp
 
 
-\emph{but:} disparity dispart mispackage 
+\emph{but:} disparity dispart mispackage misplace
 
 auspicious cusp suspicious tricuspid \emph{but:} suspect suspend 
 
@@ -596,7 +640,7 @@ betake betatter bristletail caretaker cheetah
 detach detail detain dovetail 
 foretaste horsetail nametag pretake
 pretape pretaste pretax retable retack
-retag retape retake retaliate retard retarget timetable
+retag retape retake retaliate retard retarget
 whitetail wiretap
 
 \egroup
