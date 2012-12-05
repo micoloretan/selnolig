@@ -57,6 +57,9 @@
 \usepackage{microtype}
 \usepackage{multicol}
 \usepackage{metalogo} % XeLaTeX and LuaLaTeX logos
+  \makeatletter
+  \def\xl@drop@TeX@e{0.38ex} % default value: 0.5ex
+  \makeatother
 
 \usepackage{sectsty}
 \allsectionsfont{\mdseries}
