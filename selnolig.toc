@@ -32,4 +32,4 @@
 \contentsline {section}{\numberline {B}The package's lua code: selnolig.lua}{27}{appendix.B}
 \contentsline {section}{\numberline {C}English-language ligature suppression patterns: selnolig-english-patterns.sty}{31}{appendix.C}
 \contentsline {section}{\numberline {D}German-language ligature suppression patterns: selnolig-german-patterns.sty}{44}{appendix.D}
-\contentsline {section}{\numberline {E}Reporting bugs and other issues with the selnolig package: A suggested template}{57}{appendix.E}
+\contentsline {section}{\numberline {E}Reporting bugs and other issues with the selnolig package: A suggested template}{56}{appendix.E}
