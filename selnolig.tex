@@ -24,10 +24,6 @@
     Ligatures  = {TeX, Common, Discretionary},
     ItalicFont = {Garamond Premier Pro Italic} ]
     {Garamond Premier Pro}
-%\setmainfont[Numbers = OldStyle,
-%    Ligatures  = {TeX, Common, Discretionary},
-%    ItalicFont = {Minion Pro Italic} ]
-%    {Minion Pro}
 
 \setsansfont[Scale=MatchLowercase]{HelveticaNeue}
 \setmonofont[Scale=MatchLowercase]{Consolas}
@@ -95,7 +91,7 @@
 \let\oldappendix\appendix
 \renewcommand\appendix{%
    \clearpage
-   \addtocontents{toc}{\protect{\vspace\baselineskip}}
+   \addtocontents{toc}{\protect{\vspace{0.75\baselineskip}}}
    \addtocontents{toc}{\protect{\mdseries Appendices\par}}
    \noindent
    {\Large Appendices}
