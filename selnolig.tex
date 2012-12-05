@@ -36,6 +36,11 @@
     ItalicFont = {EB Garamond 12 Italic}]
     {EB Garamond 12 Regular}
 
+\usepackage{geometry}
+\usepackage[english=american]{csquotes}
+\usepackage[ngerman,english]{babel}
+\hyphenation{ver-werf-lich}
+
 \usepackage[english,broad-f,hdlig,ngerman]{selnolig}
 %\debugon 
 
@@ -49,16 +54,16 @@
 \nolig{Konstanz}{Kons|tanz}	
 \nolig{Institut}{Ins|titut}
 
-\usepackage{geometry}
-\usepackage[english=american]{csquotes}
-\usepackage[ngerman,english]{babel}
-\hyphenation{ver-werf-lich}
+
 
 \usepackage{microtype}
 \usepackage{multicol}
-\usepackage{metalogo} % XeLaTeX and LuaLaTeX logos
+
+\usepackage{metalogo} % for LuaLaTeX logo
   \makeatletter
-  \def\xl@drop@TeX@e{0.38ex} % default value: 0.5ex
+  \def\xl@drop@TeX@e{0.35ex}    % default : 0.5ex
+  \def\xl@kern@La@La{-.33em}    % default: -0.36ex
+  \def\xl@kern@LaTeX@aT{-.16em} % default: -0.15ex
   \makeatother
 
 \usepackage{sectsty}
@@ -121,13 +126,13 @@ Current version: \selnoligpackageversion. Features of this package are subject t
 \begin{document}
 \VerbatimFootnotes
 \pagenumbering{roman}
-\thispagestyle{empty}
+
 \maketitle
 
 
 \begin{abstract}
 
-The \pkg{selnolig} package suppresses typographic ligatures automatically based on pre\-defined search patterns for English and German language documents. The search patterns focus on ligatures deemed inappropriate because they span morpheme boundaries in words. For example, the word \opt{shelfful}, which is mentioned in the \TeX book as a word for which the \enquote{ff} ligature might be inappropriate, is automatically typeset as shelfful rather than as shel\mbox{ff}ul.
+The \pkg{selnolig} package suppresses typographic ligatures automatically based on pre\-defined search patterns for English and German language documents. The search patterns focus on ligatures deemed inappropriate because they span morpheme boundaries within words. For example, the word \opt{shelfful}, which is mentioned in the \TeX book as a word for which the \enquote{ff} ligature might be inappropriate, is automatically typeset as shelfful rather than as shel\mbox{ff}ul.
 \newline\hspace*{\parindent}
 The \pkg{selnolig} package provides ligature suppression macros  for the \enquote{common} typographic f-ligatures. These comprise not only the familiar~ff, fi, fl, ffi, and~ffl ligatures but also ligatures such as \char"E18D\ and~\char"E187, which are frequently provided by many fonts suitable for typesetting text.
 \newline\hspace*{\parindent}
@@ -135,7 +140,8 @@ For English language documents, the package also provides ligature suppression m
 \newline\hspace*{\parindent}
 The \pkg{selnolig} package requires the use of the \LuaLaTeX\ format. 
 \end{abstract}
-\thispagestyle{empty}
+
+\tocloftpagestyle{empty}
 
 \tableofcontents
 
@@ -164,7 +170,7 @@ For German language documents, all instances of {\ebg \mbox{fb}, \mbox{fh}, \mbo
 
 The \pkg{selnolig} package also provides additional hyphenation exception lists for both English and German language words.
 
-A comment on the classification of various forms of typographic ligatures. Among the ligature-rich OpenType fonts I'm familiar with that can be loaded via the \pkg{fontspec} package under \LuaLaTeX, there appears to a near-complete lack of terminological consistency as to which typographic ligatures\textemdash beyond the so-called \enquote{common} ligatures (mainly f-ligatures)\textemdash are labelled \enquote{historic} and which ones are labelled \enquote{discretionary}. For instance, the fonts Latin Modern Roman, Garamond Premier Pro, and Hoefler Text report having \enquote{only} discretionary ligatures, whereas Junicode, Cardo, EB Garamond 12 Regular, and Palatino Linotype report  featuring both historic and discretionary ligatures.\footnote{Interestingly, these fonts do not report having ligatures classified as either \enquote{contextual} or \enquote{required}.} The \pkg{selnolig} package provides the \opt{hdlig} option to enable ligature suppression rules that apply to ligatures that may be classified as either \enquote{historic} or \enquote{discretionary}.
+A remark on the classification of various forms of typographic ligatures: Among the ligature-rich OpenType fonts I'm familiar with that can be loaded via the commands of the \pkg{fontspec} package, there appears to a near-complete lack of terminological standardization as to which typographic ligatures\textemdash beyond the so-called \enquote{common} ligatures (mainly f-ligatures)\textemdash are labelled \enquote{historic} and which ones are labelled \enquote{discretionary}. For instance, Latin Modern Roman, Garamond Premier Pro, and Hoefler Text report having \enquote{only} discretionary ligatures, whereas Junicode, Cardo, EB Garamond, and Palatino Linotype report featuring both historic and discretionary ligatures. (Interestingly, none of these fonts report having ligatures classified as either \enquote{contextual} or \enquote{required}.) The \pkg{selnolig} package provides the \opt{hdlig} option to enable ligature suppression rules that apply to ligatures that may be classified as either \enquote{historic} or \enquote{discretionary}.
 
 \section{I'm in a hurry! How do I start using this package?}
 
@@ -602,8 +608,8 @@ selnolig-german-patterns.sty]{German-language ligature suppression patterns: \\
 
 Introductory notes: 
 \begin{itemize}
-\item Macros that don't work quite right yet are commented out with \Verb/%%%%%/ markers. 
-(The reason these macros don't work quite right is that the search strings contain an Umlaut character in the part \emph{before} the ligation-suppression point. Hopefully, this issue will be fixed soon.)
+%\item Macros that don't work quite right yet are commented out with \Verb/%%%%%/ markers. 
+%(The reason these macros don't work quite right is that the search strings contain an Umlaut character in the part \emph{before} the ligation-suppression point. Hopefully, this issue will be fixed soon.)
 
 \item To accommodate the practice of Swiss-German writers of not using the \enquote{ß} character (and using \enquote{ss} in its place), all search-and-insert strings that contain an \enquote{ß} character are duplicated with equivelent search-and-insert strings containing \enquote{ss}.
 

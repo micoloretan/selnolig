@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2012/12/04]
+[2012/12/05]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -755,6 +755,8 @@
 \keeplig{zünft} % zünftig
 \keeplig{kunft} % Unterkunft
 \keeplig{künft} % Unterkünfte
+\keeplig{luft}
+\keeplig{Luft}
 \keeplig{lüft}
 \keeplig{Lüft}
 \keeplig{duft}
@@ -769,7 +771,7 @@
 \keeplig{Gruft} % Gruftasseln
 \keeplig{grüft} % Holzkammergrüfte
 \keeplig{Kraft}
-\keeplig{Notdurft}
+\keeplig{otdurft}
 
 
 
@@ -789,6 +791,7 @@
  % origin for which the 'fk' ligature 
  % shouldn't be suppressed. Use \keeplig macros 
  % to define such as cases.
+
 	\keeplig{Kafka}
 	\keeplig{kafka}
    \keeplig{Piefke}
@@ -821,9 +824,11 @@
      % Russian author (Wiktor) and 
      % soccer player (Maksim)
 	\keeplig{fjör} 
-     % a bunch of Icelandic places catches both 
-     % German Isafjördur and Icelandic Ísafjörður
-	\keeplig{Ísafjarðarbær} % city in Iceland
+     % A bunch of Icelandic places; catches 
+     % both German Isafjördur and Icelandic 
+     % Ísafjörður
+	\keeplig{Ísafjarðarbær} 
+     % A city in Iceland
 	
 
 % 11. fff -> ff-f
@@ -837,7 +842,7 @@
  % This macro will also break up any 'fffl'
  % ligatures into 'ff' and 'fl' parts.
  % Example words: Sauerstoffflasche, 
- %    Schlifffläche, Stofffleck
+ %   Schlifffläche, Stofffleck,
  %   Kunststoffflügel, Kunststofffläche
 
 
