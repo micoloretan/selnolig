@@ -1,0 +1,32 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{I'm in a hurry! How do I start using this package?}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{How do I load the selnolig package?}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Any hints on how to get started with LuaLaTeX?}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Anything else I need to do or know?}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Acknowledgments and license}{}% 6
+\BOOKMARK [1][-]{section.4}{Structure of the package}{}% 7
+\BOOKMARK [2][-]{subsection.4.1}{Components of the package}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.2}{Command syntax}{section.4}% 9
+\BOOKMARK [1][-]{section.5}{The selnolig package's approach to breaking up ligatures}{}% 10
+\BOOKMARK [1][-]{section.6}{Options that govern the package's behavior}{}% 11
+\BOOKMARK [2][-]{subsection.6.1}{Main language options}{section.6}% 12
+\BOOKMARK [2][-]{subsection.6.2}{Other options}{section.6}% 13
+\BOOKMARK [3][-]{subsubsection.6.2.1}{English language case: The broad-f and hdlig options}{subsection.6.2}% 14
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Additional hyphenation exception patterns}{subsection.6.2}% 15
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Controlling how much is written to the .log file}{subsection.6.2}% 16
+\BOOKMARK [1][-]{section.7}{Further issues}{}% 17
+\BOOKMARK [2][-]{subsection.7.1}{Known bugs}{section.7}% 18
+\BOOKMARK [2][-]{subsection.7.2}{Composite words made up of two different sets of primitive words}{section.7}% 19
+\BOOKMARK [2][-]{subsection.7.3}{Lists of words fitting German and English language non-ligation patterns}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.4}{How to provide additional ligature suppression patterns}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.5}{How to use the selnolig package to suppress certain ligatures globally}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.6}{What if one ligature pre-empts a subsequent, more appropriate ligature?}{section.7}% 23
+\BOOKMARK [3][-]{subsubsection.7.6.1}{Ligatures for as, is, and us that pre-empt an st ligature}{subsection.7.6}% 24
+\BOOKMARK [3][-]{subsubsection.7.6.2}{Ligatures for as, is, and us that pre-empt an sp ligature}{subsection.7.6}% 25
+\BOOKMARK [3][-]{subsubsection.7.6.3}{Ligatures for at and et that pre-empt a th ligature}{subsection.7.6}% 26
+\BOOKMARK [3][-]{subsubsection.7.6.4}{Ligatures for at and et that pre-empt a ta ligature}{subsection.7.6}% 27
+\BOOKMARK [1][-]{appendix.A}{The package's main style file: selnolig.sty}{}% 28
+\BOOKMARK [1][-]{appendix.B}{The package's lua code: selnolig.lua}{}% 29
+\BOOKMARK [1][-]{appendix.C}{English-language ligature suppression patterns: selnolig-english-patterns.sty}{}% 30
+\BOOKMARK [1][-]{appendix.D}{German-language ligature suppression patterns: selnolig-german-patterns.sty}{}% 31
+\BOOKMARK [1][-]{appendix.E}{Reporting bugs and other issues with the selnolig package: A suggested template}{}% 32
