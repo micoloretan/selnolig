@@ -13,7 +13,6 @@
 % Author: Mico Loretan
 %   (loretan dot mico at gmail dot com)
 
-
 %% Note use of %%%%% for \nolig commands 
 %% with an Umlaut in first part of search 
 %% string: they're commented out because
@@ -195,11 +194,13 @@
 \nolig{pfinst}{pf|inst}
  %  Wahlkampfinstitution
 \nolig{finstru}{f|instru}
- % Zupfinstrumente Schleifinstrument Greifinstrument
+ % Zupfinstrumente Schleifinstrument 
+ % Greifinstrument
 \nolig{findex}{f|index}
  % Kaufindex Pfandbriefindex
 \nolig{ufindi}{uf|indi}
  % Kaufindices Laufindizes
+ % Vorlaufindikatoren
 \nolig{ufinter}{uf|inter}
  % Kaufinteresse
 \nolig{fingenieur}{f|ingenieur}
@@ -220,17 +221,9 @@
 % ------------
 
 \nolig{aufl}{auf|l}
-\keeplig{bauflä}  % Anbaufläche
-\keeplig{Bauflä}  % Anbaufläche
-\keeplig{hauflug} % Schauflug
-\keeplig{hauflüg} % Schauflüge
-\keeplig{nauflut} % Donauflut
-\keeplig{lauflüg} % Blauflügel (Libelle)
-
 \nolig{Aufl[aäeioöuü]}{Auf|}
  % mustn't do \nolig{Aufl}{Auf|l} b/c
  % of "Aufl." (abbrev/ w/ ligature!)
-
 
  % auflachen
  % aufladbar aufladen Sauf-laden
@@ -243,41 +236,15 @@
  % Kaufleidenschaft Kaufleute
  % aufleuchten aufliegende
  % aufliesset aufließet
- % auflisten 
- % auflockern
- % auflodern
- % drauflos
- % Auflösung
- % auflüde
+ % auflisten auflockern auflodern
+ % drauflos Auflösung auflüde
 
-
-\keeplig{zuflach} % abzuflachen
-\keeplig{uflachs} % anzuflachsen
-%\nolig{auflad}{auf|lad}
-%\nolig{Auflad}{Auf|lad}
-%\nolig{uflan}{uf|lan}
-%\nolig{uflass}{uf|lass}
-%\nolig{uflauer}{uf|lauer}
-\nolig{fläuf}{f|läuf}
-%\nolig{uflaur}{uf|laur}
-%\nolig{uflaß}{uf|laß}
-%\nolig{ufleb}{uf|leb}
-%\nolig{ufleg}{uf|leg}
-%\nolig{uflehn}{uf|lehn}
-%\nolig{ufleid}{uf|leid}
-%\nolig{ufles}{uf|les}
-%\nolig{ufleuch}{uf|leuch}
-%\nolig{uflieg}{uf|lieg}
-%\nolig{aufliess}{auf|liess}
-%\nolig{Aufliess}{Auf|liess}
-%\nolig{aufließ}{auf|ließ}
-%\nolig{Aufließ}{Auf|ließ}
-%\nolig{uflock}{uf|lock}
-\nolig{flod}{f|lod}
-%\nolig{uflos}{uf|los}
-%\nolig{uflust}{uf|lust}
-%\nolig{uflös}{uf|lös}
-%\nolig{uflüd}{uf|lüd}
+\keeplig{bauflä}  % Anbaufläche
+\keeplig{Bauflä}  % Anbaufläche
+\keeplig{hauflug} % Schauflug
+\keeplig{hauflüg} % Schauflüge
+\keeplig{nauflut} % Donauflut
+\keeplig{lauflüg} % Blauflügel (Libelle)
 
 
 \nolig{Chefl}{Chef|l}
@@ -288,7 +255,10 @@
 \nolig{flist}{f|list}
  % Prüfliste Rufliste Kaufliste
 \nolig{flauf}{f|lauf}
- % Auflauf
+ % schieflaufen Auflauf Brieflauf
+\nolig{fläuf}{f|läuf}
+ % schiefläuft Hofläufer Strafläufe
+ % Prüfläufe Aufläufe Tiefläufer
 \nolig{afleder}{af|leder}
  % Schafleder
 \nolig{aflos}{af|los}
@@ -300,9 +270,6 @@
  % schweflig würflig knifflig mufflig
 \nolig{flisch}{f|lisch}
  % teuflisch Tüpflischeißer 
-
-\nolig{fläuf}{f|läuf}
- % Tiefläufer Aufläufe
 \nolig{flöff}{f|löff}
  % Tieflöffelbagger auflöffeln
  % Schöpflöffel
@@ -332,7 +299,6 @@
 \keeplig{ieflügel}
  % Akademieflügel Jalousieflügel
 
-
 \nolig{fleit}{f|leit}
  % Dampfleitung Hofleitung Baufhofleiter
  % Kaufleitung Notrufleitung aufleiten
@@ -347,7 +313,7 @@
 \nolig{flok}{f|lok}
  % Dampflokomotive
 \nolig{mpflos}{mpf|los}
- % kampflos kopflos
+ % kampflos 
 \nolig{flust}{f|lust}
  % Kampflust Impflust kauflustig Rauflust
 
@@ -367,8 +333,8 @@
 
 \nolig{opflast}{opf|last}
  % kopflastig
-\nolig{pflos}{pf|los}
- % kopflos kampflos
+\nolig{opflos}{opf|los}
+ % kopflos 
 \nolig{pfloch}{pf|loch}
  % Knopfloch
 \nolig{pflöch}{pf|löch}
@@ -426,7 +392,7 @@
 % Vorsicht mit Pflicht and pflicht:
 	\keeplig{Pflicht}
 	\keeplig{pflicht}
-% Sonderregel fuer Sumpflicht(er):
+% Sonderregel für Sumpflicht(er):
 \nolig{Sumpflicht}{Sumpf|licht}
 
 
@@ -453,7 +419,7 @@
 \nolig{ffüß}{f|füß}
  % Greiffüße
 \nolig{ffüss}{f|füss}
- % Greiffüsse (Schweizer...)
+ % Greiffüsse
 \nolig{ffuss}{ffuss}
  % Grieffuss
 \nolig{ffigu}{ffigu}
@@ -467,7 +433,6 @@
 \nolig{hoffing}{hof|fing}
  % Bischoffinger
 
-\nolig{ffisch}{f|fisch}
 
 
 % 5. ffi -> ff-i
@@ -556,7 +521,7 @@
 \nolig{fflut}{f|flut}
  % Brieffluten
 \nolig{ffleisch}{f|fleisch}
- % Schaffleisch
+ % Schaffleisch Kopffleisch
 \nolig{fflimm}{f|flimm}
  % Vorhofflimmern
 \nolig{fflug}{f|flug}
@@ -566,16 +531,15 @@
  
 \nolig{iefflog}{ief|flog}
  % tiefflog
-\nolig{iefflüg}{ief|flüg}
+\nolig{fflüg}{f|flüg}
  % Tiefflüge 
 \nolig{Hofflüg}{Hof|flüg}
  % Hofflügel 
-\nolig{mpffl}{mpf|fl}
- % Sumpffläche Sturzkampfflieger 
-\nolig{opffl}{opf|fl}
- % Totenkopfflagge
 
-%\keeplig{Knoepff} % Knoepffler
+\nolig{pffl}{pf|fl}
+ % Sumpffläche Sturzkampfflieger 
+ % Totenkopfflagge Impfflüssigkeit
+\keeplig{Knoepffl} % Knoepffler
 
 \nolig{iffleck}{if|fleck}
  % Schleifflecklein
@@ -594,16 +558,11 @@
 
 \nolig{Auft}{Auf|t}
 \nolig{auft[aäehioöruü]}{auf|t}
- % auftat Auftakt
- % auftäten auftätowieren
- % aufteilen
- % Lauftherapie Kreislauftheorie
- % auftischen
- % auftoupiern
- % herauftönen 
+ % auftat Auftakt auftäten auftätowieren
+ % aufteilen Lauftherapie Kreislauftheorie
+ % auftischen auftoupiern herauftönen 
  % auftreiben auftreten Sauftrottel
- % auftun
- % auftürmen kauftüchtig
+ % auftun auftürmen kauftüchtig
 
 \nolig{ftheor}{f|theor}
  % Golftheorie Kampftheorien Auflauftheorien
@@ -617,9 +576,6 @@
 \nolig{straft[aäehioöuü]}{straf|t}
  % Straftarif - team -technisch -tendenz
  % -termin -theologisch -tilgung -tor -tribunal
-
- % but: don't suppress ft liga for words such as
- % bestraft, vorbestraft, etc.
 
 \nolig{Brieft}{Brief|t}
  % Brieftasche Brieftaube 
@@ -644,8 +600,7 @@
 
 \nolig{rfte}{rf|te}
  % durfte bedurfte surfte 
- % dürfte schlürfte 
- % unbedarfte
+ % dürfte schlürfte unbedarfte
  % schärfte verschärfte 
 
 \nolig{lfto}{lf|to}
@@ -663,16 +618,12 @@
  % Senftöpfchen
 
 \nolig{Dorft}{Dorf|t}
-
-\nolig{rftö}{rf|tö}
- % Dorftölpel
+ % Dorftrottel Dorftratsch Dorftradition
+ % Dorftümpel
 \nolig{rftr}{rf|tr}
  % Wurftraining Surftrip Freiwurftreffer
- % Dorftrottel Dorftratsch Dorftradition
 \nolig{rftu}{rf|tu}
  % Wurftuch
-\nolig{rftü}{rf|tü}
- % Dorftümpel
 
 \nolig{fton}{f|ton}
  % Pfeifton Zwölftonmusik Rufton
@@ -680,8 +631,9 @@
  % Wurftalent Auswurftaste Surftalent
 \keeplig{tdurfta} % Notdurftanlage 
 
-\nolig{fty[pr]}{f|ty}
+\nolig{ftyp}{f|typ}
  % Schifftyp Stofftyp waldorftypisch
+\nolig{ftyr}{f|tyr}
  % Dorftyrann Hoftyrann 
 
 \nolig{ftrain}{f|train}

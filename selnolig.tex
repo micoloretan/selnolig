@@ -271,43 +271,42 @@ The \pkg{selnolig} package has the following components:
 
 \subsection{Command syntax} \label{sec:syntax}
 
-The file \pkg{selnolig.sty} should be loaded in your document's preamble with a \cmmd{usepackage} statement, usually with one or more options.\footnote{If you load the \pkg{selnolig} package \emph{after} the \pkg{fontspec} package (and any associated font and ligature-setting commands), the package can determine automatically if certain additional options should be set.}
-
-After setting up several Boolean switches designed to structure the processing of options, the package loads the file \pkg{selnolig.lua}, which contains the package's lua code.
-
-Next, the package's user macros are set up:
+The file \pkg{selnolig.sty} should be loaded with a \cmmd{usepackage} statement, generally with one or more options; see \cref{sec:options} for a discussion of the available options. After setting up several Boolean switches to structure the processing of options, the package next loads the file \pkg{selnolig.lua}, which contains the package's lua code.
+The package then sets up the following macros:
 \begin{enumerate}
-\item The main user macro is called \cmmd{nolig}. Each \cmmd{nolig} instruction takes two arguments: a \enquote{search string} and a string that indicates the \enquote{insertion point} for the non-ligation \enquote{whatsit}. For example, the macro
+\item The main user macro is called \cmmd{nolig}. Each \cmmd{nolig} instruction takes two arguments: a search string and a string that indicates the insertion point for the non-ligation \enquote{whatsit}. For example, the macro
 \begin{Verbatim}
      \nolig{lfful}{lf|ful}
 \end{Verbatim}
-serves to suppress automatically the ff-ligature in words such as \enquote{shelfful}, \enquote{bookshelfful}, and \enquote{selffulfilling}. Note the use of the~\Verb/|/ symbol in the command's second argument to indicate which ligature should be suppressed.\footnote{In principle, more than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction. For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl and the ff ligature in this word. As is mentioned in \cref{sec:debugon}, the \pkg{selnolig} package actually uses to separate \cmmd{nolig} commands to \enquote{treat} the word Auflaufform. }
+instructs \LuaLaTeX\ to suppress automatically the ff-ligature in words such as \enquote{shelfful}, \enquote{bookshelfful}, and \enquote{selffulfilling}.\footnote{More than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction. For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl and the ff ligature in this word. As I note in \cref{sec:debugon}, the \pkg{selnolig} package actually uses to separate \cmmd{nolig} commands to \enquote{treat} the word Auflaufform. }
 
-\enlargethispage{1\baselineskip}
+%\enlargethispage{1\baselineskip}
 
 It is possible to use \enquote{wildcard} characters in the search string, as long as these characters occur after the non-ligation point. For example, the file \pkg{selnolig-german-patterns.sty} employs the instruction 
 \begin{Verbatim}
      \nolig{Aufl[aäeioöuü]}{Auf|l}
 \end{Verbatim}
-to search for words that start with \opt{Aufl} followed by a vowel. This particular search string is used because the abbreviated word \enquote{Aufl.} does \emph{not} get its fl-ligature suppressed. (The \enquote{.} (dot, period) character is itself a Lua wildcard character that matches \emph{any} character; it turns out to be easier to provide a choice of eight possible vowels in the search string rather than to try to negate the \enquote{.} character.) Note also that it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
+to search for words that start with \opt{Aufl} followed by a vowel. This particular search string is used because the abbreviated word \enquote{Aufl.} does \emph{not} get its fl-ligature suppressed. (In Lua, the~\enquote{.} (dot, period) character is itself a wildcard character, one which matches \emph{any} character. It turns out to be easier to provide various possible vowels in the search string rather than to try to negate the \enquote{.} character.) Note also that it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
 
-If you study the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice that there's some redundancy built into the \cmmd{nolig} rules. E.g., the German verb \enquote{auffahren} is noticed both by \Verb+\nolig{auff}{auf|f}+ and by \Verb+\nolig{ffahr}{f|fahr}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa.\footnote{For instance, the second \cmmd{nolig} instruction also catches words such as Golffahrten and Prüffahrten. } Listing the \emph{union} of all possible pairs of non-redundant rules would result in a rather large and unwieldy number of separate rules and slow down processing tremendously. Conversely, taking the \emph{intersection} of the two rules\textemdash in the present case, just the character pair \opt{ff}\textemdash would create ligature suppression rules that are far too broad. Building in some redundancy seems like a reasonable way to proceed in this field.
+If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the \cmmd{nolig} rules. E.g., the German verb \enquote{auffahren} is caught by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffahr}{f|fahr}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Building in some redundancy seems like a reasonable way to proceed.
 
-Observe also that the arguments of the \cmmd{nolig} command (as well as of the package's other user commands) are case-sensitive. 
+The arguments of the \cmmd{nolig} command (as well as of the package's other user commands) are case-sensitive. 
 
 \item The macro 
 \begin{Verbatim}
      \keeplig{<word-fragment>}
 \end{Verbatim}
-lets users specify words and word fragments for which typographic ligatures should \emph{not} be suppressed anywhere in the document. It is permissible to use lua-type wildcard characters in the argument of \cmmd{keeplig}.
+lets users override \cmmd{nolig} instructions, by specifying words and word fragments for which typographic ligatures should \emph{not} be suppressed anywhere in the document. For a \cmmd{keeplig} macro to work properly, its argument should be a word (or word fragment) that includes words (or word fragments) treated by \cmmd{nolig} instructions. It is permissible to use lua-type wildcard characters in the argument of \cmmd{keeplig}. 
 
-In a sense, \cmmd{keeplig} is the exact opposite command to \cmmd{nolig}. Having the \cmmd{keeplig} macro is very useful because it allows us to specify simpler, i.e., less restrictive, \cmmd{nolig} instructions: Any Type-II errors that may arise from having a slightly-too-broad \cmmd{nolig} macro can be addressed by providing judiciously chosen \cmmd{keeplig} macros. 
+Having the \cmmd{keeplig} macro is very useful because it allows us to specify simpler, i.e., less restrictive, \cmmd{nolig} instructions: Any Type-II errors that may arise from having a slightly-too-broad \cmmd{nolig} macro can be addressed by providing judiciously chosen \cmmd{keeplig} macros.
 
-To give an example: if the \opt{ngerman} option is set, the package uses the macro 
+\enlargethispage{1\baselineskip}
+
+To give an example: If the \opt{ngerman} option is set, the package uses the macro 
 \begin{Verbatim}
      \nolig{flich}{f|lich}
 \end{Verbatim}
-to break up the fl-ligature in the words brieflich, tariflich, trefflich, hilflich, verwerflich, beruflich, sträflich, höflich, glimpflich, unerschöpflich and begrifflich\textemdash and probably quite a few more words too. However, this macro is too broad because it also operates on words such as Pf\breaklig licht and verpf\breaklig lichten, for which the fl-ligature should \emph{not} be suppressed. Rather than provide a plethora of slightly more restrictive \cmmd{nolig} macros just to avoid including the Pflicht-words, the package simply provides the commands
+to break up the fl-ligature in the words brieflich, tariflich, trefflich, hilflich, verwerflich, beruflich, sträflich, höflich, glimpflich, unerschöpflich and begrifflich\textemdash and probably quite a few more words too. This macro is, unfortunately, a bit too broad because it also operates on words such as Pf\breaklig licht and verpf\breaklig lichten, for which the fl-ligature should \emph{not} be suppressed. Rather than provide a plethora of slightly more restrictive \cmmd{nolig} macros just to avoid including the Pflicht- and pflicht-words, the package provides the commands
 \begin{Verbatim}
      \keeplig{Pflicht}
      \keeplig{pflicht}
@@ -325,16 +324,16 @@ Observe that we make use of the case sensitivity in the final \cmmd{nolig} instr
 
 \end{enumerate}
 
-Incidentally, the \pkg{selnolig} package does not provide a dedicated macro to disable the action of a \cmmd{nolig} macro on an ad~hoc basis, i.e., to \emph{force} the use of a typographic ligature. The \LaTeX\ command \Verb+\mbox{}+ is available for just this purpose.
+Incidentally, the \pkg{selnolig} package does not provide a dedicated macro to disable the action of a \cmmd{nolig} macro on an ad~hoc basis, i.e., to \emph{force} the use of a typographic ligature. The \LaTeX\ command \Verb+\mbox{}+ already exists to address this need.
 
 
 The final few steps in the package's startup process depend on which language-related options are set:
 \begin{itemize}
 \item If \emph{no} language-specific options are in effect, the loading process terminates. Users may still use the instructions \cmmd{nolig}, \cmmd{keeplig}, and \cmmd{breaklig}, but no lists of language-specific \cmmd{nolig} macros are loaded.
 
-\item If the \opt{english} option (or one of its synonymous options) is set, the files \pkg{selnolig-english-patterns.sty} and \pkg{selnolig-english-hyphex.sty} are loaded. The former file contains a long list of \cmmd{nolig} macros adapted to English language typographic usage, \Cref{sec:eng-listing} provides a complete listing of these macros. The latter file contains a list of hyphenation exceptions, mainly for words that contain one or more potential non-ligation points and for which \TeX's hypenation algorithm either misses valid hyphenation points or selects invalid hyphenation points; see \cref{sec:addlhyph} below.
+\item If the \opt{english} option (or one of its synonymous options) is set, the files \pkg{selnolig-english-patterns.sty} and \pkg{selnolig-english-hyphex.sty} are loaded. The former file contains a long list of \cmmd{nolig} macros adapted to English language typographic usage; \Cref{sec:eng-listing} provides a complete listing of these macros. The latter file contains a list of hyphenation exceptions, mainly for words that contain one or more potential non-ligation points and for which \TeX's hypenation algorithm either misses valid hyphenation points or selects invalid hyphenation points; see \cref{sec:addlhyph} below.
 
-\item If the \opt{ngerman} option (or one of its synonymous options) is set, the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-german-hyphex.sty} are loaded. The former file contains ligature-suppressing instructions appropriate for German typographic usage, \cref{sec:germ-listing} lists its contents. The latter file provides additional hyphenation rules for German-language words.
+\item If the \opt{ngerman} option (or one of its synonymous options) is set, the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-german-hyphex.sty} are loaded. The former file contains ligature-suppressing instructions appropriate for German typographic usage; \cref{sec:germ-listing} lists its contents. The latter file provides additional hyphenation rules for German-language words.
 
 \item If the user specifies both the \opt{english} and \opt{ngerman} options (or some of their synonymous options), \emph{both} language-specific style files will be loaded. Under normal circumstances, a user will probably want to load only one or the other set of language-specific files, but not both sets.
 \end{itemize}
@@ -360,15 +359,16 @@ For German words, the following exceptions and adjustments apply:\footnote{These
 
 \item If a word could terminate with an fl ligature even though the~\enquote{l} technically belongs to a different morpheme (say, because of an abbreviation that's in effect), the fl ligature \emph{is} used. E.g., one writes Aufl.\ and gefl.\ with an fl ligature. (But, when spelled out, the words should be typeset as Auflage and gefällig[s\breaklig t].)
 
-\item This rule also suggests that ft and \char"E187\ ligatures are permitted in words such as geschärft, unbedarft, and erscha\char"E187, whereas they should be suppressed in words such as gestreifte, schlürfte, and raffte.
+\item The preceding rule would seem to imply that it's also permissible to use the ffi and ffl ligatures in abbreviations such as Steffi and Steffl. The rule further suggests that ft and~\char"E187\ ligatures are permitted in words such as geschärft, unbedarft, and erscha\char"E187, whereas they should be suppressed in words such as gestreifte, schlürfte, and raffte.
 
-\item Here's a case for which I have not yet found a clear rule on how to proceed. If a main word ends in \enquote{ft} (e.g., Luft and Saft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset them as saftig and luftig because the \opt{ft} character pair belongs to a single morpheme, \emph{or} one could give preference to the way the words are hyphenated and break up the ft-ligature to typeset them as saf\breaklig tig and luf\breaklig tig. For now, the \pkg{selnolig} package chooses the former option. I haven't found any clear references so far on how to treat this case. Expert help and guidance on this topic would be much appreciated.
+\item Here's a case for which I have not yet found a clear rule on how to proceed. If a main word ends in \enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset them as saftig and luftig because the \opt{ft} character pair belongs to a single morpheme, \emph{or} one could give preference to the way the words are hyphenated and thus not use the ft-ligature, i.e., to typeset them as saf\breaklig tig and luf\breaklig tig. For now, the \pkg{selnolig} package implements the former option. I haven't found any clear references so far on how to treat this case. Guidance on this topic would be much appreciated.
 
 \end{itemize}
 
 
 
 \section{Options that govern the package's behavior}
+\label{sec:options}
 
 \subsection{Main language options}
 
@@ -486,7 +486,7 @@ Suppose, say, that you're preparing a special edition of Thomas Mann's novel \en
 \begin{Verbatim}
      \nolig{ffleit}{ff|leit}
 \end{Verbatim}
-With this macro in place, the words will now be typeset as inbegriffleitend, Jugendtreffleiter, and Kunststoffleitung.\footnote{The file \pkg{selnolig-german-patterns.sty} actually provides the macro \Verb+\nolig{fleit}{f|leit}+ to take care of these words. Typesetting of the surname Kaltefleiter, for which it's presumably appropriate to employ the fl-ligature, is handled via a \cmmd{keeplig} macro.}
+With this macro in place, the words would now be typeset as inbegriffleitend, Jugendtreffleiter, and Kunststoffleitung.
 
 
 
@@ -514,7 +514,7 @@ to generate Ka\mbox{\ebg \mbox{fk}}a instead of Kafka. Alternatively\textemdash 
 
 
 
-Or, suppose the \pkg{selnolig} package's \opt{ngerman} option is enabled and your document features some words of \emph{Nordic} origin containing the \opt{fj} character pair, such as \opt{Sognefjord} and \opt{Dovrefjell}. Observe that because the \opt{fj} character pair contained in these words does not span a morpheme boundary, the \mbox{fj}-ligature should not be broken up, i.e., the words should be typeset as Sognefjord and Dovrefjell, respectively.  \cmmd{keeplig} macros are therefore provided for words containing the particles fjord, fjell, fjäll, and fjör as well as for names such as Eefje, Sufjan, Prokofjew, and Astafjew.
+Or, suppose the \pkg{selnolig} package's \opt{ngerman} option is enabled and your document features some words of \emph{Nordic} origin containing the \opt{fj} character pair, such as \opt{Sognefjord} and \opt{Dovrefjell}. Observe that because the \opt{fj} character pair contained in these words does not span a morpheme boundary, the \mbox{fj}-ligature should not be broken up, i.e., the words should be typeset as Sognefjord and Dovrefjell, respectively.  \cmmd{keeplig} macros are therefore provided for words containing the particles fjord, fjör, fjell, and fjäll as well as for names such as Eefje, Sufjan, Prokofjew, and Astafjew.
 
 
 
