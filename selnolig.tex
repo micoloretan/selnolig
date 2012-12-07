@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/06
+% Date: 2012/12/07
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -61,7 +61,8 @@
 
 \usepackage{metalogo} % for LuaLaTeX logo
   \makeatletter
-  \def\xl@drop@TeX@e{0.35ex}    % default : 0.5ex
+  \def\xl@drop@TeX@e{0.35ex}    % default:  0.5ex
+  \def\xl@drop@Xe@e{0.35ex}     % default:  0.5ex
   \def\xl@kern@La@La{-.33em}    % default: -0.36ex
   \def\xl@kern@LaTeX@aT{-.16em} % default: -0.15ex
   \makeatother
@@ -184,7 +185,7 @@ A remark on the classification of various forms of typographic ligatures: Among 
 Synonymous options for \opt{english} are \opt{UKenglish}, \opt{british}, \opt{USenglish}, \opt{american}, \opt{cana\-dian}, \opt{australian}, and \opt{new\-zealand}.
 
 \begin{itemize}
-\item If you want to load a broader set of f-ligature suppression rules than the set that's enabled by default, be sure to also specify the \opt{broad-f} option; see \cref{sec:eng-opt}.
+\item If you want to load a broader set of f-ligature suppression rules than the set that's enabled by default, be sure to also specify the \opt{broad-f} option; see also \cref{sec:eng-opt}.
 
 \item If the font you use for your document also provides \enquote{historic} and/or \enquote{discretionary} ligatures (e.g., ct, st, sp, \emph{th}, \emph{as}, \emph{is}, \emph{us}, etc.), you should also specify the \opt{hdlig} option (in addition to the \opt{english} option, of course) when loading the \pkg{selnolig} package.\footnote{If the \pkg{selnolig} package is loaded \emph{after} the \pkg{fontspec} package, a macro is run to inquire if historic and/or discretionary ligatures are enabled; if the answer is yes, the \opt{hdlig} option is enabled automatically.}
 \end{itemize}
@@ -206,23 +207,26 @@ but if one or more of the language options noted above are specified as options 
 
 \subsection{Any hints on how to get started with \LuaLaTeX?}
 
-The \pkg{selnolig} package requires \LuaLaTeX; it will \emph{not} work with either pdf\LaTeX\ or \XeLaTeX. This requirement will likely force you to make some changes to the preambles of your existing \LaTeX\ files in order to have them meet \LuaLaTeX's requirement. The main required changes are: (i)~to remove any \Verb+\usepackage{inputenc}+ instructions, and (ii)~to insert the following instruction:
-\begin{Verbatim}
-     \usepackage{fontspec}
-\end{Verbatim}
+The \pkg{selnolig} package requires \LuaLaTeX; it will \emph{not} work with pdf\LaTeX\ or \XeLaTeX. This requirement will likely force you to make some changes to the preambles of your existing \LaTeX\ files in order to have them meet \LuaLaTeX's requirements. The changes should be fairly minor and straightforward to implement, because \LuaLaTeX\ is, for the most part, a strict superset of pdf\LaTeX; almost all documents that compile correctly under pdf\LaTeX\ should also compile correctly under \LuaLaTeX\ as long as some required changes are made.
+The main required changes are: (i) remove any \Verb+\usepackage{inputenc}+ instructions from the preamble, and (ii)~insert the instruction
+\Verb+\usepackage{fontspec}+.
 
-Of course, you'll also need to use a \TeX\ distribution that includes a fairly recent version of \LuaLaTeX. \TeX Live\,2012, Mac\TeX\,2012, and MiK\TeX\,2.9 all satisfy this requirement. If you use a command-line interface to compile your document named, say, |myfile.tex|, be sure to type 
+Of course, you'll also need to use a \TeX\ distribution that includes a fairly recent version of \LuaLaTeX. \TeX Live\,2012, Mac\TeX\,2012, and MiK\TeX\,2.9 all satisfy this requirement. The version of \LuaLaTeX distributed with TeXLive\,2011 is probably sufficiently recent to meet the package's requirements, but the version distributed with TeXLive\,2009 is almost certainly not. 
+
+If you use a command-line interface to compile your document named, say, |myfile.tex|, be sure to type 
 \begin{Verbatim}
      lualatex myfile
 \end{Verbatim}
-rather than either |latex myfile| or |pdflatex myfile|. If you use an editor with pull-down menus or buttons to invoke the required \TeX compiler, be sure to select |LuaLaTeX|. The first time you run \LuaLaTeX\ on your document with a new set of fonts, the compilation speed will likely be quite slow because \LuaLaTeX\ has to build various cache files to store font-related information. Subsequent compilation runs should be much faster. 
+rather than either |latex myfile| (or |pdflatex myfile|). If you use an editor with pull-down menus or buttons to invoke a suitable \TeX\ compiler, be sure to select |LuaLaTeX|. The first time you run \LuaLaTeX\ on your document with a new set of fonts, the compilation speed will likely be quite slow because \LuaLaTeX\ has to build various cache files to store font-related information. Subsequent compilation runs should be much faster. 
 
-Depending on your \TeX\ distribution, the default font family used by \LuaLaTeX\ will be either Computer Modern or Latin Modern. If you wish to use a different font family, further instructions will be required. How to specify fonts and font families and set up various font-related options in \LuaLaTeX\ are subjects that go far beyond the scope of this user guide. I urge you to become familiar with the \href{http://www.ctan.org/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf}{user guide} of the \pkg{fontspec} package to learn how to set a multitude of font-related options. The answers to the question \href{http://tex.stackexchange.com/q/28642/5001}{Frequently loaded packages: Differences between pdf\LaTeX\ and \LuaLaTeX?}, posted on \href{http://tex.stackexchange.com/}{tex.s\breaklig tackexchange.com}, also contain some very useful information. A great resource for people who would like to become more familiar with \LuaLaTeX\ is  \href{http://mirror.ctan.org/info/luatex/lualatex-doc/lualatex-doc.pdf}{A Guide to \LuaLaTeX} by Manuel Pégourié-Gonnard.
+Depending on your \TeX\ distribution, the default font family used by \LuaLaTeX\ will be either Computer Modern or Latin Modern. If you wish to use a different font family, further instructions will be required. How to specify fonts and font families and set up various font-related options in \LuaLaTeX\ are subjects that go far beyond the scope of this user guide. I urge you to become familiar with the \href{http://www.ctan.org/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf}{user guide} of the \pkg{fontspec} package to learn how to set a multitude of font-related options.
+
+The answers to the questions \href{http://tex.stackexchange.com/q/28642/5001}{Frequently loaded packages: Differences between pdf\LaTeX\ and \LuaLaTeX?} and \href{http://tex.stackexchange.com/q/32295/5001}{Using Lua\TeX\ as a replacement for pdf\TeX}, both posted to \href{http://tex.stackexchange.com/}{tex.stackexchange.com}, provide some very useful information for people who are reasonably familiar with pdf\LaTeX\ but are new to \LuaLaTeX. Another great resource for people who would like to become more familiar with \LuaLaTeX\ is  \href{http://mirror.ctan.org/info/luatex/lualatex-doc/lualatex-doc.pdf}{A Guide to \LuaLaTeX}, written by Manuel Pégourié-Gonnard.
 
 
 \subsection{Anything else I need to do or know?} \label{sec:anythingelse}
 
-For multilingual support, \LuaLaTeX\ and the \pkg{selnolig} package work just fine with the \href{http://www.ctan.org/pkg/babel}{\pkg{babel}} package. If your document loads the \pkg{babel} package, be sure to load the \pkg{selnolig} package \emph{after} the \pkg{babel} package so that the additional hyphenation patterns provided by the \pkg{selnolig} package aren't clobbered by any hyphenation settings provided by the \pkg{babel} package. The \pkg{selnolig} package is also compatible with the \href{http://www.ctan.org/pkg/hyphsubst}{\pkg{hyphsubst}} package (which, if used, should be loaded with a \Verb+\RequirePackage+ statement \emph{before} the \Verb+\documentclass+ instruction).
+For multilingual support, \LuaLaTeX\ and the \pkg{selnolig} package work just fine with the \href{http://www.ctan.org/pkg/babel}{\pkg{babel}} package. If your document loads the \pkg{babel} package, be sure to load the \pkg{selnolig} package \emph{after} the \pkg{babel} package, so that the additional hyphenation patterns provided by the \pkg{selnolig} package won't get clobbered by \pkg{babel}'s hyphenation settings. The \pkg{selnolig} package is also compatible with the \href{http://www.ctan.org/pkg/hyphsubst}{\pkg{hyphsubst}} package (which, if used, should be loaded with a \Verb+\RequirePackage+ statement \emph{before} the \Verb+\documentclass+ instruction).
 
 \LuaLaTeX\ natively supports the so-called \textsc{utf}-8 input encoding. The \pkg{selnolig} package assumes that users make full use of this feature. In particular, if your document is in German, it is assumed that all vowels with diereses (Umlaute) are entered as \Verb|ä|, \Verb|ö|, and \Verb|ü| rather than as \Verb|\"{a}|, \Verb|\"{o}|, and~\Verb|\"{u}| (or, if you tend to use the \pkg{babel} \enquote{shortcuts}, as \Verb|"a|, \Verb|"o|, and~\Verb|"u|). Likewise, it's assumed that you enter the \enquote{Eszett} (\enquote{Scharfes~s}) character as~|ß| rather than as~|{\ss}|.\footnote{The use of the input characters with \enquote{built-in} diereses is actually required only for the operations of the package's \cmmd{nolig} and \cmmd{keeplig} commands.}
 
@@ -236,8 +240,9 @@ Finally, all \pkg{babel}-style \Verb+"|+ ligature-suppressing shortcut instructi
 I owe a huge intellectual and programming debt to Patrick Gundlach and Taco Hoekwater, who responded kindly and generously with detailed computer code to various queries I posted to \href{http://tex.stackexchange.com}{\texttt{tex.stackexchange.com}}.\footnote{See especially the questions \url{http://tex.stackexchange.com/q/48516/5001}, \url{http://tex.stackexchange.com/q/63005/5001}, and
 \url{http://tex.stackexchange.com/q/37443/5001}.} Without their expertise in programming in Lua and interfacing the lua code with \LaTeX, this package would not exist. They certainly deserve most of the credit for the lua code used by the \pkg{selnolig} package.
 
-Felix Lehmann (a linguist and expert in morphology, i.e., the study of morphemes) and Steffen Hildebrandt (computer scientist extraordinaire) served as patient and careful testers of several \emph{early beta} versions of this package, uncovering bugs, pointing out unclear passages in the user guide, and providing many excellent suggestions for important enhancements and other improvements. Steffen provided crucial modifications to the package's lua code to make possible the \cmmd{keeplig} macro. Equally importantly, Felix and Steffen created software to systematically and comprehensively test the package's German detection patterns for linguistic adequacy and (relative) completeness.
+Felix Lehmann (a linguist and expert in morphology, i.e., the study of morphemes) and Steffen Hildebrandt (computer scientist extraordinaire) served as patient and careful testers of several \emph{early beta} versions of this package, uncovering bugs, pointing out unclear passages in the user guide, writing scripts to automate the discovery of syntactic errors in the package's \cmmd{nolig} and \cmmd{keeplig} instructions, and providing many excellent suggestions for important enhancements and other improvements. Steffen provided crucial modifications to the package's lua code to make possible the \cmmd{keeplig} macro. 
 
+Even more importantly, Felix and Steffen created scripts to systematically and comprehensively test the package's German detection patterns for linguistic adequacy and (relative) completeness.
 [Still to come: a brief summary of what Felix and Steffen have found, and a reference or two to their published work.] They wish to thank the Institut für Maschinelle Sprachverarbeitung at the Universität Stuttgart for granting them a license for the morphological analysis tool SMOR and, in particular, Helmut Schmid for his guidance, the Web-as-Corpus kool ynitiative (WaCky) for letting them use the SdeWaC corpus.\footnote{M.~Baroni, S.~Bernardini, A.~Ferraresi and E.~Zanchetta, 2009, The WaCky Wide Web: A Collection of Very Large Linguistically Processed Web-Crawled Corpora. \emph{Language Resources and Evaluation}, 43~(3): 209--226.} They also thank Rajesh Bhatt (University of Massachusetts--Amherst), Miriam Butt (Universität Konstanz), and Sabine Schulte im~Walde (Universität Stuttgart) for helping them find the right resources for their project.
 
 The \href{http://www.ctan.org/tex-archive/support/rmligs}{\pkg{rmligs}} script lists hundreds of German language words for which various f\nobreak-liga\-tures should be suppressed. I created many of the initial German language ligature suppression rules of the \pkg{selnolig} package to treat the words listed in the \pkg{rmligs} package.\footnote{All versions of \pkg{rmligs} are archived at \url{http://www.j3e.de/ispell/igerman98/dict/}. A slightly modified version of the \pkg{rmligs} package's test file, now called \opt{rmligs-testfile.tex}, is included among the ancillary files distributed with the \pkg{selnolig} package.} 
@@ -278,7 +283,7 @@ The package then sets up the following macros:
 \begin{Verbatim}
      \nolig{lfful}{lf|ful}
 \end{Verbatim}
-instructs \LuaLaTeX\ to suppress automatically the ff-ligature in words such as \enquote{shelfful}, \enquote{bookshelfful}, and \enquote{selffulfilling}.\footnote{More than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction. For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl and the ff ligature in this word. As I note in \cref{sec:debugon}, the \pkg{selnolig} package actually uses to separate \cmmd{nolig} commands to \enquote{treat} the word Auflaufform. }
+instructs \LuaLaTeX\ to suppress automatically the ff-ligature in words such as \enquote{shelfful}, \enquote{bookshelfful}, and \enquote{selffulfilling}.\footnote{More than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction. For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl and the ff ligature in this word. As I note in \cref{sec:debugon}, the \pkg{selnolig} package actually uses two separate \cmmd{nolig} commands to treat the ligatures in Auflaufform. }
 
 %\enlargethispage{1\baselineskip}
 
@@ -286,7 +291,7 @@ It is possible to use \enquote{wildcard} characters in the search string, as lon
 \begin{Verbatim}
      \nolig{Aufl[aäeioöuü]}{Auf|l}
 \end{Verbatim}
-to search for words that start with \opt{Aufl} followed by a vowel. This particular search string is used because the abbreviated word \enquote{Aufl.} does \emph{not} get its fl-ligature suppressed. (In Lua, the~\enquote{.} (dot, period) character is itself a wildcard character, one which matches \emph{any} character. It turns out to be easier to provide various possible vowels in the search string rather than to try to negate the \enquote{.} character.) Note also that it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
+to search for words that start with \opt{Aufl} followed by a vowel. This particular search string is used in order not to catch the abbreviated word \enquote{Aufl.}, which does \emph{not} get its fl-ligature suppressed. Incidentally, it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
 
 If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the \cmmd{nolig} rules. E.g., the German verb \enquote{auffahren} is caught by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffahr}{f|fahr}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Building in some redundancy seems like a reasonable way to proceed.
 
@@ -324,10 +329,10 @@ Observe that we make use of the case sensitivity in the final \cmmd{nolig} instr
 
 \end{enumerate}
 
-Incidentally, the \pkg{selnolig} package does not provide a dedicated macro to disable the action of a \cmmd{nolig} macro on an ad~hoc basis, i.e., to \emph{force} the use of a typographic ligature. The \LaTeX\ command \Verb+\mbox{}+ already exists to address this need.
+Incidentally, the \pkg{selnolig} package does not provide a dedicated macro to disable the action of a \cmmd{nolig} macro on an ad~hoc basis, i.e., to \emph{force} the use of a typographic ligature on a one-off basis. The \LaTeX\ command \Verb+\mbox{}+ already caters to this need.
 
 
-The final few steps in the package's startup process depend on which language-related options are set:
+The final few steps in the startup process depend on which language-related options are set:
 \begin{itemize}
 \item If \emph{no} language-specific options are in effect, the loading process terminates. Users may still use the instructions \cmmd{nolig}, \cmmd{keeplig}, and \cmmd{breaklig}, but no lists of language-specific \cmmd{nolig} macros are loaded.
 
@@ -457,7 +462,7 @@ For instance, the fl ligature in \enquote{kop\mbox{fl}os} is not broken up by ei
 
 \item If the final word (again, possibly, with an associated punctuation character) in a sentence immediately \emph{prior} to the start of an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, the |\nolig| macro again will not work properly. The recommended remedy is to leave a blank line between that sentence and the start of the environment in question. Inserting an \enquote{invisible} instruction, such as \Verb+\vphantom{x}+, also works.
 
-\item The |\nolig| search-and-insert operations currently don't work properly if the first part of the search string, i.e., the part \emph{before} the \Verb+|+~symbol, contains a character with an Umlaut (dieresis) or other diacritic. 
+\item The |\nolig| search-and-insert operations currently don't work properly if the first part of the search string, i.e., the part \emph{before} the \Verb+|+~symbol, contains a character with an Umlaut (dieresis) or other diacritic. [Note added for version 0.159 of the package: This bug may be circumvented by moving the vertical bar (\Verb+|+) in the second argument of the affected \cmmd{nolig} statement forward (earlier) by one position. This fix is admittedly extremely kludgy, but it works!]
 
 \item I'm not sure if the following matter constitutes a bug or \enquote{just} a case of incompatibility between two packages. The \pkg{selnolig} package does not appear to interact well with the \pkg{ngerman} package; however, as was noted earlier, it interacts nicely with the \pkg{babel} package (with one or more of the \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} options set). Unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package with one of the available German language options, I probably won't bother figuring out how to fix this incompatibility.
 \end{enumerate}
@@ -482,7 +487,7 @@ The files \pkg{selnolig-german-test.tex} and \pkg{selnolig-english-text.tex} are
 
 As already noted, it's not possible to claim that the non-ligation search-and-insert patterns set up in \pkg{selnolig-english-patterns.sty} and \pkg{selnolig-german-patterns.sty} are complete (or, for that matter, ever will be entirely complete). If you come across words containing ligatures that ought to be suppressed but aren't caught by the rules set up by the package's files, it is straightforward to create one or more new non-ligation rules to deal with the cases you've discovered.
 
-Suppose, say, that you're preparing a special edition of Thomas Mann's novel \enquote{Der Tod in Venedig}\textemdash using an \enquote{Antiqua} (Roman) font since very few people nowadays can manage to read {\blackletterfont blackletter} text with ease\textemdash and notice that the \pkg{selnolig} package does not appear to include a macro to suppress the unwanted ffl-ligature in the word \enquote{inbegri\mbox{ffl}eitend}.\footnote{This word really does occur in the aforementioned novel! A Google search for this word, incidentally, suggests that (i) Thomas Mann pretty much invented this particular word and (ii) it's not used by anyone else, except for the occasional blogger who muses how to possibly translate this word into other languages\ldots} To rectify this problem, while simultaneously creating a search pattern that will also catch cases of inappropriate ffl-ligatures in the (hopefully quite a bit more common) words  \enquote{Jugendtre\mbox{ffl}eiter} and \enquote{Kunststo\mbox{ffl}eitung}, you could add the following \Verb+\nolig+ macro to your document's preamble:
+Suppose, say, that you're preparing a special edition of Thomas Mann's novel \enquote{Der Tod in Venedig}\textemdash using an \enquote{Antiqua} (Roman) font since fewer and fewer people nowadays can manage to read text set in a period-appropriated {\blackletterfont blackletter} font with ease\textemdash and notice that the \pkg{selnolig} package does not appear to include a macro to suppress the unwanted ffl-ligature in the word \enquote{inbegri\mbox{ffl}eitend}.\footnote{This word really does occur in the aforementioned novel!} To rectify this problem, while simultaneously creating a search pattern that will also catch cases of inappropriate ffl-ligatures in the (hopefully quite a bit more common) words  \enquote{Jugendtre\mbox{ffl}eiter} and \enquote{Kunststo\mbox{ffl}eitung}, you could add the following \Verb+\nolig+ macro to your document's preamble:
 \begin{Verbatim}
      \nolig{ffleit}{ff|leit}
 \end{Verbatim}
@@ -547,7 +552,7 @@ If the \opt{hdlig} option is set, it is assumed that you prefer giving preferenc
 \subsubsection{Ligatures for \emph{as}, \emph{is}, and \emph{us} that pre-empt an \emph{sp} ligature}
 
 The same three reasons for not letting \emph{as}, \emph{is}, and \emph{us} ligatures pre-empt an \emph{st} ligature also apply to the case of the equally distinctive looking \emph{sp} ligature. The \pkg{selnolig} package therefore provides macros to ensure the use of the trailing \emph{sp} ligature in words such as \emph{clasp}, \emph{hasp}, \emph{hispanic}, \emph{raspberry}, \emph{teaspoon}, \emph{wasp}, \emph{crisp}, \emph{lisp}, \emph{whisper}, \emph{wispy}, and \emph{cusp}. 
-[Aside: Why isn't the \emph{sp} lig shown in \emph{clasp} and \emph{lisp}?!]
+[Still need to figure out the following: Why isn't the \emph{sp} lig shown in \emph{clasp} and \emph{lisp} in this list, even though the \emph{as} and \emph{is} ligs aren't being used and hence can't be pre-empting the \emph{sp} lig?!]
 
 
 
