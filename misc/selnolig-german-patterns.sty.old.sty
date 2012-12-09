@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2012/12/08]
+[2012/12/07]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -13,13 +13,22 @@
 % Author: Mico Loretan
 %   (loretan dot mico at gmail dot com)
 
+%% Note use of %%%%% for \nolig commands 
+%% with an Umlaut in first part of search 
+%% string: they're commented out because
+%% of lingering bugs in the lua code that
+%% prevents the correct application of the
+%% required searches that involve Umlaute.
+%% (The comments will be removed once the
+%% bugs in the lua code are removed.)
+
 
 % 1. ff -> f-f
 % ------------
 
 \nolig{Brieff}{Brief|f}
 \nolig{brieff}{brief|f}
- % Brief-f... (viele Fälle!)
+ % Brief-f... (viele Fälle)
 \nolig{Cheff}{Chef|f}
 \nolig{cheff}{chef|f}
  % Cheffahrer Cheffront ...
@@ -104,8 +113,7 @@
  % elffach zwölffach  
 \nolig{nffach}{nf|fach}
  % fünffach
-\nolig{Prüff}{Prüf|f}
-\nolig{prüff}{prüf|f}
+\nolig{Prüff}{Prü|ff} %%%%% temporary super-kludge!!
  % Prüffach Prüfform
 \nolig{Tariff}{Tarif|f}
 \nolig{tariff}{tarif|f}
@@ -237,8 +245,8 @@
  % Schafimperium Schafinnereien 
 \nolig{chlafi}{chlaf|i}
  % Schlafiglu schlafinduzierend  
-\nolig{rüfi}{rüf|i}
- % Prüfinhalt Prüfinstitution Prüfintervall
+\nolig{Prüfi}{Prü|fi} %%%%% temporary super-kludge!!
+ % Prüfinhalt Prüfinstitution
 
 \nolig{pfinst}{pf|inst}
  %  Wahlkampfinstitution
@@ -321,8 +329,8 @@
 
  % Dutzende von Worten...
 
-\nolig{Prüfl}{Prüf|l}
-\nolig{prüfl}{prüf|l}
+\nolig{Prüfl}{Prü|fl} %%%%% temporary super-kludge!!
+\nolig{prüfl}{prü|fl} %%%%% temporary super-kludge!!
  % Prüflabor Prüflast Prüflampe
 
 \nolig{fleut}{f|leut}
@@ -387,7 +395,7 @@
  % Chemieflaute
 \keeplig{ieflügel}
  % Akademieflügel Jalousieflügel
-\nolig{ürf|le}{ürf|le}
+\nolig{ürf|le}{ür|fle} %%% Kludge-Alert!
  % würfle Würflein 
 
 \nolig{aflück}{af|lück}
@@ -723,8 +731,8 @@
 \nolig{nfte}{nf|te}
  % Fünfte fünfter
 
-\nolig{rüfte}{rüf|te} 
- % prüfte überprüfte Prüftheorie
+\nolig{rüfte}{rü|fte} %%%%% temporary super-kludge!!
+ % prüfte überprüfte
 
 \nolig{rfte}{rf|te}
  % durfte bedurfte surfte 
@@ -894,18 +902,17 @@
 % Suppress this ligature globally
 \nolig{fj}{f|j}
 
- % Once more, there are some words of *non-
- % German* (e.g., Nordic and Slavic) origin 
- % for which the 'fj' ligature should not be 
- % suppressed. Use \keeplig macros to define 
- % such cases.
+ % Once more, there are some words of *non-German*
+ % (e.g., Nordic and Slavic) origin for which the
+ % 'fk' ligature should not be suppressed. Use
+ % \keeplig macros to define such cases.
 
 	\keeplig{fjord}
 	\keeplig{fjell}
 	\keeplig{Prokofjew}
 	\keeplig{Sufjan}% Stevens
 	\keeplig{Eefje} % Dutch first name
-	\keeplig{fjäll} % Tegefjäll (Sweden)
+	\keeplig{fjäll} % Tegefjäll: Swedish skiing area
 	\keeplig{Astafjew} 
      % Russian author (Wiktor) and 
      % soccer player (Maksim)

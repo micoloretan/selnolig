@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/07
+% Date: 2012/12/08
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -247,7 +247,7 @@ Even more importantly, Felix and Steffen created scripts to systematically and c
 
 The \href{http://www.ctan.org/tex-archive/support/rmligs}{\pkg{rmligs}} script lists hundreds of German language words for which various f\nobreak-liga\-tures should be suppressed. I created many of the initial German language ligature suppression rules of the \pkg{selnolig} package to treat the words listed in the \pkg{rmligs} package.\footnote{All versions of \pkg{rmligs} are archived at \url{http://www.j3e.de/ispell/igerman98/dict/}. A slightly modified version of the \pkg{rmligs} package's test file, now called \opt{rmligs-testfile.tex}, is included among the ancillary files distributed with the \pkg{selnolig} package.} 
 
-Matthias Vogel very kindly informed me of a very useful and detailed set of macros, named \href{http://www.winedt.org/Macros/LaTeX/Ligatures-German.php}{Ligatures-German}, which he wrote for the WinEdt programmer's editor, to suppress f-ligatures by inserting the \pkg{babel}~\Verb+"|+ shortcut macro in the appropriate spots. Matthias' regular-expression based macros have led me to refine and extend the scope of the \pkg{selnolig}'s \cmmd{nolig} commands.
+Matthias Vogel very kindly informed me of a very useful and detailed set of macros, named \href{http://www.winedt.org/Macros/LaTeX/Ligatures-German.php}{Ligatures-German}, which he wrote for the WinEdt programmer's editor, to suppress f-ligatures by inserting the \pkg{babel}~\Verb+"|+ shortcut macro in the appropriate spots. Matthias' regular-expression based macros and a file he sent me containing a very extensive list of German words that need one or more f-ligatures suppressed led me to thoroughly refine and extend the scope of the \pkg{selnolig}'s ligature-suppressing commands for German words.
 
 Barbara Beeton provided careful and incisive comments on an early version of this user guide and the English-language ligature suppression macros. Other contributors to \url{tex.stackexchange.com} and \url{comp.text.tex}, too numerous to name individually, also helped guide and influence the genesis of this package. To all of you, I express my sincere thanks.
 
@@ -311,7 +311,7 @@ To give an example: If the \opt{ngerman} option is set, the package uses the mac
 \begin{Verbatim}
      \nolig{flich}{f|lich}
 \end{Verbatim}
-to break up the fl-ligature in the words brieflich, tariflich, trefflich, hilflich, verwerflich, beruflich, sträflich, höflich, glimpflich, unerschöpflich and begrifflich\textemdash and probably quite a few more words too. This macro is, unfortunately, a bit too broad because it also operates on words such as Pf\breaklig licht and verpf\breaklig lichten, for which the fl-ligature should \emph{not} be suppressed. Rather than provide a plethora of slightly more restrictive \cmmd{nolig} macros just to avoid including the Pflicht- and pflicht-words, the package provides the commands
+to break up the fl-ligature in the words brieflich, tariflich, trefflich, hilflich, verwerflich, beruflich, sträflich, höflich, glimpflich, unerschöpflich, Lauflicht, and begrifflich\textemdash and quite a few more words too. This macro is, unfortunately, a bit too broad because it also operates on words such as Pf\breaklig licht and verpf\breaklig lichten, for which the fl-ligature should \emph{not} be suppressed. Rather than provide a plethora of slightly more restrictive \cmmd{nolig} macros just to avoid including the Pflicht- and pflicht-words, the package provides the commands
 \begin{Verbatim}
      \keeplig{Pflicht}
      \keeplig{pflicht}
@@ -411,7 +411,7 @@ Part 4 of this file, which is also processed if the \opt{hdlig} option is set, d
 
 \TeX's hyphenation algorithms are widely acknowledged to be very good. However, for the English language case at least, it tends to miss quite a few permissible hyphenation points when dealing with words that end in -f-ing, -ff-ing, -f-ier, -ff-ier, -f-iest, -f-less, -f-like, etc. Hyphenation exception lists are provided in the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-german-hyphex.sty}, respectively, for English and German words.
 
-The German-language hyphenation exception list is currently much the shorter of the two. This is because it is assumed that writers of German-language documents use the \pkg{babel} package while setting the option \opt{ngerman} option (or one of the related options); doing so also loads specialized hyphenation patterns suitable for German text.\footnote{As was already noted earlier, the \pkg{selnolig} package is also compatible with the \pkg{hyphsubst} package.} The German hyphenation exception list of the \pkg{selnolig} package therefore only needs to provide a fairly short list of words for which I've noticed that \pkg{babel}'s hyphenation algorithm throws errors. Among these words are (with \pkg{babel}'s incorrect hyphenation points) Kau-f-in-dex, Lau-f-in-dex, Schif-fer-b-art, Schil-fin-sel, and Schil-f-feld.
+The German-language hyphenation exception list is the shorter of the two. This is because it is assumed that writers of German-language documents use the \pkg{babel} package while setting the option \opt{ngerman} option (or one of the related options); doing so also loads specialized hyphenation patterns suitable for German text.\footnote{As was already noted earlier, the \pkg{selnolig} package is also compatible with the \pkg{hyphsubst} package.} Among the words for which I've noticed hyphenation patterns that need to be fixed are (with \pkg{babel}'s incorrect hyphenation points) Kau-f-in-dex, Lau-f-in-dex, Schif-fer-b-art, Schil-fin-sel, and Schil-f-feld.
 
 It is possible to instruct \pkg{selnolig} \emph{not} to load the package's hyphenation exception lists. You may want to do so, say, if you must use UK-English hyphenation patterns and therefore mustn't make use of the US-English hyphenation patterns provided by the package. (To the best of my knowledge, though, most of the hyphenation patterns indicated in \pkg{selnolig-english-hyphex.sty} are common to UK and US English.) To skip loading the additional hyphenation patterns when invoking the \pkg{selnolig} package, you should specify the option \opt{noadditional\-hyphen\-a\-tion\-patterns}.\footnote{I am obviously not trying to make it too easy to invoke this option~\dots}
 
@@ -450,7 +450,7 @@ As these examples suggest, setting \cmmd{debugon} can result in fairly copious a
 
 \subsection{Known bugs}
 
-Remark: The first four bugs in the following list may turn out to be related, i.e., may be caused by a single bug in the package's lua code.
+Remark: The bugs in following list may turn out to be related, i.e., may be caused by a single bug in the package's lua code.
 \begin{enumerate}
 \item The \cmmd{nolig} search-and-nolig-whatsit-insertion patterns do not appear to work properly on the final word in the argument of a command (e.g., |\footnote{}| and |\section{}|) \emph{unless} that  word (including any trailing punctuation mark) is followed by one or more space characters before the closing curly brace of the command's argument is encountered. 
 
@@ -462,10 +462,10 @@ For instance, the fl ligature in \enquote{kop\mbox{fl}os} is not broken up by ei
 
 \item If the final word (again, possibly, with an associated punctuation character) in a sentence immediately \emph{prior} to the start of an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, the |\nolig| macro again will not work properly. The recommended remedy is to leave a blank line between that sentence and the start of the environment in question. Inserting an \enquote{invisible} instruction, such as \Verb+\vphantom{x}+, also works.
 
-\item The |\nolig| search-and-insert operations currently don't work properly if the first part of the search string, i.e., the part \emph{before} the \Verb+|+~symbol, contains a character with an Umlaut (dieresis) or other diacritic. [Note added for version 0.159 of the package: This bug may be circumvented by moving the vertical bar (\Verb+|+) in the second argument of the affected \cmmd{nolig} statement forward (earlier) by one position. This fix is admittedly extremely kludgy, but it works!]
-
-\item I'm not sure if the following matter constitutes a bug or \enquote{just} a case of incompatibility between two packages. The \pkg{selnolig} package does not appear to interact well with the \pkg{ngerman} package; however, as was noted earlier, it interacts nicely with the \pkg{babel} package (with one or more of the \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} options set). Unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package with one of the available German language options, I probably won't bother figuring out how to fix this incompatibility.
 \end{enumerate}
+
+I'm not sure if the following matter constitutes a bug or \enquote{just} a case of incompatibility between two packages. The \pkg{selnolig} package does not appear to interact well with the \pkg{ngerman} package; however, as was noted earlier, it interacts nicely with the \pkg{babel} package (with one or more of the \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} options set). Unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package with one of the available German language options, I probably won't bother figuring out how to fix this incompatibility.
+
 
 
 \subsection{Composite words made up of two different sets of primitive words}
@@ -611,18 +611,15 @@ selnolig-german-patterns.sty]{German-language ligature suppression patterns: \\
 \pkg{selnolig-german-patterns.sty}}
 \label{sec:germ-listing}
 
-\begin{multicols}{2}
 
-Introductory notes: 
+Introductory note: 
 \begin{itemize}
-%\item Macros that don't work quite right yet are commented out with \Verb/%%%%%/ markers. 
-%(The reason these macros don't work quite right is that the search strings contain an Umlaut character in the part \emph{before} the ligation-suppression point. Hopefully, this issue will be fixed soon.)
-
 \item To accommodate the practice of Swiss-German writers of not using the \enquote{ß} character (and using \enquote{ss} in its place), all search-and-insert strings that contain an \enquote{ß} character are duplicated with equivelent search-and-insert strings containing \enquote{ss}.
-
 \end{itemize}
 
+\bigskip
 
+\begin{multicols}{2}
 \VerbatimInput{selnolig-german-patterns.sty}
 \end{multicols}
 

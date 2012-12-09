@@ -42,17 +42,14 @@ local prefix_length = function(word, byte)
   return unicode.utf8.len( string.sub(word,0,byte) )
 end
 
-  -- Problem: string.find and unicode.utf8.find return 
-  -- the byte-position at which the pattern is found 
-  -- instead of the character-position. Fix this by
-  -- providing a dedicated string search function.
-
 local unicode_find = function(s, pattern, position)
+  -- problem: string.find and unicode.utf8.find return the byte-position 
+  -- at which the pattern is found instead of the character-position
   -- Strart by correcting the incoming position
   if position ~= nil then
     debug_info("Position: "..position)
     sub = string.sub(s, 1, position)
-    position=position+string.len(sub) - unicode.utf8.len(sub)
+    position = position + string.len(sub) - unicode.utf8.len(sub)
     debug_info("Corrected position: "..position)
   end
   -- Now execute find and fix it accordingly
