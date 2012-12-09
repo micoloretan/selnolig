@@ -20,7 +20,9 @@
 *.mtc
 *.mtc0
 *.nav
+*.new
 *.nlo
+*.old
 *.out
 *.pdfsync
 *.ps
