@@ -1,9 +1,9 @@
 selnolig
 ========
 
-The selnolig package suppresses typographic ligatures automatically based on predefined search patterns for English and German language documents. The search patterns focus on ligatures deemed inappropriate because they span morpheme boundaries within words. For example, the word shelfful, which is mentioned in the TeX book as a word for which the ff-ligature might be inappropriate, is automatically typeset as shelf[]ful rather than as shel[ff]ul.
+The LuaLaTeX package "selnolig" serves to suppress typographic ligatures automatically based on predefined search patterns for English and German language documents. The search patterns focus on ligatures deemed inappropriate because they span morpheme boundaries within words. For example, the word shelfful, which is mentioned in the TeXbook as a word for which the ff-ligature might be inappropriate, is automatically typeset as shelf[]ful rather than as shel[ff]ul.
 
-The selnolig package provides ligature suppression macros  for the common typographic f-ligatures. These comprise not only the familiar ff, fi, fl, ffi, and ffl ligatures, but also ligatures such as ft and fft, which are frequently provided by many fonts suitable for typesetting text.
+The selnolig package provides ligature suppression macros for the common typographic f-ligatures for both English and German language documents. These comprise not only the familiar ff, fi, fl, ffi, and ffl ligatures, but also ligatures such as ft and fft, which are frequently provided by many fonts suitable for typesetting text.
 
 For English language documents, the package also provides ligature suppression macros for a selection of discretionary and historic ligatures.
 
