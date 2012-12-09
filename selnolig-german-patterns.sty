@@ -56,6 +56,10 @@
 \nolig{Schilff}{Schilf|f}
 \nolig{schilff}{schilf|f}
   % Schilffeld Schilfflöte Schilffloß
+\nolig{Schlaffenst}{Schlaf|fenst}
+  % Schlaffenster 
+  % (Can't be abbreviated more without
+  % creating lots of Type-II errors!)
 \nolig{Senff}{Senf|f}
 \nolig{senff}{senf|f}
   % Senffabrik senffleck 
@@ -126,8 +130,6 @@
   \keeplig{ffeldien}  % Schnüffeldienst
   \keeplig{offeldru}  % Kartoffeldruck
 
-\nolig{ffens}{f|fens}
-  % Schlaffenster Tariffenster
 \nolig{ffestl}{f|festl}
   % Straffestlegung
 \nolig{ffestsp}{f|festsp}
@@ -300,8 +302,9 @@
 \nolig{Dorfl}{Dorf|l}
 \nolig{dorfl}{dorf|l}
   % Dorfladen Dorflage Dorfleitplan
-\nolig{Hufl}{Huf|l}
-  % Huflattich
+\nolig{Huflatt}{Huf|latt}
+\nolig{huflatt}{huf|latt}
+  % Huflattich huflattichartig
 \nolig{Kampfl}{Kampf|l}
 \nolig{kampfl}{kampf|l}
   % Kampflärm Kampfluftschiff
@@ -389,15 +392,13 @@
   %% Vorsicht mit Pflicht and pflicht:
   \keeplig{Pflicht}
   \keeplig{pflicht}
-    %% Sonderregel für Sumpflicht(er):
+    %% Noch mehr Vorsicht mit Sumpflicht:
     \nolig{Sumpflicht}{Sumpf|licht}
 
 \nolig{flig}{f|lig}
   % schweflig würflig knifflig mufflig
 \nolig{flief}{f|lief}
   % schieflief Hoflieferant
-  \keeplig{efliefe}
-  % gefliefert (?)
 \nolig{fling}{f|ling}
   % Prüfling Fünfling Sträfling Täufling
 \nolig{flini}{f|lini}
@@ -407,7 +408,7 @@
 \nolig{flist}{f|list}
   % Prüfliste Rufliste Kaufliste
 \nolig{fliter}{f|liter}
-  % Hofliteratur Rünflitermotor
+  % Hofliteratur Fünflitermotor
 
 \nolig{flöff}{f|löff}
   % Tieflöffelbagger auflöffeln
@@ -446,9 +447,8 @@
 \nolig{lflos}{lf|los}
   % hilflos
 
-\nolig{ofl[aä]d}{of|lad}
-  % Biohofladen
-  % Biohofläden
+\nolig{ofl[aä]d}{of|l}
+  % Biohofladen Biohofläden
 \nolig{oflück}{of|lück}
   % Vorhoflücke
 
@@ -468,8 +468,7 @@
 \nolig{pflied}{pf|lied}
   % Kampflied
 \nolig{pfl[oö]ch}{pf|l}
-  % Knopfloch
-  % Knopflöcher
+  % Knopfloch Knopflöcher
 \nolig{pfl[oö]s}{pf|l}
   % kampflos kopflos 
   % krampflösend Hüftkopflösung
@@ -489,8 +488,9 @@
 \nolig{ürf|le}{ürf|le}
   % würfle Würflein 
 
-\nolig{weifl[eu]}{weif|l}
+\nolig{weifle}{weif|le}
   % bezweifle verzweifle
+\nolig{weiflu}{weif|lu}
   % Verzweiflungsakt
 
 
@@ -512,12 +512,10 @@
 \nolig{ffisch}{f|fisch}
   % Kampffisch Wolffisch
 
-\nolig{ffuß}{f|fuß}
-\nolig{ffuss}{f|fuss}
-  %  Grieffuß Grieffuss
-\nolig{ffüß}{f|füß}
-\nolig{ffüss}{f|füss}
-  % Greiffüße Greiffüsse
+\nolig{ff[uü]ß}{f|fuß}
+\nolig{ff[uü]ss}{f|fuss}
+  % Grieffuß Greiffüße
+  % Grieffuss Greiffüsse
 
 \nolig{hoffing}{hof|fing}
   % Bischoffinger
@@ -559,9 +557,10 @@
   % Grifflängen Grifflaschen Griffleiste
   % grifflos angrifflustig
 \nolig{Hofflü}{Hof|flü}
+\nolig{hofflü}{hof|flü}
   % Hofflügel 
-\nolig{offline}{off|line}
 \nolig{Offline}{Off|line}
+\nolig{offline}{off|line}
   % offline, Offline
 \nolig{Pfiffl}{Pfiff|l}
   % Pfifflaute
@@ -572,6 +571,7 @@
 \nolig{stoffl}{stoff|l}
   % lots of words...
 \nolig{Treffl}{Treff|l}
+\nolig{treffl}{treff|l}
   % Trefflokal
 
 \nolig{afflu}{aff|lu}
@@ -584,7 +584,7 @@
 \nolig{fflast}{ff|last}
   % Rohstofflastigkeit Treibstofflaster
 \nolig{fflieb}{ff|lieb}
-  % Riffliebende 
+  % riffliebend
 \nolig{ffloch}{ff|loch}
   % Suffloch Griffloch Sauerstoffloch
 \nolig{fflöch}{ff|löch}
@@ -603,7 +603,7 @@
   % Brennstofflieferungen
 \nolig{offlo}{off|lo}
   % wirkstofflos Sauerstoffloch
-  % offload, Offload
+  % offload
 
 \nolig{uffl[aä]d}{uff|l}
  % Suffladen Suffläden
@@ -680,21 +680,25 @@
 \nolig{Dorft}{Dorf|t}
 \nolig{dorft}{dorf|t}
   % Dorftrottel Dorftratsch Dorftümpel
-\nolig{Hoft[aäeioöuü]}{Hof|t}
-\nolig{hoft[aäeioöuü]}{hof|t}
+\nolig{Hoft}{Hof|t}
+\nolig{hoft[aäehioöruü]}{hof|t}
   % Hoftor Klosterhoftor
+\nolig{Prüft}{Prüf|t}
+\nolig{prüft[eh]}{prüft[eh]}
+  % Prüftheorie Prüftechnik Prüfteam
+  % prüfte überprüfte 
 \nolig{Schlaft}{Schlaf|t}
-\nolig{schlaft}{schlaf|t}
+\nolig{schlaft[aäehioöruüy]}{schlaf|t}
   % Schlaftablette -teddy -tee -temperatur 
   % -therapeut -therapie -tier -tod -trank
-\nolig{Straft}{Straf|t}
-\nolig{straft[aäehioöuü]}{straf|t}
+\nolig{Straft}{Straf|t} 
+\nolig{straft[aäehioöruüy]}{straf|t}
   % (viele Fälle)
 
-\nolig{eiftr}{eif|tr}
-  % Eingreiftruppe Nadelstreifträger 
 \nolig{eifte}{eif|te}
   % schleifte reifte seifte 
+\nolig{eiftr}{eif|tr}
+  % Eingreiftruppe Nadelstreifträger 
 
 \nolig{ffte}{ff|te}
   % schaffte hoffte klaffte verpuffte
@@ -740,28 +744,29 @@
   % elftausend zwölftausend Golftasche 
 \nolig{lfte}{lf|te}
   % Hälfte elfte elftens zwölfte
-\nolig{lfto}{lf|to}
+  \keeplig{Delfter}  % Person von Delft
+  \keeplig{Halfter}
+  \keeplig{halfter}
+
+\nolig{lft[oö]}{lf|t}
   % Zwölftonmusik Elftonner Golftour
-\nolig{lftö}{lf|tö}
-  %  zwölftönend
+  % zwölftönend
 
 \nolig{nftause}{nf|tause}
   % fünftausend Fünftausender
 \nolig{nfte}{nf|te}
   % Fünfte fünfter
-\nolig{nftopf}{nf|topf}
-  % Senftopf
-\nolig{nftö}{nf|tö}
-  % Senftöpfchen
+  \keeplig{Zünfte}  % Zünfte
+  \keeplig{zünfte}  % zünftig
+  \keeplig{kunfte}  % Unterkunftersuch
+  \keeplig{künfte}  % Unterkünfte
+
+\nolig{nft[oö]pf}{nf|t}
+  % Senftopf Senftöpfchen
 \nolig{nftü}{nf|tü}
   % fünftürig Senftüte
   \keeplig{nftüb}
   % Vernunftüberlegung Zunftüberlieferung
-
-\nolig{oftü}{of|tü}
-  % Hoftür
-\nolig{orfto}{orf|to}
-  % Dorftourismus
 
 \nolig{pfte}{pf|te}
   % kämpfte schimpfte schrumpfte
@@ -782,41 +787,27 @@
   % durfte bedurfte surfte 
   % dürfte schlürfte unbedarfte
   % schärfte verschärfte 
-\nolig{rftr}{rf|tr}
-  % Wurftraining Surftrip Freiwurftreffer
-\nolig{rftu}{rf|tu}
-  % Wurftuch
-\nolig{rüfte}{rüf|te} 
-  % prüfte überprüfte Prüftheorie
-\nolig{rftig}{rf|tig}
-  % dürftig bedürftig
-
-\nolig{uftas}{uf|tas}
-  % Ruftaste Vorlauftaste
-\nolig{urfta}{urf|ta}
-  % Wurftalent Auswurftaste Surftalent
-  \keeplig{tdurfta}  % Notdurftanlage 
-\nolig{urfto}{urf|to}
-  % Freiwurftor Surftour
-
-%% various \keeplig macros for ft case:
-  \keeplig{Delfter}  % Person von Delft
-  \keeplig{Halfter}
-  \keeplig{halfter}
-
-  \keeplig{Zünfte}  % Zünfte
-  \keeplig{zünfte}  % zünftig
-  \keeplig{kunfte}  % Unterkunftersuch
-  \keeplig{künfte}  % Unterkünfte
-
   \keeplig{werfte}
   \keeplig{Werfte}
   \keeplig{Warfte}
 
+\nolig{rftr}{rf|tr}
+  % Wurftraining Surftrip Freiwurftreffer
+\nolig{rftu}{rf|tu}
+  % Wurftuch
+\nolig{rftig}{rf|tig}
+  % dürftig bedürftig
+
+\nolig{uftas}{uf|tas}
+  % Ruftaste Vorlauftaste Kauftasche
   \keeplig{Gruftas}  % Gruftasseln
+\nolig{urfta}{urf|ta}
+  % Wurftalent Auswurftaste Surftalent
+  \keeplig{tdurfta} % Notdurftanlage 
+\nolig{urfto}{urf|to}
+  % Freiwurftor Surftour
 
-  \keeplig{grüfte}  % Holzkammergrüfte
-
+%% various \keeplig macros for ft case?
 %  \keeplig{luft}
 %  \keeplig{Luft}
 %  \keeplig{lüft}
@@ -828,7 +819,6 @@
 %  \keeplig{hüfte}
 %  \keeplig{Hüfte}
 %  \keeplig{Kraft}
-
 
 
 
@@ -844,10 +834,10 @@
 \nolig{fh}{f|h}
 \nolig{fk}{f|k}
 
-  % However, there are words of *non-German* 
+  % However, there are names of *non-German* 
   % origin for which the 'fk' ligature 
   % shouldn't be suppressed. Use \keeplig 
-  % macros to treat such cases.
+  % macros to treat these cases.
   \keeplig{Kafka}
   \keeplig{kafka}
   \keeplig{Piefke}
@@ -863,22 +853,25 @@
 % 10. fj -> f-j
 % -------------
 
-% Suppress this ligature globally
-\nolig{fj}{f|j}
+% Suppress this ligature globally -- Words of
+% German origin only seem to feature 'fj' 
+% across morpheme boundaries.
 
-  % Once more, there are some words of *non-
-  % German* (e.g., Nordic and Slavic) origin 
-  % for which the 'fj' ligature should not be 
-  % suppressed. Use \keeplig macros to define 
-  % such cases.
-  \keeplig{fjord}
-  \keeplig{fjör} 
-  % A bunch of Icelandic places; catches 
-  % both German Isafjördur and Icelandic 
-  % Ísafjörður
+\nolig{fj}{f|j}
+  % aufjauchzen aufjaulen fünfjährig Kampfjet
+  % Strafjustizgebäude Dorfjugend Kopfjäger ...
+
+  % Once more, though, there are some words of 
+  % *non-German* (e.g., Nordic and Slavic)  
+  % origin for which the 'fj' ligature should 
+  % not be suppressed. Use \keeplig macros to 
+  % treat such cases.
+  \keeplig{fjord} % Norwegian
+  \keeplig{fjör}  % Icelandic, e.g.,
+                  % Isafjördur and Ísafjörður
   \keeplig{Ísafjarðarbær} % city in Iceland
-  \keeplig{fjell}
-  \keeplig{fjäll}  % Tegefjäll (Sweden)
+  \keeplig{fjell} % Norwegian
+  \keeplig{fjäll} % Swedish (?)
 
   \keeplig{Prokofjew}
   \keeplig{Sufjan} % Stevens
@@ -891,57 +884,13 @@
 
 % 11. fff -> ff-f
 % ---------------
-  % Just in case there's a font that has a
-  %    triple-f ligature:
+  % Just in case there's a font that 
+  % features a triple-f ligature:
 
 \nolig{fff}{ff|f}
-  % grifffest Stofffarbe Sprengstofffalle 
+  % grifffest Stofffarbe Schifffahrt
 
   % This macro will also break up any 'fffl'
   % ligatures into 'ff' and 'fl' parts.
-  % Example words: Sauerstoffflasche, 
-  %   Schlifffläche, Stofffleck,
-  %   Kunststoffflügel, Kunststofffläche
-
-
-
-
-% 12. th -> th
-% ------------
-%%% Experimental and highly incomplete,
-%%% and therefore commented out for now.
-%\if@hdligset 
-%
-%\nolig{thaft}{t|haft}
-%  % ernsthaft Heimathafen statthaft
-%\nolig{thalt}{t|halt}
-%  % enthalten festhalten mithalten
-%\nolig{thaub}{t|haub}
-%  % Zimthaube Fronthaube
-%\nolig{thaus}{t|haus}
-%  % Rathaus Kunsthaus Gasthaus
-%\nolig{thielt}{t|hielt}
-%  % enthielt 
-%\nolig{thalb}{t|halb}
-%  % anderthalb
-%\nolig{thall}{t|hall}
-%  % Kunsthalle Sporthalle
-%\nolig{theit}{t|heit}
-%  % Beliebtheit 
-%\nolig{thab}{t|hab}
-%  % Machthaber
-%\nolig{thin}{t|hin}
-%  % weithin schlechthin mithin
-%\nolig{thergang}{t|hergang}
-%  % Tathergang 
-%\nolig{thergeb}{t|hergeb}
-%  % althergebracht 
-%\nolig{thergeh}{t|hergeh}
-%  % weithergeholt
-%\nolig{sther}{st|her}
-%  % selbsthergestellt selbstherrlich
-%\nolig{späth}{spät|h}
-%\nolig{Späth}{Spät|h}
-%\fi
-
-
+  % Examples: Sauerstoffflasche Stofffleck
+  %           Schlifffläche Kunststoffflügel
