@@ -3,7 +3,7 @@ selnolig
 
 All files associated with the lualatex package "selnolig"
 
-The user guide may be found in the file selnolig.pdf.
+The package's user guide may be found in the file selnolig.pdf.
 
 To start using this package, download the *.sty files and the selnolig.lua file to a suitable directory in your personal TeX directory or the localtexmf directory. (The precise location will depend on your TeX distribution.)
 
