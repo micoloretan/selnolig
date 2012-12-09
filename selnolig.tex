@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/08
+% Date: 2012/12/09
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -266,7 +266,7 @@ It has the status \enquote{maintained}.
 The \pkg{selnolig} package has the following components:
 \begin{itemize}
 \item The main \enquote{driver} file is called  \pkg{selnolig.sty}. It loads several other files and sets up the the package's main user macros, \cmmd{nolig} and \cmmd{keeplig}. These macros are explained in more detail in \cref{sec:syntax} below.
-\item The package's user macros rely on lua code given in the file \pkg{selnolig.lua}. 
+\item The package's user macros rely on lua code contained in the file \pkg{selnolig.lua}. 
 \item Extensive lists of non-ligation rules for English and German language documents are provided in the files \pkg{selnolig-english-patterns.sty} and \pkg{selnolig-english-patterns.sty}. 
 \item Supplemental hyphenation exception patterns, mostly for words that involve one or more ligatures that are to be suppressed, are contained in the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-english-hyphex.sty}.
 \item A user guide (the document you're reading right now); the source code of the user guide is available in the file \pkg{selnolig.tex}. 
@@ -278,24 +278,25 @@ The \pkg{selnolig} package has the following components:
 
 \subsection{Command syntax} \label{sec:syntax}
 
-The file \pkg{selnolig.sty} should be loaded with a \cmmd{usepackage} statement, generally with one or more options; see \cref{sec:options} for a discussion of the available options. After setting up several Boolean switches to structure the processing of options, the package next loads the file \pkg{selnolig.lua}, which contains the package's lua code.
-The package then sets up the following macros:
+The file \pkg{selnolig.sty} should be loaded with a \cmmd{usepackage} statement, generally with one or more options; see \cref{sec:options} for a discussion of the available options. After setting up several Boolean switches to structure the processing of options, the package next loads the file \pkg{selnolig.lua}, which contains the package's lua code.  
+The package then sets up several user macros which, in turn, make use of the lua code:
 \begin{enumerate}
 \item The main user macro is called \cmmd{nolig}. Each \cmmd{nolig} instruction takes two arguments: a search string and a string that indicates the insertion point for the non-ligation \enquote{whatsit}. For example, the macro
 \begin{Verbatim}
      \nolig{lfful}{lf|ful}
 \end{Verbatim}
-instructs \LuaLaTeX\ to suppress automatically the ff-ligature in words such as \enquote{shelfful}, \enquote{bookshelfful}, and \enquote{selffulfilling}.\footnote{More than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction. For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl and the ff ligature in this word. As I note in \cref{sec:debugon}, the \pkg{selnolig} package actually uses two separate \cmmd{nolig} commands to treat the ligatures in Auflaufform. }
+instructs \LuaLaTeX\ to suppress automatically the ff-ligature in words such as \enquote{shelfful}, \enquote{bookshelfful}, and \enquote{selffulfilling}. 
 
-%\enlargethispage{1\baselineskip}
+More than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction.\footnote{For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl and the ff ligature in this word. As I note in \cref{sec:debugon}, the \pkg{selnolig} package actually uses two separate \cmmd{nolig} commands to treat the ligatures in Auflaufform. }
+
 
 It is possible to use \enquote{wildcard} characters in the search string, as long as these characters occur after the non-ligation point. For example, the file \pkg{selnolig-german-patterns.sty} employs the instruction 
 \begin{Verbatim}
      \nolig{Aufl[aäeioöuü]}{Auf|l}
 \end{Verbatim}
-to search for words that start with \opt{Aufl} followed by a vowel. This particular search string is used in order not to catch the abbreviated word \enquote{Aufl.}, which does \emph{not} get its fl-ligature suppressed. Incidentally, it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
+to search for words that start with \opt{Aufl} followed by a vowel.\footnote{This particular search string is used in order not to catch the abbreviated word \enquote{Aufl.}, which does \emph{not} get its fl-ligature suppressed.} Incidentally, it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
 
-If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the \cmmd{nolig} rules. E.g., the German verb \enquote{auffahren} is caught by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffahr}{f|fahr}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Building in some redundancy seems like a reasonable way to proceed.
+If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the package's ligature suppression rules. For instance, the need to suppress the ff-ligature in the German verb \enquote{auffahren} is catered to both by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffahr}{f|fahr}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Building in some redundancy seems like a reasonable way to proceed.
 
 The arguments of the \cmmd{nolig} command (as well as of the package's other user commands) are case-sensitive. 
 
@@ -318,7 +319,7 @@ to break up the fl-ligature in the words brieflich, tariflich, trefflich, hilfli
      \keeplig{Pflicht}
      \keeplig{pflicht}
 \end{Verbatim}
-to override the action of the \Verb+\nolig{flich}{f|lich}+ instruction for words that contain these two word fragments. (Recall that the argument of |\keeplig| is case-sensitive; hence, two \cmmd{keeplig} instructions are needed.)
+to override the action of the \Verb+\nolig{flich}{f|lich}+ instruction for words that contain these two word fragments. Recall that the argument of |\keeplig| is case-sensitive; hence, two \cmmd{keeplig} instructions are needed.
 
 Just as it is possible to override the action of a \cmmd{nolig} command with a subsequent \cmmd{keeplig} command, it is also possible to override the action of a \cmmd{keeplig} macro with a more specific \cmmd{nolig} command. For instance, it turns out that the two \cmmd{keeplig} commands stated in the preceding paragraph are themselves a bit too broad because they also affect the typesetting of the composite word \opt{Sumpflicht} (swamp light), for which the fl-ligature \emph{should} be suppressed. To address this case, the file \pkg{selnolig-german-patterns.sty} provides the macro 
 \begin{Verbatim}
@@ -331,7 +332,7 @@ Observe that we make use of the case sensitivity in the final \cmmd{nolig} instr
 
 \end{enumerate}
 
-Incidentally, the \pkg{selnolig} package does not provide a dedicated macro to disable the action of a \cmmd{nolig} macro on an ad~hoc basis, i.e., to \emph{force} the use of a typographic ligature on a one-off basis. The \LaTeX\ command \Verb+\mbox{}+ already caters to this need.
+Incidentally, the \pkg{selnolig} package does not provide a dedicated macro to override the action of a \cmmd{nolig} instruction on an ad~hoc basis, i.e., to force the use of a typographic ligature on a one-off basis. The \LaTeX\ command \Verb+\mbox{}+ already caters to this need.
 
 
 The final few steps in the startup process depend on which language-related options are set:
@@ -482,7 +483,7 @@ It turns out that if the \opt{ngerman} option is set and the \pkg{babel} package
 
 Extensive lists of German and English language words for which one or more ligatures should be suppressed are provided in the files \pkg{selnolig-german-wordlist.tex} and \pkg{selnolig-english-wordlist.tex}.\footnote{I started the list of German language words with the examples provided by the \pkg{rmligs} script, but have come up with quite a few more words since then.} Obviously, I can't and won't make a claim that either of these lists is complete. Suggestions for additional words are always welcome.
 
-The files \pkg{selnolig-german-test.tex} and \pkg{selnolig-english-text.tex} are \enquote{driver programs} that load the \pkg{selnolig} package and then run it on the respective lists of German- and English-language words. To compile the driver programs, be sure to use \LuaLaTeX.
+The files \pkg{selnolig-german-test.tex} and \pkg{selnolig-english-text.tex} are \enquote{driver programs} that load the \pkg{selnolig} package and then run it on the respective lists of German- and English-language words. To compile the driver programs, be sure to use \LuaLaTeX because they make use of the \pkg{selnolig} package.
 
 
 \subsection{How to provide additional ligature suppression patterns}
