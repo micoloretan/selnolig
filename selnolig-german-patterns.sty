@@ -16,10 +16,12 @@
 
 % A note on the organization of the \nolig
 % macros in this file: They are grouped first
-% by f-ligature being suppressed. Within each 
-% such group, the \nolig commands are listed
-% for word beginnings and then by other
-% (word-interior) search strings.
+% by f-ligature being suppressed: ff -> f-f;
+% fi -> f-i, fl -> f-l, etc.
+% Within each of these sections, the \nolig 
+% commands are listed for word beginnings and 
+% then by other (word-interior) search strings, 
+% alphabetically within each group.
 
 
 % 1. ff -> f-f
@@ -227,7 +229,7 @@
   % Strafforderung
 \nolig{rifford}{rif|ford}
   % Tarifforderung
-  % don't catch "Clifford"!
+  % take care not to catch "Clifford"...
 
 
 
@@ -286,8 +288,8 @@
 
 \nolig{aufl}{auf|l}
 \nolig{Aufl[aäeioöuü]}{Auf|l}
-  % Hunderte Wörter...
-  % mustn't do \nolig{Aufl}{Auf|l} b/c
+  % Hundreds (thousands?) of words ...
+  % Mustn't do \nolig{Aufl}{Auf|l} b/c
   % of "Aufl." (abbrev. *with* ligature!)
   \keeplig{bauflä}   % Anbaufläche
   \keeplig{Bauflä}   % Anbaufläche
@@ -389,10 +391,10 @@
   % höflich bischöflich
   % unerschöpflich dörflich
   % vortrefflich begrifflich
-  %% Vorsicht mit Pflicht and pflicht:
+  %% Vorsicht mit Pflicht and pflicht...
   \keeplig{Pflicht}
   \keeplig{pflicht}
-    %% Noch mehr Vorsicht mit Sumpflicht:
+    %% Noch mehr Vorsicht mit Sumpflicht...
     \nolig{Sumpflicht}{Sumpf|licht}
 
 \nolig{flig}{f|lig}
@@ -512,8 +514,8 @@
 \nolig{ffisch}{f|fisch}
   % Kampffisch Wolffisch
 
-\nolig{ff[uü]ß}{f|fuß}
-\nolig{ff[uü]ss}{f|fuss}
+\nolig{ff[uü]ß}{f|f}
+\nolig{ff[uü]ss}{f|f}
   % Grieffuß Greiffüße
   % Grieffuss Greiffüsse
 
@@ -684,13 +686,15 @@
 \nolig{hoft[aäehioöruü]}{hof|t}
   % Hoftor Klosterhoftor
 \nolig{Prüft}{Prüf|t}
-\nolig{prüft[eh]}{prüft[eh]}
+\nolig{prüft[eh]}{prüf|t}
   % Prüftheorie Prüftechnik Prüfteam
   % prüfte überprüfte 
 \nolig{Schlaft}{Schlaf|t}
 \nolig{schlaft[aäehioöruüy]}{schlaf|t}
   % Schlaftablette -teddy -tee -temperatur 
-  % -therapeut -therapie -tier -tod -trank
+\nolig{Schilft}{Schilf|t}
+\nolig{schilft[aäehioöruüy]}{schilf|t}
+  % Schilfteich Schilftanz
 \nolig{Straft}{Straf|t} 
 \nolig{straft[aäehioöruüy]}{straf|t}
   % (viele Fälle)
@@ -714,8 +718,12 @@
 
 \nolig{ftag}{f|tag}
   % Tauftag Fünftagewoche
+\nolig{ftanz}{f|tanz}
+  % Kampftanz Schilftanz
 \nolig{ftax}{f|tax}
   % Ruftaxi
+\nolig{fteich}{f|teich}
+  % Schilfteich Dorfteich
 \nolig{ftheor}{f|theor}
   % Golftheorie Kampftheorien Auflauftheorien
 \nolig{ftod}{f|tod}
@@ -769,19 +777,17 @@
   % Vernunftüberlegung Zunftüberlieferung
 
 \nolig{pfte}{pf|te}
-  % kämpfte schimpfte schrumpfte
-  % klopfte schöpften
+  % kämpfte schimpfte schrumpfte schöpften
 \nolig{pft[aähioöruü]}{pf|t}
-  % Wettkampftag Kampftaktik 
-  % wahlkampftauglich Schnupftabak
-  % Schimpftiraden Mehrkampftitel Stapftiefe
-  % Dampftopf Sumpftour
-  % Kampftruppe Wettkampftrubel
-  % Kopftreffer Zopfträger
-  % Kopftuch Schnupftuch
+  % Wettkampftag Kampftaktik Kampftruppe
   % Kampftätigkeit Kampftänzer
-  % Herzklopftöne Wahlkampftöne
-  % Kopftücher Kopftüchlein Schnupftücher
+  % wahlkampftauglich Wahlkampftöne 
+  % Schnupftabak Schnupftuch Schnupftücher
+  % Schimpftiraden Mehrkampftitel Stapftiefe
+  % Dampftopf Sumpftour Wettkampftrubel
+  % Kopftreffer Kopftuch 
+  % Kopftücher Kopftüchlein 
+  % Herzklopftöne Zopfträger
 
 \nolig{rfte}{rf|te}
   % durfte bedurfte surfte 
