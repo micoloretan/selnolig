@@ -15,12 +15,12 @@
 
 
 % A note on the organization of the \nolig
-% macros in this file: They are grouped first
-% by f-ligature being suppressed: ff -> f-f;
-% fi -> f-i, fl -> f-l, etc.
-% Within each of these sections, the \nolig 
-% commands are listed for word beginnings and 
-% then by other (word-interior) search strings, 
+% macros in this file: They are grouped by
+% the f-ligature being suppressed: ff -> f-f;
+% fi -> f-i, fl -> f-l, etc. Within each of 
+% these sections, the \nolig commands are 
+% listed first for word-beginnings and 
+% second by word-interior search strings, 
 % alphabetically within each group.
 
 
@@ -31,7 +31,7 @@
 \nolig{brieff}{brief|f}
   % Brief-f... (viele Fälle!)
 \nolig{Cheff}{Chef|f}
-\nolig{cheff}{chef|f}
+\nolig{cheff[aäeioöruü]}{chef|f}
   % Cheffahrer Cheffront ...
 \nolig{Dorff[aäeiloöruü]}{Dorf|f}
 \nolig{dorff[aäeiloöruü]}{dorf|f}
@@ -60,8 +60,8 @@
   % Schilffeld Schilfflöte Schilffloß
 \nolig{Schlaffenst}{Schlaf|fenst}
   % Schlaffenster 
-  % (Can't be abbreviated more without
-  % creating lots of Type-II errors!)
+  % (Can't be abbreviated further without
+  % creating lots of Type-II errors.)
 \nolig{Senff}{Senf|f}
 \nolig{senff}{senf|f}
   % Senffabrik senffleck 
@@ -75,14 +75,13 @@
 \nolig{auff}{auf|f}
 \nolig{Auff}{Auf|f}
   % Hundreds (thousands?) or words that start
-  % with (or contain) auf-, Auf-f-, Kauf-f-, 
+  % with or contain auf-, Auf-f-, Kauf-f-, 
   % and Lauf-f-.
-  % Just need to provide a few \keeplig 
-  % macros to deal with historic names and 
+  % We do need to provide a few \keeplig 
+  % macros to deal with some surnames and 
   % some words of French origin.
   \keeplig{Stauffach}  % Stauffacher
-  \keeplig{Stauffer}   % Stauffer
-  \keeplig{Hohenstauffen}
+  \keeplig{Stauffer}   
   \keeplig{chauffier}
   \keeplig{Chauffier}
   \keeplig{chauffeur}
@@ -93,6 +92,15 @@
 \nolig{affris}{af|fris}
   % Schlaffrisur
 
+\nolig{ffabri}{f|fabri}
+  % Strumpffabrik
+\nolig{ffäch}{f|fäch}
+  % Brieffächer
+\nolig{ffäh}{f|fäh}
+  % hoffähig kampffähig 
+  % auffährt lauffähig 
+\nolig{ffahn}{f|fahn}
+  % Totenkopffahne Dorffahne Wahlkampffahnen
 \nolig{ffahr}{f|fahr}
   % Schifffahrt Schleiffahrt Tariffahrplan
 \nolig{ffall}{f|fall}
@@ -100,15 +108,6 @@
   \keeplig{offallee}
   % Oppenhoffallee
 
-\nolig{ffabri}{f|fabri}
-  % Strumpffabrik
-\nolig{ffahn}{f|fahn}
-  % Totenkopffahne Dorffahne Wahlkampffahnen
-\nolig{ffäch}{f|fäch}
-  % Brieffächer
-\nolig{ffäh}{f|fäh}
-  % hoffähig kampffähig 
-  % auffährt lauffähig 
 \nolig{ffäll}{f|fäll}
   % straffällig unauffällig 
 \nolig{ffält}{f|fält}
@@ -135,7 +134,7 @@
 \nolig{ffestl}{f|festl}
   % Straffestlegung
 \nolig{ffestsp}{f|festsp}
-  % Hoffestspiele
+  % Hoffestspiele Dorffestspiel
 \nolig{ffetz}{f|fetz}
   % Brieffetzen Stofffetzen
 \nolig{ffeue}{f|feue}
@@ -231,6 +230,8 @@
   % Tarifforderung
   % take care not to catch "Clifford"...
 
+\nolig{üffach}{üf|fach}
+  % Prüffach
 
 
 % 2. fi -> f-i
@@ -300,7 +301,8 @@
 
 \nolig{Chefl}{Chef|l}
 \nolig{chefl}{chef|l}
- %Cheflieferant -limousine -lobbyist -los
+  % Cheflieferant -limousine -lobbyist -los
+  \keeplig{scheflock} % Ascheflocken...
 \nolig{Dorfl}{Dorf|l}
 \nolig{dorfl}{dorf|l}
   % Dorfladen Dorflage Dorfleitplan
@@ -333,6 +335,11 @@
   % Straflücke
 \nolig{ampflin}{ampf|lin}
   % krampflindernd 
+\nolig{äufle}{äuf|le}
+  % Häuflein träufle
+
+\nolig{eufle}{euf|le}
+  % verteufle 
 
 \nolig{flage}{f|lage}
   % Rohstofflager Straflager Auflage 
@@ -401,6 +408,8 @@
   % schweflig würflig knifflig mufflig
 \nolig{flief}{f|lief}
   % schieflief Hoflieferant
+\nolig{flinde}{f|linde}
+  % Dorflinde Wolflinde Ziegelhoflinde
 \nolig{fling}{f|ling}
   % Prüfling Fünfling Sträfling Täufling
 \nolig{flini}{f|lini}
@@ -424,6 +433,8 @@
 \nolig{flösch}{f|lösch}
   % Hoflöschmaschine
 
+\nolig{flung}{f|lung}
+  % Verzweiflungsakt Verteuflung
 \nolig{flust}{f|lust}
   % Kampflust Impflust kauflustig Rauflust
 
@@ -431,6 +442,7 @@
   % Tieflage Tieflager Tieflieger
   % schieflachen schieflaufen schieflegen 
   % schieflief brieflich
+  % stiefle
   % Briefleistung Brieflesen Brieflaufzeiten
   \keeplig{iefluss}
   \keeplig{ieflüss}
@@ -445,6 +457,10 @@
   % Chemieflaute
   \keeplig{ieflügel}
   % Akademieflügel Jalousieflügel
+\nolig{gipfle}{gipf|le}
+  % gipfle
+\nolig{ipflig}{ipf|lig}
+  % zweigipflig fünfzipflig
 
 \nolig{lflos}{lf|los}
   % hilflos
@@ -460,6 +476,8 @@
   % Kakaopflanzen Indigopflanzen
   \keeplig{opflaster}
   % Kinopflaster
+\nolig{öpfle}{öpf|le}
+  % köpfle tröpfle Knöpfle
 \nolig{orflad}{orf|lad}
   % Dorfladen
 
@@ -481,19 +499,24 @@
 \nolig{rfläd}{rf|läd}
   % Dorfläden Surfläden
 
+\nolig{tafle}{taf|le}
+  % tafle
+
 \nolig{uflaut}{uf|laut}
   % Ruflaute Ruflautstärke
 \nolig{ufleu}{uf|leu}
   % Kaufleute aufleuchten 
 \nolig{urflad}{urf|lad}
   % Surfladen
-\nolig{ürf|le}{ürf|le}
+\nolig{ürfle}{ürf|le}
   % würfle Würflein 
 
+\nolig{wafle}{waf|le}
+  % schwafle
+\nolig{wefle}{wef|le}
+  % schwefle
 \nolig{weifle}{weif|le}
   % bezweifle verzweifle
-\nolig{weiflu}{weif|lu}
-  % Verzweiflungsakt
 
 
 
@@ -547,7 +570,7 @@
   % Baustoffingenieur Kunststoffingenieur
   % Kohlenstoffisotope
   \keeplig{stoffiz}
-  % Geheimdienstoffiziere
+  % Geheimdienstoffiziere 
 
 
 
@@ -579,6 +602,11 @@
 \nolig{afflu}{aff|lu}
   % Gafflust
 
+\nolig{effle}{eff|le}
+  % scheffle
+  \keeplig{effler} % some surnames:
+  % Loeffler Schaeffler Scheffler
+
 \nolig{fflamp}{ff|lamp}
   % Kompaktleuchtstofflampe
 \nolig{ffland}{ff|land}
@@ -599,6 +627,8 @@
 
 \nolig{offlad}{off|lad}
   % Sprengstoffladung 
+\nolig{öffle}{öff|le}
+  % löffle
 \nolig{offleck}{off|leck}
   % Treibstoffleck
 \nolig{offlief}{off|lief}
@@ -607,8 +637,13 @@
   % wirkstofflos Sauerstoffloch
   % offload
 
+\nolig{taffle}{taff|le}
+  % staffle
+
 \nolig{uffl[aä]d}{uff|l}
- % Suffladen Suffläden
+  % Suffladen Suffläden
+\nolig{üffle}{üff|le}
+  % schnüffle büffle trüffle
 \nolig{ufflon}{uff|lon}
   % Mufflon
 
@@ -616,6 +651,10 @@
 
 % 7. ffl -> f-fl
 % --------------
+
+\nolig{Cheffl}{Chef|fl}
+\nolig{cheffl[aäioöruü]}{chef|fl}
+  % Chefflugleiter
 
 \nolig{ffläch}{f|fläch}
   % Lauffläche Kampfflächen 
@@ -637,8 +676,9 @@
 \nolig{ffl[uü]ch}{f|fl}
   % Tarifflucht Werwolffluch
   % Tarifflüchtling
-\nolig{ffl[uü]g}{f|flug}
+\nolig{fflug}{f|flug}
   % Tiefflug Kampfflugzeug Chefflugleiter 
+\nolig{fflüg}{f|flüg}
   % Tiefflüge 
 \nolig{fflüs}{f|flüs}
   % Schleifflüsigkeit}
@@ -750,6 +790,8 @@
 
 \nolig{lfta}{lf|ta}
   % elftausend zwölftausend Golftasche 
+\nolig{lftä}{lf|tä}
+  % elftägig zwölftägig
 \nolig{lfte}{lf|te}
   % Hälfte elfte elftens zwölfte
   \keeplig{Delfter}  % Person von Delft
@@ -765,12 +807,14 @@
 \nolig{nfte}{nf|te}
   % Fünfte fünfter
   \keeplig{Zünfte}  % Zünfte
-  \keeplig{zünfte}  % zünftig
-  \keeplig{kunfte}  % Unterkunftersuch
+  \keeplig{zünfte}  % zünfte
+  \keeplig{kunfte}  % Unterkunftersuchung
   \keeplig{künfte}  % Unterkünfte
 
-\nolig{nft[oö]pf}{nf|t}
-  % Senftopf Senftöpfchen
+\nolig{nftopf}{nf|topf}
+  % Senftopf 
+\nolig{nftöpf}{nf|töpf}
+  % Senftöpfchen
 \nolig{nftü}{nf|tü}
   % fünftürig Senftüte
   \keeplig{nftüb}
@@ -807,6 +851,9 @@
 \nolig{uftas}{uf|tas}
   % Ruftaste Vorlauftaste Kauftasche
   \keeplig{Gruftas}  % Gruftasseln
+\nolig{ufte}{uf|te}
+  % abgestufte getaufte häufte
+  \keeplig{Luftein} % Lufteinlass
 \nolig{urfta}{urf|ta}
   % Wurftalent Auswurftaste Surftalent
   \keeplig{tdurfta} % Notdurftanlage 
