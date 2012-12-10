@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/09
+% Date: 2012/12/10
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -365,15 +365,18 @@ For German words, the following exceptions and adjustments apply:\footnote{These
 
 \item For some cases potentially giving rise to an fl-ligature at the juncture of a main word (Stammwort) and a suffix, preference is conventionally given to \enquote{how the syllables are pronounced and how a word would be hyphenated} (according to the Duden), leading to a suppression of the fl-ligature. For instance, the words schweflig (sulfurous), teuflisch (devilish), and Verzweiflung (despair) have their fl-ligatures suppressed even though in each case the~f and~l characters belong to the same underlying morpheme, {viz.}, Schwef(e)l, Teuf(e)l, and Zweif(e)l. For these words, the morphemological suffixes are clearly -ig, -isch, and -ung,  rather than -lig, -lisch, and -lung. 
 
-Nevertheless, usage for these and similar cases is \emph{not} to use the fl-ligature. To the best of my understanding, this convention may be based on the fact that these cases all involve the elision of the~e character between the~f and~l characters of the associated morphemes. The non-use of the fl-ligature may thus represent a subtle (possibly very subtle) nod towards how the associated morphemes would be written if the~e character weren't being elided. The fact that the syllables within these words all happen to be divided between the~f and~l characters may be a coincidence rather than a primary reason for this typographical practice.
+Nevertheless, usage for these and similar cases is \emph{not} to employ the fl-ligature. To the best of my understanding, this convention may be based on the fact that these cases all involve the elision of the~e character between the~f and~l characters of the associated morphemes. The non-use of the fl-ligature may thus represent a subtle (possibly very subtle) nod towards how the associated morphemes would be written \emph{if} the~e character weren't being elided. The fact that the syllables within these words all happen to be divided between the~f and~l characters may be a coincidence rather than the primary reason for this typographical practice.
 
 This convention also appears to govern the typesetting of words such as knifflig (tricky) and mufflig (grouchy), as well as that of the first-person-singular forms of verbs such as büffeln, löffeln, schaufeln, stiefeln, and zweifeln: they are rendered \emph{without} the fl-ligature, i.e., as büffle, löffle, schaufle, stiefle, and zweifle, respectively.
 
-\item If a word could \emph{end} with an fl-ligature even though the~\enquote{l} technically belongs to a different morpheme (say, because of an abbreviation that's in effect), the fl-ligature \emph{is} used. E.g., one writes Aufl.\ and gefl.\ with an fl ligature. (But, when spelled out, the words should be typeset as Auflage and gefällig[s\breaklig t].)
+\item If a word could \emph{end} with an fl-ligature even though the~f and~l technically belong to different morphemes (say, because of an abbreviation that's in effect), the fl-ligature \emph{is} used. E.g., one writes Aufl.\ \emph{with} an fl ligature. But, when spelled out, the word should be typeset as Auflage.
 
-This convention would seem to imply that it's also permissible to use the ffi- and ffl-ligatures in abbreviated names such as Steffi and Steffl even though they do not involve a period (full stop). The convention further suggests that the~ft and~\char"E187\ ligatures are permitted in words such as geschärft, unbedarft, and erscha\char"E187, whereas they should be suppressed in words such as gestreifte, schlürfte, and raffte.
+This convention also suggests that it's permissible to use the ffi- and ffl-ligatures in abbreviated names such as Steffi and Steffl even though they do not involve a period (full stop). 
 
-\item Here's a case for which I have not yet found a clear rule on how to proceed. If a main word ends in \enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset them as saftig and luftig because the \opt{ft} character pair belongs to a single morpheme, \emph{or} one could give preference to the way the words are hyphenated and thus not use the ft-ligature, i.e., to typeset them as saf\breaklig tig and luf\breaklig tig. For now, the \pkg{selnolig} package implements the former option. I haven't found any clear references so far on how to treat this case. Guidance on this topic would be much appreciated.
+The convention might further seem to imply that the~ft and~\char"E187\ ligatures may (should?) be used if they occur at the very ends of words and word fragments\textemdash e.g., geschärft, Unbedarftheit, and erscha\char"E187\textemdash but that they should be suppressed when -f-te, -f-ten, -f-tes, etc.\ suffixes are involved\textemdash e.g., gestreifte, schlürftest, and rafften. I make this analogy because these suffixes also form syllables. Note, though, the deliberate use of the locution \enquote{seem to imply} at the start of this paragraph: I have \emph{not} encountered so far any kind of authoritative discussion of this particular typographical concern. For now, the \pkg{selnolig} package \emph{does} break up the ft and fft ligatures if the words include suffixes that are syllables in their own right.
+
+
+\item Here's a separate case for which I have not yet found a clear rule. If a word's main morpheme ends in \enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset them as either as saftig and lu\mbox{ft}ig because the \opt{ft} character pair belongs to a single morpheme, \emph{or} one could give preference to the way the words are hyphenated and thus \emph{not} use the ft-ligature, i.e., to typeset them as saf\breaklig tig and luf\breaklig tig. For now, the \pkg{selnolig} package implements the former option. As noted up front, though, I haven't found any clear references so far on how to treat this case. Guidance on this typographical issue would be much appreciated.
 
 \end{itemize}
 
@@ -422,7 +425,7 @@ The German-language hyphenation exception list is the shorter of the two. This i
 
 It is possible to instruct \pkg{selnolig} \emph{not} to load the package's hyphenation exception lists. You may want to do so, say, if you must use UK-English hyphenation patterns and therefore mustn't make use of the US-English hyphenation patterns provided by the package. (To the best of my knowledge, though, most of the hyphenation patterns indicated in \pkg{selnolig-english-hyphex.sty} are common to UK and US English.) To skip loading the additional hyphenation patterns when invoking the \pkg{selnolig} package, you should specify the option \opt{noadditional\-hyphen\-a\-tion\-patterns}.\footnote{I am obviously not trying to make it too easy to invoke this option~\dots}
 
-As was already noted in \cref{sec:anythingelse}, if you use the \pkg{babel} package with, say, the \opt{ngerman} option, be sure to load \pkg{selnolig} package \emph{after} the \pkg{babel} package; that way, the \pkg{selnolig} package's additional hyphenation exception patterns won't be overridden by \pkg{babel}'s settings.
+As was already noted in \cref{sec:anythingelse}, if you use the \pkg{babel} package with, say, the \opt{ngerman} option, be sure to load \pkg{selnolig} package \emph{after} the \pkg{babel} package. That way, the \pkg{selnolig} package's additional hyphenation exception patterns won't be overridden by \pkg{babel}'s settings.
 
 Incidentally, if the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-german-hyphex.sty} are located in a directory that's in the search path of your TeX distribution, these packages may be loaded by users via the usual \cmmd{usepackage} statements without having to load the entire \pkg{selnolig} package.
 
@@ -506,18 +509,23 @@ With this macro in place, the words would now be typeset as inbegriffleitend, Ju
 \label{sec:global-nolig}
 
 
-The main purpose of the \pkg{selnolig} package is, obviously, to disable certain ligatures selectively. However, it can also be used to suppress ligation globally for selected character pairs.\footnote{I first became aware of the potential need for such a feature after reading Frank Mittelbach's posting, \href{http://tex.stackexchange.com/q/61042/5001}{Suppress certain ligatures generally}, on \url{tex.stackexchange.com}.}
+The main purpose of the \pkg{selnolig} package is, obviously, to disable certain ligatures selectively. However, it can also be used to suppress ligation globally for selected character pairs.\footnote{I first became aware of the potential need for such a feature after reading Frank Mittelbach's posting, \href{http://tex.stackexchange.com/q/61042/5001}{Suppress certain ligatures generally}, on \url{tex.stackexchange.com}. } 
+
+For instance, suppose that you are typesetting a Turkish text, which features both a dotted (\enquote{normal}) and a dotless~i. I understand that in Turkish typesetting practice, \emph{no} fi and ffi ligatures should be employed, in order not to obscure which \enquote{i} character is being used. However, other f-ligatures may presumably be used without causing readability and intelligibilty concerns. To address this need, one could issue the command
+\begin{Verbatim}
+     \nolig{fi}{f|i}
+\end{Verbatim}
 
 \bgroup \ebg
 
-Suppose, for instance, that you have a font that provides ligatures for the \mbox{fb}, \mbox{fh}, \mbox{fj}, and \mbox{fk} character pairs (as well as, possibly, the \mbox{ffb}, \mbox{ffh}, \mbox{ffj}, and \mbox{ffk} character triples). If you wanted to suppress the four former f-ligatures globally (and also break up the latter ligatures as ff-b, ff-h, ff-j, and~ff-k, respectively), you could do so by issuing the following commands: \egroup
+Or, suppose that you have a font that provides ligatures for the \mbox{fb}, \mbox{fh}, \mbox{fj}, and \mbox{fk} character pairs as well as, possibly, the \mbox{ffb}, \mbox{ffh}, \mbox{ffj}, and \mbox{ffk} character triples. If you wanted to suppress the four former f-ligatures globally (and also break up the latter ligatures as ff-b, ff-h, ff-j, and~ff-k, respectively), you could do so by issuing the following commands: \egroup
 \begin{Verbatim}
      \nolig{fb}{f|b}
      \nolig{fh}{f|h}
      \nolig{fj}{f|j}
      \nolig{fk}{f|k}
 \end{Verbatim}
-In fact, these commands are already included among the \cmmd{nolig} macros that are enabled if the package's \opt{ngerman} option is set.\footnote{These four macros are also enabled if the \pkg{selnolig} package's \opt{english} and \opt{broad-f} options are set.} This is done because I was unable to come up with a single instance of a \emph{German} language word involving these character combinations that doesn't also involve a morpheme boundary collision.
+In fact, these commands are provided automatically if the package's \opt{ngerman} option is set.\footnote{These four macros are also enabled if the \pkg{selnolig} package's \opt{english} and \opt{broad-f} options are set.} This is done because I was unable to come up with a single instance of a \emph{German} language word involving these character combinations that doesn't also involve a morpheme boundary collision.
 
 
 Of course, your document may contain some \emph{non-German} language words as well, for which you would not necessarily want to suppress these ligatures. Suppose, say, that you need to typeset the name \opt{Kafka} and do not wish to suppress the {\ebg \mbox{fk}}-ligature for this specific word. To override the global setting created by the \Verb+\nolig{fk}{f|k}+ macro, you could write each instance of this word as 
