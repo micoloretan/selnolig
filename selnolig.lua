@@ -170,6 +170,12 @@ function drop_special_nodes (nodes,tail)
   end
 end
 
-luatexbase.add_to_callback( "ligaturing", 
-   process_ligatures, "Filter ligatures", 1 )
+function enableselnolig()
+  luatexbase.add_to_callback( "ligaturing", 
+    process_ligatures, "Suppress ligatures", 1 )
+end
 
+function disableselnolig()
+  luatexbase.remove_from_callback( "ligaturing", 
+    "Suppress ligatures" )
+end

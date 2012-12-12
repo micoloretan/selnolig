@@ -15,8 +15,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.162}
-\def\selnoligpackagedate{2012/12/10}
+\def\selnoligpackageversion{0.163}
+\def\selnoligpackagedate{2012/12/12}
 
 % Announce who we are. Exit immediately if not running
 % under lua(la)tex.
@@ -166,6 +166,27 @@
 
 \directlua{  require("selnolig.lua")  }
 
+% Two commands to switch selnolig's routines on and off
+\newcommand\selnoligon{
+  \directlua{ enableselnolig() }
+}
+\newcommand\selnoligoff{
+  \directlua{ disableselnolig() }
+}
+
+% By default, selnolig is switched on
+\selnoligon
+
+% Record operations of selnolig package to the log file:
+% enabled via '\debugon' command
+\newcommand\debugon{%
+   \directlua{ debug=true }
+}
+\newcommand\debugoff{% just for completeness...
+   \directlua{ debug=false }
+}
+
+
 % The main user macro is called '\nolig':
 \newcommand\nolig[2]{
    \directlua{
@@ -186,14 +207,6 @@
 % easier to remember than '\-\hspace{0pt}'
 \newcommand\breaklig{\-{\hspace{0pt}}}
 
-% Record operations of selnolig package to the log file:
-% enabled via '\debugon' command
-
-\newcommand\debugon{%
-   \directlua{
-      debug=true
-   }
-}
 
 
 % Part 3: What to do if 'english' option is set

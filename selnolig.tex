@@ -42,7 +42,6 @@
 \hyphenation{ver-werf-lich}
 
 \usepackage[english,broad-f,hdlig,ngerman]{selnolig}
-%\debugon 
 
 % Suppress st-ligature in some German words
 %    that occur in this document
@@ -144,7 +143,7 @@ The \pkg{selnolig} package requires use of the \LuaLaTeX\ format and a reasonabl
 
 \tocloftpagestyle{empty}
 
-\enlargethispage{1\baselineskip}
+\enlargethispage{1.8\baselineskip}
 \tableofcontents
 
 \clearpage
@@ -417,7 +416,7 @@ Part 4 of this file, which is also processed if the \opt{hdlig} option is set, d
 
 
 
-\subsubsection{Additional hyphenation exception patterns} \label{sec:addlhyph}
+\subsubsection{Supplentary hyphenation exception patterns} \label{sec:addlhyph}
 
 \TeX's hyphenation algorithms are widely acknowledged to be very good. However, for the English language case at least, it tends to miss quite a few permissible hyphenation points when dealing with words that end in -f-ing, -ff-ing, -f-ier, -ff-ier, -f-iest, -f-less, -f-like, etc. Hyphenation exception lists are provided in the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-german-hyphex.sty}, respectively, for English and German words.
 
@@ -453,6 +452,23 @@ It is also possible that words with more than one ligature suppression point are
 
 
 As these examples suggest, setting \cmmd{debugon} can result in fairly copious amounts of information being written to the \opt{.log} file.
+
+To terminate the writing of the debugging-related information to the \opt{.log} file, one may execute the command
+\begin{Verbatim}
+     \debugoff
+\end{Verbatim}
+
+\subsection[Suspending and restarting the operation of selnolig's macros]{Suspending and restarting the operation of \pkg{selnolig}'s macros}
+
+By default, selnolig's macros are switched on. If you want to suspend their operation for some part of the document, you can issue the command
+\begin{Verbatim}
+     \selnoligoff
+\end{Verbatim}
+
+And, if \Verb+\selnoligoff+ needs to be reversed at some later stage, i.e., if \pkg{selnolig}'s macros need to be switched back on, one may do so by issuing the command
+\begin{Verbatim}
+      \selnoligon
+\end{Verbatim}
 
 
 
