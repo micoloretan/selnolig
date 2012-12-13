@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/10
+% Date: 2012/12/12
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -275,10 +275,11 @@ The \pkg{selnolig} package has the following components:
 \end{itemize}
 
 
-\subsection{Command syntax} \label{sec:syntax}
+\subsection{The package's user commands} \label{sec:syntax}
 
 The file \pkg{selnolig.sty} should be loaded with a \cmmd{usepackage} statement, generally with one or more options; see \cref{sec:options} for a discussion of the available options. After setting up several Boolean switches to structure the processing of options, the package next loads the file \pkg{selnolig.lua}, which contains the package's lua code.  
-The package then sets up several user macros which, in turn, make use of the lua code:
+
+The package then sets up several user macros which build on the lua code:
 \begin{enumerate}
 \item The main user macro is called \cmmd{nolig}. Each \cmmd{nolig} instruction takes two arguments: a search string and a string that indicates the insertion point for the non-ligation \enquote{whatsit}. For example, the macro
 \begin{Verbatim}
@@ -295,15 +296,15 @@ It is possible to use \enquote{wildcard} characters in the search string, as lon
 \end{Verbatim}
 to search for words that start with \opt{Aufl} followed by a vowel.\footnote{This particular search string is used in order not to catch the abbreviated word \enquote{Aufl.}, which does \emph{not} get its fl-ligature suppressed.} Incidentally, it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
 
-If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the package's ligature suppression rules. For instance, the need to suppress the ff-ligature in the German verb \enquote{auffahren} is catered to both by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffahr}{f|fahr}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Building in some redundancy seems like a reasonable way to proceed.
+If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the package's ligature suppression rules. For instance, the need to suppress the ff-ligature in the German verb \enquote{auffallen} is catered to both by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffall}{f|fall}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Building in some redundancy seems like a reasonable way to proceed.
 
-The arguments of the \cmmd{nolig} command (as well as of the package's other user commands) are case-sensitive. 
+The arguments of the \cmmd{nolig} command, as well as of the package's other user commands, are case-sensitive. 
 
 \item The macro 
 \begin{Verbatim}
      \keeplig{<word-fragment>}
 \end{Verbatim}
-lets users override \cmmd{nolig} instructions, by specifying words and word fragments for which typographic ligatures should \emph{not} be suppressed anywhere in the document. For a \cmmd{keeplig} macro to work properly, its argument should be a word (or word fragment) that includes words (or word fragments) treated by \cmmd{nolig} instructions. It is permissible to use lua-type wildcard characters in the argument of \cmmd{keeplig}. 
+lets users override \cmmd{nolig} instructions, by specifying words and word fragments for which typographic ligatures should \emph{not} be suppressed anywhere in the document. For a \cmmd{keeplig} macro to work properly, its argument should be a word (or word fragment) that includes as a subset words (or word fragments) treated by \cmmd{nolig} instructions. It is permissible to use lua-type wildcard characters in the argument of \cmmd{keeplig}. 
 
 Having the \cmmd{keeplig} macro is very useful because it allows us to specify simpler, i.e., less restrictive, \cmmd{nolig} instructions: Any Type-II errors that may arise from having a slightly-too-broad \cmmd{nolig} macro can be addressed by providing judiciously chosen \cmmd{keeplig} macros.
 
@@ -451,24 +452,22 @@ It is also possible that words with more than one ligature suppression point are
 \end{Verbatim}
 
 
-As these examples suggest, setting \cmmd{debugon} can result in fairly copious amounts of information being written to the \opt{.log} file.
+To terminate the writing of the debugging-related information to the \opt{.log} file, one may execute the command \cmmd{debugoff}.
 
-To terminate the writing of the debugging-related information to the \opt{.log} file, one may execute the command
-\begin{Verbatim}
-     \debugoff
-\end{Verbatim}
+Having the commands \cmmd{debugon} and \cmmd{debugoff} could be useful if you're writing your own \cmmd{nolig} and \cmmd{keeplig} commands and discover some ligature suppression problems which occur only in a small subset of your document. By bracketing this subset with a pair of \cmmd{nolig} and \cmmd{keeplig} commands, you limit the writing of debugging-related information to the \opt{.log} file, making the amount of information you'll need to plow through hopefully be quite manageable.
 
 \subsection[Suspending and restarting the operation of selnolig's macros]{Suspending and restarting the operation of \pkg{selnolig}'s macros}
 
-By default, selnolig's macros are switched on. If you want to suspend their operation for some part of the document, you can issue the command
+By default, \pkg{selnolig}'s macros are switched on if the package is loaded. If you want to suspend their operation at some point in the document, you may issue the command
 \begin{Verbatim}
      \selnoligoff
 \end{Verbatim}
-
-And, if \Verb+\selnoligoff+ needs to be reversed at some later stage, i.e., if \pkg{selnolig}'s macros need to be switched back on, one may do so by issuing the command
+Conversely, if \pkg{selnolig}'s macros need to be switched back on, you should issue the command
 \begin{Verbatim}
       \selnoligon
 \end{Verbatim}
+
+Incidentally, encasing a \cmmd{selnoligoff} instruction inside a \TeX\ \enquote{group}\textemdash something that's delimited by a pair of curly braces or by \cmmd{bgroup} and \cmmd{egroup} statements\textemdash will \emph{not} switch \pkg{selnolig}'s macros back on after the end of the \TeX\ group is reached. This is because 	\pkg{selnolig}'s main lua function is implemented as a callback routine. Adding this lua function to and removing it from the callback list, which is what  \cmmd{selnoligon} and \cmmd{selnoligoff} do, is not affected by \TeX\ groups. That's why it's necessary to issue a \cmmd{selnoligon} command to switch  \pkg{selnolig}'s macros back on.
 
 
 
@@ -476,7 +475,7 @@ And, if \Verb+\selnoligoff+ needs to be reversed at some later stage, i.e., if \
 
 \subsection{Known bugs}
 
-Remark: The bugs in following list may turn out to be related, i.e., may be caused by a single bug in the package's lua code.
+Remark: The bugs in the following list may turn out to be related, i.e., may be caused by a single bug in the package's lua code.
 \begin{enumerate}
 \item The \cmmd{nolig} search-and-nolig-whatsit-insertion patterns do not appear to work properly on the final word in the argument of a command (e.g., |\footnote{}| and |\section{}|) \emph{unless} that  word (including any trailing punctuation mark) is followed by one or more space characters before the closing curly brace of the command's argument is encountered. 
 
