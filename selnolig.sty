@@ -15,7 +15,7 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.163a}
+\def\selnoligpackageversion{0.163b}
 \def\selnoligpackagedate{2012/12/12}
 
 % Announce who we are. Exit immediately if not running
@@ -48,7 +48,6 @@
 
 \cs_new_eq:NN \IfFontFeatureActive \mico_fontfeature_if_active:nTF
 \ExplSyntaxOff
-
 
 % If the 'fontspec' package isn't loaded by the time
 % LaTeX executes the '\begin{document}' directive,
@@ -100,7 +99,6 @@
 
 \DeclareOption{otherlang}{\@otherlangtrue}
 \DeclareOption{otherlanguage}{\@otherlangtrue}
-
 
 % For English, the default is to load only a fairly small
 % or 'basic' set of non-ligation rules pertaining to 
@@ -186,7 +184,6 @@
    \directlua{ debug=false }
 }
 
-
 % The main user macro is called '\nolig':
 \newcommand\nolig[2]{
    \directlua{
@@ -208,9 +205,8 @@
 \newcommand\breaklig{\-{\hspace{0pt}}}
 
 
-
-% Part 3: What to do if 'english' option is set
-% ---------------------------------------------
+% Part 3: What to do if the 'english' option is set
+% -------------------------------------------------
 
 \if@english
    % load English-language ligature suppression rules
@@ -223,8 +219,8 @@
 \fi
 
 
-% Part 4: What to do if 'german' option is set
-% --------------------------------------------
+% Part 4: What to do if the 'ngerman' option is set
+% -------------------------------------------------
 
 \if@german
    % load German-language ligature suppression rules
@@ -235,7 +231,6 @@
       \usepackage{selnolig-german-hyphex}
    \fi
 \fi
-
 
 % Part 5: What to do if 'otherlang' option is set
 % -----------------------------------------------
