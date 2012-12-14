@@ -11,6 +11,6 @@ For English language documents, the package also provides ligature suppression m
 
 The package's user guide may be found in the file selnolig.pdf.
 
-To start using this package, at a minimum you should download the *.sty files and the selnolig.lua file to a suitable directory in your personal TeX directory or the localtexmf directory. (The precise location will depend on your TeX distribution.)
+To start using this package, you should at a minimum download the *.sty files and the selnolig.lua file to a suitable directory in your personal TeX directory or the localtexmf directory. (The precise location will depend on your TeX distribution.)
 
-
+The files README.md and .gitignore are not part of the selnolig package and need not be downloaded in order to utilize the package.
