@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/13
+% Date: 2012/12/15
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -116,7 +116,7 @@
 
 \title{The \selnoligpackagename\ package: \\
 Selective suppression of typographic ligatures\thanks{
-Current version: \selnoligpackageversion. Features of this package are subject to change without prior notice. The main text fonts used in the present user guide are \enquote{Garamond Premier Pro} (for the most part) and \enquote{EB Garamond} (for the passages involving the \bgroup\ebg \mbox{fb}, \mbox{fh}, \mbox{fk}, \mbox{ffb}, \mbox{ffh},  \mbox{ffk}, and \emph{\mbox{sk}} ligatures\egroup). In this document, both \enquote{common} and \enquote{discretionary} ligatures are enabled for these two fonts. Sans-serif words and text fragments are typeset in \enquote{Helvetica Neue}, and \enquote{Consolas} is used as the monospaced font.}}
+Current version: \selnoligpackageversion. Features of this package are subject to change without prior notice. The main text fonts used in the present user guide are \enquote{Garamond Premier Pro} (for the most part) and \enquote{EB Garamond} (for the passages involving the \bgroup\ebg \mbox{fb}, \mbox{fh}, \mbox{fk}, \mbox{ffb}, \mbox{ffh},  \mbox{ffk}, and \emph{\mbox{sk}} ligatures\egroup). In this document, both \enquote{common} and \enquote{discretionary} ligatures are enabled for these two fonts.}}
 \author{Mico Loretan\thanks{
 \href{mailto:loretan.mico@gmail.com}{loretan dot mico at gmail dot com}.}}
 \date{\selnoligpackagedate}
@@ -132,18 +132,18 @@ Current version: \selnoligpackageversion. Features of this package are subject t
 
 \begin{abstract}
 
-The \pkg{selnolig} package suppresses typographic ligatures automatically based on pre\-defined search patterns for English and German language documents. The search patterns focus on ligatures deemed inappropriate because they span morpheme boundaries within words. For example, the word \opt{shelfful}, which is mentioned in the \TeX book as a word for which the \enquote{ff} ligature might be inappropriate, is automatically typeset as shelfful rather than as shel\mbox{ff}ul.
+The \pkg{selnolig} package suppresses typographic ligatures based on pre\-defined search patterns for English and German language documents. The search patterns focus on ligatures deemed inappropriate because they span morpheme boundaries. For example, the word \opt{shelfful}, which is mentioned in the \TeX book as a word for which the \enquote{ff} ligature might be inappropriate, is automatically typeset as shelfful rather than as shel\mbox{ff}ul.
 \newline\hspace*{\parindent}
-The \pkg{selnolig} package provides ligature suppression macros  for the \enquote{common} typographic f-ligatures. These comprise not only the familiar~ff, fi, fl, ffi, and~ffl ligatures but also ligatures such as \char"E18D\ and~\char"E187, which are frequently provided by many fonts suitable for typesetting text.
+The \pkg{selnolig} package provides ligature suppression macros  for the \enquote{common} typographic f-ligatures. These comprise not only the familiar~ff, fi, fl, ffi, and~ffl ligatures but also ligatures such as \char"E18D\ and~\char"E187, which are frequently provided by fonts well suited for typesetting text.
 \newline\hspace*{\parindent}
 For English language documents, the package also provides ligature suppression macros for a selection of  \enquote{discretionary} and \enquote{historic} ligatures.
 \newline\hspace*{\parindent}
-The \pkg{selnolig} package requires use of the \LuaLaTeX\ format and a reasonably modern \TeX\ distribution, such as \TeX Live\,2012, Mac\TeX\,2012, or MiK\TeX\,2.9.
+The \cmmd{nolig} and \cmmd{keeplig} macros of the \pkg{selnolig} package \emph{require} the \LuaLaTeX\ format of a reasonably modern \TeX\ distribution such as \TeX Live\,2012, Mac\TeX\,2012, or MiK\TeX\,2.9.
 \end{abstract}
 
 \tocloftpagestyle{empty}
 
-\enlargethispage{1.8\baselineskip}
+\enlargethispage{0.8\baselineskip}
 \tableofcontents
 
 \clearpage
@@ -206,19 +206,18 @@ but if one or more of the language options noted above are specified as options 
 
 \subsection{Any hints on how to get started with \LuaLaTeX?}
 
-The \pkg{selnolig} package requires use of the \LuaLaTeX\ format to compile your documents; it will \emph{not} work with pdf\LaTeX\ or \XeLaTeX. This requirement will likely force you to make some changes to the preambles of your existing \LaTeX\ files in order to have them meet \LuaLaTeX's requirements. The changes should be fairly minor and straightforward to implement, because \LuaLaTeX\ is, for the most part, a strict superset of pdf\LaTeX; almost all documents that compile correctly under pdf\LaTeX\ should also compile correctly under \LuaLaTeX\, as long as some required changes are made.
-The main required changes are: (i) remove any \Verb+\usepackage{inputenc}+ instructions from the preamble, and (ii)~insert the instruction
-\Verb+\usepackage{fontspec}+.
+The \cmmd{nolig} and \cmmd{keeplig} macros of the \pkg{selnolig} package \emph{require} use of the \LuaLaTeX\ format. They will \emph{not} work with pdf\LaTeX\ or \XeLaTeX. To run the package's ligature suppression macros, you \emph{must} compile your document under \LuaLaTeX.\footnote{One \emph{can} run the \pkg{selnolig} under either pdf\LaTeX\ or \XeLaTeX, but in that case only the package's hyphenation exception patterns will be loaded. The package will issue a warning message if it's not run under \LuaLaTeX but will not terminate completely.}
+
+The \LuaLaTeX requirement will likely force you to make some changes to the preambles of your existing \LaTeX\ files in order to have them meet \LuaLaTeX's requirements. The changes should be fairly minor and straightforward to implement, because \LuaLaTeX\ is, for the most part, a strict superset of pdf\LaTeX. Almost all documents that compile correctly under pdf\LaTeX\ should also compile correctly under \LuaLaTeX\ as long as some required changes are made.
+The main required changes are: (i) remove all \Verb+\usepackage{inputenc}+ and \Verb+\usepackage{fontenc}+ instructions from the preamble, and (ii)~insert the instruction
+\Verb+\usepackage{fontspec}+.\footnote{If you do not load the \pkg{fontspec} package, you will be limited to using the Computer Modern fonts.}
 
 Of course, you'll also need to use a \TeX\ distribution that includes a fairly recent version of \LuaLaTeX. \TeX Live\,2012, Mac\TeX\,2012, and MiK\TeX\,2.9 all satisfy this requirement. The version of \LuaLaTeX\ distributed with TeXLive\,2011 is probably sufficiently recent to meet the package's requirements, but the version distributed with TeXLive\,2009 is almost certainly not. 
 
 If you use a command-line interface to compile your document named, say, |myfile.tex|, be sure to type 
-\begin{Verbatim}
-     lualatex myfile
-\end{Verbatim}
-rather than |latex myfile| (or |pdflatex myfile|). If you use an editor with pull-down menus or buttons to invoke a suitable \TeX\ compiler for your document, be sure to select |LuaLaTeX|. 
+|lualatex myfile| rather than |latex myfile| (or |pdflatex myfile|). If you use an editor with pull-down menus or buttons to invoke a suitable \TeX\ compiler for your document, be sure to select |LuaLaTeX|. 
 
-By the way, the very first time one runs \LuaLaTeX\ on a document with a new set of fonts, the compilation speed will likely be quite slow because \LuaLaTeX\ has to build various cache files to store font-related information. Subsequent compilation runs should be much faster. 
+The very first time one runs \LuaLaTeX\ on a document with a new set of fonts, the compilation speed will likely be quite slow because \LuaLaTeX\ has to build various cache files to store font-related information. Subsequent compilation runs should be much faster. 
 
 Depending on your \TeX\ distribution, the default font family used by \LuaLaTeX\ will be either Computer Modern or Latin Modern. If you wish to use a different font family, further instructions will be required. How to specify fonts and font families and set up various font-related options in \LuaLaTeX\ are subjects that go far beyond the scope of this user guide. I urge you to become familiar with the \href{http://www.ctan.org/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf}{user guide} of the \pkg{fontspec} package to learn how to set a multitude of font-related options.
 
@@ -227,7 +226,7 @@ The answers to the questions \href{http://tex.stackexchange.com/q/28642/5001}{Fr
 
 \subsection{Anything else I need to do or know?} \label{sec:anythingelse}
 
-For multilingual support, \LuaLaTeX\ and the \pkg{selnolig} package work just fine with the \href{http://www.ctan.org/pkg/babel}{\pkg{babel}} package. If your document loads the \pkg{babel} package, be sure to load the \pkg{selnolig} package \emph{after} the \pkg{babel} package, so that the additional hyphenation patterns provided by the \pkg{selnolig} package won't get clobbered by \pkg{babel}'s hyphenation settings. The \pkg{selnolig} package is also compatible with the \href{http://www.ctan.org/pkg/hyphsubst}{\pkg{hyphsubst}} package (which, if used, should be loaded with a \Verb+\RequirePackage+ statement \emph{before} the \Verb+\documentclass+ instruction).
+For multilingual support, \LuaLaTeX\ and the \pkg{selnolig} package work well with the \href{http://www.ctan.org/pkg/babel}{\pkg{babel}} package. If your document loads the \pkg{babel} package, be sure to load the \pkg{selnolig} package \emph{after} the \pkg{babel} package, so that the additional hyphenation patterns provided by the \pkg{selnolig} package won't get clobbered by \pkg{babel}'s hyphenation settings. The \pkg{selnolig} package is also compatible with the \href{http://www.ctan.org/pkg/hyphsubst}{\pkg{hyphsubst}} package (which, if used, should be loaded with a \Verb+\RequirePackage+ statement \emph{before} the \Verb+\documentclass+ instruction).
 
 \LuaLaTeX\ natively supports the so-called \textsc{utf}-8 input encoding. The \pkg{selnolig} package assumes that users make full use of this feature. In particular, if your document is in German, it is assumed that all vowels with diereses (Umlaute) are entered as \Verb|ä|, \Verb|ö|, and \Verb|ü| rather than as \Verb|\"{a}|, \Verb|\"{o}|, and~\Verb|\"{u}| (or, if you tend to use the \pkg{babel} \enquote{shortcuts}, as \Verb|"a|, \Verb|"o|, and~\Verb|"u|). Likewise, it's assumed that you enter the \enquote{Eszett} (\enquote{Scharfes~s}) character as~|ß| rather than as~|{\ss}|.\footnote{Strictly speaking, the use of the input characters with \enquote{built-in} diereses is required only for the operations of the package's \cmmd{nolig} and \cmmd{keeplig} commands. However, if you're going to use the \pkg{selnolig} package, you may was well use \Verb|ä|, \Verb|ö|, and \Verb|ü| consistently throughout your document(s).}
 

@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2012/12/13]
+[2012/12/15]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -254,6 +254,8 @@
 \nolig{chlafi}{chlaf|i} % Schlaf-i-...
   % Schlafiglu schlafinduzierend  
 
+\nolig{fimp}{f|imp}
+  % Torfimporte Kaufimpuls
 \nolig{findex}{f|index}
   % Kaufindex Pfandbriefindex
 \nolig{finfo}{f|info}
@@ -725,7 +727,7 @@
   % Brieftasche Brieftaube 
 \nolig{Cheft}{Chef|t}
 \nolig{cheft}{chef|t}
-  % Cheftheoretiker Cheftestpilot Cheftrainer
+  % Cheftheoretiker Cheftrainer
 \nolig{Dorft}{Dorf|t}
 \nolig{dorft}{dorf|t}
   % Dorftrottel Dorftratsch Dorftümpel
@@ -733,9 +735,10 @@
 \nolig{hoft[aäehioöruü]}{hof|t}
   % Hoftor Klosterhoftor
 \nolig{Prüft}{Prüf|t}
-\nolig{prüft[eh]}{prüf|t}
-  % Prüftheorie Prüftechnik Prüfteam
-  % prüfte überprüfte 
+  % Prüftechnik Prüfteam
+\nolig{prüfth}{prüf|th}
+  % Prüftheorie 
+
 \nolig{Schlaft}{Schlaf|t}
 \nolig{schlaft[aäehioöruüy]}{schlaf|t}
   % Schlaftablette -teddy -tee -temperatur 
@@ -746,13 +749,29 @@
 \nolig{straft[aäehioöruüy]}{straf|t}
   % (viele Fälle)
 
-\nolig{eifte}{eif|te}
-  % schleifte reifte seifte 
 \nolig{eiftr}{eif|tr}
   % Eingreiftruppe Nadelstreifträger 
 
-\nolig{ffte}{ff|te}
+\nolig{fte}{f|te}
+  % schleifte reifte seifte prüfte überprüfte 
   % schaffte hoffte klaffte verpuffte
+  % vertiefte verbriefte Brieftext
+  % Hälfte elfte elftens zwölfte
+  % Fünfte fünfter
+  % kämpfte schimpfte schrumpfte schöpften
+  % durfte bedurfte surfte dürfte schlürfte
+  % schärfte verschärfte 
+  % abgestufte getaufte häufte unbedarfte
+  % Schilfteich Dorfteich
+  \keeplig{Delfter}
+  \keeplig{Dufte}
+  \keeplig{duftempf} % duftempfindlich
+   \keeplig{Hafte}    % Haftentlassung
+  \keeplig{haftentl} % haftentlassen
+  \keeplig{Krafte}
+  \keeplig{kunfter}  % Unterkunftersuchung
+  \keeplig{Lufte} % Lufteinlass
+
 \nolig{fft[aähioöruü]}{ff|t}
   % Stofftasche Sauerstofftank Stofftheorie
   % Stofftier Stofftiger Stofftischtuch
@@ -769,8 +788,6 @@
   % Kampftanz Schilftanz
 \nolig{ftax}{f|tax}
   % Ruftaxi
-\nolig{fteich}{f|teich}
-  % Schilfteich Dorfteich
 \nolig{ftheor}{f|theor}
   % Golftheorie Kampftheorien Auflauftheorien
 \nolig{ftod}{f|tod}
@@ -788,8 +805,6 @@
 
 \nolig{iefta}{ief|ta}
   % Tieftaucher Brieftasche Brieftaube 
-\nolig{iefte}{ief|te}
-  % vertiefte verbriefte Brieftext
 \nolig{iefto}{ief|to}
   % Stieftochter Tiefton
 \nolig{ieftö}{ief|tö}
@@ -799,24 +814,14 @@
   % elftausend zwölftausend Golftasche 
 \nolig{lftä}{lf|tä}
   % elftägig zwölftägig
-\nolig{lfte}{lf|te}
-  % Hälfte elfte elftens zwölfte
-  \keeplig{Delfter}  % Person von Delft
-  \keeplig{Halfter}
-  \keeplig{halfter}
 
-\nolig{lft[oö]}{lf|t}
+\nolig{lfto}{lf|to}
   % Zwölftonmusik Elftonner Golftour
+\nolig{lftö}{lf|tö}
   % zwölftönend
 
 \nolig{nftause}{nf|tause}
   % fünftausend Fünftausender
-\nolig{nfte}{nf|te}
-  % Fünfte fünfter
-  \keeplig{Zünfte}  % Zünfte
-  \keeplig{zünfte}  % zünfte
-  \keeplig{kunfte}  % Unterkunftersuchung
-  \keeplig{künfte}  % Unterkünfte
 
 \nolig{nftopf}{nf|topf}
   % Senftopf 
@@ -827,8 +832,6 @@
   \keeplig{nftüb}
   % Vernunftüberlegung Zunftüberlieferung
 
-\nolig{pfte}{pf|te}
-  % kämpfte schimpfte schrumpfte schöpften
 \nolig{pft[aähioöruü]}{pf|t}
   % Wettkampftag Kampftaktik Kampftruppe
   % Kampftätigkeit Kampftänzer
@@ -840,13 +843,6 @@
   % Kopftücher Kopftüchlein 
   % Herzklopftöne Zopfträger
 
-\nolig{rfte}{rf|te}
-  % durfte bedurfte surfte 
-  % dürfte schlürfte unbedarfte
-  % schärfte verschärfte 
-  \keeplig{werfte}
-  \keeplig{Werfte}
-  \keeplig{Warfte}
 
 \nolig{rftr}{rf|tr}
   % Wurftraining Surftrip Freiwurftreffer
@@ -858,27 +854,12 @@
 \nolig{uftas}{uf|tas}
   % Ruftaste Vorlauftaste Kauftasche
   \keeplig{Gruftas}  % Gruftasseln
-\nolig{ufte}{uf|te}
-  % abgestufte getaufte häufte
-  \keeplig{Luftein} % Lufteinlass
+
 \nolig{urfta}{urf|ta}
   % Wurftalent Auswurftaste Surftalent
   \keeplig{tdurfta} % Notdurftanlage 
 \nolig{urfto}{urf|to}
   % Freiwurftor Surftour
-
-%% various \keeplig macros for ft case?
-%  \keeplig{luft}
-%  \keeplig{Luft}
-%  \keeplig{lüft}
-%  \keeplig{Lüft}
-%  \keeplig{duft}
-%  \keeplig{Duft}
-%  \keeplig{düft}
-%  \keeplig{Düft}
-%  \keeplig{hüfte}
-%  \keeplig{Hüfte}
-%  \keeplig{Kraft}
 
 
 
