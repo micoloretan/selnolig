@@ -13,4 +13,4 @@ The package's user guide may be found in the file selnolig.pdf.
 
 To start using this package, you should at a minimum download the *.sty files and the selnolig.lua file to a suitable directory in your personal TeX directory or the localtexmf directory. (The precise location will depend on your TeX distribution.)
 
-Please note that the files README.md and .gitignore are not part of the selnolig package and needn't be downloaded in order to utilize the package.
+Please note that the files README.md, .gitignore, and .DS_store are not part of the selnolig package. Thus, they need not be downloaded in order to utilize the selnolig package.
