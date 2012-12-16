@@ -1,6 +1,7 @@
 % !TeX root = selnolig.tex
 % !TEX TS-program = lualatex
 
+\RequirePackage{ifluatex}
 \ProvidesPackage{selnolig-german-hyphex}%
 [2012/12/15]
 
@@ -12,7 +13,6 @@
 %
 % Author: Mico Loretan
 % (loretan dot mico at gmail dot com)
-
 
 \hyphenation{
 ab-lauf-trich-ter ab-lauf-trich-tern 
@@ -178,7 +178,7 @@ te-le-fon-auf-trags-diens-ten te-le-fon-auf-trags-diens-tes
 text-auf-lis-tung text-auf-lis-tun-gen
 tief-tank tief-tanks
 trep-pen-lauf-län-ge trep-pen-lauf-län-gen
-tüpf-li-schei-ßer tüpf-li-schies-ser
+tüpf-li-scheis-ser tüpf-li-schies-ser 
 über-lauf-trich-ter über-lauf-trich-tern 
 über-lauf-trich-ters
 ul-tra-hoch-auf-lö-sung ul-tra-hoch-auf-lö-sun-gen
@@ -209,3 +209,7 @@ zwölf-li-ni-en-spie-len zwölf-li-ni-en-spie-les
 zwölf-li-ni-en-spiels
 zwölf-ton-oper zwölf-ton-opern
 }
+
+\ifluatex
+  \hyphenation{ tüpf-li-schei-ßer }
+\fi
