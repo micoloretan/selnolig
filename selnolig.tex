@@ -41,7 +41,7 @@
 \usepackage[ngerman,english]{babel}
 \hyphenation{ver-werf-lich}
 
-\usepackage[english,broad-f,hdlig,ngerman]{selnolig}
+\usepackage[all]{selnolig}
 
 % Suppress st-ligature in some German words
 %    that occur in this document
@@ -58,7 +58,7 @@
 \usepackage{microtype}
 \usepackage{multicol}
 
-\usepackage{metalogo} % for LuaLaTeX logo
+\usepackage{metalogo} % for LuaLaTeX and XeLaTeX logos
   \makeatletter
   \def\xl@drop@TeX@e{0.35ex}    % default:  0.5ex
   \def\xl@drop@Xe@e{0.35ex}     % default:  0.5ex
@@ -167,7 +167,7 @@ For English language documents, the package's default setting is to suppress f-l
 
 For German language documents, all instances of {\ebg \mbox{fb}, \mbox{fh}, \mbox{fj}, and~\mbox{fk}} ligatures are suppressed globally; see \cref{sec:global-nolig} for more details. However, exceptions are provided in order \emph{not} to suppress these ligatures for selected words of \emph{non-German} origin\textemdash such as fjord, fjell, Prokofjew, and {\ebg Kafka}. At this time, no macros for the selective suppression of historic and/or discretionary ligatures are provided for German language documents.
 
-The \pkg{selnolig} package also provides additional hyphenation exception lists for both English and German language words.
+The \pkg{selnolig} package also provides additional hyphenation exception lists for both English and German language words. These words are generally composite and contain one more typographic ligatures that should be suppressed.
 
 A remark on the classification of various forms of typographic ligatures: Among the ligature-rich OpenType fonts I'm familiar with that can be loaded via the commands of the \pkg{fontspec} package, there appears to a near-complete lack of terminological standardization as to which typographic ligatures\textemdash beyond the so-called \enquote{common} ligatures (mainly f-ligatures)\textemdash are labelled \enquote{historic} and which ones are labelled \enquote{discretionary}. The fonts Latin Modern Roman, Garamond Premier Pro, and Hoefler Text report having \enquote{only} discretionary ligatures, whereas Junicode, Cardo, EB Garamond, and Palatino Linotype report featuring both historic and discretionary ligatures. Interestingly, none of these fonts report having ligatures classified as either \enquote{contextual} or \enquote{required}. 
 %The \pkg{selnolig} package provides the \opt{hdlig} option to enable ligature suppression rules that apply to ligatures that may be classified as either \enquote{historic} or \enquote{discretionary}.
@@ -215,7 +215,10 @@ The main required changes are: (i) remove all \Verb+\usepackage{inputenc}+ and \
 Of course, you'll also need to use a \TeX\ distribution that includes a fairly recent version of \LuaLaTeX. \TeX Live\,2012, Mac\TeX\,2012, and MiK\TeX\,2.9 all satisfy this requirement. The version of \LuaLaTeX\ distributed with TeXLive\,2011 is probably sufficiently recent to meet the package's requirements, but the version distributed with TeXLive\,2009 is almost certainly not. 
 
 If you use a command-line interface to compile your document named, say, |myfile.tex|, be sure to type 
-|lualatex myfile| rather than |latex myfile| (or |pdflatex myfile|). If you use an editor with pull-down menus or buttons to invoke a suitable \TeX\ compiler for your document, be sure to select |LuaLaTeX|. 
+\begin{Verbatim}
+     lualatex myfile
+\end{Verbatim}
+rather than |latex myfile| (or |pdflatex myfile|). If you use an editor with pull-down menus or buttons to invoke a suitable \TeX\ compiler for your document, be sure to select |LuaLaTeX|. 
 
 The very first time one runs \LuaLaTeX\ on a document with a new set of fonts, the compilation speed will likely be quite slow because \LuaLaTeX\ has to build various cache files to store font-related information. Subsequent compilation runs should be much faster. 
 

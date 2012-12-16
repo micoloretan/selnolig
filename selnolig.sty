@@ -42,11 +42,11 @@
 
 
 % A couple of ancillary macros to check if various 
-% ligature features (specifically: liga, clig, rlig, hlig, 
-% and dlig) are available and/or enabled for the text font 
-% in use.
-% (These macros are courtesy of Clemens Niederberger; see
-% also http://tex.stackexchange.com/a/82443/5001.)
+% ligature features (specifically: liga, clig, rlig, 
+% hlig, and dlig) are available and/or enabled for 
+% the text font that's in use.
+% These macros are courtesy of Clemens Niederberger; see
+% also http://tex.stackexchange.com/a/82443/5001.
 \ifluatex
    \usepackage{expl3}
    \ExplSyntaxOn 
@@ -56,6 +56,7 @@
    \cs_new_eq:NN \IfFontFeatureActive \mico_fontfeature_if_active:nTF
    \ExplSyntaxOff
 \fi
+
 
 % If the 'fontspec' package isn't loaded by the time
 % LaTeX executes the '\begin{document}' directive,
@@ -67,9 +68,9 @@
     \typeout{=========================================}
     \typeout{      Warning Warning Warning            }
     \typeout{ The selnolig package requires the       }
-    \typeout{ 'fontspec' package, but it doesn't      }
-    \typeout{ seem to be loaded. Strange error        }
-    \typeout{ and warning messages may be issued.     }
+    \typeout{ 'fontspec' package, but it does not     }
+    \typeout{ seem to be loaded. Strange errors       }
+    \typeout{ and warning messages may occur.         }
     \typeout{=========================================}
  }
  \fi
@@ -79,56 +80,59 @@
 % Set up some fundamental Boolean variables, their
 % default values, and define user-selectable options.
 
-% The two main language options are 'english' and 
-% 'german'. We provide the 'otherlang' option just 
-% in case a user some day wants to provide ligature 
-% suppression patterns for languages other than 
-% English and German.
+% The main language options are 'english' and 'german'.
+% We provide the option 'otherlang' option just in case
+% a user wants to provide ligature suppression patterns 
+% for languages other than English and German.
 
 \newif\if@english\@englishfalse
 \newif\if@german\@germanfalse
 \newif\if@otherlang\@otherlangfalse
 
 \DeclareOption{english}{\@englishtrue}
-% synonymous options...
-\DeclareOption{usenglish}{\@englishtrue}
-\DeclareOption{ukenglish}{\@englishtrue}
-\DeclareOption{USenglish}{\@englishtrue}
-\DeclareOption{UKenglish}{\@englishtrue}
-\DeclareOption{american}{\@englishtrue}
-\DeclareOption{british}{\@englishtrue}
-\DeclareOption{canadian}{\@englishtrue}
-\DeclareOption{australian}{\@englishtrue}
-\DeclareOption{newzealand}{\@englishtrue}
+% synonymous options:
+  \DeclareOption{usenglish}{\@englishtrue}
+  \DeclareOption{ukenglish}{\@englishtrue}
+  \DeclareOption{USenglish}{\@englishtrue}
+  \DeclareOption{UKenglish}{\@englishtrue}
+  \DeclareOption{american}{\@englishtrue}
+  \DeclareOption{british}{\@englishtrue}
+  \DeclareOption{canadian}{\@englishtrue}
+  \DeclareOption{australian}{\@englishtrue}
+  \DeclareOption{newzealand}{\@englishtrue}
 
 \DeclareOption{ngerman}{\@germantrue}
-% synonymous options...
-\DeclareOption{german}{\@germantrue}
-\DeclareOption{austrian}{\@germantrue}
-\DeclareOption{naustrian}{\@germantrue}
-\DeclareOption{swiss}{\@germantrue}
-\DeclareOption{swissgerman}{\@germantrue}
+% synonymous options:
+  \DeclareOption{german}{\@germantrue}
+  \DeclareOption{austrian}{\@germantrue}
+  \DeclareOption{naustrian}{\@germantrue}
+  \DeclareOption{swiss}{\@germantrue}
+  \DeclareOption{swissgerman}{\@germantrue}
 
 \DeclareOption{otherlang}{\@otherlangtrue}
-\DeclareOption{otherlanguage}{\@otherlangtrue}
+% synonymous option:
+  \DeclareOption{otherlanguage}{\@otherlangtrue}
 
-% For English, the default is to load only a fairly small
-% or 'basic' set of non-ligation rules pertaining to 
-% f-ligatures. Among them are the "standard five" (ff,
-% fi, fl, ffi, and ffl) as well as the ft ligature.
+
+% For English, the default is to load only a fairly basic
+% set of non-ligation rules pertaining to f-ligatures.
+% Among them are the "standard five" (ff, fi, fl, ffi,
+% and ffl) ligatures as well as the ft ligature.
 %
 % Two options to override this "basic" setting:
-% - broad-f  many more non-ligation rules for f-ligatures,
-%            incl fb, fh, fj, and fk character pairs
-% - hdlig    non-ligation rules for 'historic' and/or 
-%            'discretionary' ligatures, e.g., ct, sp, st,
-%            sk, th, as, is, us, fr, ll, et, at, and ta 
+% - broad-f  Many more non-ligation rules for f-ligatures,
+%            incl. fb, fh, fj, and fk character pairs.
+% - hdlig    Additional ligature suppression rules for 
+%            'historic' and/or 'discretionary' ligatures, 
+%            e.g., ct, sp, st, sk, th, as, is, us, fr, 
+%            ll, et, at, and ta.
 
 \newif\if@broadset\@broadsetfalse
-\newif\if@hdligset\@hdligsetfalse
-
 \DeclareOption{broad-f}{\@broadsettrue}
+
+\newif\if@hdligset\@hdligsetfalse 
 \DeclareOption{hdlig}{\@hdligsettrue}
+
 
 % The package also provides hyphenation exception 
 % patterns for English and German language words. 
@@ -139,6 +143,7 @@
 \newif\if@addhyph\@addhyphtrue
 \DeclareOption{noadditionalhyphenationpatterns}{\@addhyphfalse}
 
+
 % Check if 'historic' and/or 'discretionary' ligatures 
 % are enabled; if yes, set @hdligset to true.
 % Perform this test only if fontspec is already loaded.
@@ -146,16 +151,18 @@
 % such as Latin Modern Roman, is loaded.
 \@ifpackageloaded{fontspec}{%
   \IfFontFeatureExists{hlig}{%
-    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}
-    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}
-  }{}
-}{} 
+    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}}{}
+  \IfFontFeatureExists{dlig}{%
+    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}}{}}
+{} 
+
 
 % The 'basic' option automatically sets the
 % preceding Booleans to 'false', even if historic
 % and/or discretionary ligatures are enabled.
 
 \DeclareOption{basic}{\@broadsetfalse\@hdligsetfalse}
+
 
 % Last but not least, an option to set all Boolean
 % variables (other than '@addhyph') to 'true' 
@@ -169,6 +176,7 @@
 
 % Finally, process all options
 \ProcessOptions\relax
+
 
 
 % Part 2: Load the lua code and set up the user macros
@@ -185,7 +193,7 @@
       \directlua{ disableselnolig() }
     }
     
-    % By default, selnolig is switched on
+    % By default, selnolig's macros are switched on
     \selnoligon
     
     % Record operations of selnolig package to the log 
@@ -213,9 +221,8 @@
        }
     }
 \else
-    % If not running under LuaLaTeX, 
-    % provide dummy definitions for 
-    % package's user macros.
+    % If *not* running under LuaLaTeX, provide dummy
+    % definitions for package's user macros.
     \newcommand{\nolig}[2]{}
     \newcommand{\keeplig}[1]{}
     \let\selnoligon\relax
@@ -224,9 +231,11 @@
     \let\debugoff\relax
 \fi
 
+
 % A third user macro: '\breaklig'. This is hopefully 
 % easier to remember than '\-\hspace{0pt}'
 \newcommand\breaklig{\-{\hspace{0pt}}}
+
 
 
 % Part 3: What to do if the 'english' option is set
@@ -259,6 +268,7 @@
       \usepackage{selnolig-german-hyphex}
    \fi
 \fi
+
 
 % Part 5: What to do if 'otherlang' option is set
 % -----------------------------------------------
