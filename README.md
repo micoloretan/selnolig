@@ -7,7 +7,7 @@ The selnolig package provides ligature suppression macros for the common typogra
 
 For English language documents, the package also provides ligature suppression macros for a selection of discretionary and historic ligatures.
 
-*** The main macros of the selnolig package require the use of the LuaLaTeX format. A reasonably modern TeX distribution -- such as TeXLive2012, MacTeX2012, or MiKTeX2.9 -- is also required. ***
+*** The main macros of the selnolig package require the use of the LuaLaTeX format and of the fontspec package. A modern TeX distribution -- such as TeXLive2012, MacTeX2012, or MiKTeX2.9 -- is also required. ***
 
 The package's user guide may be found in the file selnolig.pdf.
 
