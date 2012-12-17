@@ -13,30 +13,32 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.165}
-\def\selnoligpackagedate{2012/12/15}
+\def\selnoligpackageversion{0.166}
+\def\selnoligpackagedate{2012/12/17}
 
 % Announce who we are. Issue warning message if we're
 % not running under LuaLaTeX, but don't exit entirely.
 
-\typeout{---- Package \selnoligpackagename, 
+\typeout{=== Package \selnoligpackagename, 
    Version \selnoligpackageversion, 
-   Date \selnoligpackagedate ----}
-\ProvidesPackage{selnolig}[2012/12/15]
+   Date \selnoligpackagedate ===}
+\ProvidesPackage{selnolig}[2012/12/17]
 
 \RequirePackage{ifluatex}
 \ifluatex
-  \RequirePackage{luatexbase,luacode}
+  \RequirePackage{luatexbase,luacode,expl3}
 \else
-  \typeout{=========================================}
+  \typeout{ ======================================= }
   \typeout{      WARNING   WARNING    WARNING       }
-  \typeout{ The \textbackslash nolig and \textbackslash keeplig macros of the   }
+  \typeout{ --------------------------------------- }
+  \typeout{ The ligature suppression macros of the  }
   \typeout{ selnolig package *require* LuaLaTeX.    }
   \typeout{ Because you're NOT running this package }
-  \typeout{ under LuaLaTeX, only the package's      }
-  \typeout{ hyphenation exception patterns will     }
-  \typeout{ be loaded. No ligature suppression will }
-  \typeout{ be performed.                           }
+  \typeout{ under LuaLaTeX, ligature suppression    }
+  \typeout{ *cannot* be performed.                  }
+  \typeout{ If any language options have been       }
+  \typeout{ specified, the package's hyphenation    }
+  \typeout{ exception patterns will be loaded.      }
   \typeout{=========================================}
 \fi
 
@@ -48,11 +50,12 @@
 % These macros are courtesy of Clemens Niederberger; see
 % also http://tex.stackexchange.com/a/82443/5001.
 \ifluatex
-   \usepackage{expl3}
    \ExplSyntaxOn 
    \cs_new_eq:NN \IfFontFeatureExists \fontspec_if_feature:nTF
+   
    \cs_new:Npn \mico_fontfeature_if_active:nTF #1
      { \tl_if_in:NnTF \l_fontspec_rawfeatures_sclist { #1 } }
+   
    \cs_new_eq:NN \IfFontFeatureActive \mico_fontfeature_if_active:nTF
    \ExplSyntaxOff
 \fi
@@ -60,25 +63,26 @@
 
 % If the 'fontspec' package isn't loaded by the time
 % LaTeX executes the '\begin{document}' directive,
-% issue a warning message.
+% issue an error message and exit.
 
 \AtBeginDocument{%
- \ifluatex
-  \@ifpackageloaded{fontspec}{}{%
-    \typeout{=========================================}
-    \typeout{      Warning Warning Warning            }
-    \typeout{ The selnolig package requires the       }
-    \typeout{ 'fontspec' package, but it does not     }
-    \typeout{ seem to be loaded. Strange errors       }
-    \typeout{ and warning messages may occur.         }
-    \typeout{=========================================}
- }
- \fi
+\ifluatex
+  \@ifpackageloaded{fontspec}{}{%  
+  \PackageError{selnolig}{%
+     ========================================== \MessageBreak
+          Error Alert      Error Alert          \MessageBreak
+     ------------------------------------------ \MessageBreak
+     The selnolig package *requires* the        \MessageBreak
+     'fontspec' package, but it hasn't been     \MessageBreak
+     loaded. Exiting now.                       \MessageBreak
+     ===========================================}
+     {See section 2.2 of selnolig's user guide for more information.}
+  }
+\fi
 }
 
-
 % Set up some fundamental Boolean variables, their
-% default values, and define user-selectable options.
+% default values, and define the user options.
 
 % The main language options are 'english' and 'german'.
 % We provide the option 'otherlang' option just in case
@@ -120,15 +124,15 @@
 % and ffl) ligatures as well as the ft ligature.
 %
 % Two options to override this "basic" setting:
-% - broad-f  Many more non-ligation rules for f-ligatures,
+% - broadf  Many more non-ligation rules for f-ligatures,
 %            incl. fb, fh, fj, and fk character pairs.
 % - hdlig    Additional ligature suppression rules for 
 %            'historic' and/or 'discretionary' ligatures, 
 %            e.g., ct, sp, st, sk, th, as, is, us, fr, 
 %            ll, et, at, and ta.
 
-\newif\if@broadset\@broadsetfalse
-\DeclareOption{broad-f}{\@broadsettrue}
+\newif\if@broadfset\@broadfsetfalse
+\DeclareOption{broadf}{\@broadfsettrue}
 
 \newif\if@hdligset\@hdligsetfalse 
 \DeclareOption{hdlig}{\@hdligsettrue}
@@ -145,23 +149,21 @@
 
 
 % Check if 'historic' and/or 'discretionary' ligatures 
-% are enabled; if yes, set @hdligset to true.
+% are enabled; if yes, set '@hdligset' to 'true'.
 % Perform this test only if fontspec is already loaded.
-% Perform a two-step test in case only a "basic" font,
-% such as Latin Modern Roman, is loaded.
-\@ifpackageloaded{fontspec}{%
-  \IfFontFeatureExists{hlig}{%
-    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}}{}
-  \IfFontFeatureExists{dlig}{%
-    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}}{}}
-{} 
+
+\ifluatex
+  \@ifpackageloaded{fontspec}{%
+    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}
+    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}}{}
+\fi
 
 
-% The 'basic' option automatically sets the
-% preceding Booleans to 'false', even if historic
-% and/or discretionary ligatures are enabled.
+% The 'basic' option automatically sets the preceding
+% Booleans to 'false', even if historic and/or
+% discretionary ligatures were enabled by 'fontspec'
 
-\DeclareOption{basic}{\@broadsetfalse\@hdligsetfalse}
+\DeclareOption{basic}{\@broadfsetfalse\@hdligsetfalse}
 
 
 % Last but not least, an option to set all Boolean
@@ -169,73 +171,73 @@
 % simultaneously.
 
 \DeclareOption{all}{%
-   \@englishtrue   
-   \@broadsettrue \@hdligsettrue
-   \@germantrue    
-   \@otherlangtrue}
+   \@englishtrue \@broadfsettrue \@hdligsettrue
+   \@germantrue \@otherlangtrue}
 
 % Finally, process all options
 \ProcessOptions\relax
 
 
-
 % Part 2: Load the lua code and set up the user macros
 % ----------------------------------------------------
 
-\ifluatex
-    \directlua{  require("selnolig.lua")  }
-    
-    % Commands to switch selnolig's routines on and off
-    \newcommand\selnoligon{
-      \directlua{ enableselnolig() }
-    }
-    \newcommand\selnoligoff{
-      \directlua{ disableselnolig() }
-    }
-    
-    % By default, selnolig's macros are switched on
-    \selnoligon
-    
-    % Record operations of selnolig package to the log 
-    % file: enabled via '\debugon' command
-    \newcommand\debugon{%
-       \directlua{ debug=true }
-    }
-    \newcommand\debugoff{% just for completeness...
-       \directlua{ debug=false }
-    }
-    
-    % The main user macro is called '\nolig':
-    \newcommand\nolig[2]{
-       \directlua{
-          suppress_liga( "\luatexluaescapestring{#1}",
-                         "\luatexluaescapestring{#2}" )
-       }
-    }
-    
-    % A second user macro allows global overriding of
-    % rules set up by '\nolig':
-    \newcommand\keeplig[1]{
-       \directlua{
-          always_keep_liga( "\luatexluaescapestring{#1}" )
-       }
-    }
+\ifluatex 
+  % Load the lua code contained in 'selnolig.lua'.
+  \directlua{  require("selnolig.lua")  }
+  
+  % Commands to switch selnolig's routines on and off
+  \newcommand\selnoligon{
+    \directlua{ enableselnolig() }
+  }
+
+  \newcommand\selnoligoff{
+    \directlua{ disableselnolig() }
+  }
+  
+  % By default, selnolig's macros are switched on
+  \selnoligon
+  
+  % Record operations of selnolig package to the log 
+  % file: enabled via '\debugon' command
+
+  \newcommand\debugon{%
+     \directlua{ debug=true }
+  }
+
+  \newcommand\debugoff{% 
+     \directlua{ debug=false }
+  }
+  
+  % The main user macro is called '\nolig':
+  \newcommand\nolig[2]{
+     \directlua{
+        suppress_liga( "\luatexluaescapestring{#1}",
+                       "\luatexluaescapestring{#2}" )
+     }
+  }
+  
+  % A second user macro allows global overriding of
+  % rules set up by '\nolig':
+  \newcommand\keeplig[1]{
+     \directlua{
+        always_keep_liga( "\luatexluaescapestring{#1}" )
+     }
+  }
 \else
-    % If *not* running under LuaLaTeX, provide dummy
-    % definitions for package's user macros.
-    \newcommand{\nolig}[2]{}
-    \newcommand{\keeplig}[1]{}
-    \let\selnoligon\relax
-    \let\selnoligoff\relax
-    \let\debugon\relax
-    \let\debugoff\relax
+  % If *not* running under LuaLaTeX, provide dummy
+  % definitions for package's user macros.
+  \newcommand{\nolig}[2]{}
+  \newcommand{\keeplig}[1]{}
+  \let\selnoligon\relax
+  \let\selnoligoff\relax
+  \let\debugon\relax
+  \let\debugoff\relax
 \fi
 
 
 % A third user macro: '\breaklig'. This is hopefully 
-% easier to remember than '\-\hspace{0pt}'
+% easier to remember than having to type "\-\hspace{0pt}"
 \newcommand\breaklig{\-{\hspace{0pt}}}
-
 
 
 % Part 3: What to do if the 'english' option is set
@@ -253,7 +255,6 @@
    \fi
 \fi
 
-
 % Part 4: What to do if the 'ngerman' option is set
 % -------------------------------------------------
 
@@ -268,7 +269,6 @@
       \usepackage{selnolig-german-hyphex}
    \fi
 \fi
-
 
 % Part 5: What to do if 'otherlang' option is set
 % -----------------------------------------------
