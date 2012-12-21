@@ -13,8 +13,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.166}
-\def\selnoligpackagedate{2012/12/17}
+\def\selnoligpackageversion{0.167}
+\def\selnoligpackagedate{2012/12/21}
 
 % Announce who we are. Issue warning message if we're
 % not running under LuaLaTeX, but don't exit entirely.
@@ -22,7 +22,7 @@
 \typeout{=== Package \selnoligpackagename, 
    Version \selnoligpackageversion, 
    Date \selnoligpackagedate ===}
-\ProvidesPackage{selnolig}[2012/12/17]
+\ProvidesPackage{selnolig}[2012/12/21]
 
 \RequirePackage{ifluatex}
 \ifluatex
@@ -144,8 +144,8 @@
 % can be disabled by providing the option
 % 'noadditionalhyphenationpatterns'.
 
-\newif\if@addhyph\@addhyphtrue
-\DeclareOption{noadditionalhyphenationpatterns}{\@addhyphfalse}
+\newif\if@addlhyph\@addlhyphtrue
+\DeclareOption{noadditionalhyphenationpatterns}{\@addlhyphfalse}
 
 
 % Check if 'historic' and/or 'discretionary' ligatures 
@@ -167,7 +167,7 @@
 
 
 % Last but not least, an option to set all Boolean
-% variables (other than '@addhyph') to 'true' 
+% variables (other than '@addlhyph') to 'true' 
 % simultaneously.
 
 \DeclareOption{all}{%
@@ -246,12 +246,12 @@
 \if@english
    % load English-language ligature suppression rules
    \ifluatex
-      \usepackage{selnolig-english-patterns}
+      \RequirePackage{selnolig-english-patterns}
    \fi
 
    % load additional hyphenation exception patterns
-   \if@addhyph
-      \usepackage{selnolig-english-hyphex}
+   \if@addlhyph
+      \RequirePackage{selnolig-english-hyphex}
    \fi
 \fi
 
@@ -261,12 +261,12 @@
 \if@german
    % load German-language ligature suppression rules
    \ifluatex
-      \usepackage{selnolig-german-patterns}
+      \RequirePackage{selnolig-german-patterns}
    \fi
 
    % load additional hyphenation exception patterns
-   \if@addhyph
-      \usepackage{selnolig-german-hyphex}
+   \if@addlhyph
+      \RequirePackage{selnolig-german-hyphex}
    \fi
 \fi
 

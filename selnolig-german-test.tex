@@ -7,15 +7,15 @@
 % of test words is in 'selnolig-german-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/17
+% Date: 2012/12/21
 
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
 \ifluatex\else
   \typeout{==============================================}
-  \typeout{The file selnolig-german-test must be compiled}
-  \typeout{     using lualatex. Exiting immediately.     }
+  \typeout{    The file selnolig-german-test must be     }
+  \typeout{compiled using LuaLaTeX. Exiting immediately. }
   \typeout{==============================================}
   \endinput
 \fi
@@ -27,27 +27,28 @@
    Numbers  = OldStyle}
 \setmainfont{EB Garamond 12 Regular}
 
-\newfontfamily\gbp{Garamond Premier Pro}
+\newfontfamily\gpp{Garamond Premier Pro}
 \usepackage{ragged2e}
 \setlength\parindent{0pt}
 \parskip=0.3\baselineskip
 \usepackage{babel}
+
 \usepackage{selnolig}
+
 \usepackage{showhyphens}
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
 
-
 \begin{document}
 \RaggedRight
-
+\gpp
 \section*{selnolig-german-test}
 
 \begin{tabular}{@{} *{9}{l} }
 Erscheinungsbild der f-Ligaturen
    &ff &fi &fl &ffi &ffl &ft & fj &\mbox{fk}\\
 Beispiele
-   &Affe &finden &flink &offiziell &soufflieren & Luft & Sogne\-fjord &Kafka\\
+   &Affe &finden &flink &offiziell &soufflieren & Luft & Sognefjord &Kafka\\
 \end{tabular}
 
 \bigskip
