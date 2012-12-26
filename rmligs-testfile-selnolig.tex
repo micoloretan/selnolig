@@ -1,5 +1,5 @@
 % !TEX TS-program = lualatex
-\documentclass{article}
+\documentclass[ngerman]{article}
 
 % This is a minimally-modified version of the file
 % testfile.tex provided by the "rmligs" package.
@@ -7,16 +7,17 @@
 % LuaLaTeX: (i) use 'babel' instead of 'ngerman', 
 % (ii) use 'fontspec' instead of 'inputenc', and
 % (iii) use the 'selnolig' package (what else?!).
-% Last updated on: 2012/12/17
+% Last updated on: 2012/12/26
 
 
 %\usepackage[utf8]{inputenc}
-\usepackage{fontspec}
+\usepackage[Ligatures={TeX,Common}]{fontspec}
+\setmainfont{Latin Modern Roman}
 
 %\usepackage{ngerman} 
-\usepackage[ngerman]{babel}
+\usepackage{babel}
 
-\usepackage[ngerman]{selnolig}
+\usepackage{selnolig}
 
 \newcommand{\auffahre}{mytrash}
 \newcommand{\kopflos}{MYTRASH}
