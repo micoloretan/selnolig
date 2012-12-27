@@ -2,6 +2,7 @@
 0*.*
 1*.*
 4*.*
+mann*.*
 rml*.*
 dehy*.*
 matt*.*
@@ -40,6 +41,7 @@ ctst.*
 *.snm
 *.synctex.gz
 *.toc
+*.txt
 *.vrb
 *.xdy
 *.tdo
