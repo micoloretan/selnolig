@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2012/12/26
+% Date: 2013/01/11
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -42,6 +42,7 @@
 \hyphenation{ver-werf-lich}
 
 \usepackage[all]{selnolig}
+\debugon
 
 % Suppress st-ligature in some German words
 %    that occur in this document
@@ -173,7 +174,6 @@ For German language documents, all instances of {\ebg \mbox{fb}, \mbox{fh}, \mbo
 The \pkg{selnolig} package also provides additional hyphenation exception lists for both English and German language words. These words are generally composite and contain one more typographic ligatures that should be suppressed.
 
 A remark on the classification of various forms of typographic ligatures: Among the ligature-rich OpenType fonts I'm familiar with that can be loaded via the commands of the \pkg{fontspec} package, there appears to a near-complete lack of terminological standardization as to which typographic ligatures\textemdash beyond the so-called \enquote{common} ligatures (mainly f-ligatures)\textemdash are labelled \enquote{historic} and which ones are labelled \enquote{discretionary}. The fonts Latin Modern Roman, Garamond Premier Pro, and Hoefler Text report having \enquote{only} discretionary ligatures, whereas Junicode, Cardo, EB Garamond, and Palatino Linotype report featuring both historic and discretionary ligatures. Interestingly, none of these fonts report having ligatures classified as either \enquote{contextual} or \enquote{required}. 
-%The \pkg{selnolig} package provides the \opt{hdlig} option to enable ligature suppression rules that apply to ligatures that may be classified as either \enquote{historic} or \enquote{discretionary}.
 
 \section{I'm in a hurry! How do I start using this package?}
 
@@ -237,7 +237,9 @@ The answers to the questions \href{http://tex.stackexchange.com/q/28642/5001}{Fr
 
 For multilingual support, \LuaLaTeX\ and the \pkg{selnolig} package work well with the \href{http://www.ctan.org/pkg/babel}{\pkg{babel}} package. If your document loads the \pkg{babel} package, be sure to load the \pkg{selnolig} package \emph{after} the \pkg{babel} package, so that the additional hyphenation patterns provided by the \pkg{selnolig} package won't get clobbered by \pkg{babel}'s hyphenation settings. The \pkg{selnolig} package is also compatible with the \href{http://www.ctan.org/pkg/hyphsubst}{\pkg{hyphsubst}} package (which, if used, should be loaded with a \Verb+\RequirePackage+ statement \emph{before} the \Verb+\documentclass+ instruction).
 
-\LuaLaTeX\ natively supports the so-called \textsc{utf}-8 input encoding. The \pkg{selnolig} package assumes that users make full use of this feature. In particular, if your document is in German, it is assumed that all vowels with diereses (Umlaute) are entered as \Verb|ä|, \Verb|ö|, and \Verb|ü| rather than as \Verb|\"{a}|, \Verb|\"{o}|, and~\Verb|\"{u}| (or, if you tend to use the \pkg{babel} \enquote{shortcuts}, as \Verb|"a|, \Verb|"o|, and~\Verb|"u|). Likewise, it's assumed that you enter the \enquote{Eszett} (\enquote{Scharfes~s}) character as~|ß| rather than as~|{\ss}|.\footnote{Strictly speaking, the use of the input characters with \enquote{built-in} diereses is required only for the operations of the package's \cmmd{nolig} and \cmmd{keeplig} commands. However, if you're going to use the \pkg{selnolig} package, you may was well use \Verb|ä|, \Verb|ö|, and \Verb|ü| consistently throughout your document(s).}
+\LuaLaTeX\ natively supports the so-called \textsc{utf-8} input encoding scheme. The \pkg{selnolig} package assumes that users make full use of this feature. Most modern \TeX-aware editors support \textsc{utf-8} directly; legacy files, however, may use other input encoding systems. If your input files currently use a different input encoding scheme, such as \textsc{latin1}, you should consider changing them over to \textsc{utf-8}. There are several methods for changing a file's input encoding scheme; see the question \href{http://tex.stackexchange.com/q/87406/5001}{How to change a .tex file's input encoding system (preferably to \textsc{utf-8})?} and the associated answers on \url{tex.stackexchage.com} for some possibilities.
+
+If your document is written in German, it is assumed that all vowels with diereses (Umlaute) are entered as \Verb|ä|, \Verb|ö|, \Verb|ü|, etc.\ rather than, say, as \Verb|\"{a}|, \Verb|\"{o}|, and~\Verb|\"{u}| or, if you tend to use the \pkg{babel} \enquote{shortcuts}, as \Verb|"a|, \Verb|"o|, and~\Verb|"u|. Likewise, it's assumed that you enter the \enquote{Eszett} (\enquote{Scharfes~s}) character as~|ß| rather than as~|{\ss}|.\footnote{Strictly speaking, the use of the input characters with \enquote{built-in} diereses is required only for the operations of the package's \cmmd{nolig} and \cmmd{keeplig} commands. However, if you're going to use the \pkg{selnolig} package, you may was well use \Verb|ä|, \Verb|ö|, and \Verb|ü| consistently throughout your document(s).}
 
 It is also assumed that you use the triple-f (modern) spelling form for words such as \texttt{Schifffahrt}, \texttt{Stofffarbe}, and \texttt{grifffest}.
 
@@ -374,26 +376,24 @@ For German words, the following exceptions and adjustments apply:\footnote{These
 \item Should the combination of a main word and suffix give rise to an fi or ffi ligature, this ligature is \emph{not} suppressed. Examples: streifig and affig. However, the fi and ffi ligatures \emph{are} suppressed if two main words are joined together: Schilfinsel, Zupfinstrument, and Baustoffingenieur.
 
 \item For some cases potentially giving rise to an fl-ligature at the juncture of a main word (Stammwort) and a suffix, preference is conventionally given to \enquote{how the syllables are pronounced and how a word would be hyphenated} (according to the Duden), leading to a suppression of the fl-ligature. For instance, the words schweflig (sulfurous), teuflisch (devilish), and Verzweiflung (despair) have their fl-ligatures suppressed even though in each case the~f and~l characters belong to the same underlying morpheme, {viz.}, Schwef(e)l, Teuf(e)l, and Zweif(e)l. For these words, the morphemological suffixes are clearly -ig, -isch, and -ung,  rather than -lig, -lisch, and -lung. 
-Nevertheless, usage for these and similar cases is \emph{not} to employ the fl-ligature. 
+Nevertheless, usage for these and similar cases would appear to be \emph{not} to employ the fl-ligature. 
 
-%To the best of my understanding, this convention may be based on the fact that these cases all involve the elision of the~e character between the~f and~l characters of the associated morphemes. The non-use of the fl-ligature may thus represent a subtle (possibly very subtle) nod towards how the associated morphemes would be written \emph{if} the~e character weren't being elided. The fact that the syllables within these words all happen to be divided between the~f and~l characters may be a coincidence rather than the primary reason for this typographical practice.
+This convention may also be taken to govern the typesetting of words such as knifflig (tricky) and mufflig (grouchy), as well as that of the first-person-singular forms of verbs such as büffeln, löffeln, schaufeln, stiefeln, verteufeln, and zweifeln: they are rendered \emph{without} the fl-ligature, i.e., as büffle, löffle, schaufle, stiefle, verteufle, and zweifle, respectively.
 
-This convention also appears to govern the typesetting of words such as knifflig (tricky) and mufflig (grouchy), as well as that of the first-person-singular forms of verbs such as büffeln, löffeln, schaufeln, stiefeln, and zweifeln: they are rendered \emph{without} the fl-ligature, i.e., as büffle, löffle, schaufle, stiefle, and zweifle, respectively.
-
-\item If a word could \emph{end} with an fl-ligature even though the~f and~l technically belong to different morphemes (say, because of an abbreviation that's in effect), the fl-ligature \emph{is} used. E.g., one writes Aufl.\ \emph{with} an fl ligature. But, when spelled out, the word should be typeset as Auflage.
+\item If a word could \emph{end} with an fl-ligature even though the~f and~l technically belong to different morphemes (say, because of an abbreviation that's in effect), the fl-ligature \emph{is} used. E.g., one writes Aufl.\ \emph{with} an fl ligature. But, when spelled out, the word should be typeset without the fl ligature, i.e., as Auflage.
 
 This convention further suggests that it's permissible to use the ffi- and ffl-ligatures in abbreviated names such as Steffi and Steffl even though they do not involve a period. 
 
-This convention could also be taken to imply that the~ft and~\char"E187\ ligatures may be used if they occur at the very ends of words and word fragments\textemdash e.g., geschärft, Unbedarftheit, and erscha\char"E187\textemdash but that they should be suppressed when -f-te, -f-ten, -f-tes, etc.\ suffixes are involved\textemdash e.g., gestreifte, schlürftest, and rafften. All of these suffixes form syllables that start with~a~\enquote{t}. Note, though, the deliberate use of the expression \enquote{taken to imply} at the start of this paragraph: I have so far \emph{not} encountered any kind of authoritative discussion of this particular typographic concern. For now, the \pkg{selnolig} package \emph{does} break up the~ft and~\char"E187\ ligatures if the words include suffixes that are syllables in their own right and start with~\enquote{te}.
+\item The convention mentioned in the preceding bullet point could also be taken to imply that the~ft and~\char"E187\ ligatures may be used \emph{if} they occur at the very ends of words and word fragments\textemdash e.g., geschärft, Unbedarftheit, and gera\char"E187 (note that the word stems are schärfen, Bedarf, and raffen, which do not include the final~t)\textemdash but that they should be suppressed when -f-te, -f-ten, -f-tes, etc.\ suffixes are involved, as in gestreif\breaklig te, schlürf\breaklig tes\breaklig t, and raff\breaklig ten. All of these suffixes form syllables that start with~a~\enquote{t}. Note, though, the deliberate use of the expression \enquote{taken to imply} in the first sentence of this paragraph: I have so far \emph{not} encountered any kind of authoritative discussion of this particular typographic concern. For now, the \pkg{selnolig} package \emph{does not} break up the~ft and~\char"E187\ ligatures in these cases. However, I am willing to change this setting if confronted with appropriate typographic arguments.
 
 
-\item Here's a separate case for which I have not yet found a clear rule. If a morpheme ends in~\enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset these words as either as sa\mbox{ft}ig and lu\mbox{ft}ig because the \opt{ft} character pair belongs to a single morpheme, \emph{or} one could give preference to the way the words are hyphenated and the component syllables are pronounced and thus \emph{not} use the ft-ligature, i.e., to typeset them as saftig and luftig. For now, the \pkg{selnolig} package implements the latter option. As already noted, however, I have not yet found any authoritative references on how to treat this case. Clear guidance on this typographical issue would be much appreciated.
+\item Here's a separate case for which I have not yet found a clear rule. If a morpheme ends in~\enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset these words as either as sa\mbox{ft}ig and lu\mbox{ft}ig because the \opt{ft} character pair belongs to a single morpheme, \emph{or} one could give preference to the way the words are hyphenated and the component syllables are pronounced and thus \emph{not} use the ft-ligature, i.e., to typeset them as saf\breaklig tig and luf\breaklig tig. For now, the \pkg{selnolig} package implements the former option. As already noted, however, I have not yet found any authoritative references on how to treat this case. Clear guidance on this typographical issue would be much appreciated.
 
 \end{itemize}
 
 
 
-\section{Package options, Additional ligature-related issues}
+\section{Package options and additional ligature-related matters}
 \label{sec:options}
 
 \subsection{Main language options}
@@ -428,7 +428,7 @@ Part 4 of this file, which is also processed if the \opt{hdlig} option is set, d
 
 
 
-\subsubsection{Supplentary hyphenation exception patterns} \label{sec:addlhyph}
+\subsubsection{Disabling the package's supplementary hyphenation exception patterns} \label{sec:addlhyph}
 
 \TeX's hyphenation algorithms are widely acknowledged to be very good. However, for the English language case at least, it tends to miss quite a few permissible hyphenation points when dealing with words that end in -f-ing, -ff-ing, -f-ier, -ff-ier, -f-iest, -f-less, -f-like, etc. Hyphenation exception lists are provided in the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-german-hyphex.sty}, respectively, for English and German words.
 
@@ -452,7 +452,7 @@ A related case is that of the word \opt{Chefinnenleben}, which can be constructe
 
 
 
-\subsection{Providing additional ligature suppression patterns}
+\subsection{How to provide additional ligature suppression patterns}
 
 As already noted, I do not claim that the non-ligation search-and-insert patterns set up in \pkg{selnolig-english-patterns.sty} and \pkg{selnolig-german-patterns.sty} are complete or, for that matter, ever will be entirely complete. If you come across words containing ligatures that ought to be suppressed but aren't caught, it is straightforward to create one or more new non-ligation rules to deal with the cases you've discovered.
 
@@ -470,7 +470,7 @@ With this macro in place, the words would now be typeset as inbegriffleitend, Ju
 
 The main purpose of the \pkg{selnolig} package is, obviously, to disable certain ligatures selectively. However, it can also be used to suppress ligation globally for selected character pairs.\footnote{I first became aware of the potential need for such a feature after reading Frank Mittelbach's posting, \href{http://tex.stackexchange.com/q/61042/5001}{Suppress certain ligatures generally}, on \url{tex.stackexchange.com}. } 
 
-For instance, suppose that you are typesetting a Turkish text, which features both a dotted and a dotless~i, \emph{viz.},~\enquote{\char"0131}. I understand that in Turkish typesetting practice, \emph{no} fi and ffi ligatures should be employed so as not to create doubt regarding which \enquote{i} character follows the \enquote{f} character. However, other f-ligatures (such as ff, fl, and~ffl) may presumably be employed, because doing so wouldn't create similar readability and intelligibilty problems. To address the global need not to use fi and ffi ligatures while keeping other f-ligatures in play, one could issue the command
+For instance, suppose that you are typesetting a Turkish text. The Turkish alphabet features both a dotted and a dotless~i, \emph{viz.},~\enquote{\char"0131}; I understand that in Turkish typesetting practice, \emph{no} fi and ffi ligatures should be employed in order not to create doubt regarding which \enquote{i} character follows the \enquote{f} character. However, other f-ligatures (such as ff, fl, and~ffl) may presumably be employed, because doing so won't create similar readability and intelligibilty problems. To address the global need of not using fi and ffi ligatures while keeping all other f-ligatures in play, one could issue the command
 \begin{Verbatim}
      \nolig{fi}{f|i}
 \end{Verbatim}
@@ -478,7 +478,7 @@ in the preamble of the document.
 
 \bgroup \ebg
 
-Or, suppose that you have a font that provides ligatures for the \mbox{fb}, \mbox{fh}, \mbox{fj}, and \mbox{fk} character pairs as well as, possibly, the \mbox{ffb}, \mbox{ffh}, \mbox{ffj}, and \mbox{ffk} character triples. If you wanted to suppress the four former f-ligatures globally (and also break up the latter ligatures as ff-b, ff-h, ff-j, and~ff-k, respectively), you could do so by issuing the following commands: \egroup
+Or, suppose that you have a font that provides ligatures for the \mbox{fb}, \mbox{fh}, \mbox{fj}, and \mbox{fk} character pairs (as well as, possibly, the \mbox{ffb}, \mbox{ffh}, \mbox{ffj}, and \mbox{ffk} character triples). If you wanted to suppress the four former f-ligatures globally (and also break up the latter ligatures as ff-b, ff-h, ff-j, and~ff-k, respectively), you could do so by issuing the following commands: \egroup
 \begin{Verbatim}
      \nolig{fb}{f|b}
      \nolig{fh}{f|h}
@@ -528,28 +528,25 @@ If the \opt{hdlig} option is set, it is assumed that you prefer giving preferenc
 \subsubsection{Ligatures for \emph{as}, \emph{is}, and \emph{us} that pre-empt an \emph{sp} ligature}
 
 The same three reasons for not letting \emph{as}, \emph{is}, and \emph{us} ligatures pre-empt an \emph{st} ligature also apply to the case of the equally distinctive looking \emph{sp} ligature. The \pkg{selnolig} package therefore provides macros to ensure the use of the trailing \emph{sp} ligature in words such as \emph{clasp}, \emph{hasp}, \emph{hispanic}, \emph{raspberry}, \emph{teaspoon}, \emph{wasp}, \emph{crisp}, \emph{lisp}, \emph{whisper}, \emph{wispy}, and \emph{cusp}. 
-[Still need to figure out the following: Why isn't the \emph{sp} lig shown in \emph{clasp} and \emph{lisp} in this list, even though the \emph{as} and \emph{is} ligs aren't being used and hence can't be pre-empting the \emph{sp} lig?!]
 
 
 
 \subsubsection{Ligatures for \emph{at} and \emph{et} that pre-empt a \emph{th} ligature}
 
-Suppose that a font provides ligatures for the \emph{at}, \emph{et}, and \emph{th} character pairs. By \TeX's rules for forming ligatures, without special intervention the word \opt{mathematics} will be typeset as \emph{m\mbox{at}hematics} rather than as \emph{mathematics} because the \emph{at} ligature pre-empts the \emph{th} ligature. The same happens for words such as \emph{b\mbox{at}h}, \emph{K\mbox{at}hryn}, and \emph{p\mbox{at}hology}.\footnote{A longer list of words for which the \emph{at} ligature pre-empts the \emph{th} ligature is given in the ancillary document \pkg{selnolig-english-test.pdf}. }
-Given the prevalence and distinctive pronuciation of the \opt{th} character pair in the English language, as well as the high frequency of this character pair in words of Greek origin (for which the Latin-alphabet \opt{th} character pair derives from the Greek character $\theta$, or~$\vartheta$), it seems undesirable to let the \emph{at}-ligature pre-empt the \emph{th} ligature for these words. 
+Suppose that a font provides ligatures for the \emph{at}, \emph{et}, and \emph{th} character pairs. By \TeX's rules for forming ligatures, without special intervention the word \opt{mathematics} will be typeset as \emph{m\mbox{at}hematics} rather than as \emph{mathematics} because the \emph{at} ligature pre-empts the \emph{th} ligature. The same happens for words such as \emph{b\mbox{at}h}, \emph{K\mbox{at}hryn}, and \emph{p\mbox{at}hology}.
+Given the commonness and the distinctive pronuciation of the \opt{th} character pair in the English language, as well as the high frequency of this character pair in words of Greek origin (for which the Latin-alphabet \opt{th} character pair derives from the Greek character $\theta$, or~$\vartheta$), it seems undesirable to let the \emph{at}-ligature pre-empt the \emph{th} ligature for these words. 
 
-Fixing the \emph{at}--\emph{th} ligature pre-emption issue globally, e.g., via \Verb+\nolig{ath}{a|th}+, is not completely innocuous because doing so will also suppress the \emph{at} ligature for words such as \opt{boathook}, for which the \emph{th} ligature would span a morpheme boundary and thus shouldn't be employed anyway. For such words, then, there's no need to suppress the \emph{at} ligature. These cases, fortunately, can be dealt with by providing \cmmd{keeplig} macros that deliberately let the \emph{at} ligature take precedence over the trailing \emph{th} ligature.
+Fixing the \emph{at}--\emph{th} ligature pre-emption issue globally\textemdash e.g., via \Verb+\nolig{ath}{a|th}+\textemdash is not completely innocuous, because doing so will also suppress the \emph{at} ligature for words such as \opt{boathook}, for which the \emph{th} ligature would span a morpheme boundary and thus shouldn't be employed anyway. For such words, then, there's no need to suppress the \emph{at} ligature. These cases can be dealt with by providing \cmmd{keeplig} macros that deliberately let the \emph{at} ligature take precedence over the trailing \emph{th} ligature.
 
 Suppressing an \emph{et} ligature in favor of a subsequent \emph{th} ligature via \Verb+\nolig{eth}{e|th}+ is almost universally correct, either because the \emph{th} ligature \emph{should} take precedence\textemdash as in the words \emph{ethics}, \emph{methane}, and \emph{teeth}\textemdash or because the \emph{et} ligature would cross a morpheme boundary and hence shouldn't be used anyway, as in the words \emph{forethought} and \emph{rethink}. 
-
-I say that it's \emph{almost} universally correct to do so because there are some words, such as \opt{Beethoven}, \opt{prophethood}, and \opt{sweetheart}, for which the \emph{th} ligature would be inappropriate anyway and hence the use of the \emph{et} ligature would be unproblematic. 
-To address this issue, \cmmd{keeplig} macros are provided for these words, deliberately letting the \emph{et} ligature take precedence over the \emph{th} ligature and resulting in them being typeset as \emph{Beethoven}, \emph{prophethood}, and \emph{sweetheart}, respectively.\footnote{Note that this method works if the font being used provides \emph{both} \emph{et} and \emph{th} ligatures. If the text font you employ provides only the \emph{th} ligature but not the \emph{et} ligature, these \cmmd{keeplig} macros should be disabled.}
+I say that it's \emph{almost} universally correct to do so because there are some words, such as \opt{Beethoven}, \opt{prophethood}, and \opt{sweetheart}, for which the \emph{th} ligature would be inappropriate anyway and for which the use of the \emph{et} ligature would hence be unproblematic. To address this issue, \cmmd{keeplig} macros are provided for these words, deliberately letting the \emph{et} ligature take precedence over the \emph{th} ligature and resulting in them being typeset as \emph{Beethoven}, \emph{prophethood}, and \emph{sweetheart}, respectively.\footnote{Note that this method works if the font being used provides \emph{both} \emph{et} and \emph{th} ligatures. If the text font you employ provides only the \emph{th} ligature but not the \emph{et} ligature, these \cmmd{keeplig} macros should be disabled.}
 
 
 \subsubsection{Ligatures for \emph{at} and \emph{et} that pre-empt a \emph{ta} ligature}
 
 There seem to be only very few words for which an \emph{at} ligature might inappropriately pre-empt a more important \emph{ta} ligature. One such word is \opt{atap}, which may be more readable if it's typeset as~\emph{a\mbox{ta}p} rather than as \emph{atap}.\footnote{It's not advisable, however, to specify a macro such as \Verb+\nolig{atap}{a|tap}+ to address this case, because of words such as \emph{catapult} and \emph{catacomb}, for which the use of the \emph{at} ligature is presumably innocuous. Somebody please correct me if this assumption is not correct.}  Because of the apparent paucity of such cases, I have decided for now not to provide specific ligature suppression rules to handle them.
 
-To the best of my (admittedly not exhaustive) knowledge, all words for which an \emph{et} ligature might inappropriately pre-empt the use of a trailing \emph{ta} ligature are words for which the \emph{et} ligature crosses a morpheme boundary and hence probably shouldn't be used anyway.\footnote{Examples are {\em betake, betatter, bristletail, caretaker, cheetah, detach, detail, detain, dovetail, foretaste, horsetail, pretake, pretax, retable, retack, retard, retarget, timetable, whitetail, \emph{and} wiretap}. Incidentally, the author of the \pkg{selnolig} package has a slight preference for seeing his surname typeset as \emph{Loretan} rather than as \emph{Loretan}\ldots} As such, the \emph{et}-related ligature suppression rules already in place, which are set up to deal with morpheme boundary crossing cases, should suffice to catch these cases as well.
+To the best of my (admittedly not exhaustive) knowledge, all words for which an \emph{et} ligature might inappropriately pre-empt the use of a trailing \emph{ta} ligature are words for which the \emph{et} ligature crosses a morpheme boundary and hence probably shouldn't be used anyway.\footnote{Examples are {\em betake, betatter, bristletail, caretaker, cheetah, detach, detail, detain, dovetail, foretaste, horsetail, pretake, pretax, retable, retack, retard, retarget, timetable, whitetail, \emph{and} wiretap}. Incidentally, the author of the \pkg{selnolig} package has a slight preference for seeing his surname typeset as \emph{Loretan} rather than as \emph{Loretan}\ldots} As such, the \emph{et}-related ligature suppression rules already in place to deal with morpheme boundary crossing cases should suffice to catch these cases as well.
 
 
 
@@ -560,19 +557,20 @@ To the best of my (admittedly not exhaustive) knowledge, all words for which an 
 
 Remark: The bugs in the following list may turn out to be related, i.e., may be caused by a single bug in the package's lua code.
 \begin{enumerate}
-\item The \cmmd{nolig} search-and-nolig-whatsit-insertion patterns do not appear to work properly on the final word in the argument of a command (e.g., |\footnote{}| and |\section{}|) \emph{unless} that  word (including any trailing punctuation mark) is followed by one or more space characters before the closing curly brace of the command's argument is encountered. 
+\item The \cmmd{nolig} directives do not appear to work properly on the final word in the argument of a \TeX\  macro (e.g., |\footnote{}| and |\section{}|), \emph{unless} that  word (including any trailing punctuation mark) is followed by one or more space characters before the closing curly brace of the macro's argument is encountered. 
 
-For instance, the fl ligature in \enquote{kop\mbox{fl}os} is not broken up by either |\footnote{kopflos.}| or |\section{Kopflosigkeit}|. The package does work as expected if the commands are modified to |\footnote{kopflos. }| and |\section{Kopflosigkeit }|.
+For instance, the fl ligature in \opt{kopflos} is not broken up by either |\footnote{kopflos.}| or |\section{Kopflosigkeit}|. The package does work as expected if the commands are modified to |\footnote{kopflos. }| and |\section{Kopflosigkeit }|.
 
-\item The \cmmd{nolig} search-and-insert patterns also don't seem to work on words (including, if present, any trailing punctuation marks) that are followed immediately by a |%| (comment) character. The workaround is the same as for the preceding bug: be sure to leave one or more spaces between the word and the comment character.
+\item The \cmmd{nolig} macros also don't seem to work on words (including, if present, any trailing punctuation marks) that are followed \emph{immediately} by a |%| (comment) character. 
+The workaround is the same as for the preceding bug: be sure to leave one or more spaces between the word and the comment character.
 
-\item If the content of an \cmmd{item} directive in an \opt{itemize} or \opt{enumerate} environment \emph{ends} with a word (including an associated punctuation mark) that contains a ligature that should be suppressed \textemdash i.e., if it is followed immediately by another \cmmd{item} directive or an \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ statement\textemdash the ligature suppression again fails. The remedy in this circumstance is to leave a blank line between the end of one \cmmd{item}'s content and the next \cmmd{item} instruction or the \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ instruction.
+\item If the content of an \cmmd{item} directive in an \opt{itemize} or \opt{enumerate} environment \emph{ends} with a word (including an associated punctuation mark) that contains a ligature that should be suppressed \textemdash i.e., if it is followed immediately by another \cmmd{item} directive or an \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ statement\textemdash ligature suppression again fails. The remedy in this circumstance is to leave a blank line between the end of one \cmmd{item}'s content and the next \cmmd{item} instruction or the \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ instruction.
 
-\item If the final word (again, possibly, with an associated punctuation character) in a sentence immediately \emph{prior} to the start of an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, the |\nolig| macro again will not work properly. The recommended remedy is to leave a blank line between that sentence and the start of the environment in question. Inserting an \enquote{invisible} instruction, such as \Verb+\vphantom{x}+, also works.
+\item If the final word (again, possibly, with an associated punctuation character) in a sentence immediately \emph{prior} to the start of an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, the |\nolig| macro again will not work properly. The recommended remedy is to leave a blank line between that sentence and the start of the environment in question. Inserting an \enquote{invisible} item, such as \Verb+\vphantom{x}+, also works.
 
 \end{enumerate}
 
-I'm not sure if the following matter constitutes a bug or \enquote{just} a case of incompatibility between two packages. The \pkg{selnolig} package does not appear to interact well with the \pkg{ngerman} package; however, as was noted earlier, it interacts nicely with the \pkg{babel} package (with one or more of the \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} options set). Unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package with one of the available German language options, I probably won't bother figuring out how to fix this incompatibility.
+I'm not sure if the following matter constitutes a bug or \enquote{merely} a case of incompatibility between two packages. The \pkg{selnolig} package does not appear to interact well with the \pkg{ngerman} package; however, as was noted earlier, it interacts nicely with the \pkg{babel} package (with one or more of the \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} options set). Unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package with one of the available German language options, I probably won't bother figuring out how to fix this incompatibility.
 
 \subsection{Writing ancillary information about the package's activity to the \opt{.log} file} \label{sec:debugon}
 
@@ -584,7 +582,7 @@ By default, none of the inner workings of the \pkg{selnolig} package are written
      Inserting noliga whatsit before glyph: f
 \end{Verbatim}
 
-It is also possible that words with more than one ligature suppression point are found. For example, if the word \enquote{Auflaufform}\textemdash which happens to have both an fl- and an ff-ligature that should be suppressed\textemdash is encountered, the following lines are written to the \opt{.log} file; note that in this case, two separate \cmmd{nolig} commands \enquote{catch} the fl and ff ligatures:
+It is also possible that words are found with more than one ligature suppression point. For example, if the word \enquote{Auflaufform}\textemdash which happens to have both an fl- and an ff-ligature that should be suppressed\textemdash is encountered, the following lines are written to the \opt{.log} file; note that in this case, two separate \cmmd{nolig} commands \enquote{catch} the fl and ff ligatures:
 \begin{Verbatim}
      pattern match: Auflaufform - fform
      pattern match: Auflaufform - Aufl[aäeioöuü]
@@ -595,10 +593,13 @@ It is also possible that words with more than one ligature suppression point are
      Inserting noliga whatsit before glyph: f
 \end{Verbatim}
 
+If both a \cmmd{nolig} and a \cmmd{keeplig} command apply to a word, as for the word \opt{fjord} (for which the macros \Verb+\nolig{fj}{f|j}+ and \Verb+\keeplig{fjord}+ apply), the following information is written to the \opt{.log} file:
+\begin{Verbatim}
+     pattern match nolig and keeplig: fjord - fj - fjord
+\end{Verbatim}
 
-To terminate the writing of the debugging-related information to the \opt{.log} file, one may execute the command \cmmd{debugoff}.
-
-Having the commands \cmmd{debugon} and \cmmd{debugoff} could be useful if you're writing your own \cmmd{nolig} and \cmmd{keeplig} commands and discover some ligature suppression problems which occur only in a small subset of your document. By bracketing this subset with a pair of \cmmd{nolig} and \cmmd{keeplig} commands, you limit the writing of debugging-related information to the \opt{.log} file, making the amount of information you'll need to plow through hopefully be quite manageable.
+To terminate or suspend the writing of the debugging-related information to the \opt{.log} file, one may execute the command \cmmd{debugoff}.
+Having the commands \cmmd{debugon} and \cmmd{debugoff} may be useful if you're writing your own \cmmd{nolig} and \cmmd{keeplig} commands and discover some ligature suppression problems which occur only in a small subset of your document. By bracketing this subset with a pair of \cmmd{debugon} and \cmmd{debugoff} commands, you limit the writing of debugging-related information to the \opt{.log} file, making the amount of information you'll need to plow through (hopefully) quite manageable.
 
 \subsection[Suspending and restarting the operation of selnolig's macros]{Suspending and restarting the operation of \pkg{selnolig}'s macros}
 
