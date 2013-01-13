@@ -13,8 +13,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.169}
-\def\selnoligpackagedate{2013/01/11}
+\def\selnoligpackageversion{0.169c}
+\def\selnoligpackagedate{2013/01/13}
 
 % Announce who we are. Issue warning message if we're
 % not running under LuaLaTeX, but don't exit entirely.
@@ -22,7 +22,7 @@
 \typeout{=== Package \selnoligpackagename, 
    Version \selnoligpackageversion, 
    Date \selnoligpackagedate ===}
-\ProvidesPackage{selnolig}[2013/01/11]
+\ProvidesPackage{selnolig}[2013/01/13]
 
 \RequirePackage{ifluatex}
 \ifluatex
@@ -49,17 +49,17 @@
 % the text font that's in use.
 % These macros are courtesy of Clemens Niederberger; see
 % also http://tex.stackexchange.com/a/82443/5001.
-\ifluatex
-   \ExplSyntaxOn 
-   \cs_new_eq:NN \IfFontFeatureExists \fontspec_if_feature:nTF
-   
-   \cs_new:Npn \mico_fontfeature_if_active:nTF #1
-     { \tl_if_in:NnTF \l_fontspec_rawfeatures_sclist { #1 } }
-   
-   \cs_new_eq:NN \IfFontFeatureActive \mico_fontfeature_if_active:nTF
-   \ExplSyntaxOff
-\fi
-
+%\ifluatex
+%   \ExplSyntaxOn 
+%   \cs_new_eq:NN \IfFontFeatureExists \fontspec_if_feature:nTF
+%   
+%   \cs_new:Npn \mico_fontfeature_if_active:nTF #1
+%     { \tl_if_in:NnTF \l_fontspec_rawfeatures_sclist { #1 } }
+%   
+%   \cs_new_eq:NN \IfFontFeatureActive \mico_fontfeature_if_active:nTF
+%   \ExplSyntaxOff
+%\fi
+%
 
 % If the 'fontspec' package isn't loaded by the time
 % LaTeX executes the '\begin{document}' directive,
@@ -152,12 +152,12 @@
 % are enabled; if yes, set '@hdligset' to 'true'.
 % Perform this test only if fontspec is already loaded.
 
-\ifluatex
-  \@ifpackageloaded{fontspec}{%
-    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}
-    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}}{}
-\fi
-
+%\ifluatex
+%  \@ifpackageloaded{fontspec}{%
+%    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}
+%    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}}{}
+%\fi
+%
 
 % The 'basic' option automatically sets the preceding
 % Booleans to 'false', even if historic and/or

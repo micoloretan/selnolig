@@ -1,0 +1,22 @@
+# OpenType feature file to suppress the f_t.alt ligature
+# provided by the font "Garamond Premier Pro". This 
+# feature file is employed by selnolig.tex, the user guide
+# for the 'selnolig' package.
+# Created by Mico Loretan, January 2013, based on
+# important (crucial!) help from Khaled Hosny.
+
+# Scripts and languages
+# If the font use others, they should be defined here too
+languagesystem DFLT dflt;
+languagesystem latn dflt;
+
+# Undo the "f_t.alt" discretionary ligature
+feature dlig {
+  sub f_t.alt by f t;
+} dlig;
+
+# Apply the regular ligatures for ft and fft
+feature liga {
+  sub f f t by f_f_t;
+  sub f t by f_t;
+} liga;

@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/01/11
+% Date: 2013/01/13
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -21,9 +21,10 @@
 
 \usepackage{fontspec}
 \setmainfont[ Numbers = OldStyle,
-    Ligatures  = {TeX, Common, Discretionary},
+    Ligatures  = {TeX, Common, Rare},
     ItalicFont = {Garamond Premier Pro Italic} ]
     {Garamond Premier Pro}
+\addfontfeature{FeatureFile=gpp-ft.fea}
 
 \setsansfont[Scale=MatchLowercase]{HelveticaNeue}
 \setmonofont[Scale=MatchLowercase]{Consolas}
@@ -35,6 +36,7 @@
     Ligatures  = {TeX, Common, Discretionary, Historic},
     ItalicFont = {EB Garamond 12 Italic}]
     {EB Garamond 12 Regular}
+
 
 \usepackage{geometry}
 \usepackage[english=american]{csquotes}
@@ -128,6 +130,12 @@ The main text fonts used in this document are \enquote{Garamond Premier Pro} (fo
 \renewcommand\abstractname{Summary}
 
 \begin{document}
+\fontspec[ Numbers = OldStyle,
+    Ligatures  = {TeX, Common, Rare},
+    ItalicFont = {Garamond Premier Pro Italic},
+    FeatureFile=gpp-ft.fea ]
+    {Garamond Premier Pro}
+
 \VerbatimFootnotes
 \pagenumbering{roman}
 
@@ -138,7 +146,7 @@ The main text fonts used in this document are \enquote{Garamond Premier Pro} (fo
 
 The \pkg{selnolig} package lets users suppress typographic ligatures based on pre\-defined search patterns. The search patterns focus on ligatures deemed inappropriate because they span morpheme boundaries. For example, the word \opt{shelfful}, which is mentioned in the \TeX book as a word for which the \enquote{ff} ligature might be inappropriate, is automatically typeset as shelfful rather than as shel\mbox{ff}ul.
 \newline\hspace*{\parindent}
-For English and German language documents, the \pkg{selnolig} package provides ligature suppression macros  for the \enquote{common} f-ligatures. These comprise not only the familiar~ff, fi, fl, ffi, and~ffl ligatures but also the \char"E18D\ and~\char"E187\ ligatures.
+For English and German language documents, the \pkg{selnolig} package provides ligature suppression macros  for the \enquote{common} f-ligatures. These comprise not only the familiar~ff, fi, fl, ffi, and~ffl ligatures but also the ft and~fft ligatures.
 \newline\hspace*{\parindent}
 For English language documents, the package further provides ligature suppression macros for a number of so-called \enquote{discretionary} and \enquote{historic} ligatures.
 \newline\hspace*{\parindent}
@@ -164,7 +172,7 @@ On the whole, though, the need to suppress typographic ligatures selectively for
 
 What has \emph{not} been available so far is a \LaTeX\ package that (i) specifies a list of word patterns and entire words for which ligatures should be suppressed and (ii) systematically discovers all instances of these words in a document and applies the non-ligation rules automatically. The \pkg{selnolig} package is meant to address this need. The package is currently set up to handle English and German language non-ligation issues by providing extensive lists of ligature suppression macros appropriate for the respective languages. Of course, no claim as to the completeness of either list is made\textemdash or can be made. The package attempts to make it fairly easy for users to provide additional ligature suppression rules to treat words not already covered by the package.\footnote{If you discover such words, please email them to me so that I can augment and update the package's ligature suppression rules accordingly. A suggested template for reporting such cases is provided in \cref{sec:template}.} 
 
-For both English and German language documents, the \pkg{selnolig} package provides macros to suppress selectively the following f-ligatures: ff, fi, fl, ffi, and ffl\textemdash the \enquote{standard} f-ligatures that should be familiar to most users of Computer Modern fonts\textemdash as well as the~ft (or~\char"E18D) and~\char"E187\ ligatures. The latter two ligatures, while not provided by the Computer Modern font family, are available frequently in \enquote{oldstyle} or \enquote{Garalde} font families.
+For both English and German language documents, the \pkg{selnolig} package provides macros to suppress selectively the following f-ligatures: ff, fi, fl, ffi, and ffl\textemdash the \enquote{standard} f-ligatures that should be familiar to most users of Computer Modern fonts\textemdash as well as the~ft and~fft ligatures. The latter two ligatures, while not provided by the Computer Modern font family, are available frequently in \enquote{oldstyle} or \enquote{Garalde} font families.
 
 For English language documents, the package's default setting is to suppress f-ligatures for only a fairly basic set of words. However, if the package's \opt{broadf} option is set, additional f-ligatures can be suppressed, e.g., for words that contain the {\ebg \mbox{fb}, \mbox{fh}, \mbox{fj}, and \mbox{fk}} character pairs. The package also features an option called \opt{hdlig}. If this option is set, the package will suppress selectively historic and discretionary ligatures, such as those for the ct, st, sp, {\ebg\emph{sk}}, \emph{th}, \emph{et}, and~\emph{as} character pairs. 
 
@@ -384,7 +392,7 @@ This convention may also be taken to govern the typesetting of words such as kni
 
 This convention further suggests that it's permissible to use the ffi- and ffl-ligatures in abbreviated names such as Steffi and Steffl even though they do not involve a period. 
 
-\item The convention mentioned in the preceding bullet point could also be taken to imply that the~ft and~\char"E187\ ligatures may be used \emph{if} they occur at the very ends of words and word fragments\textemdash e.g., geschärft, Unbedarftheit, and gera\char"E187 (note that the word stems are schärfen, Bedarf, and raffen, which do not include the final~t)\textemdash but that they should be suppressed when -f-te, -f-ten, -f-tes, etc.\ suffixes are involved, as in gestreif\breaklig te, schlürf\breaklig tes\breaklig t, and raff\breaklig ten. All of these suffixes form syllables that start with~a~\enquote{t}. Note, though, the deliberate use of the expression \enquote{taken to imply} in the first sentence of this paragraph: I have so far \emph{not} encountered any kind of authoritative discussion of this particular typographic concern. For now, the \pkg{selnolig} package \emph{does not} break up the~ft and~\char"E187\ ligatures in these cases. However, I am willing to change this setting if confronted with appropriate typographic arguments.
+\item The convention mentioned in the preceding bullet point could also be taken to imply that the~ft and~fft ligatures may be used \emph{if} they occur at the very ends of words and word stems\textemdash e.g., geschärft, Unbedarftheit, and gerafft (note that the word stems schärfen, Bedarf, and raffen do not end in a~t)\textemdash but that they should be suppressed when -f-te, -f-ten, -f-tes, etc.\ suffixes are involved, as in gestreifte, schlürftes\breaklig t, and rafften; all of these suffixes form syllables that start with~a~\enquote{t}. Note, however, the deliberately careful use of the expression \enquote{taken to imply} in the first sentence of this paragraph: I have so far \emph{not} encountered any kind of authoritative discussion of this particular typographic concern. For now, the \pkg{selnolig} package \emph{does not} break up the~ft and~fft ligatures in these cases. However, I am willing to change this setting if confronted with appropriate typographic arguments.
 
 
 \item Here's a separate case for which I have not yet found a clear rule. If a morpheme ends in~\enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset these words as either as sa\mbox{ft}ig and lu\mbox{ft}ig because the \opt{ft} character pair belongs to a single morpheme, \emph{or} one could give preference to the way the words are hyphenated and the component syllables are pronounced and thus \emph{not} use the ft-ligature, i.e., to typeset them as saf\breaklig tig and luf\breaklig tig. For now, the \pkg{selnolig} package implements the former option. As already noted, however, I have not yet found any authoritative references on how to treat this case. Clear guidance on this typographical issue would be much appreciated.
