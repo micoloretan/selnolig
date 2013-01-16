@@ -21,3 +21,6 @@ as TeXLive2012, MacTeX2012, or MiKTeX2.9.
 To get started, you should (i) download the package's .sty (style) files and the file selnolig.lua and 
 (ii) install these files in a directory in a way that's appropriate for your TeX distribution. The user 
 guide is in the file selnolig.pdf.
+
+The files README.md (the file you're currently reading), .gitignore, and .DS_Store are *not* part of the 
+package and need not be downloaded.
