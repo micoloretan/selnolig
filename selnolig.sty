@@ -13,8 +13,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.169c}
-\def\selnoligpackagedate{2013/01/13}
+\def\selnoligpackageversion{0.170}
+\def\selnoligpackagedate{2013/01/16}
 
 % Announce who we are. Issue warning message if we're
 % not running under LuaLaTeX, but don't exit entirely.
@@ -22,7 +22,7 @@
 \typeout{=== Package \selnoligpackagename, 
    Version \selnoligpackageversion, 
    Date \selnoligpackagedate ===}
-\ProvidesPackage{selnolig}[2013/01/13]
+\ProvidesPackage{selnolig}[2013/01/16]
 
 \RequirePackage{ifluatex}
 \ifluatex
@@ -37,33 +37,15 @@
   \typeout{ under LuaLaTeX, ligature suppression    }
   \typeout{ *cannot* be performed.                  }
   \typeout{ If any language options have been       }
-  \typeout{ specified, the package's hyphenation    }
+  \typeout{ specified, the associated hyphenation   }
   \typeout{ exception patterns will be loaded.      }
   \typeout{=========================================}
 \fi
 
 
-% A couple of ancillary macros to check if various 
-% ligature features (specifically: liga, clig, rlig, 
-% hlig, and dlig) are available and/or enabled for 
-% the text font that's in use.
-% These macros are courtesy of Clemens Niederberger; see
-% also http://tex.stackexchange.com/a/82443/5001.
-%\ifluatex
-%   \ExplSyntaxOn 
-%   \cs_new_eq:NN \IfFontFeatureExists \fontspec_if_feature:nTF
-%   
-%   \cs_new:Npn \mico_fontfeature_if_active:nTF #1
-%     { \tl_if_in:NnTF \l_fontspec_rawfeatures_sclist { #1 } }
-%   
-%   \cs_new_eq:NN \IfFontFeatureActive \mico_fontfeature_if_active:nTF
-%   \ExplSyntaxOff
-%\fi
-%
-
 % If the 'fontspec' package isn't loaded by the time
-% LaTeX executes the '\begin{document}' directive,
-% issue an error message and exit.
+% the '\begin{document}' directive is encoutered, issue
+% an error message and exit.
 
 \AtBeginDocument{%
 \ifluatex
@@ -148,20 +130,8 @@
 \DeclareOption{noadditionalhyphenationpatterns}{\@addlhyphfalse}
 
 
-% Check if 'historic' and/or 'discretionary' ligatures 
-% are enabled; if yes, set '@hdligset' to 'true'.
-% Perform this test only if fontspec is already loaded.
-
-%\ifluatex
-%  \@ifpackageloaded{fontspec}{%
-%    \IfFontFeatureActive{hlig}{\@hdligsettrue}{}
-%    \IfFontFeatureActive{dlig}{\@hdligsettrue}{}}{}
-%\fi
-%
-
-% The 'basic' option automatically sets the preceding
-% Booleans to 'false', even if historic and/or
-% discretionary ligatures were enabled by 'fontspec'
+% The 'basic' option automatically sets the preceding Booleans 
+% to 'false', even if historic and/or rare ligatures are enabled
 
 \DeclareOption{basic}{\@broadfsetfalse\@hdligsetfalse}
 
@@ -176,6 +146,7 @@
 
 % Finally, process all options
 \ProcessOptions\relax
+
 
 
 % Part 2: Load the lua code and set up the user macros
@@ -198,7 +169,7 @@
   \selnoligon
   
   % Record operations of selnolig package to the log 
-  % file: enabled via '\debugon' command
+  % file: Enabled via '\debugon' command
 
   \newcommand\debugon{%
      \directlua{ debug=true }
@@ -223,6 +194,7 @@
         always_keep_liga( "\luatexluaescapestring{#1}" )
      }
   }
+
 \else
   % If *not* running under LuaLaTeX, provide dummy
   % definitions for package's user macros.
@@ -240,6 +212,7 @@
 \newcommand\breaklig{\-{\hspace{0pt}}}
 
 
+
 % Part 3: What to do if the 'english' option is set
 % -------------------------------------------------
 
@@ -255,6 +228,7 @@
    \fi
 \fi
 
+
 % Part 4: What to do if the 'ngerman' option is set
 % -------------------------------------------------
 
@@ -269,6 +243,7 @@
       \RequirePackage{selnolig-german-hyphex}
    \fi
 \fi
+
 
 % Part 5: What to do if 'otherlang' option is set
 % -----------------------------------------------
