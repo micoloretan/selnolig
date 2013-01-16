@@ -156,7 +156,6 @@ The \pkg{selnolig} package requires the \LuaLaTeX\ format provided by a reasonab
 
 \tocloftpagestyle{empty}
 
-\enlargethispage{0.8\baselineskip}
 \tableofcontents
 
 \clearpage
@@ -313,46 +312,53 @@ The package then sets up several user macros which build on the lua code:
 \end{Verbatim}
 instructs \LuaLaTeX\ to suppress automatically the ff-ligature in words such as \enquote{shelfful}, \enquote{bookshelfful}, and \enquote{selffulfilling}. 
 
-More than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction.\footnote{For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl and the ff ligature in this word. As I note in \cref{sec:debugon}, the \pkg{selnolig} package actually uses two separate \cmmd{nolig} commands to treat the ligatures in Auflaufform. }
+More than one ligature suppression point may be provided in the second argument of a \cmmd{nolig} instruction. For instance, one \emph{could} specify \Verb+\nolig{Auflaufform}{Auf|lauf|form}+ to suppress both the fl- and the ff-ligature in this word. However, for added flexibility, the \pkg{selnolig} package actually uses two separate \cmmd{nolig} commands.
 
 
-It is possible to use \enquote{wildcard} characters in the search string, as long as these characters occur after the non-ligation point. For example, the file \pkg{selnolig-german-patterns.sty} employs the instruction 
+It is possible to use Lua-style wildcard characters in the search string, as long as these characters occur \emph{after} the non-ligation point. For example, the file \pkg{selnolig-german-patterns.sty} employs the instructions 
 \begin{Verbatim}
-     \nolig{Aufl[aäeioöuü]}{Auf|l}
+     \nolig{Dorff[aäeiloöruü]}{Dorf|f}
+     \nolig{dorff[aäeiloöruü]}{dorf|f}
 \end{Verbatim}
-to search for words that start with \opt{Aufl} followed by a vowel.\footnote{This particular search string is used in order not to catch the abbreviated word \enquote{Aufl.}, which does \emph{not} get its fl-ligature suppressed.} Incidentally, it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar. However, the readability of the \cmmd{nolig} instructions may suffer if you suppress that material.
+to search for words that contain the strings \opt{Dorff} and \opt{dorff} followed by a letter in the set \opt{aäeiloöruü}.\footnote{These particular search strings are used so as not to suppress the ff-ligatures in words that \emph{end} in either \opt{Dorff} as \opt{dorff}, such as the surnames Dorff and Hausdorff.} Incidentally, it is not absolutely necessary, in the second argument of the \cmmd{nolig} command, to provide any material \emph{after} the vertical bar that indicates the non-ligation point. However, the readability of your \cmmd{nolig} instructions may suffer if you suppress that material.
 
-If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the package's ligature suppression rules. For instance, the need to suppress the ff-ligature in the German verb \enquote{auffallen} is catered to both by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffall}{f|fall}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Building in some redundancy seems like a reasonable way to proceed.
+If you examine the \cmmd{nolig} instructions provided in the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-english-patterns.sty}, you'll notice quickly that there's some redundancy built into the package's ligature suppression rules. For instance, the need to suppress the ff-ligature in the German verb \enquote{auffallen} is catered to both by \Verb+\nolig{auff}{auf|f}+ \emph{and} by \Verb+\nolig{ffall}{f|fall}+. This redundancy is there by design, because not all words that might fit the first pattern will also fit the second pattern, and vice versa. Providing some redundancy of this type seems like a reasonable way to proceed.
 
 The arguments of the \cmmd{nolig} command, as well as of the package's other user commands, are case-sensitive. 
 
 \item The macro 
 \begin{Verbatim}
-     \keeplig{<word-fragment>}
+     \keeplig{<word or word-fragment>}
 \end{Verbatim}
-lets users override \cmmd{nolig} instructions, by specifying words and word fragments for which typographic ligatures should \emph{not} be suppressed anywhere in the document. For a \cmmd{keeplig} macro to work properly, its argument should be a word (or word fragment) that includes as a subset words (or word fragments) treated by \cmmd{nolig} instructions. It is permissible to use lua-type wildcard characters in the argument of \cmmd{keeplig}. 
+lets users override \cmmd{nolig} instructions by specifying words and word fragments for which typographic ligatures should \emph{not} be suppressed, anywhere in the document. For a \cmmd{keeplig} macro to work properly, its argument must be a word (or word fragment) that includes \emph{as a subset} a word (or word fragment) treated by a \cmmd{nolig} instruction.
 
-Having the \cmmd{keeplig} macro is very useful because it allows us to specify simpler, i.e., less restrictive, \cmmd{nolig} instructions: Any Type-II errors that may arise from having a slightly-too-broad \cmmd{nolig} macro can be addressed by providing judiciously chosen \cmmd{keeplig} macros.
-
-\enlargethispage{1\baselineskip}
+Having the \cmmd{keeplig} macro is very useful because it allows us to specify simpler, i.e., less restrictive, \cmmd{nolig} instructions up front: Any Type-II errors that may arise from having \cmmd{nolig} macros that are slightly too broad can be addressed by providing judiciously chosen \cmmd{keeplig} macros.
 
 To give an example: If the \opt{ngerman} option is set, the package uses the macro 
 \begin{Verbatim}
      \nolig{flich}{f|lich}
 \end{Verbatim}
-to break up the fl-ligature in the words brieflich, tariflich, trefflich, hilflich, verwerflich, beruflich, sträflich, höflich, glimpflich, unerschöpflich, Lauflicht, and begrifflich\textemdash and quite a few more words too. This macro is, unfortunately, a bit too broad because it also operates on words such as Pf\breaklig licht and verpf\breaklig lichten, for which the fl-ligature should \emph{not} be suppressed. Rather than provide a plethora of slightly more restrictive \cmmd{nolig} macros just to avoid including the Pflicht- and pflicht-words, the package provides the commands
+to break up the fl-ligature in words such as begrifflich, beruflich, brieflich, glimpflich, hilflich, höflich, käuflich,  sträflich, tariflich, trefflich, unerschöpflich, verwerflich, and Lauflicht\textemdash and quite a few more words that contain the suffix \opt{-lich}. This \cmmd{nolig} macro is, however, a bit too broad because it also operates on words such as \opt{Pflicht} and \opt{verpflichten}, for which the fl-ligature should \emph{not} be suppressed. Rather than provide a large number of slightly more restrictive \cmmd{nolig} macros just to avoid including the Pflicht- and pflicht-words, the package provides the command
 \begin{Verbatim}
-     \keeplig{Pflicht}
-     \keeplig{pflicht}
+     \keeplig{flicht}
 \end{Verbatim}
-to override the action of the \Verb+\nolig{flich}{f|lich}+ instruction for words that contain these two word fragments. Recall that the argument of |\keeplig| is case-sensitive; hence, two \cmmd{keeplig} instructions are needed.
+to override the action of the \Verb+\nolig{flich}{f|lich}+ instruction for words that contain the string \opt{flicht}. The overwhelming majority of such words contain the strings \enquote{Pflicht} and \enquote{pflicht}. However, the macros also serves to preserve the fl-ligature in less-common words, such as \enquote{anflicht} and \enquote{verflicht}, that contain just the string \opt{flicht}. 
 
-Just as it is possible to override the action of a \cmmd{nolig} command with a subsequent \cmmd{keeplig} command, it is also possible to override the action of a \cmmd{keeplig} macro with a more specific \cmmd{nolig} command. For instance, it turns out that the two \cmmd{keeplig} commands stated in the preceding paragraph are themselves a bit too broad because they also affect the typesetting of the composite word \opt{Sumpflicht} (swamp light), for which the fl-ligature \emph{should} be suppressed. To address this case, the file \pkg{selnolig-german-patterns.sty} provides the macro 
+Observe that the statement that a \cmmd{keeplig} command can undo the action of a \cmmd{nolig} command does not automatically imply that the ligature treated by the \cmmd{nolig} command will now be preserved. Why doesn't this follow? It's because, as mentioned above, \emph{more than one} \cmmd{nolig} instruction can apply to a given word. Consider, for instance, the word \opt{auflichten}, which is caught by the following three macros: 
+\begin{Verbatim}
+     \nolig{aufl}{auf|l}
+     \nolig{flich}{f|lich}
+     \keeplig{flicht}
+\end{Verbatim}
+Because the string |aufl| is \emph{not} a subset of the string |flicht|, the \Verb+\keeplig{flicht}+ instruction does not undo the action of the \Verb+\nolig{aufl}{auf|l}+ instruction. Hence, the word is typeset\textemdash correctly!\textemdash as auflichten, i.e., without an fl-ligature. 
+
+Just as it is possible to override the action of a \cmmd{nolig} command with a subsequent \cmmd{keeplig} command, it is also possible to override the action of a \cmmd{keeplig} macro with a more specific \cmmd{nolig} command. For instance, it turns out that the \Verb+\keeplig{flicht}+ instruction is itself a bit too broad as well because it affects the typesetting of the word \opt{Sumpflicht} (swamp light), for which the fl-ligature \emph{should} in fact be suppressed. To address this case, the file \pkg{selnolig-german-patterns.sty} provides the macros 
 \begin{Verbatim}
      \nolig{Sumpflicht}{Sumpf|licht}
+     \nolig{sumpflicht}{sumpf|licht}
 \end{Verbatim}
 
-Observe that we make use of the case sensitivity in the final \cmmd{nolig} instruction in order to avoid having it apply to words such as \enquote{Visumpflicht} (visa requirement). 
+Incidentally, it turns out that the second of these \cmmd{nolig} macros has to be associated with three more~[!] \cmmd{keeplig} macros, to deal with words such Visumpflicht, Konsumpflicht, and Impressumpflicht. Nobody has ever claimed that the rules of German typography are simple, right?
 
 \item The macro \cmmd{breaklig}, which doesn't take an argument, is provided as a hopefully easy-to-remember version of the low-level \LaTeX\ command \Verb+\-\hspace{0pt}+. As its name suggests, you should insert this macro in places where you want to break up a ligature on an ad-hoc basis (and also wish to permit hyphenation to occur). For instance, to suppress the \emph{\mbox{sk}} ligature in the word \Verb+groundskeeper+ on a one-off basis, one might enter it as \enquote{\Verb+grounds\textbackslash breaklig keeper+} to get {\ebg \emph{groundskeeper} rather than \emph{ground\mbox{sk}eeper}.}\footnote{To suppress the {\ebg \emph{\mbox{sk}}} ligature globally for this word, as well as for words such as {\ebg \emph{greenskeeper}} and {\ebg \emph{miskeep}}, one could issue the directive \Verb+\nolig{skeep}{s|keep}+. The \pkg{selnolig} package does so.}
 
@@ -524,7 +530,7 @@ For now, \pkg{selnolig} is set to override this behavior, i.e., to always give p
 
 
 
-\subsubsection{Ligatures for \emph{as}, \emph{is}, and \emph{us} that pre-empt an \emph{st} ligature}
+\subsubsection*{Ligatures for \emph{as}, \emph{is}, and \emph{us} that pre-empt an \emph{st} ligature}
 
 Suppose that the text font in use provides ligatures for the \emph{as}, \emph{is}, and \emph{us} character pairs as well as for the \emph{st} character pair. By \TeX's rules for forming typographic ligatures, words that contain the character \emph{triples} \opt{ast}, \opt{ist}, or \opt{ust} will see the first two characters ligated, pre-empting the use of a typographic ligature for the trailing \emph{st} character pair. There are three separate reasons why this outcome may not be desirable.
 
@@ -541,13 +547,13 @@ If the \opt{hdlig} option is set, it is assumed that you prefer giving preferenc
 
 
 
-\subsubsection{Ligatures for \emph{as}, \emph{is}, and \emph{us} that pre-empt an \emph{sp} ligature}
+\subsubsection*{Ligatures for \emph{as}, \emph{is}, and \emph{us} that pre-empt an \emph{sp} ligature}
 
 The same three reasons for not letting \emph{as}, \emph{is}, and \emph{us} ligatures pre-empt an \emph{st} ligature also apply to the case of the equally distinctive looking \emph{sp} ligature. The \pkg{selnolig} package therefore provides macros to ensure the use of the trailing \emph{sp} ligature in words such as \emph{clasp}, \emph{hasp}, \emph{hispanic}, \emph{raspberry}, \emph{teaspoon}, \emph{wasp}, \emph{crisp}, \emph{lisp}, \emph{whisper}, \emph{wispy}, and \emph{cusp}. 
 
 
 
-\subsubsection{Ligatures for \emph{at} and \emph{et} that pre-empt a \emph{th} ligature}
+\subsubsection*{Ligatures for \emph{at} and \emph{et} that pre-empt a \emph{th} ligature}
 
 Suppose that a font provides ligatures for the \emph{at}, \emph{et}, and \emph{th} character pairs. By \TeX's rules for forming ligatures, without special intervention the word \opt{mathematics} will be typeset as \emph{m\mbox{at}hematics} rather than as \emph{mathematics} because the \emph{at} ligature pre-empts the \emph{th} ligature. The same happens for words such as \emph{b\mbox{at}h}, \emph{K\mbox{at}hryn}, and \emph{p\mbox{at}hology}.
 Given the commonness and the distinctive pronuciation of the \opt{th} character pair in the English language, as well as the high frequency of this character pair in words of Greek origin (for which the Latin-alphabet \opt{th} character pair derives from the Greek character $\theta$, or~$\vartheta$), it seems undesirable to let the \emph{at}-ligature pre-empt the \emph{th} ligature for these words. 
@@ -558,11 +564,11 @@ Suppressing an \emph{et} ligature in favor of a subsequent \emph{th} ligature vi
 I say that it's \emph{almost} universally correct to do so because there are some words, such as \opt{Beethoven}, \opt{prophethood}, and \opt{sweetheart}, for which the \emph{th} ligature would be inappropriate anyway and for which the use of the \emph{et} ligature would hence be unproblematic. To address this issue, \cmmd{keeplig} macros are provided for these words, deliberately letting the \emph{et} ligature take precedence over the \emph{th} ligature and resulting in them being typeset as \emph{Beethoven}, \emph{prophethood}, and \emph{sweetheart}, respectively.\footnote{Note that this method works if the font being used provides \emph{both} \emph{et} and \emph{th} ligatures. If the text font you employ provides only the \emph{th} ligature but not the \emph{et} ligature, these \cmmd{keeplig} macros should be disabled.}
 
 
-\subsubsection{Ligatures for \emph{at} and \emph{et} that pre-empt a \emph{ta} ligature}
+\subsubsection*{Ligatures for \emph{at} and \emph{et} that pre-empt a \emph{ta} ligature}
 
 There seem to be only very few words for which an \emph{at} ligature might inappropriately pre-empt a more important \emph{ta} ligature. One such word is \opt{atap}, which may be more readable if it's typeset as~\emph{a\mbox{ta}p} rather than as \emph{atap}.\footnote{It's not advisable, however, to specify a macro such as \Verb+\nolig{atap}{a|tap}+ to address this case, because of words such as \emph{catapult} and \emph{catacomb}, for which the use of the \emph{at} ligature is presumably innocuous. Somebody please correct me if this assumption is not correct.}  Because of the apparent paucity of such cases, I have decided for now not to provide specific ligature suppression rules to handle them.
 
-To the best of my (admittedly not exhaustive) knowledge, all words for which an \emph{et} ligature might inappropriately pre-empt the use of a trailing \emph{ta} ligature are words for which the \emph{et} ligature crosses a morpheme boundary and hence probably shouldn't be used anyway.\footnote{Examples are {\em betake, betatter, bristletail, caretaker, cheetah, detach, detail, detain, dovetail, foretaste, horsetail, pretake, pretax, retable, retack, retard, retarget, timetable, whitetail, \emph{and} wiretap}. Incidentally, the author of the \pkg{selnolig} package has a slight preference for seeing his surname typeset as \emph{Loretan} rather than as \emph{Loretan}\ldots} As such, the \emph{et}-related ligature suppression rules already in place to deal with morpheme boundary crossing cases should suffice to catch these cases as well.
+	To the best of my (admittedly not exhaustive) knowledge, all words for which an \emph{et} ligature might inappropriately pre-empt the use of a trailing \emph{ta} ligature are words for which the \emph{et} ligature crosses a morpheme boundary and hence probably shouldn't be used anyway. Examples are {\em betake, betatter, bristletail, caretaker, cheetah, detach, detail, detain, dovetail, foretaste, horsetail, pretake, pretax, retable, retack, retard, retarget, timetable, whitetail, \emph{and} wiretap}.\footnote{Incidentally, the author of the \pkg{selnolig} package has a slight preference for seeing his surname typeset as \emph{Loretan} rather than as \emph{Loretan}\ldots} As such, the \emph{et}-related ligature suppression rules already in place to deal with morpheme boundary crossing cases should suffice to catch these cases as well.
 
 
 
