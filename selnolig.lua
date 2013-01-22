@@ -6,7 +6,7 @@
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
 --    (with crucial contributions of Taco Hoekwater, 
 --    Patrick Gundlach, and Steffen Hildebrandt)
--- Date: 2013/01/16
+-- Date: 2013/01/22
 --
 -- The entire selnolig package is placed under the terms 
 -- of the LaTeX Project Public License, version 1.3 or 

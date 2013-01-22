@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2013/01/16]
+[2013/01/22]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -662,13 +662,12 @@
 
 % 3. fl -> f-l
 % ------------
-\nolig{Aufl}{Auf|l}
-  %% Still need to solve issue of "Aufl." (abbrev. of
-  %% "Auflage"), which *does* keep its fl-ligature...
+
+\nolig{Aufl[aeiouyäöü]}{Auf|l}
+  % Must avoid catching "Aufl.".
 \nolig{aufl}{auf|l}
-  % Hundreds (thousands?!) of words ...
-  % Mustn't do \nolig{Aufl}{Auf|l} b/c
-  % of "Aufl." (abbrev. *with* ligature!)
+  % Hundreds (thousands?!) of words, but allow
+  % for some exceptions:
   \keeplig{auflair} % Tierschauflair
   \keeplig{aufläche}% Schaufläche Grau- Stau- 
                     % Anbau- Kau- Niveau- Plateau-
@@ -924,14 +923,9 @@
   % Hofleute
 
 \nolig{flich}{f|lich}
-  % tariflich reiflich unbegreiflich
-  % glimpflich schimpflich behilflich 
-  % brieflich verwerflich sträflich 
-  % gräflich markgräflich beruflich 
-  % käuflich unverkäuflich höflich 
-  % bischöflich unerschöpflich dörflich
-  % vortrefflich begrifflich
-  %% Vorsicht mit Pflicht und (p)flicht,
+  % tariflich reiflich glimpflich ...
+  % (many words!)
+  %% Vorsicht aber mit Pflicht und pflicht,
   %% sowie mit einflicht, verflicht, etc.:
   \keeplig{flicht}
     %% Noch mehr Vorsicht mit Sumpflicht:
@@ -1687,24 +1681,21 @@
     \nolig{nftübchen}{nf|tübchen} % Senftübchen
 
 \nolig{pft[aähioöruüy]}{pf|t}
-  % Wettkampftag Kampftaktik Kampftruppe
-  % Kampftätigkeit Kampftänzer
+  % Wettkampftag -trubel
+  % Kampftaktik -truppe -tätigkeit -tänzer
   % wahlkampftauglich Wahlkampftöne 
-  % Schnupftabak Schnupftuch Schnupftücher
+  % Schnupftabak -tuch -ftücher
   % Schimpftiraden Mehrkampftitel Stapftiefe
-  % Dampftopf Sumpftour Wettkampftrubel
-  % Kopftreffer Kopftuch 
-  % Kopftücher Kopftüchlein 
+  % Dampftopf Sumpftour 
+  % Kopftreffer -tuch -tücher -tüchlein 
   % Herzklopftöne Zopfträger
   \keeplig{pftheit}
   % Gedämpftheit Umkämpftheit
-
 
 \nolig{raftum}{raf|tum}
   % Burggraftum
 \nolig{raftüm}{raf|tüm}
   % Markgraftümer
-
 
 \nolig{rftherap}{rf|therap}
   % Wurftherapie
@@ -1745,11 +1736,9 @@
 \nolig{fb}{f|b}
 \nolig{fh}{f|h}
 \nolig{fk}{f|k}
-
   % However, there are names of *non-German* 
   % origin for which the 'fk' ligature 
-  % shouldn't be suppressed. Use \keeplig 
-  % macros to treat these cases.
+  % shouldn't be suppressed:
   \keeplig{Kafka}
   \keeplig{kafka}
   \keeplig{Piefke}
@@ -1783,8 +1772,8 @@
   \keeplig{Ísafjarðarbær} % city in Iceland
   \keeplig{fjell} % Norwegian
   \keeplig{fjall} % Swedish (?)
-  \keeplig{fjäll} % Swedish
-  \keeplig{fjöll} % Swedish
+  \keeplig{fjäll}  
+  \keeplig{fjöll}
 
   \keeplig{Prokofjew}
   \keeplig{Sufjan} % Stevens
