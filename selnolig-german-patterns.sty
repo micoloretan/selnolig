@@ -27,6 +27,27 @@
 % 1. ff -> f-f
 % ------------
 
+\nolig{Auff[aeiouyäöü]}{Auf|f}
+\nolig{auff[aeiloruyäöü]}{auf|f}
+  % Avoid catching "Auff.", "Hauff", "Schlagenhauff"
+  % Hundreds (thousands?) or words that start
+  % with or contain [aA]uff-, [kK]auff-, [lL]auf-.
+  % We must provide a few \keeplig macros,
+  % though, to deal with some surnames and 
+  % some words of French origin.
+  \keeplig{Lauffen}  
+  \keeplig{Stauffach}  % Stauffacher
+  \keeplig{Stauffen}   % Stauffenbergattentat
+  \keeplig{Stauffer}   
+  \keeplig{Stauffisch}
+  \keeplig{stauffisch}
+
+  \keeplig{chauffier}
+  \keeplig{Chauffier}
+  \keeplig{chauffeur}
+  \keeplig{Chauffeur}
+  \keeplig{chauffement} % Echauffement
+
 \nolig{Brieff}{Brief|f}
 \nolig{brieff}{brief|f}
   % Brief-f... (viele Fälle!)
@@ -106,27 +127,6 @@
   % (viele Fälle!)
   \keeplig{tieffekt} % Multieffekt Konfettieffekt
   \keeplig{tieffiz}  % Antieffizienz
-
-\nolig{Auff}{Auf|f}
-\nolig{auff}{auf|f}
-  % Hundreds (thousands?) or words that start
-  % with or contain [aA]uff-, [kK]auff-, [lL]auf-.
-  % We must provide a few \keeplig macros,
-  % though, to deal with some surnames and 
-  % some words of French origin.
-  \keeplig{Hauff}
-  \keeplig{Lauffen}  
-  \keeplig{Stauffach}  % Stauffacher
-  \keeplig{Stauffen}   % Stauffenbergattentat
-  \keeplig{Stauffer}   
-  \keeplig{Stauffisch}
-  \keeplig{stauffisch}
-
-  \keeplig{chauffier}
-  \keeplig{Chauffier}
-  \keeplig{chauffeur}
-  \keeplig{Chauffeur}
-  \keeplig{chauffement} % Echauffement
 
 \nolig{eiffest}{eif|fest}
   % reiffest
@@ -1684,11 +1684,10 @@
   % Wettkampftag -trubel
   % Kampftaktik -truppe -tätigkeit -tänzer
   % wahlkampftauglich Wahlkampftöne 
-  % Schnupftabak -tuch -ftücher
+  % Schnupftabak -tuch -tücher -tüchlein 
   % Schimpftiraden Mehrkampftitel Stapftiefe
-  % Dampftopf Sumpftour 
-  % Kopftreffer -tuch -tücher -tüchlein 
-  % Herzklopftöne Zopfträger
+  % Dampftopf Sumpftour Herzklopftöne 
+  % Kopftreffer -tuch -tücher Zopfträger
   \keeplig{pftheit}
   % Gedämpftheit Umkämpftheit
 
