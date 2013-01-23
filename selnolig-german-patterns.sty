@@ -27,11 +27,11 @@
 % 1. ff -> f-f
 % ------------
 
-\nolig{Auff[aeiouyäöü]}{Auf|f}
+\nolig{Auff[aeiloruyäöü]}{Auf|f}
 \nolig{auff[aeiloruyäöü]}{auf|f}
-  % Avoid catching "Auff.", "Hauff", "Schlagenhauff"
-  % Hundreds (thousands?) or words that start
-  % with or contain [aA]uff-, [kK]auff-, [lL]auf-.
+  % Hundreds (thousands?!) of words that start
+  % with or contain [aA]uff-, [kK]auff-, [lL]auf-
+  % and don't end with "ff".
   % We must provide a few \keeplig macros,
   % though, to deal with some surnames and 
   % some words of French origin.
@@ -52,13 +52,13 @@
 \nolig{brieff}{brief|f}
   % Brief-f... (viele Fälle!)
 \nolig{Cheff}{Chef|f}
-\nolig{cheff[aäeioöruü]}{chef|f}
+\nolig{cheff[aäeiloöruü]}{chef|f}
   % Cheffahrer Cheffront ...
   \keeplig{cheffekt} % Lacheffekt Wischeffekt
   \keeplig{Scheffel}
   \keeplig{scheffel} % scheffeln
   \keeplig{cheffizi} % hocheffizient
-  \keeplig{cheffé} % Scheffé (Statistiker)
+  \keeplig{cheffé} % Scheffé (a statistician)
 \nolig{Dampff}{Dampf|f}
 \nolig{dampff}{dampf|f}
   % (viele Fälle!)
@@ -230,17 +230,16 @@
 
 \nolig{ffell}{f|fell}
   % Werwolffell Schaffell
+  \keeplig{ffelleck} % Waffelleckereien
   \keeplig{ffellinde}% Scheffellinde
   \keeplig{Muffellä} % Muffellämmer
   \keeplig{öffell}  % Löffellamm Kochlöffellängen
   \keeplig{taffell} % Staffellauf -läufer
   \keeplig{toffell} % Kartoffellager -liebhaber
-                    % Pantoffellarve
-                    % Kunstoffelle
+                    % Pantoffellarve Kunstoffelle
   \keeplig{üffell}  % Büffelleber -leder -leib
                     % Trüffelleidenschaft
                     % Schnüffellust 
-  \keeplig{ffelleck}% Waffelleckereien
 \nolig{ffeile}{f|feile}
   % Prüffeile
 \nolig{ffenster}{f|fenster}
@@ -283,7 +282,7 @@
   % Relieffolien
 \nolig{ffolter}{f|folter}
   % Tropffolter
-  \keeplig{Affoltern} % Ortschaft nahe Zürich
+  \keeplig{Affoltern} % town near Zurich
 \nolig{ffond}{f|fond}
   % Tariffondslösung
 \nolig{fforder}{f|forder}
@@ -456,8 +455,8 @@
     % Chefinder -indianer -inspektor -inquisitor
   \keeplig{chefin}
      \nolig{chefind}{chef|ind}
-  \keeplig{chefibel} % Rererchefibel
-  \keeplig{chefiebe} % Rererchefieber
+  \keeplig{chefibel} % Recherchefibel
+  \keeplig{chefiebe} % Recherchefieber
   \keeplig{chefigur} % Nietzschefigur
   \keeplig{chefilm}  % Rachefilm
   \keeplig{chefili}  % Wäschefiliale
@@ -466,7 +465,7 @@
 
 \nolig{Dorfi}{Dorf|i}
 \nolig{dorfi}{dorf|i}
-  % Dorfidylle Dorfinformation Dorfinstitute
+  % Dorfidylle -information -institute
 \nolig{Hofi}{Hof|i}
   % (viele Fälle!)
   \keeplig{Hofier} % Hofieren
