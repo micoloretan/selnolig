@@ -54,13 +54,14 @@
 \nolig{brieff}{brief|f}
   % Brief-f... (viele Fälle!)
 \nolig{Cheff}{Chef|f}
-\nolig{cheff[aäeiloöruü]}{chef|f}
+\nolig{cheff[aäeioöruü]}{chef|f}
   % Cheffahrer Cheffront ...
   \keeplig{cheffekt} % Lacheffekt Wischeffekt
   \keeplig{Scheffel}
   \keeplig{scheffel} % scheffeln
   \keeplig{cheffizi} % hocheffizient
   \keeplig{cheffé} % Scheffé (a statistician)
+\nolig{cheffl[aiou]}{chef|fl}
 \nolig{Dampff}{Dampf|f}
 \nolig{dampff}{dampf|f}
   % (viele Fälle!)
@@ -111,8 +112,6 @@
   % Rumpffassung
 \nolig{Schaffang}{Schaf|fang}
 \nolig{Schaffarm}{Schaf|farm}
-\nolig{Schaffell}{Schaf|fell}
-
 
 \nolig{Schilff}{Schilf|f}
 \nolig{schilff}{schilf|f}
@@ -424,6 +423,9 @@
 \nolig{lffach}{lf|fach}
   % elffach zwölffach  
 
+\nolig{offegen}{of|fegen}
+  % Hoffegen
+
 \nolig{pffach}{pf|fach}
   % Strumpffach
 \nolig{pffern}{pf|fern}
@@ -455,11 +457,11 @@
   \keeplig{ssstraffern} % Gurtschlossstraffern
 
 \nolig{ünff}{ünf|f}
-  % fünfflügelig Fünfflach fünfflammig
-  % fünffleckige fünffingrig fünffarbig
+  % fünffarbig fünffingrig fünfflügelig 
+  % Fünfflach fünfflammig fünffleckige  
 
-\nolig{wurff[aäehiloöruü]}{wurf|f}
-  % Einwurffehler Auswurffach Hammerwurffinale
+\nolig{wurff[aäeiloöruü]}{wurf|f}
+  % Auswurffach Einwurffehler Hammerwurffinale
 
 
 % 2. fi -> f-i
@@ -778,7 +780,8 @@
   \keeplig{eimpflanz} % Keimpflanze
 \nolig{impfle}{impf|le}
   % Impflegende
-  \keeplig{impflege}  % Heimpfleger
+  \keeplig{eimpfleg}  % Heimpfleger
+  \keeplig{timpfleg}  % Intimpflege
 \nolig{Kampfl}{Kampf|l}
 \nolig{kampfl}{kampf|l}
   % Kampflegende kampflüstern Wahlkampflüge
@@ -855,7 +858,6 @@
 \nolig{Tarifl}{Tarif|l}
 \nolig{tarifl}{tarif|l}
   % lots and lots of words...
-\nolig{Stiefl}{Stief|l}
 \nolig{Tiefl}{Tief|l}
 \nolig{tiefl}{tief|l} 
   % Tieflager stieflich
@@ -869,7 +871,7 @@
   \keeplig{Topflagg}   % Topflaggen
   \keeplig{Topflitz}   % Topflitzer
   \keeplig{Topflor}    % Topflor
-  \keeplig{rtopflicht} % portopflichtig
+  \keeplig{rtopfli}    % portopflichtig
   \keeplig{topfläch}   % Biotopfläche
   \keeplig{topfleg}    % Autopflege
     \nolig{rtopfleg}{rtopf|leg} 
@@ -927,8 +929,6 @@
   \keeplig{ampfleg}  % Teampflege
 \nolig{arflad}{arf|lad}
   % Zeichenbedarfladen
-\nolig{arfläd}{arf|läd}
-  % Schulbedarfläden
 \nolig{äufle}{äuf|le}
   % Häuflein träufle
 
@@ -954,9 +954,10 @@
 \nolig{flamp}{f|lamp}
   % Kompaktleuchtstofflampe Notruflampe
 \nolig{fland}{f|land}
-  % Hofland Kaufland Sumpfland Tiefland
+  % Hofland Kauf- Sumpf- Tief-
   % Straflandesgericht Dorflandwirtschaft
   % Iffland Rifflandschaft 
+  % Altelfland Delfland
   \keeplig{flandern}  % Ostflandern
   \keeplig{flandrisch}
 \nolig{fländ}{f|länd}
@@ -1071,19 +1072,15 @@
 \nolig{flust}{f|lust}
   % Kampflust Impflust kauflustig Rauflust
 
-
+\nolig{Gipfle}{Gipf|le}
 \nolig{gipfle}{gipf|le}
   % gipfle
-\nolig{ipflig}{ipf|lig}
-  % zweigipflig fünfzipflig
 
 \nolig{chopfl}{chopf|l}
   % Schopflilie Schopflavendel
 
 \nolig{lflady}{lf|lady}
   % Goldlady
-\nolig{lfland}{lf|land} 
-  % Altelfland Delfland
 \nolig{lflast}{lf|last}
   % Wolflast
 
@@ -1108,15 +1105,15 @@
 
 \nolig{opfla}{opf|la}
   % Topflappen Kopflaus kopflastig
-  \keeplig{opflagg}
-  \keeplig{opflair}  % Popflair
-  \keeplig{opflanz}  % Topflanzen 
-  \keeplig{opflaum}  % Mangopflaumen
-
-
-  % Kakaopflanzen Indigopflanzen
-  \keeplig{opflaster}
-  % Kinopflaster
+  \keeplig{opflair}  
+    % Popflair
+  \keeplig{opflanz}  
+    % Kakaopflanzen Indigopflanzen
+    \nolig{Topflanze}{Topf|lanze} % (?)
+  \keeplig{gopflaum}  
+    % Mangopflaumen
+  \keeplig{nopflaster}
+    % Kinopflaster
 \nolig{öpfle}{öpf|le}
   % köpfle tröpfle Knöpfle
 \nolig{orflad}{orf|lad}
@@ -1138,8 +1135,6 @@
   % Kampflied
 \nolig{pfloch}{pf|loch}
   % Knopfloch 
-\nolig{pflöch}{pf|löch}
-  % Knopflöcher
 \nolig{pflos}{pf|los}
   % kampflos kopflos 
   \keeplig{pfloss}  % Pappflossen
@@ -1151,7 +1146,7 @@
   % Hüftkopfluxation
 
 \nolig{rfläd}{rf|läd}
-  % Dorfläden Surfläden
+  % Dorfläden Surfläden Schulbedarfläden
 \nolig{rflück}{rf|lück}
   % Sturmwurflücken
 \nolig{rfluke}{rf|luke}
@@ -1174,16 +1169,8 @@
   \keeplig{reifloh}  % Büchereiflohmarkt
   \keeplig{reiflöhe} % Gießereiflöhe
   \keeplig{reiflott} % Fischereiflotte
-  \keeplig{reiflüge} % Dreiflügelaltar
-  \keeplig{reiflügl} % dreiflüglig
 
-\nolig{Ruflaut}{Ruf|laut}
-\nolig{ruflaut}{ruf|laut}
-  % Ruflaute ruflautstark
-\nolig{Ruflos}{Ruf|los}
-\nolig{ruflos}{ruf|los}
-  % ruflos beruflos
-
+\nolif{Tafle}{Taf|le}
 \nolig{tafle}{taf|le}
   % tafle
   \keeplig{tafleck}  % Zahnpastaflecken
@@ -1250,20 +1237,15 @@
 \nolig{lffisch}{lf|fisch}
   % Wolffisch
 
-\nolig{mpffisch}{mpf|fisch}
-  % Kampffisch
-
 \nolig{nffing}{nf|fing}
   % fünffingrig Fünffingergebirge
 
 \nolig{pffi}{pf|fi}
   % topffit Kopffilm Wahlkampffinanzierung
-  % Schlangenkopffisch
+  % Schlangenkopffisch Kampffisch
 
 \nolig{reiffing}{reif|fing}
   % Greiffinger
-\nolig{rffinte}{rf|finte}
-  % Sprungwurffinte
 
 
 
@@ -1280,8 +1262,6 @@
   \keeplig{stoffig}
   % permit ffi ligature for -ig suffix...
 
-\nolig{ffidee}{ff|idee}
-  % Luftschiffidee
 \nolig{ffinnen}{ff|innen}
   % Schiffinnenraum Schiffinnenausbau
 
@@ -1293,9 +1273,6 @@
 \nolig{griffl}{griff|l}
   % Grifflängen Grifflaschen Griffleiste
   % grifflos angrifflustig
-\nolig{Hofflü}{Hof|flü}
-\nolig{hofflü}{hof|flü}
-  % Hofflügel 
 \nolig{Offline}{Off|line}
 \nolig{offline}{off|line}
   % offline, Offline
@@ -1303,7 +1280,7 @@
   % Pfifflaute
 \nolig{Scheffle}{Scheff|le}
 \nolig{scheffle}{scheff|le}
-  % scheffle Geldscheffler
+  % Scheffler Geldscheffler
 \nolig{Schiffl}{Schiff|l}
 \nolig{schiffl}{schiff|l}
   % Schifflache Schiffladung Schifflinie 
@@ -1319,22 +1296,14 @@
 
 \nolig{fflamell}{ff|lamell}
   % Rafflamellen
-\nolig{ffland}{ff|land}
-  % Iffland Rifflandschaft 
 \nolig{fflast}{ff|last}
   % Rohstofflastigkeit Treibstofflaster
 \nolig{fflatsch}{ff|latsch}
   % Rifflatschern
-\nolig{fflieb}{ff|lieb}
-  % riffliebend
 \nolig{ffloch}{ff|loch}
   % Suffloch Griffloch Sauerstoffloch
-\nolig{fflöch}{ff|löch}
-  % Sufflöcher Grifflöcher
 \nolig{fflos}{ff|los}
   % auspufflos
-\nolig{fflung}{ff|lung}
-  % Stafflung
 
 \nolig{ifflo}{iff|lo}
   % Schifflogbuch grifflos Griffloch
@@ -1343,10 +1312,6 @@
   % Sprengstoffladung 
 \nolig{öffle}{öff|le}
   % löffle
-%%%\nolig{offleck}{off|leck}
-%%%  % Treibstoffleck
-%%%\nolig{offlief}{off|lief}
-%%%  % Brennstofflieferungen
 \nolig{offlo}{off|lo}
   % wirkstofflos Sauerstoffloch
   % offload
@@ -1378,11 +1343,12 @@
   % aufflackern aufflammen Aufflickung
   % Auffliegen
 
+\nolig{eiffleck}{eif|fleck}
+  % Schleifflecklein
+
 \nolig{ffläch}{f|fläch}
   % Lauffläche Kampfflächen 
-  % Zwölfflächner (dodecahedron)
-%%\nolig{fflatt}{f|flatt}
-%%  % aufflattern
+  % Zwölfflächner zwölfflächig
 \nolig{fflech}{f|flech}
   % aufflechten
 \nolig{ffleisch}{f|fleisch}
@@ -1399,6 +1365,8 @@
   % Tarifflüchtling
 \nolig{fflug}{f|flug}
   % Tiefflug Kampfflugzeug Chefflugleiter 
+\nolig{fflüg}{f|flüg}
+  % Streifflüge zwölfflügelig Tiefflüge 
 \nolig{fflur}{f|flur}
     % Klosterhofflur
 \nolig{ffluss}{f|flus}
@@ -1406,30 +1374,15 @@
 \nolig{fflüs}{f|flüs}
   % Schleifflüsigkeit}
 \nolig{fflut}{f|flut}
-  % Brieffluten
+  % Brieffluten Rückrufflut Anrufflut
 
 \nolig{iefflieg}{ief|flieg}
   % tieffliegend 
 \nolig{iefflog}{ief|flog}
-  % tiefflog
-\nolig{iefflüg}{ief|flüg}
-  % Tiefflüge 
-
-
-%%%% XXXXXXXXXX
-
-\nolig{eiffleck}{eif|fleck}
-  % Schleifflecklein
-
-\nolig{fflüg}{f|flüg}
-  % Streifflüge zwölfflügelig
-\nolig{fflut}{f|flut}
-  % Brieffluten Rückrufflut Anrufflut
+  % tiefflog  
 
 \nolig{lfflach}{lf|flach}
   % Zwölfflach 
-\nolig{lffläch}{lf|fläch}
-  % Zwölfflächner zwölfflächig
 
 \nolig{pffl}{pf|fl}
   % Sumpffläche Sturzkampfflieger 
@@ -1471,8 +1424,8 @@
 \nolig{Dorft}{Dorf|t}
 \nolig{dorft}{dorf|t}
   % Dorftrottel -tratsch -tümpel
-\nolig{Fünft[aäehlroöuüy]}{Fünf|t}  % Fünftagewoche ...
-\nolig{fünft[aehlroöuüy]}{fünf|t}  % fünftens...
+\nolig{Fünft[aäehlroöuy]}{Fünf|t}% Fünftagewoche ...
+\nolig{fünft[aehlroöuy]}{fünf|t} % fünftens...
   \keeplig{fünfterfolg} % fünfterfolgreichste
   \keeplig{Fünfterfolg}
   \keeplig{fünfthässl}  % fünfthässlichste
@@ -1485,8 +1438,8 @@
   \keeplig{Fünftlängst}
   \keeplig{fünftleichtest} % fünftleichteste
   \keeplig{Fünftleichtest}
-  \keeplig[fünftletzt}  % fünftletzte
-  \keeplig[Fünftletzt}
+  \keeplig{fünftletzt}  % fünftletzte
+  \keeplig{Fünftletzt}
   \keeplig{fünftrang}   % fünftrangig
   \keeplig{Fünftrang}
   \keeplig{fünftreichst}% fünftreichste
@@ -1495,24 +1448,23 @@
   \keeplig{Fünftoper}  % Fünftoperation
   \keeplig{Fünftrund}  % Fünftrunden
   \keeplig{Fünftäon}  
+
 \nolig{Golft}{Golf|t}
   % Golfträume -turnier -typ -talent
 \nolig{golft[hiruüy]}{golf|t}
   % golfta -> caught by lfta rule
-  % golfto -> caught be lfto rule
   % golftä -> caught by lftä rule
   % golftö -> caught be lftö rule
-\nolig{Greift[eior]}{Greif|t}
-  % Greiftrupp Greiftier Greiftraining
+\nolig{Greift[eio]}{Greif|t}
+  % Greiftest -tentakeln -tier -tor
 \nolig{Hanft}{Hanf|t}
   % Hanftaler Hanftau
 \nolig{Hoft[aäehioäruüy]}{Hof|t}
 \nolig{hoft[aähioöruü]}{hof|t}
   % Hoftor Klosterhoftor
-\nolig{Impft[ahio]}{Impf|t}
-  % Impftabelle Impftarif Impftierarzt Impftod
 \nolig{Impftest}{Impf|test}
-\nolig{Lauft}{Lauf|t}
+
+\nolig{Laufte}{Lauf|te}
   % Lauftermin Lauftest Lauftext
 \nolig{Prüft[aähioäruüy]}{Prüf|t}
 \nolig{prüft[aähioöruü]}{prüf|t}
@@ -1520,40 +1472,25 @@
 \nolig{Ruft[aäehioäruüy]}{Ruf|t}
   % Ruftaxi Rufterz Rufton Ruftöne
 
-\nolig{Schaftag}{Schaf|tag}
 \nolig{Schaftal}{Schaf|tal}
-\nolig{Schafteich}{Schaf|teich}
 \nolig{Schaftor}{Schaf|tor}
-\nolig{Schaftransp}{Schaf|transp}
-  % Schaftransporte
 \nolig{Schaftreib}{Schaf|treib}
-  % Schaftreiber
-\nolig{Schaftrieb}{Schaf|trieb}
-\nolig{Schaftrift}{Schaf|trift }
-\nolig{Schaftrunk}{Schaf|trunk}
-\nolig{Schaftrupp}{Schaf|trupp}
-\nolig{Schafträger}{Schaf|träger}
-\nolig{Schaftränke}{Schaf|tränke}
-\nolig{Schaftyp}{Schaf|typ}
 
 \nolig{Schlaft}{Schlaf|t}
 \nolig{schlaft[aähioäruüy]}{schlaf|t}
   % Schlaftablette 
-\nolig{Schilft[aäehioäruüy]}{Schilf|t}
+\nolig{Schilft[äehiruüy]}{Schilf|t}
 \nolig{schilft[hiruüy]}{schilf|t}
   % Schilfteich Schlilftümpel
-\nolig{Senft[aäehioäruüy]}{Senf|t}
+\nolig{Senft[aäehioäruy]}{Senf|t}
   % Senftube 
-\nolig{Stofftest}{Stoff|test}
-\nolig{stofftest}{stoff|test}
-  % Schadstofftest Impfstofftest
-\nolig{Straft[aähioäruüy]}{Straf|t} 
+\nolig{Straft[aähioöruüy]}{Straf|t} 
 \nolig{straft[aähioöruüy]}{straf|t}
   % (viele Fälle)
   \keeplig{straftheit} % Unbestraftheit
 \nolig{Sufft}{Suff|t}
   % Sufftest Sufftext
-\nolig{Surft}{Surf|t}
+\nolig{Surft[aähioöruüy]}{Surf|t}
   % Surfthema Surftipp 
 \nolig{Tarift}{Tarif|t}
 \nolig{tarift}{tarif|t}
@@ -1606,16 +1543,12 @@
   % Eingreiftitel
 \nolig{eiftr}{eif|tr}
   % Eingreiftruppe Nadelstreifträger 
+  % Greiftrupp -tier -training
 \nolig{elieft}{elief|t}
   % Relieftäfelchen Relieftropfen Relieftürme
 \nolig{enftei}{enf|tei}
   % Senfteig
 
-\nolig{ffteil}{ff|teil}
-  % Raumschiffteil Riffteil Stoffteil
-\nolig{fftest}{ff|test}
-  % Impfstofftest
-  \keeplig{gebufftest} % ausgebuffteste
 \nolig{ftabell}{f|tabell}
   % Ruftabelle
 \nolig{ftablett}{f|tablett}
@@ -1624,7 +1557,7 @@
   % Pfeiftafel
 \nolig{ftag}{f|tag}
   % Tauftag Fünftagewoche
-\nolig{ftägig}{f|tägig}
+\nolig{ftäg}{f|täg}
   % fünftägig elfftägig zwölftägig
 \nolig{ftalsg}{f|talsg}
   % schaftalsgrundig
@@ -1675,6 +1608,7 @@
   % Dampfteigwaren 
 \nolig{fteil}{f|teil}
   % fünfteilig Friedhofteil
+  % Raumschiffteil Riffteil Stoffteil
 \nolig{ftelef}{f|telef}
 \nolig{fteleph}{f|teleph} % old spelling...
   % Wegwerftelefon Notruftelefonnummern
@@ -1706,6 +1640,8 @@
   % Kohlkopfterrine
 \nolig{fterror}{f|terror}
   % Schadstoffterror
+\nolig{ftestat}{f|testat}
+  % Prüftestate
 \nolig{fteuf}{f|teuf}
   % Dorfteufel Saufteufel
 \nolig{ftext}{f|text}
@@ -1720,11 +1656,13 @@
 \nolig{ftheor}{f|theor}
   % -f-theorie -f-theorien
 \nolig{ftherap}{f|therap}
-  % Impftherapie Schröpftherapeut
+  % Impftherapie Wurftherapie 
+  % Schröpftherapeut
 \nolig{ftick}{f|tick}
   % Rückruftickets Diskuswurfticket
 \nolig{ftief}{f|tief}
   % tieftief (?)
+  \keeplig{ftiefigur} % Softiefigur
 \nolig{ftier}{f|tier}
   % Wegwerftier Huftier 
   \keeplig{haftier} % inhaftieren
@@ -1748,7 +1686,7 @@
 \nolig{ftool}{f|tool}
   % Prüftool
 \nolig{ftopf}{f|topf}
-  % Schleiftopf Dampf- Auspuff- Schöpf-
+  % Schleiftopf Dampf- Auspuff- Schöpf- Senf-
   \keeplig{ftopfer} % Duftopfer Gift- Haft-
 \nolig{ftorig}{f|torig}
   % schaftorig fünftorig
@@ -1767,7 +1705,7 @@
   % Lauftrainer
   \keeplig{uftrainerin} % Duftrainerin
 \nolig{ftränk}{f|tränk}
-  % Rückruftränke
+  % Rückruftränke Schaftränke
 \nolig{ftransp}{f|transp}
   % Hilftransport Schaftransport
 \nolig{fträumen}{f|träumen}
@@ -1792,7 +1730,7 @@
 \nolig{ftrief}{f|trief}
   % tieftriefend
 \nolig{ftrift}{f|trift}
-  % schaftriftig
+  % schaftriftig Schaftrift
 \nolig{ftritt}{f|tritt}
   % Huftritte
   \keeplig{ftritter} % Kernkraftritter
@@ -1854,8 +1792,6 @@
 \nolig{nftause}{nf|tause}
   % fünftausend Fünftausender
 
-\nolig{nftopf}{nf|topf}
-  % Senftopf 
 \nolig{nftöpf}{nf|töpf}
   % Senftöpfchen
 
@@ -1864,9 +1800,13 @@
 
 \nolig{nftü}{nf|tü}
   % fünftürig Senftüte
-  \keeplig{nftüb}
+  \keeplig{nftüb}f
   % Vernunftüberlegung Zunftüberlieferung
     \nolig{nftübchen}{nf|tübchen} % Senftübchen
+
+\nolig{offtest}{off|test}
+  % Impfstofftest Schadstofftest
+  \keeplig{hofftest}
 
 \nolig{pft[aähioöruüy]}{pf|t}
   % Wettkampftag -trubel
@@ -1876,6 +1816,8 @@
   % Schimpftiraden Mehrkampftitel Stapftiefe
   % Dampftopf Sumpftour Herzklopftöne 
   % Kopftreffer -tuch -tücher Zopfträger
+  % Impftabelle Impftarif 
+  % Impftierarzt Impftod
   \keeplig{pftheit}
   % Gedämpftheit Umkämpftheit
 \nolig{pftee}{pf|tee}
@@ -1885,8 +1827,6 @@
 \nolig{pftender}{pf|tender}
   % Heißdampftenderlok
 
-\nolig{rftherap}{rf|therap}
-  % Wurftherapie
 \nolig{rftr}{rf|tr}
   % Wurftraining Surftrip Freiwurftreffer
   \keeplig{tdurftrö} % Notdurftröhre
