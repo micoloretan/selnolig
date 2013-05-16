@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-english-patterns}%
-[2013/01/22]
+[2013/05/14]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -56,6 +56,9 @@
 \nolig{Pdflatex}{Pdf|latex}
  % better to write 'pdf\LaTeX', right? 
 
+\nolig{otfload}{otf|load}
+  % for the 'luaotfload' package...
+
 
 % (d) ffi -> ff-i
 
@@ -108,23 +111,58 @@
  % fifth(s) 
 \nolig{elfth}{elf|th}
  % twelfth(s)
- % (Obscuring the 'th' pair with an 
- % 'ft' ligature just looks weird!)
+ % Obscuring the 'th' pair with an 
+ % 'ft' ligature just looks weird!
 
 \nolig{lftr}{lf|tr}
  % wolftrap calftrap
 
 \nolig{eaftr}{eaf|tr}
- % leaftrap (gutters, pools ...)
+ % leaftrap
 
 \nolig{fftr}{ff|tr}
  % offtrack
 
 
 
+% (i) fb, fh, fj, and fk ligatures
+
+% suppress these ligatures globally, but make
+% exceptions for Kafka, fjord, and fjell
+\nolig{fb}{f|b}
+\nolig{fh}{f|h}
+\nolig{fj}{f|j}
+\nolig{fk}{f|k}
+
+  % There are, of corse, words of non-English 
+  % origin for which the 'fj' ligature should 
+  % not be suppressed. 
+  \keeplig{fjord} % Norwegian spelling
+  \keeplig{fjör}  % Icelandic spelling, e.g., in
+                  % Isafjördur and Ísafjörður
+  \keeplig{fjarð} % Ísafjarðarbær (in Iceland)
+  \keeplig{fjell} % Norwegian
+  \keeplig{fjall} % Swedish (?)
+  \keeplig{fjäll}  
+  \keeplig{fjöll}
+
+  \keeplig{Prokofjew}
+  \keeplig{Sufjan} % Stevens
+  \keeplig{Eefje}  % Dutch first name
+  \keeplig{Astafjew} 
+    % Author (Wiktor) and soccer player (Maksim)
+
+  \keeplig{Kafka}
+  \keeplig{Safka}
+  \keeplig{Potrafke}
+  \keeplig{Sprafke}
+  \keeplig{Shirafkan}
+  \keeplig{Tirafkan}
+
+
 
 % Part 2: Additional f-ligature suppression
-% patterns if 'broad' option is set.
+% patterns if 'broadf' option is set.
 % =========================================
 
 \if@broadfset
@@ -143,10 +181,10 @@
  % strafing vouchsafing
 
 \nolig{eefing}{eef|ing}
- % beefing reefing
+% beefing reefing
 
-\nolig{iefing}{ief|ing}
- % briefing debriefing
+ \nolig{iefing}{ief|ing}
+% briefing debriefing
 
 \nolig{ifing}{if|ing}
  % coifing fifing jackknifing knifing
@@ -310,18 +348,6 @@
  % fifty fiftyish
 
 
-% (i) fb, fh, fj, and fk ligatures
-
-% suppress these ligatures globally, but make
-% exceptions for Kafka, fjord, and fjell
-\nolig{fb}{f|b}
-\nolig{fh}{f|h}
-\nolig{fj}{f|j}
-\nolig{fk}{f|k}
-
-\keeplig{Kafka}
-\keeplig{fjord}
-\keeplig{fjell}
 
 \fi % end of \if@broadfset block
 
@@ -422,11 +448,12 @@
 \nolig{aastricht}{aas|tricht}
  % Maastricht
 
-\nolig{esthet}{es|thet}
-\nolig{aesthet}{aes|thet}
-\nolig{Esthet}{Es|thet}
-\nolig{Aesthet}{Aes|thet}
+\nolig{sthes}{s|thes}
+ % anaesthesia synesthesia prosthesis
+\nolig{sthet}{s|thet}
  % aesthetic esthetic unesthetic
+ % prosthetist 
+
 
 % (B) ct -> c-t
 % -------------
@@ -451,7 +478,7 @@
 \nolig{espas}{es|pas}
  % trespass trespassing
 \nolig{isplat}{is|plat}
- % cisplatin
+ % cisplatin (cis-platin, not cisp-latin!)
 
 \nolig{disp}{dis|p}
 \nolig{Disp}{Dis|p}
@@ -469,19 +496,19 @@
  % spherical asphodel phosphorous phosphate
  % blaspheme blasphemy
 
-\nolig{transpa}{trans|pa}
+\nolig{ranspa}{rans|pa}
  % transparent transpacific
-\nolig{transpe}{trans|pe}
+\nolig{ranspe}{rans|pe}
  % transpersonal
-\nolig{transpie}{trans|pie}
+\nolig{ranspie}{rans|pie}
  % transpierce
-\nolig{transpl}{trans|pl}
+\nolig{ranspl}{rans|pl}
  % transplant
-\nolig{transpol}{trans|pol}
+\nolig{ranspol}{rans|pol}
  % transpolar 
-\nolig{transpor}{trans|por}
+\nolig{ranspor}{rans|por}
  % transport transportation
-\nolig{transpos}{trans|pos}
+\nolig{ranspos}{rans|pos}
  % transpose transposon
 
 \nolig{risprud}{ris|prud}
@@ -493,6 +520,8 @@
  % newspaper 
 \nolig{ewspr}{ews|pr}
  % newsprint
+ % Don't suppress sp lig in "newspeak"!
+
 
 % (D) th -> t-h
 % -------------
@@ -619,6 +648,10 @@
  % determent determinant preterm 
 \nolig{etext}{e|text}
  % pretext retext teletext
+\nolig{ethink}{e|think}
+ % freethinking
+\nolig{ethrow}{e|throw}
+ % freethrow
 \nolig{etick}{e|tick}
  % bluetick detick
 \nolig{etide}{e|tide}
@@ -627,6 +660,8 @@
  % retighten
 \nolig{etime}{e|time}
  % betime lifetime peacetime sometime
+\nolig{eetop}{ee|top}
+ % treetop
 \nolig{etrain}{e|train}
  % detrain drivetrain housetrain retrain 
 \nolig{etrap}{e|trap}
@@ -634,6 +669,10 @@
 \nolig{etree}{e|tree}
  % axletree saddletree shoetree
 
+\nolig{foret}{fore|t}
+\nolig{Foret}{Fore|t}
+ % foretaste foretell foretold foretime
+ % foretoken foretop foretopman
 \nolig{imetable}{ime|table}
  % timetable 
 
@@ -661,6 +700,17 @@
  % retarget retaste wiretap 
  \keeplig{pretable} % interpretable 
  \keeplig{cretar}   % secretary 
+
+\nolig{reteam}{re|team}
+\nolig{Reteam}{Re|team}
+ % reteam reteamed reteaming reteams
+\nolig{retear}{re|tear}
+\nolig{Retear}{Re|tear}
+ % retear retears
+\nolig{retemp}{re|temp}
+\nolig{Retemp}{Re|temp}
+ % retemper retempering
+
 \nolig{retie}{re|tie}
 \nolig{Retie}{Re|tie}
  % retie entireties sureties
@@ -679,6 +729,19 @@
 \nolig{retitl}{re|titl}
 \nolig{Retitl}{Re|titl}
  % retitle pretitling
+
+\nolig{retold}{re|told}
+\nolig{Retold}{Re|told}
+ % retold
+\nolig{retoo}{re|too}
+\nolig{Retoo}{Re|too}
+ % retook retool
+\nolig{retor}{re|tor}
+\nolig{Retor}{Re|tor}
+ % retore retorn retort retorted
+\nolig{retou}{re|tou}
+\nolig{Retou}{Re|tou}
+ % retouch retouched
 \nolig{retra}{re|tra}
 \nolig{Retra}{Re|tra}
  % retrace retrack retract retrans retransmit
@@ -689,27 +752,51 @@
 \nolig{Retri}{Re|tri}
  % pretrim pretrial retrieve retribution 
  % retries retrim
+\nolig{etrors}{e|trors}
+ % retrorse
+\nolig{retrous}{re|trous}
+\nolig{Retrous}{Re|trous}
+ % retrousse
+\nolig{retry}{re|try}
+\nolig{Retry}{Re|try}
+ % retry retrying
+
 \nolig{retu}{re|tu}
 \nolig{Retu}{Re|tu}
  % return retune unreturnable
+\nolig{retwi}{re|twi}
+\nolig{Retwi}{Re|twi}
+ % retwist retwisting
 
-\nolig{uetooth}{ue|tooth}
- % bluetooth
+\nolig{etooth}{e|tooth}
+ % bluetooth eyetooth snaggletoothed
+\nolig{eteeth}{e|teeth}
+ % snaggleteeth eyeteeth
 
 \nolig{deter}{de|ter}
 \nolig{Deter}{De|ter}
  % deter determine deteriorate undeterred
+
 \nolig{ceties}{ce|ties}
  % niceties
+\nolig{cety}{ce|ty}
+ % nicety
+
 \nolig{feties}{fe|ties}
  % safeties unsafeties biosafeties
-
 \nolig{fety}{fe|ty}
  % safety
+
+\nolig{leties}{le|ties}
+ % subtleties
 \nolig{lety}{le|ty}
  % subtlety teletype teletypewriter
+
 \nolig{rety}{re|ty}
  % surety entirety retype pretype
+
+\nolig{etelev}{e|telev}
+ % pretelevision
 \nolig{etyp}{e|typ}
  % archetype archetypal retype pretype
 
@@ -843,6 +930,11 @@
 \nolig{misk}{mis|k}
 \nolig{Misk}{Mis|k}
  % miskeep miskept miskick misknow
+\nolig{atskill}{ats|kill}
+ % Catskills Mountains, Catskill Park
+\nolig{eekskill}{eeks|kill}
+ % Peekskill % a town ca. 40 miles north of New York City
+
 
 % (K) ll -> l-l
 % -------------
@@ -859,6 +951,24 @@
  % proofread proofroom proofrock
 
 
+% (M) ij -> i-j
+% -------------
+
+% The 'ij' ligature seems to have no good 
+% use in English-language words -- incl.
+% words introduced to English from other
+% languages, such as marijuana, gaijin, and 
+% bijou; the 'ij' ligature seems to span 
+% morpheme boundaries in all of these cases. 
+% Hence, we disable this ligature globally. 
+% We do make exceptions for words of Dutch 
+% origin, where the ij ligature does have 
+% legitimate uses.
+
+\nolig{ij}{i|j} 
+  \keeplig{ijs} % rijsttafel (Indonesian dish)
+  \keeplig{ijn} % de Bruijn
+
 
 
 % Part 4: Disabling one discretionary
@@ -867,14 +977,14 @@
 % ------------------------------------
 
 % (i) as, is, and us preceding st
-% ..............................
+% ...............................
 
 \nolig{ast}{a|st}
 \nolig{ust}{u|st}
 \nolig{ist}{i|st}
 
 % (ii) as, is, and us preceding sp
-% ..............................
+% .................--.............
 
 \nolig{aspar}{a|spar}
 \nolig{Aspar}{A|spar}
@@ -925,16 +1035,20 @@
 % ............................
 
 %% If you have 'at' and 'et' ligatures as
-%% well as the 'th' ligature -- and want 
-%% the 'th' ligature to take precedence,
+%% well as the 'th' ligature (as is the 
+%% case for the font "Garamond Premier Pro",
+%% and any other fonts?!) and want a
+%% trailing 'th' ligature to take precedence 
+%% over any preceding 'at' or 'et' ligas, 
 %% make sure the following macros are 
 %% active (i.e., not commented out).
 
 \nolig{ath}{a|th}
 \nolig{eth}{e|th}
 
+
 % The preceding instructions are a bit too  
-% broad as they also suppress the at ligature
+% broad, as they also suppress the 'at' ligature
 % for words such as boathook, flathead, 
 % etc., and the 'et' ligature in words such as
 % Beethoven, prophethood, and sweetheart.
@@ -944,15 +1058,16 @@
 \keeplig{oathook} % boathook
 \keeplig{eathook} % meathook
 \keeplig{athouse} % bathouse boathouse cathouse
-\keeplig{rathole} % rathole
-\keeplig{Rathole} 
+%%\keeplig{rathole} % this will re-enable "th" liga
+%%\keeplig{Rathole} %   if "at" liga doesn't exist...
 \keeplig{athead} % cathead fathead flathead meathead
 \keeplig{atherd} % goatherd neatherd
-\keeplig{eatheart} % greathearted
+\keeplig{eatheart} % greathearted sweetheart
+\keeplig{eetheart}
 
 \keeplig{Beethoven}
 \keeplig{ophethood}
-\keeplig{eetheart}
+
 
 % (iv) at and et preceding ta
 % ...........................

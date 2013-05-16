@@ -2,17 +2,30 @@
 0*.*
 1*.*
 4*.*
+<<<<<<< HEAD
 basker*
+=======
+aim*.*
+bask*
+>>>>>>> 4540290
 ctst*
 dehy*
 error*
 fontspec*
 koz*
 ld*
+<<<<<<< HEAD
 mann*.*
 matt*
 rml*.*
 aim*.*
+=======
+luaotf*
+mann*.*
+matt*
+rml*.*
+viz*
+>>>>>>> 4540290
 x*.*
 *.acn
 *.acr

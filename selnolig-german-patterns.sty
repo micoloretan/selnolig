@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2013/01/22]
+[2013/05/14]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -29,9 +29,10 @@
 
 \nolig{Auff[aeiloruyäöü]}{Auf|f}
 \nolig{auff[aeiloruyäöü]}{auf|f}
-  % Hundreds (thousands?!) of words that start
-  % with or contain [aA]uff-, [kK]auff-, [lL]auf-
-  % and don't end with "ff".
+  % Hundreds (thousands?!) of words that 
+  % start with or contain [aA]uff-, 
+  % [kK]auff-, [lL]auf- and don't end 
+  % with "ff".
   % We must provide a few \keeplig macros,
   % though, to deal with some surnames and 
   % some words of French origin.
@@ -128,8 +129,10 @@
 \nolig{Tieff}{Tief|f}
 \nolig{tieff}{tief|f}
   % (viele Fälle!)
-  \keeplig{tieffekt} % Multieffekt Konfettieffekt
-  \keeplig{tieffiz}  % Antieffizienz
+  \keeplig{tieffekt} 
+    % Multieffekt Konfettieffekt
+  \keeplig{tieffiz} 
+    % Antieffizienz
 
 
 \nolig{chaffron}{chaf|fron}
@@ -217,21 +220,21 @@
   \keeplig{ffeindealer} % Koffeindealer
 \nolig{ffeld}{f|feld}
   % Prüffeld Schilffeld Kampffeld
-  \keeplig{Büffeld}   % Büffeldecke
+  \keeplig{Büffeld}  % Büffeldecke
   \keeplig{büffeld}
   \keeplig{ffeldenk}  % Scheffeldenkmal
-  \keeplig{Iffeld}    % Iffeldorf
-  \keeplig{Löffeld}   % Löffeldüngung
+  \keeplig{Iffeld}   % Iffeldorf
+  \keeplig{Löffeld}  % Löffeldüngung
   \keeplig{löffeld}
-  \keeplig{Müffeld}   % Müffeldoktor
+  \keeplig{Müffeld}  % Müffeldoktor
   \keeplig{müffeld}
-  \keeplig{nüffeld}   % Schnüffeldienst -droge
-  \keeplig{Riffeld}   % Riffeldielen
-  \keeplig{taffeld}   % Staffeldach -diplomatie
-  \keeplig{toffeld}   % Kartoffeldruck -dieb
-  \keeplig{Trüffeld}  % Trüffelduft -dorf
+  \keeplig{nüffeld}  % Schnüffeldienst -droge
+  \keeplig{Riffeld}  % Riffeldielen
+  \keeplig{taffeld}  % Staffeldach -diplomatie
+  \keeplig{toffeld}  % Kartoffeldruck -dieb
+  \keeplig{Trüffeld} % Trüffelduft -dorf
   \keeplig{trüffeld}
-  \keeplig{Waffeld}   % Waffelduft
+  \keeplig{Waffeld}  % Waffelduft
   \keeplig{waffeld}
 
 \nolig{ffell}{f|fell}
@@ -240,13 +243,14 @@
   \keeplig{ffellinde}% Scheffellinde
   \keeplig{Muffell} % Muffellämmer
   \keeplig{muffell} % muffellig
-  \keeplig{öffell}  % Löffellamm Kochlöffellängen
+  \keeplig{öffell}  
+    % Löffellamm Kochlöffellängen
   \keeplig{taffell} % Staffellauf -läufer
-  \keeplig{toffell} % Kartoffellager -liebhaber
-                    % Pantoffellarve Kunstoffelle
-  \keeplig{üffell}  % Büffelleber -leder -leib
-                    % Trüffelleidenschaft
-                    % Schnüffellust 
+  \keeplig{toffell} 
+     % Kartoffellager -liebhaber
+     % Pantoffellarve Kunstoffelle
+  \keeplig{üffell} % Büffelleber -leder -leib
+     % Trüffelleidenschaft Schnüffellust 
 \nolig{ffeile}{f|feile}
   % Prüffeile
 \nolig{ffenster}{f|fenster}
@@ -268,14 +272,14 @@
   % Schaffetus
 \nolig{ffett}{f|fett}
   % Huffett Rumpffett Scharffetter
-  \keeplig{Buffett}  % Buffettheke
+  \keeplig{Buffett} % Buffettheke
   \keeplig{Büffett} 
   \keeplig{buffett}
-  \keeplig{büffett}  % Obstbüffett
+  \keeplig{büffett} % Obstbüffett
 \nolig{ffetz}{f|fetz}
   % Brieffetzen Stofffetzen
-  \keeplig{Buffetz}  % Buffetzeit
-  \keeplig{Büffetz}  % Büffetzusammenstellung
+  \keeplig{Buffetz} % Buffetzeit
+  \keeplig{Büffetz} % Büffetzusammenstellung
 \nolig{ffeud}{f|feud}
   % Kasernenhoffeudalismus
 \nolig{ffeue}{f|feue}
@@ -347,11 +351,11 @@
   % Kampffregatte Dampffregatte
 \nolig{ffrei}{f|frei}
   % tariffrei Schlaffrei
-  \keeplig{chiffrei} % Schiffreise
-  \keeplig{toffrei}  % stoffrein sauerstoffreich
-  \keeplig{uffreis}  % Puffreis
-  \keeplig{luffrei}  % schluffreich
-  \keeplig{iffreig}  % Riffreigen
+  \keeplig{chiffrei}% Schiffreise
+  \keeplig{toffrei} % stoffrein sauerstoffreich
+  \keeplig{uffreis} % Puffreis
+  \keeplig{luffrei} % schluffreich
+  \keeplig{iffreig} % Riffreigen
 \nolig{ffremd}{f|fremd}
   % hoffremd
 \nolig{ffreq}{f|freq}
@@ -362,7 +366,7 @@
 \nolig{ffrisch}{f|frisch}
   % Schaffrischkäse zapffrisch
 \nolig{ffried}{f|fried}
-  % Dorffrieden Dorffrieden
+  % Dorffrieden Hoffrieden
 \nolig{ffries}{f|fries}
   % Relieffries
   \keeplig{toffries} % Rohstoffriese
@@ -403,7 +407,8 @@
 \nolig{ffüß}{f|füß}
 \nolig{ffüss}{f|füss}
   % Greiffuß Greiffüße
-  \keeplig{iffuss} % Diffusschall -strahlung
+  \keeplig{iffuss} 
+    % Diffusschall -strahlung
 \nolig{ffutter}{f|futter}
   % Prüffutter
 \nolig{ffütter}{f|fütter}
@@ -452,14 +457,16 @@
 
 \nolig{straffern}{straf|fern}
   \keeplig{rtstraffern} % Gurtstraffern
-  \keeplig{ssstraffern} % Gurtschlossstraffern
+  \keeplig{ssstraffern} 
+    % Gurtschlossstraffern
 
 \nolig{ünff}{ünf|f}
   % fünffarbig fünffingrig fünfflügelig 
   % Fünfflach fünfflammig fünffleckige  
 
 \nolig{wurff[aäeiloöruü]}{wurf|f}
-  % Auswurffach Einwurffehler Hammerwurffinale
+  % Auswurffach Einwurffehler 
+  % Hammerwurffinale
 
 
 % 2. fi -> f-i
@@ -478,10 +485,12 @@
 
 \nolig{Chefi}{Chef|i}
 \nolig{chefi}{chef|i}
-  % Chefideologe Chefindianer Chefinformatiker
+  % Chefideologe Chefindianer 
+  % Chefinformatiker
   \keeplig{Chefin}  % Chefin Chefinnen
     \nolig{Chefin[a-mo-z]}{Chef|in}
-    % Chefinder -indianer -inspektor -inquisitor
+    % Chefinder -indianer -inspektor 
+    % -inquisitor
   \keeplig{chefin}
      \nolig{chefind}{chef|ind}
   \keeplig{chefibel} % Recherchefibel
@@ -582,7 +591,8 @@
   % Laufinfizierte
 \nolig{finfo}{f|info}
   % Tarifinformation Telefoninformation
-  \keeplig{Delfinfo} % Delfinforscher -foto
+  \keeplig{Delfinfo} 
+    % Delfinforscher -foto
 \nolig{finfra}{f|infra}
   % Hofinfrastruktur 
 \nolig{finfus}{f|infus}
@@ -596,7 +606,7 @@
 \nolig{finhalt}{f|inhalt}
   % Begriffinhalte Kropfinhalt
   \keeplig{Delfinhalt} % Delfinhaltung
-  \keeplig{raffinhalt} % Paraffinhaltige
+  \keeplig{raffinhalt} % Paraffinhaltig
 \nolig{finitia}{f|initia}
   % Korallenriffinitiative
 \nolig{finjekt}{f|injekt}
@@ -701,18 +711,23 @@
   % Must avoid catching "Aufl.".
 \nolig{aufl}{auf|l}
   % Hundreds (thousands?!) of words
-  % However, must allow for quite a few exceptions:
+  % However, must allow for quite a few 
+  % exceptions:
   \keeplig{auflair} % Tierschauflair
-  \keeplig{aufläche}% Schaufläche Grau- Stau- 
-            % Anbau- Kau- Niveau- Plateau-
+  \keeplig{aufläche}% Anbau- Grau- Kau- ...
+     % Niveau- Plateau- Schau- Staufläche
   \keeplig{aufliegl}% Tauflieglein
   \keeplig{auflüssig} % Tauflüssigkeit
-  \keeplig{baufl} % Modellbauflieger Weinbauflecken
+  \keeplig{baufl} 
+    % Modellbauflieger Weinbauflecken
   \keeplig{Baufl} % Bauflaute
-    \nolig{bauflösen}{bauf|lösen} % grobauflösend
+    \nolig{bauflösen}{bauf|lösen} 
+      % grobauflösend
   \keeplig{blaufl}% blaufleckig blauflauschig
-    \nolig{blaufloch}{blauf|loch} % Ablaufloch
-    \nolig{blauflog}{blauf|log}  % Ablauflogik
+    \nolig{blaufloch}{blauf|loch} 
+       % Ablaufloch
+    \nolig{blauflog}{blauf|log}  
+       % Ablauflogik
   \keeplig{Blaufl}% Blauflügel (Libelle)
   \keeplig{fraufl}% Frauflüge
   \keeplig{Fraufl}
@@ -740,10 +755,12 @@
 \nolig{Chefl}{Chef|l}
 \nolig{chefl}{chef|l}
   % Cheflieferant -limousine -lobbyist -los
-  \keeplig{achefl} % Rachefluch Einspracheflut
+  \keeplig{achefl} 
+    % Rachefluch Einspracheflut
   \keeplig{ichefl} % Speichefluss	
-  \keeplig{schefl} % Ascheflocken Tuschefleck
-  \keeplig{chefläche} % Bracheflächen ...
+  \keeplig{schefl} 
+    % Ascheflocken Tuschefleck
+  \keeplig{chefläche} % Bracheflächen
 \nolig{Dampfl}{Dampf|l}
 \nolig{dampfl}{dampf|l}
   % Dampflanze Natriumdampflampe
@@ -782,7 +799,8 @@
   \keeplig{timpfleg}  % Intimpflege
 \nolig{Kampfl}{Kampf|l}
 \nolig{kampfl}{kampf|l}
-  % Kampflegende kampflüstern Wahlkampflüge
+  % Kampflegende kampflüstern 
+  % Wahlkampflüge
 \nolig{Kopfl[äeioöuüy]}{Kopf|l}
 \nolig{kopfl[äeioöuüy]}{kopf|l}
 \nolig{Köpfl[aäioöuüy]}{Köpf|l}
@@ -790,9 +808,9 @@
   % Dutzende (Hunderte?) von Worten...
   % [kK]opfla -> caught by opfla rule
   % [kK]öpfle -> caught by öpfle rule
-  \keeplig{kopflaster} % Ökopflaster
-  \keeplig{kopfleg}    % Risikopflege
-  \keeplig{kopflaum}   % Schokopflaumen
+  \keeplig{kopflaster}% Ökopflaster
+  \keeplig{kopfleg}   % Risikopflege
+  \keeplig{kopflaum}  % Schokopflaumen
 \nolig{Pfeifl}{Pfeif|l}
 \nolig{pfeifl}{pfeif|l}
   % Pfeiflaute
@@ -845,14 +863,14 @@
 \nolig{strumpfl}{strumpf|l}
   % Strumpfladen Strumpfloch
 \nolig{Sumpfl}{Sumpf|l}
-  % Sumpflabkraut Sumpfleiche Sumpflichter
+  % Sumpflabkraut -leiche -licht
 
 \nolig{Surfl}{Surf|l}
 \nolig{surfl}{surf|l}
   % Surflizenz Surflegende 
-  \keeplig{surfleck}  % Lasurfleck
-  \keeplig{surflüg}   % Klausurflügel
-  \keeplig{surflüss}  % Glasurflüssigkeit
+  \keeplig{surfleck}% Lasurfleck
+  \keeplig{surflüg} % Klausurflügel
+  \keeplig{surflüss}% Glasurflüssigkeit
 \nolig{Tarifl}{Tarif|l}
 \nolig{tarifl}{tarif|l}
   % lots and lots of words...
@@ -977,7 +995,8 @@
   % Kauflaune Wurflaune Kampflaune
 
 \nolig{fleb}{f|leb}
-  % Hofleben Kopfleben Druckkopflebensdauer
+  % Hofleben Kopfleben 
+  % Druckkopflebensdauer
   \keeplig{huffleb} % shuffleboard
 \nolig{flehn}{f|lehn}
   % steiflehnig
@@ -1011,7 +1030,8 @@
   %% Vorsicht aber mit Pflicht und pflicht,
   %% sowie mit einflicht, verflicht, etc.:
   \keeplig{flicht}
-    \nolig{öpflicht}{öpf|licht} % kröpflicht (??)
+    \nolig{öpflicht}{öpf|licht} 
+      % kröpflicht (??)
 
 \nolig{flieb}{f|lieb}
   % freiberufliebend riffliebend
@@ -1085,9 +1105,9 @@
 \nolig{lflos}{lf|los}
   % hilflos
   \keeplig{lfloss}
-  % Walflosse Kielflosse Paddelflossen
+  % Walflosse Kiel- Paddel-
   \keeplig{lflosk}
-  % Moralfloskel Sozialfloskeln Spielfloskel
+  % Moralfloskel Sozial- Spiel-
 \nolig{lürfl}{lürf|l}
   % Schlürflaut
 
@@ -1107,7 +1127,8 @@
   \keeplig{iopflast}  % Biopflaster
   \keeplig{nopflaster}% Kinopflaster
   \keeplig{opflair}   % Popflair
-  \keeplig{opflanz}   % Kakaopflanzen Indigo-
+  \keeplig{opflanz}   
+    % Kakaopflanzen Indigopflanzen
 \nolig{öpfle}{öpf|le}
   % köpfle tröpfle Knöpfle
 \nolig{orflad}{orf|lad}
@@ -1249,13 +1270,13 @@
 
 \nolig{Stoffi}{Stoff|i}
 \nolig{stoffi}{stoff|i}
-  % Rohstoffindustrieller Rohstoffimporte
+  % Rohstoffindustrieller -importe
   % Baustoffingenieur Kunststoffingenieur
   % Kohlenstoffisotope
   \keeplig{stoffiz}
   % Geheimdienstoffiziere 
   \keeplig{stoffig}
-  % permit ffi ligature for -ig suffix...
+  % permit ffi ligature for ff-ig suffix
 
 \nolig{ffinnen}{ff|innen}
   % Schiffinnenraum Schiffinnenausbau
@@ -1266,7 +1287,7 @@
 
 \nolig{Griffl}{Griff|l}
 \nolig{griffl}{griff|l}
-  % Grifflängen Grifflaschen Griffleiste
+  % Grifflängen -laschen -leiste
   % grifflos angrifflustig
 \nolig{Offline}{Off|line}
 \nolig{offline}{off|line}
@@ -1401,9 +1422,10 @@
 % 8. ft -> f-t
 % ------------
 
-\nolig{Auft}{Auf|t}
+\nolig{Auft[aähioöruüy]}{Auf|t}
 \nolig{auft[aähioöruüy]}{auf|t}
-  % (viele viele Fälle)
+  % (viele viele Fälle; aber: ft-Ligatur wird
+  % doch verwendet für "Auft.")
 
 \nolig{Brieft}{Brief|t}
 \nolig{brieft}{brief|t}
@@ -1543,7 +1565,7 @@
   % Eingreiftruppe Nadelstreifträger 
   % Greiftrupp -tier -training
 \nolig{elieft}{elief|t}
-  % Relieftäfelchen Relieftropfen Relieftürme
+  % Relieftäfelchen -tropfen -türme
 \nolig{enftei}{enf|tei}
   % Senfteig
 
@@ -1626,10 +1648,11 @@
   % Schaumstoffteppich Knüpfteppich
 \nolig{ftermin}{f|termin}
   % Anpfifftermin Passagierschiffterminal
-  \keeplig{fterminder} % Gesellschafterminderheiten
-\nolig{ftermit}{f|termit} % Rauschgiftermittler
-  % Kampftermiten
-  \keeplig{ftermitt}
+  \keeplig{fterminder} 
+    % Gesellschafterminderheiten
+\nolig{ftermit}{f|termit} 
+  % Kampftermiten 
+  \keeplig{ftermitt} % Rauschgiftermittler
 \nolig{fterrain}{f|terrain}
   % Kampfterrain
 \nolig{fterrass}{f|terrass}
@@ -1640,8 +1663,10 @@
   % Schadstoffterror
 \nolig{ftestat}{f|testat}
   % Prüftestate
-  \keeplig{ftestation} % Streitkräftestationierung
-  \keeplig{ftestatist} % Lehrkräftestatistik
+  \keeplig{ftestation} 
+    % Streitkräftestationierung
+  \keeplig{ftestatist} 
+    % Lehrkräftestatistik
 \nolig{fteuf}{f|teuf}
   % Dorfteufel Saufteufel
 \nolig{ftext}{f|text}
@@ -1686,10 +1711,12 @@
 \nolig{ftool}{f|tool}
   % Prüftool
 \nolig{ftopf}{f|topf}
-  % Schleiftopf Dampf- Auspuff- Schöpf- Senf-
-  \keeplig{ftopfer} % Duftopfer Gift- Haft-
+  % Schleiftopf Dampf- Auspuff- Schöpf- 
+  \keeplig{ftopfer} 
+    % Duftopfer Gift- Haft-
 \nolig{ftöpf}{f|töpf}
-  % Senftöpfchen Kunststofftöpfe Torftöpfchen
+  % Senftöpfchen Torftöpfchen
+  % Kunststofftöpfe 
 \nolig{ftorig}{f|torig}
   % schaftorig fünftorig
 \nolig{ftour}{f|tour}
@@ -1699,8 +1726,6 @@
   % Cheftrader
 \nolig{ftradition}{f|tradition}
   % Ruftraditionen
-%%\nolig{ftrag}{f|trag} % may be SOR
-  % tieftragisch auftragsgerecht
 \nolig{fträg}{f|träg}
   % Notrufträger
 \nolig{ftrain}{f|train}
@@ -1798,7 +1823,8 @@
   % fünftürig Senftüte
   \keeplig{nftüb}
   % Vernunftüberlegung zunftüblich
-    \nolig{nftübchen}{nf|tübchen} % Senftübchen
+    \nolig{nftübchen}{nf|tübchen} 
+      % Senftübchen
 
 \nolig{ölfte}{ölf|te}
   % zwölfte zwölftens
@@ -1807,9 +1833,10 @@
   % Wettkampftag -trubel -tauglich -töne
   % Kampftaktik -truppe -tätigkeit -tänzer
   % Schnupftabak -tuch -tücher -tüchlein 
-  % Schimpftiraden Mehrkampftitel Stapftiefe
+  % Schimpftiraden Mehrkampftitel 
+  % Stapftiefe Zopfträger
   % Dampftopf Sumpftour Herzklopftöne 
-  % Kopftreffer -tuch -tücher Zopfträger
+  % Kopftreffer -tuch -tücher 
   % Impftabelle -tarif -tierarzt -tod
   \keeplig{pftheit}
   % Gedämpftheit Umkämpftheit
@@ -1820,15 +1847,21 @@
 \nolig{pftender}{pf|tender}
   % Heißdampftenderlok
 
+%\nolig{rftrag}{rf|trag} 
+  % Wegwerftragtasche Dorftragödie
+
 \nolig{rftr}{rf|tr}
   % Wurftraining Surftrip Freiwurftreffer
   \keeplig{tdurftrö} % Notdurftröhre
   \keeplig{Werftr}   % Werftreparatur
   \keeplig{werftr}
+    \nolig{werftrage}{werf|trage}
+    % Wegwerftragetasche
 \nolig{rftu}{rf|tu}
   % Wurftuch
-  \keeplig{Werftu} % Werftumfeld Werftunternehmen
+  \keeplig{Werftu} 
   \keeplig{werftu}
+    % Werftumfeld Werftunternehmen
 
 \nolig{uftas}{uf|tas}
   % Ruftaste Vorlauftaste Kauftasche
@@ -1881,9 +1914,9 @@
 % 10. fj -> f-j
 % -------------
 
-% Suppress this ligature globally -- Words of
-% German origin only seem to feature 'fj' 
-% across morpheme boundaries.
+% Suppress this ligature globally. Words 
+% of German origin seem to feature 'fj'
+% only across morpheme boundaries.
 
 \nolig{fj}{f|j}
   % aufjauchzen aufjaulen fünfjährig Kampfjet

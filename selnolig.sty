@@ -13,18 +13,19 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.172}
-\def\selnoligpackagedate{2013/01/29}
+\def\selnoligpackageversion{0.211}
+\def\selnoligpackagedate{2013/05/14}
 
 % Announce who we are. Issue warning message if we're
-% not running under LuaLaTeX, but don't exit entirely.
+% not running under LuaLaTeX.
 
 \typeout{=== Package \selnoligpackagename, 
-   Version \selnoligpackageversion, 
-   Date \selnoligpackagedate ===}
-\ProvidesPackage{selnolig}[2013/01/22]
+             Version \selnoligpackageversion, 
+             Date    \selnoligpackagedate ===}
+\ProvidesPackage{selnolig}[2013/05/14]
 
 \RequirePackage{ifluatex}
+
 \ifluatex
   \RequirePackage{luatexbase,luacode,expl3}
 \else
@@ -35,17 +36,14 @@
   \typeout{ selnolig package *require* LuaLaTeX.    }
   \typeout{ Because you're NOT running this package }
   \typeout{ under LuaLaTeX, ligature suppression    }
-  \typeout{ *cannot* be performed.                  }
-  \typeout{ If any language options have been       }
-  \typeout{ specified, the associated hyphenation   }
-  \typeout{ exception patterns will be loaded.      }
+  \typeout{ *can not* be performed.                 }
   \typeout{=========================================}
 \fi
 
 
 % If the 'fontspec' package isn't loaded by the time
 % the '\begin{document}' directive is encoutered, issue
-% an error message and exit.
+% an error message and exit. 
 
 \AtBeginDocument{%
 \ifluatex

@@ -4,15 +4,25 @@
 -- from a (Lua)LaTeX .sty file.
 --
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
---    (with crucial contributions of Taco Hoekwater, 
+--    (with crucial contributions by Taco Hoekwater, 
 --    Patrick Gundlach, and Steffen Hildebrandt)
--- Date: 2013/01/22
+-- Date: 2013/05/14
 --
 -- The entire selnolig package is placed under the terms 
 -- of the LaTeX Project Public License, version 1.3 or 
 -- later. (http://www.latex-project.org/lppl.txt).
 -- It has the status "maintained".
 
+selnolig = { }
+selnolig.module = {
+   name         = "selnolig",
+   version      = "0.211",
+   date         = "2013/05/14",
+   description  = "Selective suppression of typographic ligatures",
+   author       = "Mico Loretan",
+   copyright    = "Mico Loretan",
+   license      = "LPPL 1.3 or later"
+}
 
 local glyph   = node.id('glyph')
 local glue    = node.id("glue")
@@ -48,7 +58,7 @@ end
   -- providing a dedicated string search function.
 
 local unicode_find = function(s, pattern, position)
-  -- Strart by correcting the incoming position
+  -- Start by correcting the incoming position
   if position ~= nil then
     debug_info("Position: "..position)
     sub = string.sub(s, 1, position)
@@ -74,11 +84,11 @@ function process_ligatures(nodes,tail)
       p[i]=0
     end
     for k,v in pairs(t) do
-      -- debug_info("Match: "..v[3])
+      debug_info("Match: "..v[3])
       local c= unicode_find(noliga[v[3]],"|")
       local correction=1
       while c~=nil do
-         --debug_info("Position "..(v[1]+c))
+         debug_info("Position "..(v[1]+c))
          p[v[1]+c-correction] = 1
          c = unicode_find(noliga[v[3]],"|",c+1)
          correction = correction+1
@@ -93,24 +103,23 @@ function process_ligatures(nodes,tail)
      local last=node.tail(head)
      for curr in node.traverse_id(glyph,head) do
        if ligatures[i]==1 then
-         debug_info("Inserting noliga whatsit before glyph: "..unicode.utf8.char(curr.char))
+         debug_info("Inserting noliga whatsit before glyph: " ..unicode.utf8.char(curr.char))
          node.insert_before(hh,curr, node.copy(blocknode))
          hh=curr
        end
        last=curr
        if i==#ligatures then
-         --debug_info("Leave node list on position: "..i)
+         debug_info("Leave node list on position: "..i)
          break
        end
        i=i+1
      end
      if(last~=nil) then
-       -- debug_info("Last char: "..unicode.utf8.char(last.char))
+       debug_info("Last char: "..unicode.utf8.char(last.char))
      end
   end
   for t in node.traverse(nodes) do
     if t.id==glyph then
-      --s[#s+1]=string.lower(unicode.utf8.char(t.char))
       s[#s+1]=unicode.utf8.char(t.char)
     elseif t.id== glue then
       local f=string.gsub(table.concat(s,""),"[\\?!,\\.]+","")
