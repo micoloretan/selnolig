@@ -288,7 +288,7 @@ Typographic ligatures are suppressed selectively in the following cases:
 
 \item if a main word and a suffix are joined, \emph{if} the suffix is a derivational morpheme that begins with an~f or an~l: \mbox{shelfful}~$\to$ shelfful, \mbox{leafless} $\to$ leafless, \mbox{dwarflike}~$\to$ dwarflike, etc. 
 
-\item The ft ligature is also suppressed in words that end in |fth|: \mbox{fifth}~$\to$ fifth, and \mbox{twelfth}~$\to$ twelfth. Note that the particle |th| in these words is a derivational morpheme. Moreover, at least in English, the |th| character pair is pronounced in a distinctive way. If the ft ligature were not suppressed, the readability of these would likely suffer.
+\item The ft ligature is also suppressed in words that end in |fth|: \mbox{fifth}~$\to$ fifth, and \mbox{twelfth}~$\to$ twelfth. Note that the particle |th| in these words is a derivational morpheme. In English, the |th| character pair is pronounced in a distinctive way, and it seems inadvisable to obscure it with an ft ligature.
 \end{itemize}
 
 In addition, if the \opt{broadf} option is set, the \pkg{selnolig} package will suppress ligatures that arise if the main word ends in~f and the suffix starts with an~i (in which case it's usually a derivational morpheme): elfin, selfish, golfing, surfing, beefier, fluffily, goofiness, standoffish, jiffies, buffiest. Note that the option \opt{broadf} is \emph{not} enabled by default. This is because I believe that any slight gain in readability that could result from breaking up the fi and ffi ligatures between word stems and suffixes of this type would be more than outweighed by the visual clashes created between the unligated~f (ff) and~i glyphs. 
@@ -297,13 +297,21 @@ In addition, if the \opt{broadf} option is set, the \pkg{selnolig} package will 
 
 \subsection{Ligature suppression: German language case}
 
-For German words, the following exceptions and adjustments, built mainly from rules stated in the \emph{Duden} and various websites that have taken an interest in this subject, apply:
+For German words, the following rules (with various exceptions and adjustments) apply. These rules are built mainly from statements found in the \emph{Duden} and various websites that have taken an interest in this subject, with adaptations for ligatures such as ft and fft.
 \begin{itemize}
-\item Should the combination of a main word and suffix give rise to an fi or ffi ligature, this ligature is \emph{not} suppressed. Examples: streifig and affig. 
+\item Ligatures are suppressed were they to span two \emph{free} morphemes. Examples: Schil\mbox{fi}nsel $\to$ Schilfinsel, Zup\mbox{fi}nstrument $\to$ Zupfinstrument, Bausto\mbox{ffi}ngenieur $\to$ Baustoffingenieur, Wassersto\mbox{ffi}onen $\to$ Wasserstoffionen; Imp\mbox{ff}urcht $\to$ Impffurcht, Sen\mbox{ff}abrik $\to$ Senffabrik, Schor\mbox{ffl}ecken $\to$ Schorfflecken; Ablau\mbox{fl}ogik $\to$ Ablauflogik, Hu\mbox{fl}attich $\to$ Huflattich, fün\mbox{ffi}ngrig $\to$ fünf\mbox{fi}ngrig; Brie\mbox{ft}aube $\to$ Brieftaube, Ru\mbox{ft}öne $\to$ Ruftöne, Sto\mbox{fft}eil $\to$ Stoffteil, etc.
 
-However, the fi and ffi ligatures \emph{are} suppressed if two (or more) free morphemes are joined together: Schilfinsel, Zupfinstrument, Baustoffingenieur, and Wasserstoffionen.
+% in preceding item, we need to use an \mbox in 
+% fünf\mbox{fi}ngrig 
+% to suppress application of the English-language 
+% rule \nolig{ffing}{ff|ing}
 
-\item For some potentially ambiguous cases that could give rise to an fl-ligature at the juncture of a main word (Stammwort) and a suffix, preference is given to \enquote{how the syllables are pronounced and how a word would be hyphenated} (according to the Duden), leading to a suppression of the fl-ligature. For instance, the fl-ligature is suppressed in Verzweif\-lung, schweflig, and würflig.\footnote{%
+\item Ligatures are also suppressed were they to span the boundary between a \emph{prefix} (a derivational morpheme) and a main word (a free morpheme). In German, by far the most common prefix that gives rise to this type of ligature suppression is the word \enquote{auf}: auffassen, Aufführung, auffliegen, auffischen, auf\breaklig iss\breaklig t, Auflage, Auftrag, auftreten, etc.
+
+\item Should the combination of a main word (free morpheme) and \emph{suffix} (bound morpheme) give rise to an fi or ffi ligature, this ligature is \emph{not} suppressed. Examples: streifig, affig, Chefin, Chefinnen. I haven't found clear justifications for this exception to the rule of suppressing ligatures that span morpheme boundaries; I assume this exception is made because having f\breaklig i clashes may be an even worse infraction against good typography.
+
+
+\item For some potentially ambiguous cases that could give rise to an fl-ligature at the junction of a main word (Stammwort) and a suffix, preference is given to \enquote{how the syllables are pronounced and how a word would be hyphenated} (according to the Duden), leading to a suppression of the fl-ligature. For instance, the fl-ligature is suppressed in Verzweif\-lung, schweflig, and würflig.\footnote{%
 In my opinion, this reasoning for suppressing fl-ligatures for such words is not entirely satisfactory because, morphologically speaking, the words Schwefel, Würfel, and Zweifel contain two morphemes: a stem and the \emph{derivational} morpheme~|el|: \Verb+Schwef|el+, \Verb+Würf|el+, and \Verb+Zweif|el+. It is therefore not strictly necessary to appeal to a new rule to decide on the (non-)use of ligatures; instead, one could rely on the presence of two (or more) morphemes to motivate the suppression of the fl-ligature for words such as schweflig, teuflisch, würfle, and Verzweiflung, as their components are \Verb+schwef|[e]l|ig+, etc. I believe, though, that it's fair to say that most modern German speakers would barely notice the |el| morpheme in Würfel (\enquote{wurf}-el) and that they would be entirely unaware of its presence in Schwefel and Zweifel. At any rate, the typographical convention \emph{not} to use the fl-ligature for these and similar words does not appear to be based on the fact that the~f and~l letters belong to different morphemes.}
 
 This convention may also be applied to justify the non-use of the fl-ligature in words such as knifflig and mufflig as well as in the present-tense/first-person-singular forms of verbs such as büffeln, löffeln, schaufeln, stiefeln, verteufeln, and zweifeln: they are typeset \emph{without} the fl-ligature, i.e., as büffle, löffle, schaufle, stiefle, verteufle, and zweifle, respectively.
