@@ -7,7 +7,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/05/14
+% Date: 2013/05/16
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -21,7 +21,6 @@
 
 % Load fontspec and some font families
 \usepackage{fontspec}
-
 \addfontfeature{FeatureFile=sabon-ft.fea}
 \setmainfont[ Numbers = OldStyle,
     Ligatures  = {TeX, Common, Rare},
@@ -30,7 +29,7 @@
     {Sabon Next LT Pro Regular}
 \addfontfeature{FeatureFile=sabon-ft.fea}
 
-\setsansfont[Scale=MatchLowercase]{Myriad Pro}
+\setsansfont[Scale=0.92]{Myriad Pro}
 \setmonofont[Scale=0.9]{Consolas}
 
 \newfontfamily\blackletterfont[Ligatures = NoCommon]
@@ -47,7 +46,7 @@
 \usepackage[english=american]{csquotes}
 \usepackage[ngerman,english]{babel}
 
-\usepackage[ngerman,english,hdlig]{selnolig}
+\usepackage[ngerman,english,hdlig,broadf]{selnolig}
 \debugon
 
 \hyphenation{ver-werf-lich kunst-stoff-lei-tung}
@@ -285,14 +284,14 @@ Typographic ligatures are suppressed selectively in the following cases:
 \begin{itemize}
 \item if two free morphemes are joined: \mbox{halfline} $\to$ halfline, \mbox{shelflife} $\to$ shelflife, \mbox{rooftop}~$\to$ rooftop, \mbox{halftone} $\to$ halftone, \mbox{wolftrap} $\to$ wolftrap, \mbox{houndstooth} $\to$ houndstooth, \mbox{arctan}\-gent~$\to$ arctangent, \mbox{newspaper}~$\to$ newspaper, \mbox{clothespin} $\to$ clothespin, etc.
 
-\item if a prefix (acting as a derivational morpheme) and main word are joined: \mbox{offload} $\to$ offload, mi\mbox{st}rust~$\to$ mistrust, di\mbox{sp}lay~$\to$ display, etc. 
+\item if a prefix (almost invariably a derivational morpheme) and main word are joined: \mbox{offload} $\to$ offload, mi\mbox{st}rust~$\to$ mistrust, di\mbox{sp}lay~$\to$ display, etc. 
 
 \item if a main word and a suffix are joined, \emph{if} the suffix is a derivational morpheme that begins with an~f or an~l: \mbox{shelfful}~$\to$ shelfful, \mbox{leafless} $\to$ leafless, \mbox{dwarflike}~$\to$ dwarflike, etc. 
 
-\item The ft ligature is also suppressed in words that end in |fth|, such as fifth and twelfth. For such words, the particle |th|\textemdash which in English is pronounced in a distinctive way\textemdash would be unhelpfully obscured if the ft ligature were not suppressed (\emph{viz.}, \mbox{fifth} and \mbox{twelfth}).
+\item The ft ligature is also suppressed in words that end in |fth|: \mbox{fifth}~$\to$ fifth, and \mbox{twelfth}~$\to$ twelfth. Note that the particle |th| in these words is a derivational morpheme. Moreover, at least in English, the |th| character pair is pronounced in a distinctive way. If the ft ligature were not suppressed, the readability of these would likely suffer.
 \end{itemize}
 
-Unless the \opt{broad-f} option is set, the \pkg{selnolig} package will not suppress ligatures that arise if the main word ends in~f and the suffix\textemdash respresenting either an inflectional or a derivational morpheme\textemdash starts with an~i: elfin, selfish, golfing, surfing, beefier, fluffily, goofiness, standoffish, jiffies, buffiest. This is done because the slight gain in readability that may result from breaking up the fi and ffi ligatures would seem to be more than outweighed by the visual clash created between the~f (ff) and~i glyphs. 
+In addition, if the \opt{broadf} option is set, the \pkg{selnolig} package will suppress ligatures that arise if the main word ends in~f and the suffix starts with an~i (in which case it's usually a derivational morpheme): elfin, selfish, golfing, surfing, beefier, fluffily, goofiness, standoffish, jiffies, buffiest. Note that the option \opt{broadf} is \emph{not} enabled by default. This is because I believe that any slight gain in readability that could result from breaking up the fi and ffi ligatures between word stems and suffixes of this type would be more than outweighed by the visual clashes created between the unligated~f (ff) and~i glyphs. 
 
 
 
