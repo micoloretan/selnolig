@@ -16,8 +16,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.211a",
-   date         = "2013/05/16",
+   version      = "0.211b",
+   date         = "2013/05/17",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
@@ -60,10 +60,10 @@ end
 local unicode_find = function(s, pattern, position)
   -- Start by correcting the incoming position
   if position ~= nil then
-    debug_info("Position: "..position)
+    -- debug_info("Position: "..position)
     sub = string.sub(s, 1, position)
     position=position+string.len(sub) - unicode.utf8.len(sub)
-    debug_info("Corrected position: "..position)
+    -- debug_info("Corrected position: "..position)
   end
   -- Now execute find and fix it accordingly
   byte_pos = unicode.utf8.find(s, pattern, position)
@@ -84,11 +84,11 @@ function process_ligatures(nodes,tail)
       p[i]=0
     end
     for k,v in pairs(t) do
-      debug_info("Match: "..v[3])
+      -- debug_info("Match: "..v[3])
       local c= unicode_find(noliga[v[3]],"|")
       local correction=1
       while c~=nil do
-         debug_info("Position "..(v[1]+c))
+         --debug_info("Position "..(v[1]+c))
          p[v[1]+c-correction] = 1
          c = unicode_find(noliga[v[3]],"|",c+1)
          correction = correction+1
@@ -103,13 +103,13 @@ function process_ligatures(nodes,tail)
      local last=node.tail(head)
      for curr in node.traverse_id(glyph,head) do
        if ligatures[i]==1 then
-         debug_info("Inserting noliga whatsit before glyph: " ..unicode.utf8.char(curr.char))
+         debug_info("Inserting nolig whatsit before glyph: " ..unicode.utf8.char(curr.char))
          node.insert_before(hh,curr, node.copy(blocknode))
          hh=curr
        end
        last=curr
        if i==#ligatures then
-         debug_info("Leave node list on position: "..i)
+         -- debug_info("Leave node list on position: "..i)
          break
        end
        i=i+1
