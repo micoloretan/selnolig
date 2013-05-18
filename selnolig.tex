@@ -21,24 +21,22 @@
 
 % Load fontspec and some font families
 \usepackage{fontspec}
-\addfontfeature{FeatureFile=sabon-ft.fea}
 \setmainfont[ Numbers = OldStyle,
     Ligatures  = {TeX, Common, Rare},
     BoldFont   = {Sabon Next LT Pro Regular},
     ItalicFont = {Garamond Premier Pro Italic} ]
     {Sabon Next LT Pro Regular}
-\addfontfeature{FeatureFile=sabon-ft.fea}
 
-\setsansfont[Scale=0.92]{Myriad Pro}
+\setsansfont[Scale=0.92,
+             Ligatures = NoCommon]
+            {Myriad Pro}
 \setmonofont[Scale=0.9]{Consolas}
-
-\newfontfamily\blackletterfont[Ligatures = NoCommon]
-    {UnifrakturMaguntia}
-
 \newfontfamily\ebg[ Numbers = OldStyle,
     Ligatures  = {TeX, Common, Discretionary, Historic},
     ItalicFont = {EB Garamond 12 Italic}]
     {EB Garamond 12 Regular}
+\newfontfamily\blackletterfont[Ligatures=NoCommon]
+    {UnifrakturMaguntia}
 
 
 % Load some more packages
@@ -277,7 +275,7 @@ Finally, all \pkg{babel}-style \Verb+"|+ ligature-suppressing shortcuts should e
 %The \cmmd{nolig} macros provided in \opt{selnolig-english-patterns.sty} (see \cref{sec:eng-listing}) and \opt{see selnolig-german-patterns.sty} (\cref{sec:germ-listing}) are primarily designed to break up ligatures\textemdash mainly f-ligatures, but potentially other ligatures as well\textemdash across \emph{morpheme} boundaries. 
 %
 
-\subsection{Ligature suppression: English language case}
+\subsection{Ligature suppression rules: English language case}
 
 
 Typographic ligatures are suppressed selectively in the following cases:
@@ -295,20 +293,20 @@ In addition, if the \opt{broadf} option is set, the \pkg{selnolig} package will 
 
 
 
-\subsection{Ligature suppression: German language case}
+\subsection{Ligature suppression rules: German language case}
 
 For German words, the following rules (with various exceptions and adjustments) apply. These rules are built mainly from statements found in the \emph{Duden} and various websites that have taken an interest in this subject, with adaptations for ligatures such as ft and fft.
 \begin{itemize}
-\item Ligatures are suppressed were they to span two \emph{free} morphemes. Examples: Schil\mbox{fi}nsel $\to$ Schilfinsel, Zup\mbox{fi}nstrument $\to$ Zupfinstrument, Bausto\mbox{ffi}ngenieur $\to$ Baustoffingenieur, Wassersto\mbox{ffi}onen $\to$ Wasserstoffionen; Imp\mbox{ff}urcht $\to$ Impffurcht, Sen\mbox{ff}abrik $\to$ Senffabrik, Schor\mbox{ffl}ecken $\to$ Schorfflecken; Ablau\mbox{fl}ogik $\to$ Ablauflogik, Hu\mbox{fl}attich $\to$ Huflattich, fün\mbox{ffi}ngrig $\to$ fünf\mbox{fi}ngrig; Brie\mbox{ft}aube $\to$ Brieftaube, Ru\mbox{ft}öne $\to$ Ruftöne, Sto\mbox{fft}eil $\to$ Stoffteil, etc.
+\item Ligatures are suppressed were they to span two \emph{free} morphemes. Examples: Schil\mbox{fi}nsel $\to$ Schilfinsel, Zup\mbox{fi}nstrument $\to$ Zupfinstrument, Bausto\mbox{ffi}ngenieur $\to$ Baustoffingenieur, Wassersto\mbox{ffi}onen $\to$ Wasserstoffionen; Imp\mbox{ff}urcht $\to$ Impffurcht, Sen\mbox{ff}abrik $\to$ Senffabrik, Schor\mbox{ffl}ecken $\to$ Schorfflecken; Ablau\mbox{fl}ogik $\to$ Ablauflogik, Hu\mbox{fl}attich $\to$ Huflattich, fün\mbox{ffi}ngrig $\to$ fünf\mbox{fi}ngrig; Brie\mbox{ft}aube $\to$ Brieftaube, Sto\mbox{fft}eil $\to$ Stoffteil, etc.
 
 % in preceding item, we need to use an \mbox in 
 % fünf\mbox{fi}ngrig 
 % to suppress application of the English-language 
 % rule \nolig{ffing}{ff|ing}
 
-\item Ligatures are also suppressed were they to span the boundary between a \emph{prefix} (a derivational morpheme) and a main word (a free morpheme). In German, by far the most common prefix that gives rise to this type of ligature suppression is the word \enquote{auf}: auffassen, Aufführung, auffliegen, auffischen, auf\breaklig iss\breaklig t, Auflage, Auftrag, auftreten, etc.
+\item Ligatures are also suppressed if they span the boundary between a \emph{prefix} (a derivational morpheme) and a main word (a free morpheme). In German, by far the most common prefix that gives rise to this type of ligature suppression is the word \enquote{auf}: auffassen, Aufführung, auffliegen, auffischen, auf\breaklig iss\breaklig t, Auflage, Auftrag, auftreten, etc.
 
-\item Should the combination of a main word (free morpheme) and \emph{suffix} (bound morpheme) give rise to an fi or ffi ligature, this ligature is \emph{not} suppressed. Examples: streifig, affig, Chefin, Chefinnen. I haven't found clear justifications for this exception to the rule of suppressing ligatures that span morpheme boundaries; I assume this exception is made because unligated f\breaklig i cases may be an even worse infraction against good typography.
+\item Should the combination of a main word (free morpheme) and \emph{suffix} (bound morpheme) give rise to an fi or ffi ligature, these ligatures are \emph{not} suppressed. Examples: streifig, affig, Chefin, Chefinnen. I haven't found a clear justification for this rule; I assume it is made because unligated f\breaklig i cases may be sufficiently unsightly to constitute an infraction against good typography even worse than having fi and ffi ligatures span the boundary between a main word and a suffix.
 
 
 \item For some potentially ambiguous cases that could give rise to an fl-ligature at the junction of a main word (Stammwort) and a suffix, preference is given to \enquote{how the syllables are pronounced and how a word would be hyphenated} (according to the Duden), leading to a suppression of the fl-ligature. For instance, the fl-ligature is suppressed in Verzweif\-lung, schweflig, and würflig.\footnote{%
@@ -322,12 +320,12 @@ This convention may also be employed to justify the use of the ff-ligature in th
 
 This convention further suggests that it's permissible to use the ffi- and ffl-ligatures in abbreviated names such as Steffi and Steffl since the ligatures occur at the very ends of the names. 
 
-\item The convention mentioned in the preceding bullet point could also be taken to imply that~ft and~fft ligatures may be used {\itshape if} they occur at the very ends of words and word fragments that form syllables, as in verschärft, gerafft, and Unbedarftheit. Note that the~\enquote{t} at the end of these words and word fragments represents an \emph{inflectional} morpheme: it indicates a change in the tense of the underlying verb but does not change the word's meaning entirely.
+\item The convention mentioned in the preceding bullet point could also be taken to imply that~ft and~fft ligatures may be used {\itshape if} they occur at the very ends of words and word fragments that form syllables, as in verschärft, gerafft, and Unbedarftheit. Note that the~\enquote{t} at the end of these words and word fragments represents an \emph{inflectional} morpheme: it indicates a change in the tense of the underlying verb but does not change the word's meaning in a more fundamental sense.
 
-\item Relatedly, should the ft and fft ligatures be broken up for words that contain suffixes such as -f-te, -f-ten, -f-tes, etc.\ (e.g., gestreifte, schlürftes\breaklig t, and rafften)? Because the suffixes are \enquote{merely} inflectional morphemes rather than either derivational morphemes or free morphemes, the \pkg{selnolig} package for now takes the approach of \emph{not} breaking up the~ft and~fft ligatures in these cases. However, I must admit that I haven't yet come across an authoritative discussion of this issue. I would be willing to change this setting, i.e., let the ft and fft ligatures be broken up, should someone be able to furnish a good argument (which may even be a reference to a typographic convention) that pertains to this issue.
+\item Relatedly, should the ft and fft ligatures be broken up for words that contain suffixes such as -f-te, -f-ten, -f-tes, etc.\ (e.g., gestreifte, schlürftes\breaklig t, and rafften)? Because the suffixes are inflectional morphemes rather than either derivational or free morphemes, the \pkg{selnolig} package for now takes the approach of \emph{not} breaking up the~ft and~fft ligatures in these cases. I will readily admit, though, to not yet having come across any kind of authoritative discussion of this issue. Should someone be able to furnish a good argument that pertains to this issue, I would be happy to change this setting, i.e., to let the ft and fft ligatures be broken up.
 
 
-\item Here's a separate case for which I have not yet found a clear rule. If a morpheme ends in~\enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset these words either as sa\mbox{ft}ig and lu\mbox{ft}ig (because the \opt{ft} character pair belongs to a single morpheme), \emph{or} one could give preference to the way the words are hyphenated and pronounced and thus \emph{not} use the ft-ligature, i.e., typeset them as saf\breaklig tig and luf\breaklig tig, respectively. For now, the \pkg{selnolig} package implements the former option. As already noted, though, I have not yet found an authoritative reference on how this case should be treated. Clear guidance on this typographical issue would be much appreciated.
+\item Here's still another case for which I have not yet found a clear rule. If a morpheme ends in~\enquote{ft} (e.g., Saft and Luft) and is followed by a suffix that starts with an~i, as in \opt{saftig} and \opt{luftig}, one could typeset these words either as sa\mbox{ft}ig and lu\mbox{ft}ig (because the \opt{ft} character pair belongs to a single morpheme), \emph{or} one could give preference to the way the words are hyphenated and pronounced and thus \emph{not} use the ft-ligature, i.e., typeset them as saf\breaklig tig and luf\breaklig tig, respectively. For now, the \pkg{selnolig} package implements the former option. As already noted, though, I have not yet found an authoritative reference on how this case should be treated. Clear guidance on this typographical issue would be much appreciated.
 
 \end{itemize}
 
@@ -463,7 +461,7 @@ For English-language documents, only a fairly small number of the f-ligature sup
 My choices regarding which f-ligature suppression rules belong to the \enquote{basic-f} and \enquote{broadf} groups are almost entirely pragmatic. They are certainly not based on any overriding English-language typographic principles (which, possibly, don't even exist). However, if anyone happens to have a strong view on whether either \emph{fewer} or \emph{more} f-ligature suppression macros should be included in the \enquote{basic} group\textemdash especially if you can provide references to such discussions in learned circles\textemdash I would love to hear from you.
 
 
-Part 3 of the file \pkg{selnolig-english-patterns.sty}, which is enabled if the \opt{hdlig} option is set, provides ligature suppression patterns involving the \mbox{ct}, \mbox{st}, and \mbox{sp} ligatures. Examples are words such as arctangent (rather than ar\mbox{ct}angent), painstaking (rather than pain\mbox{st}aking), and trespass (worse: tre\mbox{sp}ass). Furthermore, the~st and~sp ligatures are suppressed automatically for words of Greek roots that contain the \opt{sth} and \opt{sph} character triples, such as anaesthesia, isthmus, atmosphere and hemisphere. In such cases, I'd argue that using the distinctive-looking st and sp ligatures unnecessarily obscures the \opt{th} and \opt{ph} character pairs (which derive from the Greek letters~$\theta$ or ~$\vartheta$, and $\phi$ or~$\varphi$, respectively). Given that the \opt{ph} pair, in words that contain an \opt{sph} character triple, is usually pronounced as~\opt{f}, readability of the words in question would likely suffer if they were typeset as atmo\mbox{sp}here and \mbox{sp}herical, respectively.
+Part 3 of the file \pkg{selnolig-english-patterns.sty}, which is enabled if the \opt{hdlig} option is set, provides ligature suppression patterns involving the \mbox{ct}, \mbox{st}, and \mbox{sp} ligatures. Examples are words such as arctangent (rather than ar\mbox{ct}angent), painstaking (rather than pain\mbox{st}aking), and trespass (worse: tre\mbox{sp}ass). Furthermore, the~st and~sp ligatures are suppressed automatically for words of Greek roots that contain the \opt{sth} and \opt{sph} character triples, such as anaesthesia, isthmus, atmosphere and hemisphere. In such cases, I'd argue that using the distinctive-looking st and sp ligatures unnecessarily obscures the \opt{th} and \opt{ph} character pairs (which derive from the single Greek letters~$\theta$/$\vartheta$ and $\phi$/$\varphi$, respectively). Given that the \opt{ph} character pair, in words that contain an \opt{sph} character triple, is usually pronounced as~\opt{f}, readability of the words in question would likely suffer if they were typeset as atmo\mbox{sp}here and \mbox{sp}herical, i.e., \emph{with} an sp ligature.
 
 Setting the \opt{hdlig} option also enables ligature suppression rules for additional discretionary ligatures such as \emph{th}, \emph{at}, and~\emph{et}. Using these ligatures might be deemed inappropriate if used in words such as \emph{ligh\mbox{th}ouse}, \emph{po\mbox{th}ole}, \emph{arom\mbox{at}herapy}, \emph{alb\mbox{at}ross}, \emph{nin\mbox{et}y}, and \emph{non\mbox{et}heless}; with the \opt{hdlig} option set, these words will be typeset as \emph{lighthouse}, \emph{pothole}, \emph{aromatherapy}, \emph{albatross}, \emph{ninety}, and \emph{nonetheless}. Ligature suppression rules are provided for the following discretionary ligatures, which occur only in the \emph{italic} font shape of the font family used in this document: \emph{th}, \emph{at}, \emph{et}, \emph{as}, \emph{is}, \emph{us}, {\ebg \emph{sk}}, \emph{ll}, and~\emph{fr}. Part~3 of \cref{sec:eng-listing} lists these rules.
 
@@ -607,21 +605,21 @@ I'm not sure if the following matter constitutes a bug or \enquote{merely} a cas
 
 
 
-\subsection{Disabling the package's supplementary hyphenation exception patterns} \label{sec:addlhyph}
+\subsection{Supplementary hyphenation exception patterns} \label{sec:addlhyph}
 
 \TeX's hyphenation algorithms are widely acknowledged to be very good. However, for the English language case at least, it tends to miss quite a few permissible hyphenation points when dealing with words that end in |-f-ing|, |-f-ier|, |-f-iest|, |-f-less|, |-f-like|, etc. Hyphenation exception lists are provided in the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-german-hyphex.sty}, respectively, for English and German words.
 
 The German-language hyphenation exception list is currently still the shorter of the two; however, this may change in the future. The German word list is shorter in part because it is assumed that writers of German-language documents use the \pkg{babel} package and select the option \opt{ngerman} (or one of the related options); doing so also loads specialized hyphenation patterns suitable for German text.\footnote{As was already noted earlier, the \pkg{selnolig} package is also compatible with the \pkg{hyphsubst} package.} 
 
-It is possible to instruct \pkg{selnolig} \emph{not} to load the package's hyphenation exception lists. You may want to do so, say, if you must use UK-English hyphenation patterns and therefore mustn't make use of the US-English hyphenation patterns provided by the package. (To the best of my knowledge, though, most of the hyphenation patterns indicated in \pkg{selnolig-english-hyphex.sty} are common to UK and US English.) To skip loading the additional hyphenation patterns when invoking the \pkg{selnolig} package, you should specify the option \opt{noadditional\-hyphen\-a\-tion\-patterns}.\footnote{I am obviously not trying to make it too easy to invoke this option~\dots}
+It is possible to instruct \pkg{selnolig} \emph{not} to load the package's hyphenation exception lists. You may want to do so, say, if you must use UK-English hyphenation patterns and therefore mustn't make use of the US-English hyphenation patterns provided by the package. (To the best of my knowledge, though, most of the hyphenation patterns indicated in \pkg{selnolig-english-hyphex.sty} are common to UK and US English.) To skip loading the additional hyphenation patterns when invoking the \pkg{selnolig} package, you should specify the option \opt{noadditional\-hyphen\-a\-tion\-patterns}. (I am obviously not trying to make it too easy to invoke this option~\dots)
 
 As was already noted in \cref{sec:anythingelse}, if you use the \pkg{babel} package with, say, the \opt{ngerman} option, be sure to load \pkg{selnolig} package \emph{after} the \pkg{babel} package. That way, the \pkg{selnolig} package's additional hyphenation exception patterns won't be overridden by \pkg{babel}'s settings.
 
-Incidentally, if the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-german-hyphex.sty} are located in a directory that's in the search path of your TeX distribution, these packages may be loaded by users via the usual \cmmd{usepackage} statements without having to load the entire \pkg{selnolig} package.
+Incidentally, if the files \pkg{selnolig-english-hyphex.sty} and \pkg{selnolig-german-hyphex.sty} are located in a directory that's in the search path of your TeX distribution, these packages may be loaded via the usual \cmmd{usepackage} statements without having to load the entire \pkg{selnolig} package.
 
 
 
-\subsection{Writing ancillary information about the package's activity to the \opt{.log} file} \label{sec:debugon}
+\subsection{Ancillary information about the package's activity} \label{sec:debugon}
 
 If you execute the command \cmmd{debugon}, detailed information about each \cmmd{nolig} and \cmmd{keeplig} pattern match that is encountered is written to the \opt{.log} file. (The package's default setting is \cmmd{debugoff}.)
 
