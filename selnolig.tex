@@ -236,15 +236,15 @@ in the preamble.\footnote{If the \pkg{selnolig} package is run under \LuaLaTeX\ 
 Depending on your \TeX\ distribution, the default font family used by \LuaLaTeX\ will be either Computer Modern or Latin Modern. If you wish to use a different font family, further font-related instructions will be required. \emph{How} to specify fonts and font families and set up various font-related options in \LuaLaTeX\ are topics that go far beyond the scope of this user guide. I urge you to become familiar with the very well-written
  \href{http://www.ctan.org/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf}{user guide} of the \pkg{fontspec} package.
 
-The \TeX\ distribution you use will need to feature a fairly recent version of \LuaLaTeX. \TeX Live 2013, \TeX Live\,2012, and MiK\TeX\,2.9 satisfy this requirement; versions of \TeX Live before 2011 probably do not. If you use a command-line interface to compile a document named, say, |myfile.tex|, type 
+You will also need to use a \TeX\ distribution that features a fairly recent version of \LuaLaTeX. \TeX Live 2013, \TeX Live\,2012, and MiK\TeX\,2.9 satisfy this requirement; versions of \TeX Live before 2011 probably do not. If you use a command-line interface to compile a document named, say, |myfile.tex|, type 
 \begin{Verbatim}
      lualatex myfile
 \end{Verbatim}
-rather than |latex myfile| (or |pdflatex myfile|) to use \LuaLaTeX. If you use an text editing with pull-down menus or buttons to invoke a suitable compiler, be sure to select |LuaLaTeX|. 
+rather than either |latex myfile| or |pdflatex myfile|. If you use a text editing program with pull-down menus or buttons to invoke a suitable compiler, be sure to select |LuaLaTeX|. 
 
 The first time one runs \LuaLaTeX\ on a document with a new set of fonts, the compilation speed will likely be quite slow, because \LuaLaTeX\ has to create various cache files to store font-related information. Subsequent compilation runs should be much faster. 
 
-The answers to the questions \href{http://tex.stackexchange.com/q/28642/5001}{Frequently loaded packages: Differences between pdf\LaTeX\ and \LuaLaTeX?} and \href{http://tex.stackexchange.com/q/32295/5001}{Using Lua\TeX\ as a replacement for pdf\TeX}, both posted to \href{http://tex.stackexchange.com/}{tex.stackexchange.com}, provide very useful information for people who are new to \LuaLaTeX but at least somewhat familiar with pdf\LaTeX\'s ways of getting things done. Another great resource for people who wish to become more more familiar with \LuaLaTeX\ is \href{http://mirror.ctan.org/info/luatex/lualatex-doc/lualatex-doc.pdf}{A Guide to \LuaLaTeX} by Manuel Pégourié-Gonnard.
+The answers to the questions \href{http://tex.stackexchange.com/q/28642/5001}{Frequently loaded packages: Differences between pdf\LaTeX\ and \LuaLaTeX?} and \href{http://tex.stackexchange.com/q/32295/5001}{Using Lua\TeX\ as a replacement for pdf\TeX}, both posted to \href{http://tex.stackexchange.com/}{tex.stackexchange.com}, provide very useful information for people who are new to \LuaLaTeX\ and (at least somewhat) familiar with pdf\LaTeX\'s ways of getting things done. Another great resource for people who wish to become more more familiar with \LuaLaTeX\ is \href{http://mirror.ctan.org/info/luatex/lualatex-doc/lualatex-doc.pdf}{A Guide to \LuaLaTeX} by Manuel Pégourié-Gonnard.
 
 
 \subsection{Anything else I need to do or know?} \label{sec:anythingelse}
