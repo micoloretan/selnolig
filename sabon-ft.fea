@@ -10,12 +10,12 @@
 languagesystem DFLT dflt;
 languagesystem latn dflt;
 
-
-
 # Use the "alt01" versions of the ft and fft ligatures
 feature liga {
   sub f_t_t by f f t;
   sub f_t by f t;
+} liga;
+feature liga {
   sub f f t by f_f_t.alt01;
   sub f t by f_t.alt01;
 } liga;
