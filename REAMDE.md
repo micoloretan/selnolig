@@ -15,6 +15,6 @@ To get started, you should (i) download the package's .sty (style) files and the
 (ii) install these files in a directory in a way that's appropriate for your TeX distribution. The user 
 guide is in the file selnolig.pdf.
 
-The files README.md (the file you're currently reading), .gitignore, and .DS_Store are *not* part of the 
+The files README.md (the file you're currently reading) and .gitignore are *not* part of the 
 package and need not be downloaded. The files with extension .tex and .fea need only be downloaded if
 you're interested in compiling the source code yourself.
