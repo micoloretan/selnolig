@@ -9,7 +9,7 @@ For English and German language documents, the selnolig package provides extensi
 
 For English language documents, the package further provides ligature suppression macros for a number of so-called "discretionary" or "rare" ligatures such as ct, st, and sp.
 
-The selnolig package requires use of the LuaLaTeX format provided by a recent TeX distribution such as TeXLive2012 or~2013 and MiK2.9.
+The selnolig package requires use of the LuaLaTeX format provided by a recent TeX distribution such as TeXLive2012 or~2013 and MiKTeX2.9.
 
 To get started, you should (i) download the package's .sty (style) files and the file selnolig.lua and 
 (ii) install these files in a directory in a way that's appropriate for your TeX distribution. The user 
