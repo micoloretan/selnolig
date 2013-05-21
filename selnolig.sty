@@ -13,7 +13,7 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.214}
+\def\selnoligpackageversion{0.214a}
 \def\selnoligpackagedate{2013/05/21}
 
 % Announce who we are. Issue warning message if we're
@@ -157,7 +157,6 @@
   \newcommand\selnoligon{
     \directlua{ enableselnolig() }
   }
-
   \newcommand\selnoligoff{
     \directlua{ disableselnolig() }
   }
@@ -167,16 +166,15 @@
   
   % Record operations of selnolig package to the log 
   % file: Enabled via '\debugon' command
-
   \newcommand\debugon{%
      \directlua{ debug=true }
   }
-
   \newcommand\debugoff{% 
      \directlua{ debug=false }
   }
-  
-  % The main user macro is called '\nolig':
+
+
+  % The first main user macro is called '\nolig':
   \newcommand\nolig[2]{
      \directlua{
         suppress_liga( "\luatexluaescapestring{#1}",
@@ -185,7 +183,7 @@
   }
   
   % A second user macro allows global overriding of
-  % rules set up by '\nolig':
+  % rules set by \nolig instructions:
   \newcommand\keeplig[1]{
      \directlua{
         always_keep_liga( "\luatexluaescapestring{#1}" )
@@ -206,6 +204,8 @@
 
 % A third user macro: '\breaklig'. This is hopefully 
 % easier to remember than having to type "\-\hspace{0pt}".
+% (It's defined outside the \ifluatex conditional since
+% it doesn't use any lua code.)
 
 \newcommand\breaklig{\-{\hspace{0pt}}}
 
