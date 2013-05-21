@@ -181,10 +181,10 @@ end
 
 function enableselnolig()
   luatexbase.add_to_callback( "ligaturing", 
-    process_ligatures, "Suppress ligatures", 1 )
+    process_ligatures, "Suppress ligatures selectively", 1 )
 end
 
 function disableselnolig()
   luatexbase.remove_from_callback( "ligaturing", 
-    "Suppress ligatures" )
+    "Suppress ligatures selectively" )
 end
