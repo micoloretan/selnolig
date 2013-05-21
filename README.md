@@ -9,12 +9,12 @@ For English and German language documents, the selnolig package provides extensi
 
 For English language documents, the package further provides ligature suppression macros for a number of so-called "discretionary" or "rare" ligatures such as ct, st, and sp.
 
-The selnolig package requires use of the LuaLaTeX format provided by a recent TeX distribution such as TeXLive2012 or~2013 and MiK2.9.
+The selnolig package requires use of the LuaLaTeX format provided by a recent TeX distribution such as TeXLive2012 or~2013 and MiKTeX2.9.
 
 To get started, you should (i) download the package's .sty (style) files and the file selnolig.lua and 
 (ii) install these files in a directory in a way that's appropriate for your TeX distribution. The user 
 guide is in the file selnolig.pdf.
 
-The files README.md (the file you're currently reading), .gitignore, and .DS_Store are *not* part of the 
+The files README.md (the file you're currently reading) and .gitignore are *not* part of the 
 package and need not be downloaded. The files with extension .tex and .fea need only be downloaded if
 you're interested in compiling the source code yourself.
