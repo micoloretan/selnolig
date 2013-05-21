@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-english-patterns}%
-[2013/05/20]
+[2013/05/21]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -46,8 +46,7 @@
 \nolig{fline}{f|line}
   % halfline roofline offline
 
-\nolig{leaflet}{leaf|let}
-\nolig{Leaflet}{Leaf|let}
+\nolig{eaflet}{eaf|let}
   % leaflet(-s, -ed) leafleting
   % leafletting leafletted
   % leafleteer(s)
@@ -111,8 +110,6 @@
   % fifth(s) 
 \nolig{elfth}{elf|th}
   % twelfth(s)
-  % Obscuring the 'th' pair with an 
-  % 'ft' ligature just looks weird!
 
 \nolig{lftr}{lf|tr}
   % wolftrap calftrap
@@ -124,19 +121,15 @@
   % offtrack
 
 
-
 % (i) fb, fh, fj, and fk ligatures
 
-% suppress these ligatures globally, but make
-% exceptions for Kafka, fjord, and fjell
+% suppress these ligatures globally
 \nolig{fb}{f|b}
 \nolig{fh}{f|h}
 \nolig{fj}{f|j}
 \nolig{fk}{f|k}
 
-  % There are, of corse, words of non-English 
-  % origin for which the 'fj' ligature should 
-  % not be suppressed. 
+% But, make exceptions for fjord, fjell, etc
   \keeplig{fjord} % Norwegian spelling
   \keeplig{fjör}  % Icelandic spelling, e.g., in
                   % Isafjördur and Ísafjörður
@@ -152,6 +145,7 @@
   \keeplig{Astafjew} 
     % Author (Wiktor) and soccer player (Maksim)
 
+% Further exceptions for Kafka, Safka, etc.
   \keeplig{Kafka}
   \keeplig{Safka}
   \keeplig{Potrafke}
@@ -162,7 +156,7 @@
 
 
 % Part 2: Additional f-ligature suppression
-% patterns if 'broadf' option is set.
+% patterns if the 'broadf' option is set.
 % =========================================
 
 \if@broadfset
@@ -175,42 +169,47 @@
 
 \nolig{elfin}{elf|in}
 \nolig{Elfin}{Elf|in}
+  \keeplig{stelfink} % distelfink
 
+
+% For words ending in -f-ing, allow for 
+% "colloquial" abbreviations (-f-in').
 \nolig{afing}{af|ing}
+\nolig{afin'}{af|in'}
   % chafing leafing loafing sheafing
   % strafing vouchsafing
 
 \nolig{eefing}{eef|ing}
+\nolig{eefin'}{eef|in'}
 % beefing reefing
 
- \nolig{iefing}{ief|ing}
+\nolig{iefing}{ief|ing}
+\nolig{iefin'}{ief|in'}
 % briefing debriefing
 
 \nolig{ifing}{if|ing}
+\nolig{ifin'}{if|in'}
   % coifing fifing jackknifing knifing
   % midwifing waifing wifing
 
 \nolig{oofing}{oof|ing}
+\nolig{oofin'}{oof|in'}
   % goofing hoofing roofing ...
 
 \nolig{lfing}{lf|ing}
+\nolig{lfin'}{lf|in'}
   % golfing rolfing ...
 
-\nolig{arfing}{arf|ing}
+\nolig{rfing}{rf|ing}
+\nolig{rfin'}{rf|in'}
   % barfing bedwarfing dwarfing...
-
-\nolig{serfing}{serf|ing}
-\nolig{Serfing}{Serf|ing}
-\nolig{kerfing}{kerf|ing}
-\nolig{Kerfing}{Kerf|ing}
-% Don't specify 'erfing' search string
-%   b/c of 'butterfinger'
-
-\nolig{urfing}{urf|ing}
+  % kerfing enserfing ...
   % (wind-) surfing turfing
+  \keeplig{tterfinger} % butterfinger
 
 \nolig{rfism}{rf|ism}
   % dwarfism
+
 \nolig{rfist}{rf|ist}
   % dwarfist
 
@@ -218,6 +217,8 @@
 \nolig{dwarfish}{dwarf|ish}
 \nolig{elfish}{elf|ish}
   % elfish selfish unselfish, etc.
+  \keeplig{amselfish} % damselfish
+
 \nolig{oafish}{oaf|ish}
 \nolig{serfish}{serf|ish}
 \nolig{wolfish}{wolf|ish}
@@ -250,18 +251,9 @@
   % substitution because of words
   % such as pacifier, reifier, etc.)
 
-\nolig{afiest}{af|iest}
-\nolig{efiest}{ef|iest}
-\nolig{lfiest}{lf|iest}
-\nolig{mfiest}{mf|iest}
-\nolig{ofiest}{of|iest}
-\nolig{rfiest}{rf|iest}
+\nolig{fiest}{f|iest}
+  \keeplig{fiesta}
   % leafiest beefiest reefiest ...
-  % (Mustn't do 'fiest -> f-iest'
-  %   subst. b/c of 'fiesta')
-
-\keeplig{amselfish}
-\keeplig{stelfink}
 
 \nolig{fily}{f|ily}
   % beefily goofily
@@ -301,6 +293,7 @@
   % draffish offish sniffish gruffish
 
 \nolig{ffing}{ff|ing}
+\nolig{ffin'}{ff|in'}
   % baffing biffing bluffing...
 
 \nolig{ffier}{ff|ier}
@@ -310,10 +303,7 @@
   % Caught by 'fily -> f-ily' rule
 
 \nolig{ffiness}{ff|iness}
-  % fluffiness huffiness ...
-
-\nolig{waffie}{waff|ie}
-\nolig{Waffie}{Waff|ie}
+  % fluffiness huffiness puffiness
 
 \nolig{ffies}{ff|ies}
   % baffies biffies jiffies stuffies ...
@@ -346,8 +336,6 @@
 \nolig{fifty}{fif|ty}
 \nolig{Fifty}{Fif|ty}
   % fifty fiftyish
-
-
 
 \fi % end of \if@broadfset block
 

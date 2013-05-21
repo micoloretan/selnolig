@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/05/20
+% Date: 2013/05/21
 
 
 % Check first that we're running lua(la)tex.
@@ -22,28 +22,38 @@
 \fi
 
 \usepackage[margin=1in]{geometry}
-\usepackage{showhyphens}
-\setlength\parindent{0pt}
-\parskip=0.3\baselineskip
-\usepackage{multicol}
-  \setlength\columnseprule{.4pt}
 
 \righthyphenmin=2 % set this to either 3 (normal) or 2
 
 \usepackage{fancyvrb}
 
 \usepackage{fontspec}
-\setmainfont[Numbers = OldStyle,
-  Ligatures  = {TeX,Common,Discretionary},
-  ItalicFont = {Garamond Premier Pro Italic}]
-  {Garamond Premier Pro}
-\setmonofont[Scale=MatchLowercase]{Consolas}
-\newfontfamily\ebg[Numbers = OldStyle,
-  Ligatures  = {TeX,Common,Historic,Discretionary},
-  ItalicFont = {EB Garamond 12 Italic}]
-  {EB Garamond 12 Regular}
+
+\defaultfontfeatures{%
+     Ligatures={TeX,Common,Rare},
+     Numbers  = OldStyle}
+
+\setmainfont[ FeatureFile= gpp-ft.fea,
+              ItalicFont = {Garamond Premier Pro Italic},
+              BoldFont   = {Garamond Premier Pro}]
+    {Garamond Premier Pro}
+
+\setmonofont[Scale=MatchLowercase,
+             Ligatures=NoCommon]
+            {Consolas}
+
+\newfontfamily\ebg[ ItalicFont = {EB Garamond 12 Italic}]
+    {EB Garamond 12 Regular}
+
 \usepackage{ragged2e}
-\usepackage[english,broadf,hdlig]{selnolig}
+\usepackage[english,hdlig,broadf]{selnolig}
+
+\usepackage{showhyphens}
+
+\setlength\parindent{0pt}
+\parskip=0.3\baselineskip
+\usepackage{multicol}
+  \setlength\columnseprule{.4pt}
 
 \begin{document}
 \RaggedRight
@@ -78,7 +88,7 @@ Sample words with these ligatures
 \makeatletter
 \begin{tabular}{@{}ll}
 Options and other parameters:\\
-Value of \textbackslash righthyphenmin parameter & \the\righthyphenmin\\
+Value of \texttt{\textbackslash righthyphenmin} parameter & \the\righthyphenmin\\
 Extent of suppressing f-ligatures: basic or broadf?  & \if@broadfset broadf \else basic \fi \\
 
 \end{tabular}
