@@ -312,7 +312,7 @@ In addition, if the \opt{broadf} option is set, the \pkg{selnolig} package will 
 
 \subsection{Ligature suppression rules: German language case}
 
-For German words, the following rules (with various exceptions and adjustments) apply. These rules are built mainly from statements found in the \emph{Duden} and various websites that have taken an interest in this subject, with adaptations for the ft and fft ligatures.
+For German words, the following principles (with various exceptions and adjustments) apply when it comes to decide which ligatures to break up and which ones to allow. These rules are built mainly from statements found in the \emph{Duden} and various websites that have taken an interest in this subject, with adaptations for the ft and fft ligatures.
 \begin{itemize}
 \item Case 1: Joining of two free morphemes. Ligatures are suppressed where they to span two \emph{free} morphemes. Examples: Schil\mbox{fi}nsel $\to$ Schilfinsel, Zup\mbox{fi}nstrument $\to$ Zupfinstrument, Bausto\mbox{ffi}ngenieur $\to$ Baustoffingenieur, Wassersto\mbox{ffi}onen $\to$ Wasserstoffionen; Imp\mbox{ff}urcht $\to$ Impffurcht, Sen\mbox{ff}abrik $\to$ Senffabrik, Schor\mbox{ffl}ecken $\to$ Schorfflecken; Ablau\mbox{fl}ogik $\to$ Ablauflogik, Hu\mbox{fl}attich $\to$ Huflattich, fün\mbox{ffi}ngrig $\to$ fünf\mbox{fi}ngrig; Brie\mbox{ft}aube $\to$ Brieftaube, Sto\mbox{fft}eil $\to$ Stoffteil, el\mbox{ft}eilig $\to$ elfteilig, etc.
 
@@ -484,9 +484,9 @@ The \pkg{selnolig} package currently offers two main language-specific options:
 \item \opt{english}; synonyms: \opt{british}, \opt{ukenglish}, \opt{UKenglish}, \opt{amer\-ican}, \opt{usenglish}, \opt{USenglish}, \opt{cana\-dian}, \opt{australian}, and \opt{new\-zealand}.
 \item \opt{ngerman}; synonyms: \opt{german}, \opt{austrian}, \opt{naustrian}, \opt{swiss}, and \opt{swiss\-german}.
 \end{itemize}
-These language options may be used either individually or jointly. Indeed, this package's user guide was compiled with both the \opt{english} and \opt{ngerman} options set.
+These language options may be used either individually or jointly. Indeed, this user guide was compiled with both the \opt{english} and \opt{ngerman} options set.
 
-The ligature suppression rules associated with English and German are listed in \cref{sec:eng-listing,sec:germ-listing}, respectively.
+The ligature suppression rules associated with English and German are listed in \cref{sec:eng-listing,sec:germ-listing}, respectively.\footnote{To give an admittedly imperfect impression of just how much more complex the task is to create ligature suppression rules for German rather than it is for English: As of the mid-May 2013 version of the package, the \enquote{basic} English f-ligature suppression rules consist of 32 \cmmd{nolig} and 17 \cmmd{keeplig} instructions. (Including the rules that are activated if the |broadf| and |hdlig| options are both activated, the tally rises to about 420 \cmmd{nolig} and 52 \cmmd{keeplig} instructions.) The file \pkg{selnolig-german-patterns.sty}, in contrast, contains about 700 \cmmd{nolig} and 335 \cmmd{keeplig} directives. Recall that the package currently provides rules only for a set of \enquote{basic} f-ligatures for German words.}
 
 
 
