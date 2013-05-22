@@ -34,7 +34,7 @@
 \setsansfont[Scale=MatchLowercase,
              Ligatures = NoCommon]
             {Myriad Pro}
-\setmonofont[Scale=MatchLowercase, 
+\setmonofont[Scale=0.81,
              Ligatures = NoCommon]
             {Consolas}
 
@@ -455,18 +455,18 @@ This rule suppresses the fl-ligature not only for Sumpflicht but also for Sumpfl
 The macro \cmmd{breaklig}, which doesn't take an argument, is provided as a hopefully easy-to-remember version of the lower-level \LaTeX\ command \Verb+\-\hspace{0pt}+. As its name suggests, you should insert this macro in places where you want to break up a ligature on an ad-hoc basis (and also wish to permit hyphenation to occur). For instance, to suppress the \emph{\mbox{sk}} ligature in the word \Verb+groundskeeper+ on a one-off basis, one might enter it as \enquote{\Verb+grounds\textbackslash breaklig keeper+} to get \emph{\ebg groundskeeper} rather than \emph{\ebg ground\mbox{sk}eeper}.\footnote{To suppress the {\ebg \emph{\mbox{sk}}} ligature globally for this word, as well as for words such as \emph{\ebg greenskeeper} and \emph{\ebg miskeep}, one could issue the directive \Verb+\nolig{skeep}{s|keep}+. The \pkg{selnolig} package does just that.}
 
 
-Incidentally, the \pkg{selnolig} package does not provide a dedicated macro to override the action of a \cmmd{nolig} instruction on an ad~hoc basis, i.e., to force the use of a typographic ligature on a one-off basis. This is because the \LaTeX\ command \Verb+\mbox{<string>}+ already provides this capability.
+The \pkg{selnolig} package does not provide a dedicated macro to override the action of a \cmmd{nolig} instruction on an ad~hoc basis, i.e., to \emph{require} the use of a typographic ligature on a one-off basis. The \LaTeX\ kernel command \Verb+\mbox{<string>}+ already provides this capability.
 
 
-\subsection{Final steps in the package's startup process}
+\subsection{Further steps in the package's startup process}
 
-The final few steps in the startup process depend on which language-related options are set:
+After the user commands of the \pkg{selnolig} have been set up, the remaining steps in the package's startup process depend on which language-related options are set:
 \begin{itemize}
-\item If \emph{no} language-specific options are in effect, the loading process terminates. Users may still provide their own \cmmd{nolig}, \cmmd{keeplig}, and \cmmd{breaklig} instructions, of course.
+\item If \emph{no} language-specific options are in effect, the setup process terminates. Users may, of course, still provide their own \cmmd{nolig} and \cmmd{keeplig} rules and insert \cmmd{breaklig} instructions as they deem to be necessary.
 
-\item If the \opt{english} option (or one of its synonymous options) is set, the files \pkg{selnolig-english-patterns.sty} and \pkg{selnolig-english-hyphex.sty} are loaded. The former file contains a long list of \cmmd{nolig} macros adapted to English language typographic usage; \Cref{sec:eng-listing} provides a complete listing of these macros. The latter file contains a list of hyphenation exceptions, mainly for words that contain one or more potential non-ligation points and for which \TeX's hypenation algorithm either misses valid hyphenation points or selects invalid hyphenation points; see \cref{sec:addlhyph} below.
+\item If the \opt{english} option (or one of its synonymous options) is set, the files \pkg{selnolig-english-patterns.sty} and \pkg{selnolig-english-hyphex.sty} are loaded. The former file contains a detailed list of \cmmd{nolig} and \cmmd{keeplig} rules adapted to English language typographic usage; \Cref{sec:eng-listing} provides a complete listing of these rules. The latter file contains a list of hyphenation exceptions, mainly for words that contain one or more potential non-ligation points and for which \TeX's hypenation algorithm either misses valid hyphenation points or selects invalid hyphenation points; see \cref{sec:addlhyph} below.
 
-\item If the \opt{ngerman} option (or one of its synonymous options) is set, the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-german-hyphex.sty} are loaded. The former file contains ligature-suppressing instructions appropriate for German typographic usage; \cref{sec:germ-listing} lists its contents. The latter file provides additional hyphenation rules for German-language words.
+\item If the \opt{ngerman} option (or one of its synonymous options) is set, the files \pkg{selnolig-german-patterns.sty} and \pkg{selnolig-german-hyphex.sty} are loaded. The former file contains ligature suppression rules appropriate for German typographic usage; \cref{sec:germ-listing} lists its contents. The latter file provides additional hyphenation rules for German-language words.
 
 \item If the user specifies both the \opt{english} and \opt{ngerman} options (or some of their synonymous options), \emph{both} language-specific style files will be loaded. Under normal circumstances, a user will probably want to load only one or the other set of language-specific files, but not both sets.
 \end{itemize}
@@ -492,7 +492,7 @@ The ligature suppression rules associated with English and German are listed in 
 
 \subsection[English language case: The broadf and hdlig options]{English language case: The \opt{broadf} and \opt{hdlig} options} \label{sec:eng-opt}
 
-The ligature suppression patterns listed in \cref{sec:eng-listing} for English language words are grouped into four parts. The first two parts concern the suppression of various \enquote{common} f-ligatures. Part~1 provides a fairly limited, or \enquote{basic}, set of patterns that will always be executed, and Part~2 contains a broader set of ligation suppression rules that will be executed if the \opt{broadf} option is specified. 
+The ligature suppression patterns for English language words, contained in the file \pkg{selnolig-english-patterns.sty} and listed in \cref{sec:eng-listing} below, are grouped into four parts. The first two parts concern the suppression of f-ligatures. Part~1 provides a fairly limited, or \enquote{basic}, set of patterns that will always be executed, and Part~2 contains a broader set of ligation suppression rules that will be executed if the \opt{broadf} option is specified. 
 
 For English-language documents, only a fairly limited number of f-ligature suppression rules is enabled by default, i.e., if the \opt{broadf} option is not enabled. Eliminating \emph{all} f-ligatures that cross morpheme boundaries simply does not appear to be a major concern in English-language typography. Whereas many (maybe most?) people would agree that it's advisable not to use the ffi-ligature in words such as chaffinch and wolffish, and not to use the ffl-ligature in words such as scofflaw and offload, there appears to be far less of a perceived need to suppress the~fi (ffi) ligature in the far more commonly occurring words that end in~f (ff\,) followed by the particles -ing, -ish, -ier, -iest, -ily, and -iness.\footnote{Examples of such words are sur\mbox{fi}ng, oa\mbox{fi}sh, lea\mbox{fi}er, goo\mbox{fi}est, flu\mbox{ffi}ly, and goo\mbox{fi}ness.} The same goes for the~fl (ffl) ligature in words that end in~f (ff) followed by~-ly.\footnote{Examples are \mbox{aloofly} and \mbox{gruffly}.} That is why only a few f-ligature suppression macros are enabled by default if the \opt{english} option is set. To enable the broader set of f-ligature suppression rules, users must set the \opt{broadf} option explicitly.
 
@@ -621,7 +621,7 @@ Remark: The bugs in the following list may turn out to be related, i.e., they ma
 \begin{enumerate}
 \item The \cmmd{nolig} directives don't work properly on the final word in the argument of a \TeX\ macro (e.g., |\footnote{}| and |\section{}|), \emph{unless} that word (including any trailing punctuation mark) is followed by one or more space characters before the closing curly brace of the macro's argument is encountered. 
 
-To wit, ligatures aren't broken up for |\footnote{kopflos.}| or |\section{Shelfful}|. The package does work as expected if the commands are modified to |\footnote{kopflos. }| and |\section{Shelfful }|, respectively.
+To wit, ligatures aren't broken up for |\footnote{kopflos.}| or |\section{Shelfful}|. Things work as expected, though, if the commands are modified to |\footnote{kopflos. }| and |\section{Shelfful }|, respectively.
 
 \item The \cmmd{nolig} macros also don't operate correctly on words (including, if present, any trailing punctuation marks) that are followed \emph{immediately} by a |%| (comment) character. 
 The workaround is the same as for the preceding bug: be sure to leave one or more spaces between the word and the comment character.
@@ -630,13 +630,13 @@ The workaround is the same as for the preceding bug: be sure to leave one or mor
 
 The remedy, in these cases, is to leave a blank line between the end of one \cmmd{item}'s content and the next \cmmd{item} instruction or the \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ instruction.
 
-\item If the final word (again, possibly, with an associated punctuation character) of a sentence that is followed immediately by an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, the |\nolig| macro again will not work properly. 
+\item If the final word (again, possibly, with an associated punctuation character) of a sentence which is followed immediately by an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, ligature suppression again will not work properly. 
 
 The recommended remedy is to leave a blank line between that sentence and the start of the environment in question. Inserting an \enquote{invisible} item, such as \Verb+\vphantom{x}+, also works.
 
 \end{enumerate}
 
-I'm not sure if the following matter constitutes a bug or \enquote{merely} a case of incompatibility between two \LaTeX\ packages. The \pkg{selnolig} package does not appear to interact well with the \pkg{ngerman} package. However, as was noted earlier, it interacts nicely with the \pkg{babel} package (with one or more of the \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} options set). Unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package along with one of the available German language options, I probably won't bother addressing this incompatibility.
+I'm not sure if the following matter constitutes a bug or \enquote{merely} a case of incompatibility between two \LaTeX\ packages. The \pkg{selnolig} package does not appear to interact well with the \LaTeX\ package \pkg{ngerman}. However, as was noted earlier, \pkg{selnolig} interacts nicely with the \pkg{babel} package with one of the options \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} set. Unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package along with one of the available German language options, I probably won't bother addressing this incompatibility.
 
 
 
