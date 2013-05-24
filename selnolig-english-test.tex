@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/05/21
+% Date: 2013/05/24
 
 
 % Check first that we're running lua(la)tex.
@@ -42,10 +42,12 @@
              Ligatures=NoCommon]
             {Consolas}
 
-\newfontfamily\ebg[ ItalicFont = {EB Garamond 12 Italic}]
+\newfontfamily\ebg[ 
+    Ligatures = {TeX,Common,Rare,Historic},
+    ItalicFont = {EB Garamond 12 Italic}]
     {EB Garamond 12 Regular}
 
-\usepackage{ragged2e}
+\usepackage[document]{ragged2e}
 \usepackage[english,hdlig,broadf]{selnolig}
 
 \usepackage{showhyphens}
@@ -54,11 +56,12 @@
 \parskip=0.3\baselineskip
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
+\title{selnolig-english-test}
+\author{\null}
+\date{}
 
 \begin{document}
-\RaggedRight
-
-\section*{selnolig-english-test}
+\maketitle
 
 \begin{tabular}{@{}*{10}{l}}
 Appearance of f-ligatures 
@@ -74,7 +77,7 @@ Sample words with these ligatures
 \begin{tabular}{@{}*{13}{l}}
 Appearance of other ligatures 
  & st & ct & sp  
- & \emph{as} & \emph{is, th, us} [!]
+ & \emph{as} & \emph{is, th, us}
  & \emph{at} & \emph{et} & {\ebg\emph{sk}}& \emph{ll}\\
 Sample words with these ligatures
  & stay & act & spy 

@@ -6,7 +6,7 @@
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
 --    (with crucial contributions by Taco Hoekwater, 
 --    Patrick Gundlach, and Steffen Hildebrandt)
--- Date: 2013/05/23
+-- Date: 2013/05/24
 --
 -- The entire selnolig package is placed under the terms 
 -- of the LaTeX Project Public License, version 1.3 or 
@@ -16,8 +16,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.214d",
-   date         = "2013/05/23",
+   version      = "0.215",
+   date         = "2013/05/24",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",

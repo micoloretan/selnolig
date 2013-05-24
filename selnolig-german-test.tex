@@ -7,7 +7,7 @@
 % of test words is in 'selnolig-german-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/05/21
+% Date: 2013/05/24
 
 
 % Check first that we're running lua(la)tex.
@@ -30,7 +30,7 @@
 \newfontfamily\gpp{Garamond Premier Pro}
 \newfontfamily\ebg{EB Garamond 12 Regular}
 
-\usepackage{ragged2e}
+\usepackage[document]{ragged2e}
 \setlength\parindent{0pt}
 \parskip=0.3\baselineskip
 
@@ -40,11 +40,12 @@
 \usepackage{showhyphens}
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
-
+\title{selnolig-german-test}
+\author{\null}
+\date{}
 \begin{document}
-\RaggedRight
 \gpp
-\section*{selnolig-german-test}
+\maketitle
 
 \begin{tabular}{@{} *{9}{l} }
 Erscheinungsbild der f-Ligaturen
