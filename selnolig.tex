@@ -9,7 +9,7 @@
 % It has the status "maintained".
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/05/24
+% Date: 2013/05/25
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -445,17 +445,14 @@ Probably somewhat surprisingly, at least at first glance, it is \emph{not necess
 Observe that because the string |aufl| is \emph{not} a subset of the string |flicht|, the instruction |\keeplig{flicht}| does not undo the action of \Verb+\nolig{aufl}{auf|l}+. Hence, the word |Lauflicht| happily ends up being typeset as Lauflicht, i.e., \emph{without} an fl-ligature. 
 
 Interestingly, the rule  |\keeplig{flicht}| is itself a bit too broad since it also catches the word \opt{Sumpf\-licht}, for which the fl-ligature \emph{should} in fact be suppressed. To address this situation, the file \pkg{selnolig-german-patterns.sty} also provides the rule 
-\begin{Verbatim}
-              \nolig{Sumpfl}{Sumpf|l}
-\end{Verbatim}
-This rule suppresses the fl-ligature not only for Sumpflicht but also for Sumpflabkraut and Sumpfleiche~[!].
+\Verb+\nolig{Sumpfl}{Sumpf|l}+. This rule suppresses the fl-ligature for Sumpflicht as well as for Sumpflabkraut and Sumpfleiche (and the plural forms of these nouns).
 
 
 
 \subsubsection{The \cmmd{breaklig} macro} 
 \label{sec:breaklig}
 
-The macro \cmmd{breaklig}, which doesn't take an argument, is provided as a hopefully easy-to-remember version of the lower-level \LaTeX\ command \Verb+\-\hspace{0pt}+. As its name suggests, you should insert this macro in places where you want to break up a ligature on an ad-hoc basis (and also wish to permit hyphenation to occur). For instance, to suppress the \emph{\mbox{sk}} ligature in the word \Verb+groundskeeper+ on a one-off basis, one might enter it as \enquote{\Verb+grounds\textbackslash breaklig keeper+} to get \emph{\ebg groundskeeper} rather than \emph{\ebg ground\mbox{sk}eeper}.\footnote{To suppress the {\ebg \emph{\mbox{sk}}} ligature globally for this word, as well as for words such as \emph{\ebg greenskeeper} and \emph{\ebg miskeep}, one could issue the directive \Verb+\nolig{skeep}{s|keep}+. The \pkg{selnolig} package does just that.}
+The macro \cmmd{breaklig}, which doesn't take an argument, is provided as a hopefully easy-to-remember version of the lower-level \LaTeX\ command \Verb+\-\hspace{0pt}+. As its name suggests, you should insert this macro in places where you want to break up a ligature on an ad-hoc basis (and also wish to permit hyphenation to occur). For instance, to suppress the {\ebg\emph{sk}} ligature in the word \Verb+groundskeeper+ on a one-off basis, one might enter it as \enquote{\Verb+grounds\textbackslash breaklig keeper+} to get \emph{\ebg groundskeeper} instead of \emph{\ebg ground\mbox{sk}eeper}.\footnote{To suppress the {\ebg \emph{sk}} ligature for this word, as well as for words such as \emph{\ebg greenskeeper} and \emph{\ebg miskeep}, everywhere in the document, one could issue the directive \Verb+\nolig{skeep}{s|keep}+. The \pkg{selnolig} package provides just such a rule.}
 
 
 The \pkg{selnolig} package does not provide a dedicated macro to override the action of a \cmmd{nolig} instruction on an ad~hoc basis, i.e., to \emph{require} the use of a typographic ligature on a one-off basis. The \LaTeX\ kernel command \Verb+\mbox{<string>}+ already provides this capability.
@@ -631,22 +628,22 @@ Virtually all words for which an \emph{et} ligature might inappropriately pre-em
 
 \subsection{Known bugs}
 
-Remark: The bugs in the following list may turn out to be related, i.e., they may be caused by a single bug in the package's lua code.
 \begin{enumerate}
-\item The \cmmd{nolig} directives don't work properly on the final word in the argument of a \TeX\ macro (e.g., |\footnote{}| and |\section{}|), \emph{unless} that word (including any trailing punctuation mark) is followed by one or more space characters before the closing curly brace of the macro's argument is encountered. 
+\item The \cmmd{nolig} directives don't work properly on the final word in the argument of certain \TeX\ macros, such as |\section{}|. For instance, the ff ligature in |Shelfful| isn't broken up if it's encountered in the instruction |\section{Shelfful}|.
 
-To wit, ligatures aren't broken up for |\footnote{kopflos.}| or |\section{Shelfful}|. Things work as expected, though, if the commands are modified to |\footnote{kopflos. }| and |\section{Shelfful }|, respectively.
+The proposed remedy is to insert either one or more space characters or the instruction \cmmd{kern0pt} between the final word of the command's argument and its closing curly brace. To wit, ligature suppression works as expected if the command given in the preceding paragraph is modified to |\section{Shelfful }|\textemdash observe the presence of whitespace.\footnote{In versions of \pkg{selnolig} prior to version 0.216, this bug also occurred at the end of the argument of \cmmd{footnote} instructions. That bug has fortunately been fixed; i.e., it's no longer necessary to insert a \cmmd{kern0pt} directive after the final word of the footnote and the command's closing curly brace.}
 
 \item The \cmmd{nolig} macros also don't operate correctly on words (including, if present, any trailing punctuation marks) that are followed \emph{immediately} by a |%| (comment) character. 
-The workaround is the same as for the preceding bug: be sure to leave one or more spaces between the word and the comment character.
 
-\item In \opt{itemize} or \opt{enumerate} environments, if the content of an \cmmd{item} directive \emph{ends} with a word (including an associated punctuation mark) that contains a ligature that should be suppressed \textemdash i.e., if it is followed immediately by either another \cmmd{item} directive or an \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ statement\textemdash ligature suppression again fails. 
+The best workaround in this case is to insert the instruction \cmmd{kern0pt} between the final word and the comment character.
 
-The remedy, in these cases, is to leave a blank line between the end of one \cmmd{item}'s content and the next \cmmd{item} instruction or the \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ instruction.
+\item In \opt{itemize} or \opt{enumerate} environments, if the content of an \cmmd{item} directive \emph{ends} with a word (including an associated punctuation mark) that contains a ligature that should be suppressed \textemdash i.e., if it is followed immediately by either another \cmmd{item} directive or an \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ statement\textemdash ligature, suppression fails yet again. 
+
+The remedy I propose for these cases is to leave a blank line between the end of one \cmmd{item}'s content and the next \cmmd{item} instruction or the \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ instruction. Inserting the instruction \cmmd{kern0pt} works too.
 
 \item If the final word (again, possibly, with an associated punctuation character) of a sentence which is followed immediately by an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, ligature suppression again will not work properly. 
 
-The recommended remedy is to leave a blank line between that sentence and the start of the environment in question. Inserting an \enquote{invisible} item, such as \Verb+\vphantom{x}+, also works.
+I recommend leaving a blank line between that sentence and the start of the \opt{enumerate} or \opt{itemize} environment. Inserting the instruction \cmmd{kern0pt} also works.
 
 \end{enumerate}
 
@@ -706,7 +703,7 @@ If more than one \cmmd{nolig} directive \emph{as well as} a \cmmd{keeplig} instr
               Inserting nolig whatsit before glyph: l
               Last char: t
               \end{Verbatim}
-Observe that the first nolig pattern, |flich|, is overridden by the keeplig pattern |flicht|. The second nolig pattern, |reifl|, is \emph{not} overridden, and it is the debugging-related information associated with the second \cmmd{nolig} pattern that ends up being written to the |.log| file. 
+Observe that the first nolig rule's pattern, |flich|, is overridden by the keeplig rule's pattern |flicht|. The second nolig rule's pattern, |reifl|, is \emph{not} overridden, and it is the debugging-related information associated with the second \cmmd{nolig} pattern that ends up being written to the |.log| file. 
 
 To terminate or suspend the writing of the debugging-related information to the \opt{.log} file, one may execute the command \cmmd{debugoff}. To restart the logging of this information, issue the command \cmmd{debugon}.
 

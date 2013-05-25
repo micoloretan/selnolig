@@ -1,4 +1,4 @@
--- lua code for the selnolig package, to be loaded
+-- Lua code for the selnolig package, to be loaded
 -- with an instruction such as 
 --    \directlua{  require("selnolig.lua")  }
 -- from a (Lua)LaTeX .sty file.
@@ -6,7 +6,6 @@
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
 --    (with crucial contributions by Taco Hoekwater, 
 --    Patrick Gundlach, and Steffen Hildebrandt)
--- Date: 2013/05/24
 --
 -- The entire selnolig package is placed under the terms 
 -- of the LaTeX Project Public License, version 1.3 or 
@@ -16,20 +15,36 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.215",
-   date         = "2013/05/24",
+   version      = "0.216",
+   date         = "2013/05/25",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
    license      = "LPPL 1.3 or later"
 }
 
-local glyph   = node.id('glyph')
-local glue    = node.id("glue")
-local whatsit = node.id("whatsit")
+-- Define variables corresponding to various text nodes 
+-- (cf. section 8.1.2 of LuaTeX reference guide)
+local hlist   = node.id('hlist')
+local vlist   = node.id('vlist')
+local rule    = node.id('rule')
+local ins     = node.id('ins')
+local mark    = node.id('mark')
+local adjust  = node.id('adjust')
+local disc    = node.id('disc')
+local math    = node.id('math')
+local glue    = node.id("glue") --
+local kern    = node.id('kern')
+local penalty = node.id('penalty')
+local glyph   = node.id('glyph') --
+local margin_kern  = node.id('margin_kern')
+
+-- see section 8.1.4 for whatsit nodes:
+local whatsit = node.id("whatsit") --
+
 local userdefined
 
-for n,v in pairs(node.whatsits()) do
+for n,v in pairs ( node.whatsits() ) do
   if v == 'user_defined' then userdefined = n end
 end
 
@@ -121,17 +136,19 @@ function process_ligatures(nodes,tail)
   for t in node.traverse(nodes) do
     if t.id==glyph then
       s[#s+1]=unicode.utf8.char(t.char)
-    elseif t.id== glue then
+    -- Prior to version 0.216, the next instruction was
+    --   coded simply as "elseif (t.id==glue) then"
+    elseif ( t.id==glue or t.id==rule or t.id==kern ) then 
       local f=string.gsub(table.concat(s,""),"[\\?!,\\.]+","")
-      local throwliga={}
-      for k,v in pairs(noliga) do
+      local throwliga={} 
+      for k,v in pairs (noliga) do
         local count=1
         local match = string.find(f,k)
         while match do
-          count=match
-          keep=false
-          debug_k1=""
-          for k1,v1 in pairs(keepliga) do
+          count    = match
+          keep     = false
+          debug_k1 = ""
+          for k1,v1 in pairs (keepliga) do
             if v1 and string.find(f,k1) and string.find(k1,k) then
               debug_k1=k1
               keep=true
@@ -167,16 +184,6 @@ end
 
 function always_keep_liga(s)
   keepliga[s] = true
-end
-
-function drop_special_nodes (nodes,tail)
-  for t in node.traverse(nodes) do
-    if t.id == whatsit and t.subtype == userdefined and t.user_id == identifier
-    then
-      node.remove(nodes,t)
-      node.free(t)
-    end
-  end
 end
 
 function enableselnolig()
