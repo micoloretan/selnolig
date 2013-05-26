@@ -15,8 +15,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.216",
-   date         = "2013/05/25",
+   version      = "0.217",
+   date         = "2013/05/26",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
@@ -136,7 +136,7 @@ function process_ligatures(nodes,tail)
   for t in node.traverse(nodes) do
     if t.id==glyph then
       s[#s+1]=unicode.utf8.char(t.char)
-    -- Prior to version 0.216, the next instruction was
+    -- Up until version 0.215, the next instruction was
     --   coded simply as "elseif (t.id==glue) then"
     elseif ( t.id==glue or t.id==rule or t.id==kern ) then 
       local f=string.gsub(table.concat(s,""),"[\\?!,\\.]+","")
