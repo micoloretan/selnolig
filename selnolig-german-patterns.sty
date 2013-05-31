@@ -1422,468 +1422,456 @@
 % 8. ft -> f-t
 % ------------
 
-\nolig{Auft[aähioöruüy]}{Auf|t}
-\nolig{auft[aähioöruüy]}{auf|t}
-  % (viele viele Fälle; aber: ft-Ligatur wird
-  % doch verwendet für "Auft.")
+\if@noftligs
+\else % suppress them selectively...
+  \nolig{Auft[aähioöruüy]}{Auf|t}
+  \nolig{auft[aähioöruüy]}{auf|t}
+    % (viele viele Fälle; aber: ft-Ligatur wird
+    % doch verwendet für "Auft.")
+  
+  \nolig{Brieft}{Brief|t}
+  \nolig{brieft}{brief|t}
+    % Brieftasche Brieftaube 
+  \nolig{Cheft}{Chef|t}
+  \nolig{cheft[a-z]}{chef|t}
+    % Cheftheoretiker Cheftrainer
+    \keeplig{omicheft[ceg]}
+  \nolig{Dorft}{Dorf|t}
+  \nolig{dorft}{dorf|t}
+    % Dorftrottel -tratsch -tümpel
+  \nolig{Elfte}{Elf|te} 
+  \nolig{elfte}{elf|te} 
+    % elfte elftens
+    \keeplig{elfterfolg} % elfterfolgreichste
+  
+  \nolig{Fünft[aäeoöruy]}{Fünf|t} % Fünftagewoche ...
+  \nolig{fünft[aäeoöruy]}{fünf|t} % fünftens...
+    \keeplig{fünfterfolg} % fünfterfolgreichste
+    \keeplig{Fünfterfolg}
+    \keeplig{fünftrang}   % fünftrangig
+    \keeplig{Fünftrang}
+    \keeplig{fünftreich}  % fünftreichste
+    \keeplig{Fünftreich}
+    \keeplig{Fünftoper}   % Fünftoperation
+    \keeplig{Fünftrund}   % Fünftrunden
+    \keeplig{Fünftäon}  
+  
+  \nolig{Golft}{Golf|t}
+  \nolig{golft[hiruüy]}{golf|t}
+    % Golfträume -turnier -typ -talent
+  
+  \nolig{Greift[eio]}{Greif|t}
+    % Greiftest -tentakeln -tier -tor
+  \nolig{Hanft}{Hanf|t}
+    % Hanftaler Hanftau
+  \nolig{Hoft[aäehioäruüy]}{Hof|t}
+  \nolig{hoft[aähioöruü]}{hof|t}
+    % Hoftor Klosterhoftor
+  
+  \nolig{Laufte}{Lauf|te}
+    % Lauftermin Lauftest Lauftext
+  \nolig{Prüft[aähioäruüy]}{Prüf|t}
+  \nolig{prüft[aähioöruü]}{prüf|t}
+    % Prüftheorie 
+  \nolig{Ruft[aäehioäruüy]}{Ruf|t}
+    % Ruftaxi Rufterz Rufton Ruftöne
+  
+  \nolig{Schaftal}{Schaf|tal}
+  \nolig{Schaftor}{Schaf|tor}
+  \nolig{Schaftreib}{Schaf|treib}
+  
+  \nolig{Schlaft}{Schlaf|t}
+  \nolig{schlaft[aähioäruüy]}{schlaf|t}
+    % Schlaftablette 
+  \nolig{Schilft[äehiruüy]}{Schilf|t}
+  \nolig{schilft[hiruüy]}{schilf|t}
+    % Schilfteich Schlilftümpel
+  \nolig{Senft[aäehioäruy]}{Senf|t}
+    % Senftube 
+    \keeplig{Senftenberg}
+  \nolig{Straft[aähioöruüy]}{Straf|t} 
+  \nolig{straft[aähioöruüy]}{straf|t}
+    % (viele Fälle)
+    \keeplig{straftheit} % Unbestraftheit
+  \nolig{Sufft}{Suff|t}
+    % Sufftest Sufftext
+  \nolig{Surft[ähiöüy]}{Surf|t}
+    % Surfthema Surftipp 
+  \nolig{Tarift}{Tarif|t}
+  \nolig{tarift}{tarif|t}
+    % Tarifthemen Tariftabelle
+  \nolig{Tieft}{Tief|t}
+    % Tieftänzer -träumen -tresor -tunnel
+  \nolig{Torft}{Torf|t}
+  \nolig{torft}{torf|t}
+    % Torftabletten Torftaucher Torftoilette
+  \nolig{Wurft}{Wurf|t}
+  \nolig{wurft}{wurf|t}
+    % Wurftalent Wurftaler
+  
+  \nolig{fft[aähioöruüy]}{ff|t}
+    % Stofftasche Sauerstofftank Stofftheorie
+    % Stofftier Stofftiger Stofftischtuch
+    % Auspufftopf Kunststofftonne
+    % Stofftradition Stofftrennung
+    % Kunststofftube Stoffturnschuhe
+    % Stofftäschchen Auspufftöpfe 
+    % Kunststofftöpfe Kunststofftüten
+  
+  %% Words that start with a capital letter
+  %%   and end in f-test
+  \nolig{Abstreiftest}{Abstreif|test}
+  \nolig{Ankauftest}{Ankauf|test}
+  \nolig{Hörprüftest}{Hörprüf|test}
+  \nolig{Hüpftest}{Hüpf|test}
+  \nolig{Impftest}{Impf|test}
+  \nolig{Kauftest}{Kauf|test}
+  \nolig{Klopftest}{Klopf|test}
+  \nolig{Kneiftest}{Kneif|test}
+  \nolig{Lichtschweiftest}{Lichtschweif|test}
+  \nolig{Rückruftest}{Rückruf|test}
+  \nolig{Schnupftest}{Schnupf|test}
+  \nolig{Sumpftest}{Sumpf|test}
+  \nolig{Tropftest}{Tropf|test}
+  \nolig{Wettkampftest}{Wettkampf|test}
+  \nolig{tofftest}{toff|test} 
+    % Impfstofftest Treibstofftests
+  
+  \nolig{aftee}{af|tee}
+    % Schlaftee 
+  \nolig{auftee}{auf|tee}
+    % Kreislauftee
+  \nolig{lauftest}{lauf|test}
+    % Kreislauftest
+  
+  \nolig{eiftie}{eif|tie}
+    % Greiftiefe Steiftier
+  \nolig{eiftit}{eif|tit}
+    % Eingreiftitel
+  \nolig{eiftr}{eif|tr}
+    % Eingreiftruppe Nadelstreifträger 
+    % Greiftrupp -tier -training
+  \nolig{elieft}{elief|t}
+    % Relieftäfelchen -tropfen -türme
+  \nolig{enftei}{enf|tei}
+    % Senfteig
+  
+  \nolig{ftabell}{f|tabell}
+    % Ruftabelle
+  \nolig{ftablett}{f|tablett}
+    % Schlaftabletten
+  \nolig{ftafel}{f|tafel}
+    % Pfeiftafel
+  \nolig{ftag}{f|tag}
+    % Tauftag Fünftagewoche
+    \keeplig{ftagent} % Luftagentur
+  \nolig{ftäg}{f|täg}
+    % fünftägig elfftägig zwölftägig
+  \nolig{ftalsg}{f|talsg}
+    % schaftalsgrundig
+  \nolig{ftanz}{f|tanz}
+    % Kampftanz Schilftanz
+    \keeplig{ftanzahl} % Heftanzahl
+    \keeplig{ftanzeig} % Luftanzeige
+    \keeplig{ftanzieh} % Schwerkraftanziehung
+    \keeplig{ftanzüg}  % Haftanzüge
+  \nolig{ftänz}{f|tänz}
+    % Tieftänzer
+  \nolig{ftari}{f|tari}
+    % Anruftarif
+    \keeplig{ftaristokr} % Zunftaristokratie
+  \nolig{ftarn}{f|tarn}
+    % Wegwerftarnungen
+  \nolig{ftasse}{f|tasse}
+    % Schürftasse
+    \keeplig{ftassel} % Gruftasseln
+  \nolig{ftatb}{f|tatb}
+    % Straftatbestände
+  \nolig{ftaten}{f|taten}
+    % Kampftaten Straftaten
+  \nolig{ftätig}{f|tätig}
+    % Schürftätigkeit
+  \nolig{ftauch}{f|tauch}
+    % Beruftaucher Kreislauftauchgerät
+  \nolig{ftaugl}{f|taugl}
+    % prüftauglich
+  \nolig{ftaume}{f|taume}
+    % Nachruftaumel
+  \nolig{ftax}{f|tax}
+    % Ruftaxi
+  
+  \nolig{fteam}{f|team}
+    % Jugendtreffteam Impfteam
+    \keeplig{fteamt} % Streitkräfteamt
+  \nolig{ftechn}{f|techn}
+    % Stampftechnik schlaftechnisch
+    % Kraftstofftechnologie Pfeiftechnik
+  \nolig{ftedd}{f|tedd}
+    % Schlafteddy 
+  \nolig{fteich}{f|teich}
+    % Schilfteich Dorfteich
+    \keeplig{nfteich} % Zunfteiche
+    \keeplig{ifteich} % Schrifteiche
+  \nolig{fteigw}{f|teigw}
+    % Dampfteigwaren 
+  \nolig{fteil}{f|teil}
+    % fünfteilig Friedhofteil
+    % Raumschiffteil Riffteil Stoffteil
+  \nolig{ftelef}{f|telef}
+  \nolig{fteleph}{f|teleph} % old spelling...
+    % Wegwerftelefon Notruftelefonnummern
+  \nolig{fteller}{f|teller}
+    % Schiefteller
+  \nolig{ftempel}{f|tempel}
+    % Kauftempel
+  \nolig{ftemper}{f|temper}
+    % Schlaftemperatur 
+  \nolig{ftempo}{f|tempo}
+    % Dauerlauftempo
+  \nolig{ftendenz}{f|tendenz}
+    % Klassenkampftendenz
+  \nolig{ftentak}{f|tentak}
+    % Greiftentakeln
+  \nolig{fteppi}{f|teppi}
+    % Schaumstoffteppich Knüpfteppich
+  \nolig{ftermin}{f|termin}
+    % Anpfifftermin Passagierschiffterminal
+    \keeplig{fterminder} 
+      % Gesellschafterminderheiten
+  \nolig{ftermit}{f|termit} 
+    % Kampftermiten 
+    \keeplig{ftermitt} % Rauschgiftermittler
+  \nolig{fterrain}{f|terrain}
+    % Kampfterrain
+  \nolig{fterrass}{f|terrass}
+    % Tuffterrassen
+  \nolig{fterrin}{f|terrin}
+    % Kohlkopfterrine
+  \nolig{fterror}{f|terror}
+    % Schadstoffterror
+  \nolig{ftestat}{f|testat}
+    % Prüftestate
+    \keeplig{ftestation} 
+      % Streitkräftestationierung
+    \keeplig{ftestatist} 
+      % Lehrkräftestatistik
+  \nolig{fteuf}{f|teuf}
+    % Dorfteufel Saufteufel
+  \nolig{ftext}{f|text}
+    % Betrefftext Stofftextur Stegreiftexte
+    \keeplig{ftextrakt} % Duftextrakt
+  
+  \nolig{ftheat}{f|theat}
+    % Stegreiftheater
+  \nolig{fthem}{f|them}
+    % Wolfthema
+    \keeplig{fthemm} % Wirtschafthemmnis
+  \nolig{ftheor}{f|theor}
+    % -f-theorie -f-theorien
+  \nolig{ftherap}{f|therap}
+    % Impftherapie Wurftherapie 
+    % Schröpftherapeut
+  \nolig{ftick}{f|tick}
+    % Rückruftickets Diskuswurfticket
+  \nolig{ftief}{f|tief}
+    % tieftief (?)
+    \keeplig{ftiefigur} % Softiefigur
+  \nolig{ftier}{f|tier}
+    % Wegwerftier Huftier 
+    \keeplig{haftier} % inhaftieren
+    \keeplig{Muftier} % Muftierben
+  \nolig{ftipp}{f|tipp}
+    % Surftipp
+  \nolig{ftirad}{f|tirad}
+    % Schimpftirade
+  \nolig{ftisch}{f|tisch}
+    % Schleiftisch
+    \keeplig{stiftisch} % hochstiftisch
+    \keeplig{ünftisch}  % zünftisch
+  
+  \nolig{ftod}{f|tod}
+    % Hanftod
+    \keeplig{ftodem} % Giftodem
+  \nolig{fton}{f|ton} 
+    % Pfeifton Zwölftonmusik Rufton
+  \nolig{ftön}{f|tön}
+    % Pfeiftöne Ruftöne
+  \nolig{ftool}{f|tool}
+    % Prüftool
+  \nolig{ftopf}{f|topf}
+    % Schleiftopf Dampf- Auspuff- Schöpf- 
+    \keeplig{ftopfer} 
+      % Duftopfer Gift- Haft-
+  \nolig{ftöpf}{f|töpf}
+    % Senftöpfchen Torftöpfchen
+    % Kunststofftöpfe 
+  \nolig{ftorig}{f|torig}
+    % schaftorig fünftorig
+  \nolig{ftour}{f|tour}
+    % Streiftour
+  
+  \nolig{ftrader}{f|trader}
+    % Cheftrader
+  \nolig{ftradition}{f|tradition}
+    % Ruftraditionen
+  \nolig{fträg}{f|träg}
+    % Notrufträger
+  \nolig{ftrain}{f|train}
+    % Lauftrainer
+  \nolig{ftränk}{f|tränk}
+    % Rückruftränke Schaftränke
+  \nolig{ftransp}{f|transp}
+    % Hilftransport Schaftransport
+  \nolig{fträume}{f|träume}
+    % tiefträumend Tiefschlafträume
+    \keeplig{afträume} % Einzelhafträumen
+    \keeplig{äfträume} % Geschäfträumen
+    \keeplig{rifträume}% Schrifträume
+    \keeplig{ufträume} % Lufträumen
+  \nolig{ftrauri}{f|traurig}
+    % tieftraurig
+  \nolig{ftreff}{f|treff}
+    % Notruftreffen
+  \nolig{ftresor}{f|tresor}
+    % Tieftresor
+    \keeplig{ftresorp} % Luftresorption
+  \nolig{ftret}{f|tret}
+    % Mieftreter
+    \keeplig{ftrett} % Luftrettungsdienst
+    \keeplig{ftreturn}% Softreturn
+  \nolig{ftrick}{f|trick}
+    % Rückruftricks
+  \nolig{ftrieb}{f|trieb}
+    % auftriebte schaftriebig
+  \nolig{ftrief}{f|trief}
+    % tieftriefend
+  \nolig{ftrift}{f|trift}
+    % schaftriftig Schaftrift
+  \nolig{ftrimest}{f|trimest}
+    % fünftrimestrig zwölftrimestrig
+  \nolig{ftritt}{f|tritt}
+    % Huftritte
+    \keeplig{ftritter} % Kernkraftritter
+    \keeplig{Luftritt}
+  \nolig{ftrott}{f|trott}
+    % Sauftrottel
+  
+  \nolig{ftrüb}{f|trüb}
+    % tieftrübe
+  \nolig{ftrunk}{f|trunk}
+    % schlaftrunken
+  \nolig{ftrupp}{f|trupp}
+    % Prüftruppe
+  
+  \nolig{ftuch}{f|tuch}
+    % Schnieftuch Kopftuch
+  \nolig{ftüch}{f|tüch}
+    % Schnieftücher
+  \nolig{ftürk}{f|türk}
+    % tieftürkis
+  \nolig{fturm}{f|turm}
+    % Wolfturm
+  \nolig{ftürm}{f|türm}
+    % Wolftürme
+  
+  \nolig{ftyp}{f|typ}
+    % Schifftyp Stofftyp waldorftypisch
+  \nolig{ftyr}{f|tyr}
+    % Dorftyrann Hoftyrann 
+  \nolig{ftwist}{f|twist}
+    % Kopftwister
+  
+  \nolig{graftum}{graf|tum}
+    % Burggraftum Markgraftum
+  \nolig{graftüm}{graf|tüm}
+    % Markgraftümer
+  
+  \nolig{hoftest}{hof|test}
+    % Schlachthoftest
+  
+  \nolig{iefta}{ief|ta}
+    % Tieftaucher Brieftasche Brieftaube 
+  \nolig{iefto}{ief|to}
+    % Stieftochter Tiefton
+  \nolig{ieftö}{ief|tö}
+    % Stieftöchter tieftönend
+  \nolig{ieftra}{ief|tra}
+    % Tieftraumphase
+  
+  \nolig{lfta}{lf|ta}
+    % elftausend zwölftausend Golftasche 
+  \nolig{lfto}{lf|to}
+    % Zwölftonmusik Elftonner Golftour
+  \nolig{lftö}{lf|tö}
+    % zwölftönend
+  \nolig{lftum}{lf|tum}
+    % Werwolftum
+  
+  \nolig{nftü}{nf|tü}
+    % fünftürig Senftüte
+    \keeplig{nftüb}
+    % Vernunftüberlegung zunftüblich
+      \nolig{nftübchen}{nf|tübchen} 
+        % Senftübchen
+  
+  \nolig{ölfte}{ölf|te}
+    % zwölfte zwölftens
+  
+  \nolig{pft[aähioöruüy]}{pf|t}
+    % Wettkampftag -trubel -tauglich -töne
+    % Kampftaktik -truppe -tätigkeit -tänzer
+    % Schnupftabak -tuch -tücher -tüchlein 
+    % Schimpftiraden Mehrkampftitel 
+    % Stapftiefe Zopfträger
+    % Dampftopf Sumpftour Herzklopftöne 
+    % Kopftreffer -tuch -tücher 
+    % Impftabelle -tarif -tierarzt -tod
+    \keeplig{pftheit}
+    % Gedämpftheit Umkämpftheit
+  \nolig{pftee}{pf|tee}
+    % Schlumpftee (?!)
+  \nolig{pfteig}{pf|teig}
+    % Sumpfteig Hefetropfteig
+  \nolig{pftender}{pf|tender}
+    % Heißdampftenderlok
+  
+  %\nolig{rftrag}{rf|trag} 
+    % Wegwerftragtasche Dorftragödie
+  
+  \nolig{rftr}{rf|tr}
+    % Wurftraining Surftrip Freiwurftreffer
+    \keeplig{tdurftrö} % Notdurftröhre
+    \keeplig{Werftr}   % Werftreparatur
+    \keeplig{werftr}
+      \nolig{werftrage}{werf|trage}
+      % Wegwerftragetasche
+  \nolig{rftu}{rf|tu}
+    % Wurftuch
+    \keeplig{Werftu} 
+    \keeplig{werftu}
+      % Werftumfeld Werftunternehmen
+  
+  \nolig{uftas}{uf|tas}
+    % Ruftaste Vorlauftaste Kauftasche
+    \keeplig{Duftas}  % Duftaspekte
+    \keeplig{duftas}
+    \keeplig{Gruftas}  % Gruftassel
+    \keeplig{gruftas}
+    \keeplig{Luftas}  % Luftasket
+    \keeplig{luftas}
+    \keeplig{uftassoz} 
+    % Duftassoziationen Schuftassoziationen
+  
+  \nolig{urfta}{urf|ta}
+    % Wurftalent Auswurftaste Surftalent
+    \keeplig{tdurfta} % Notdurftanlage 
+  \nolig{urfto}{urf|to}
+    % Freiwurftor Surftour
+  
+  \nolig{ünftor}{ünf|tor}
+    % fünftorig Fünftore-Vorsprung
 
-\nolig{Brieft}{Brief|t}
-\nolig{brieft}{brief|t}
-  % Brieftasche Brieftaube 
-\nolig{Cheft}{Chef|t}
-\nolig{cheft[a-z]}{chef|t}
-  % Cheftheoretiker Cheftrainer
-  \keeplig{omicheft[ceg]}
-\nolig{Dorft}{Dorf|t}
-\nolig{dorft}{dorf|t}
-  % Dorftrottel -tratsch -tümpel
-\nolig{Elfte}{Elf|te} 
-\nolig{elfte}{elf|te} 
-  % elfte elftens
-  \keeplig{elfterfolg} % elfterfolgreichste
-
-\nolig{Fünft[aäehlroöuy]}{Fünf|t}% Fünftagewoche ...
-\nolig{fünft[aehlroöuy]}{fünf|t} % fünftens...
-  \keeplig{fünfterfolg} % fünfterfolgreichste
-  \keeplig{Fünfterfolg}
-  \keeplig{fünfthässl}  % fünfthässlichste
-  \keeplig{Fünfthässl}
-  \keeplig{fünfthellst} % fünfthellste
-  \keeplig{Fünfthellst}
-  \keeplig{fünfthöchst} % fünfthöchste
-  \keeplig{Fünfthöchst}
-  \keeplig{fünftlängst} % fünftlängste
-  \keeplig{Fünftlängst}
-  \keeplig{fünftleichtest} % fünftleichteste
-  \keeplig{Fünftleichtest}
-  \keeplig{fünftletzt}  % fünftletzte
-  \keeplig{Fünftletzt}
-  \keeplig{fünftrang}   % fünftrangig
-  \keeplig{Fünftrang}
-  \keeplig{fünftreichst}% fünftreichste
-  \keeplig{Fünftreichst}
-  \keeplig{Fünftlig}   % Fünftligaspiel
-  \keeplig{Fünftoper}  % Fünftoperation
-  \keeplig{Fünftrund}  % Fünftrunden
-  \keeplig{Fünftäon}  
-
-\nolig{Golft}{Golf|t}
-\nolig{golft[hiruüy]}{golf|t}
-  % Golfträume -turnier -typ -talent
-
-\nolig{Greift[eio]}{Greif|t}
-  % Greiftest -tentakeln -tier -tor
-\nolig{Hanft}{Hanf|t}
-  % Hanftaler Hanftau
-\nolig{Hoft[aäehioäruüy]}{Hof|t}
-\nolig{hoft[aähioöruü]}{hof|t}
-  % Hoftor Klosterhoftor
-
-\nolig{Laufte}{Lauf|te}
-  % Lauftermin Lauftest Lauftext
-\nolig{Prüft[aähioäruüy]}{Prüf|t}
-\nolig{prüft[aähioöruü]}{prüf|t}
-  % Prüftheorie 
-\nolig{Ruft[aäehioäruüy]}{Ruf|t}
-  % Ruftaxi Rufterz Rufton Ruftöne
-
-\nolig{Schaftal}{Schaf|tal}
-\nolig{Schaftor}{Schaf|tor}
-\nolig{Schaftreib}{Schaf|treib}
-
-\nolig{Schlaft}{Schlaf|t}
-\nolig{schlaft[aähioäruüy]}{schlaf|t}
-  % Schlaftablette 
-\nolig{Schilft[äehiruüy]}{Schilf|t}
-\nolig{schilft[hiruüy]}{schilf|t}
-  % Schilfteich Schlilftümpel
-\nolig{Senft[aäehioäruy]}{Senf|t}
-  % Senftube 
-  \keeplig{Senftenberg}
-\nolig{Straft[aähioöruüy]}{Straf|t} 
-\nolig{straft[aähioöruüy]}{straf|t}
-  % (viele Fälle)
-  \keeplig{straftheit} % Unbestraftheit
-\nolig{Sufft}{Suff|t}
-  % Sufftest Sufftext
-\nolig{Surft[ähiöüy]}{Surf|t}
-  % Surfthema Surftipp 
-\nolig{Tarift}{Tarif|t}
-\nolig{tarift}{tarif|t}
-  % Tarifthemen Tariftabelle
-\nolig{Tieft}{Tief|t}
-  % Tieftänzer -träumen -tresor -tunnel
-\nolig{Torft}{Torf|t}
-\nolig{torft}{torf|t}
-  % Torftabletten Torftaucher Torftoilette
-\nolig{Wurft}{Wurf|t}
-\nolig{wurft}{wurf|t}
-  % Wurftalent Wurftaler
-
-\nolig{fft[aähioöruüy]}{ff|t}
-  % Stofftasche Sauerstofftank Stofftheorie
-  % Stofftier Stofftiger Stofftischtuch
-  % Auspufftopf Kunststofftonne
-  % Stofftradition Stofftrennung
-  % Kunststofftube Stoffturnschuhe
-  % Stofftäschchen Auspufftöpfe 
-  % Kunststofftöpfe Kunststofftüten
-
-%% Words that start with a capital letter
-%%   and end in f-test
-\nolig{Abstreiftest}{Abstreif|test}
-\nolig{Ankauftest}{Ankauf|test}
-\nolig{Hörprüftest}{Hörprüf|test}
-\nolig{Hüpftest}{Hüpf|test}
-\nolig{Impftest}{Impf|test}
-\nolig{Kauftest}{Kauf|test}
-\nolig{Klopftest}{Klopf|test}
-\nolig{Kneiftest}{Kneif|test}
-\nolig{Lichtschweiftest}{Lichtschweif|test}
-\nolig{Rückruftest}{Rückruf|test}
-\nolig{Schnupftest}{Schnupf|test}
-\nolig{Sumpftest}{Sumpf|test}
-\nolig{Tropftest}{Tropf|test}
-\nolig{Wettkampftest}{Wettkampf|test}
-\nolig{tofftest}{toff|test} 
-  % Impfstofftest Treibstofftests
-
-
-
-\nolig{aftee}{af|tee}
-  % Schlaftee 
-\nolig{auftee}{auf|tee}
-  % Kreislauftee
-\nolig{lauftest}{lauf|test}
-  % Kreislauftest
-
-\nolig{eiftie}{eif|tie}
-  % Greiftiefe Steiftier
-\nolig{eiftit}{eif|tit}
-  % Eingreiftitel
-\nolig{eiftr}{eif|tr}
-  % Eingreiftruppe Nadelstreifträger 
-  % Greiftrupp -tier -training
-\nolig{elieft}{elief|t}
-  % Relieftäfelchen -tropfen -türme
-\nolig{enftei}{enf|tei}
-  % Senfteig
-
-\nolig{ftabell}{f|tabell}
-  % Ruftabelle
-\nolig{ftablett}{f|tablett}
-  % Schlaftabletten
-\nolig{ftafel}{f|tafel}
-  % Pfeiftafel
-\nolig{ftag}{f|tag}
-  % Tauftag Fünftagewoche
-  \keeplig{ftagent} % Luftagentur
-\nolig{ftäg}{f|täg}
-  % fünftägig elfftägig zwölftägig
-\nolig{ftalsg}{f|talsg}
-  % schaftalsgrundig
-\nolig{ftanz}{f|tanz}
-  % Kampftanz Schilftanz
-  \keeplig{ftanzahl} % Heftanzahl
-  \keeplig{ftanzeig} % Luftanzeige
-  \keeplig{ftanzieh} % Schwerkraftanziehung
-  \keeplig{ftanzüg}  % Haftanzüge
-\nolig{ftänz}{f|tänz}
-  % Tieftänzer
-\nolig{ftari}{f|tari}
-  % Anruftarif
-  \keeplig{ftaristokr} % Zunftaristokratie
-\nolig{ftarn}{f|tarn}
-  % Wegwerftarnungen
-\nolig{ftasse}{f|tasse}
-  % Schürftasse
-  \keeplig{ftassel} % Gruftasseln
-\nolig{ftatb}{f|tatb}
-  % Straftatbestände
-\nolig{ftaten}{f|taten}
-  % Kampftaten Straftaten
-\nolig{ftätig}{f|tätig}
-  % Schürftätigkeit
-\nolig{ftauch}{f|tauch}
-  % Beruftaucher Kreislauftauchgerät
-\nolig{ftaugl}{f|taugl}
-  % prüftauglich
-\nolig{ftaume}{f|taume}
-  % Nachruftaumel
-\nolig{ftax}{f|tax}
-  % Ruftaxi
-
-\nolig{fteam}{f|team}
-  % Jugendtreffteam Impfteam
-  \keeplig{fteamt} % Streitkräfteamt
-\nolig{ftechn}{f|techn}
-  % Stampftechnik schlaftechnisch
-  % Kraftstofftechnologie Pfeiftechnik
-\nolig{ftedd}{f|tedd}
-  % Schlafteddy 
-\nolig{fteich}{f|teich}
-  % Schilfteich Dorfteich
-  \keeplig{nfteich} % Zunfteiche
-  \keeplig{ifteich} % Schrifteiche
-\nolig{fteigw}{f|teigw}
-  % Dampfteigwaren 
-\nolig{fteil}{f|teil}
-  % fünfteilig Friedhofteil
-  % Raumschiffteil Riffteil Stoffteil
-\nolig{ftelef}{f|telef}
-\nolig{fteleph}{f|teleph} % old spelling...
-  % Wegwerftelefon Notruftelefonnummern
-\nolig{fteller}{f|teller}
-  % Schiefteller
-\nolig{ftempel}{f|tempel}
-  % Kauftempel
-\nolig{ftemper}{f|temper}
-  % Schlaftemperatur 
-\nolig{ftempo}{f|tempo}
-  % Dauerlauftempo
-\nolig{ftendenz}{f|tendenz}
-  % Klassenkampftendenz
-\nolig{ftentak}{f|tentak}
-  % Greiftentakeln
-\nolig{fteppi}{f|teppi}
-  % Schaumstoffteppich Knüpfteppich
-\nolig{ftermin}{f|termin}
-  % Anpfifftermin Passagierschiffterminal
-  \keeplig{fterminder} 
-    % Gesellschafterminderheiten
-\nolig{ftermit}{f|termit} 
-  % Kampftermiten 
-  \keeplig{ftermitt} % Rauschgiftermittler
-\nolig{fterrain}{f|terrain}
-  % Kampfterrain
-\nolig{fterrass}{f|terrass}
-  % Tuffterrassen
-\nolig{fterrin}{f|terrin}
-  % Kohlkopfterrine
-\nolig{fterror}{f|terror}
-  % Schadstoffterror
-\nolig{ftestat}{f|testat}
-  % Prüftestate
-  \keeplig{ftestation} 
-    % Streitkräftestationierung
-  \keeplig{ftestatist} 
-    % Lehrkräftestatistik
-\nolig{fteuf}{f|teuf}
-  % Dorfteufel Saufteufel
-\nolig{ftext}{f|text}
-  % Betrefftext Stofftextur Stegreiftexte
-  \keeplig{ftextrakt} % Duftextrakt
-
-\nolig{ftheat}{f|theat}
-  % Stegreiftheater
-\nolig{fthem}{f|them}
-  % Wolfthema
-  \keeplig{fthemm} % Wirtschafthemmnis
-\nolig{ftheor}{f|theor}
-  % -f-theorie -f-theorien
-\nolig{ftherap}{f|therap}
-  % Impftherapie Wurftherapie 
-  % Schröpftherapeut
-\nolig{ftick}{f|tick}
-  % Rückruftickets Diskuswurfticket
-\nolig{ftief}{f|tief}
-  % tieftief (?)
-  \keeplig{ftiefigur} % Softiefigur
-\nolig{ftier}{f|tier}
-  % Wegwerftier Huftier 
-  \keeplig{haftier} % inhaftieren
-  \keeplig{Muftier} % Muftierben
-\nolig{ftipp}{f|tipp}
-  % Surftipp
-\nolig{ftirad}{f|tirad}
-  % Schimpftirade
-\nolig{ftisch}{f|tisch}
-  % Schleiftisch
-  \keeplig{stiftisch} % hochstiftisch
-  \keeplig{ünftisch}  % zünftisch
-
-\nolig{ftod}{f|tod}
-  % Hanftod
-  \keeplig{ftodem} % Giftodem
-\nolig{fton}{f|ton} 
-  % Pfeifton Zwölftonmusik Rufton
-\nolig{ftön}{f|tön}
-  % Pfeiftöne Ruftöne
-\nolig{ftool}{f|tool}
-  % Prüftool
-\nolig{ftopf}{f|topf}
-  % Schleiftopf Dampf- Auspuff- Schöpf- 
-  \keeplig{ftopfer} 
-    % Duftopfer Gift- Haft-
-\nolig{ftöpf}{f|töpf}
-  % Senftöpfchen Torftöpfchen
-  % Kunststofftöpfe 
-\nolig{ftorig}{f|torig}
-  % schaftorig fünftorig
-\nolig{ftour}{f|tour}
-  % Streiftour
-
-\nolig{ftrader}{f|trader}
-  % Cheftrader
-\nolig{ftradition}{f|tradition}
-  % Ruftraditionen
-\nolig{fträg}{f|träg}
-  % Notrufträger
-\nolig{ftrain}{f|train}
-  % Lauftrainer
-\nolig{ftränk}{f|tränk}
-  % Rückruftränke Schaftränke
-\nolig{ftransp}{f|transp}
-  % Hilftransport Schaftransport
-\nolig{fträume}{f|träume}
-  % tiefträumend Tiefschlafträume
-  \keeplig{afträume} % Einzelhafträumen
-  \keeplig{äfträume} % Geschäfträumen
-  \keeplig{rifträume}% Schrifträume
-  \keeplig{ufträume} % Lufträumen
-\nolig{ftrauri}{f|traurig}
-  % tieftraurig
-\nolig{ftreff}{f|treff}
-  % Notruftreffen
-\nolig{ftresor}{f|tresor}
-  % Tieftresor
-  \keeplig{ftresorp} % Luftresorption
-\nolig{ftret}{f|tret}
-  % Mieftreter
-  \keeplig{ftrett} % Luftrettungsdienst
-  \keeplig{ftreturn}% Softreturn
-\nolig{ftrick}{f|trick}
-  % Rückruftricks
-\nolig{ftrieb}{f|trieb}
-  % auftriebte schaftriebig
-\nolig{ftrief}{f|trief}
-  % tieftriefend
-\nolig{ftrift}{f|trift}
-  % schaftriftig Schaftrift
-\nolig{ftrimest}{f|trimest}
-  % fünftrimestrig zwölftrimestrig
-\nolig{ftritt}{f|tritt}
-  % Huftritte
-  \keeplig{ftritter} % Kernkraftritter
-  \keeplig{Luftritt}
-\nolig{ftrott}{f|trott}
-  % Sauftrottel
-
-\nolig{ftrüb}{f|trüb}
-  % tieftrübe
-\nolig{ftrunk}{f|trunk}
-  % schlaftrunken
-\nolig{ftrupp}{f|trupp}
-  % Prüftruppe
-
-\nolig{ftuch}{f|tuch}
-  % Schnieftuch Kopftuch
-\nolig{ftüch}{f|tüch}
-  % Schnieftücher
-\nolig{ftürk}{f|türk}
-  % tieftürkis
-\nolig{fturm}{f|turm}
-  % Wolfturm
-\nolig{ftürm}{f|türm}
-  % Wolftürme
-
-\nolig{ftyp}{f|typ}
-  % Schifftyp Stofftyp waldorftypisch
-\nolig{ftyr}{f|tyr}
-  % Dorftyrann Hoftyrann 
-\nolig{ftwist}{f|twist}
-  % Kopftwister
-
-\nolig{graftum}{graf|tum}
-  % Burggraftum Markgraftum
-\nolig{graftüm}{graf|tüm}
-  % Markgraftümer
-
-\nolig{hoftest}{hof|test}
-  % Schlachthoftest
-
-\nolig{iefta}{ief|ta}
-  % Tieftaucher Brieftasche Brieftaube 
-\nolig{iefto}{ief|to}
-  % Stieftochter Tiefton
-\nolig{ieftö}{ief|tö}
-  % Stieftöchter tieftönend
-\nolig{ieftra}{ief|tra}
-  % Tieftraumphase
-
-\nolig{lfta}{lf|ta}
-  % elftausend zwölftausend Golftasche 
-\nolig{lfto}{lf|to}
-  % Zwölftonmusik Elftonner Golftour
-\nolig{lftö}{lf|tö}
-  % zwölftönend
-\nolig{lftum}{lf|tum}
-  % Werwolftum
-
-\nolig{nftü}{nf|tü}
-  % fünftürig Senftüte
-  \keeplig{nftüb}
-  % Vernunftüberlegung zunftüblich
-    \nolig{nftübchen}{nf|tübchen} 
-      % Senftübchen
-
-\nolig{ölfte}{ölf|te}
-  % zwölfte zwölftens
-
-\nolig{pft[aähioöruüy]}{pf|t}
-  % Wettkampftag -trubel -tauglich -töne
-  % Kampftaktik -truppe -tätigkeit -tänzer
-  % Schnupftabak -tuch -tücher -tüchlein 
-  % Schimpftiraden Mehrkampftitel 
-  % Stapftiefe Zopfträger
-  % Dampftopf Sumpftour Herzklopftöne 
-  % Kopftreffer -tuch -tücher 
-  % Impftabelle -tarif -tierarzt -tod
-  \keeplig{pftheit}
-  % Gedämpftheit Umkämpftheit
-\nolig{pftee}{pf|tee}
-  % Schlumpftee (?!)
-\nolig{pfteig}{pf|teig}
-  % Sumpfteig Hefetropfteig
-\nolig{pftender}{pf|tender}
-  % Heißdampftenderlok
-
-%\nolig{rftrag}{rf|trag} 
-  % Wegwerftragtasche Dorftragödie
-
-\nolig{rftr}{rf|tr}
-  % Wurftraining Surftrip Freiwurftreffer
-  \keeplig{tdurftrö} % Notdurftröhre
-  \keeplig{Werftr}   % Werftreparatur
-  \keeplig{werftr}
-    \nolig{werftrage}{werf|trage}
-    % Wegwerftragetasche
-\nolig{rftu}{rf|tu}
-  % Wurftuch
-  \keeplig{Werftu} 
-  \keeplig{werftu}
-    % Werftumfeld Werftunternehmen
-
-\nolig{uftas}{uf|tas}
-  % Ruftaste Vorlauftaste Kauftasche
-  \keeplig{Duftas}  % Duftaspekte
-  \keeplig{duftas}
-  \keeplig{Gruftas}  % Gruftassel
-  \keeplig{gruftas}
-  \keeplig{Luftas}  % Luftasket
-  \keeplig{luftas}
-  \keeplig{uftassoz} 
-  % Duftassoziationen Schuftassoziationen
-
-\nolig{urfta}{urf|ta}
-  % Wurftalent Auswurftaste Surftalent
-  \keeplig{tdurfta} % Notdurftanlage 
-\nolig{urfto}{urf|to}
-  % Freiwurftor Surftour
-
-\nolig{ünftor}{ünf|tor}
-  % fünftorig Fünftore-Vorsprung
-
+\fi % end of \if@noftligs condition
 
 
 % 9. fb -> f-b, fh -> f-h, fk -> f-k

@@ -98,27 +98,30 @@
 
 % (h) ft -> f-t
 
-\nolig{ieftain}{ief|tain}
-\nolig{alftime}{alf|time}
-\nolig{alftone}{alf|tone}
-\nolig{ooftop}{oof|top}
-\nolig{ooftree}{oof|tree}
-  % chieftain halftime halftone
-  % rooftop rooftree
-
-\nolig{ifth}{if|th}
-  % fifth(s) 
-\nolig{elfth}{elf|th}
-  % twelfth(s)
-
-\nolig{lftr}{lf|tr}
-  % wolftrap calftrap
-
-\nolig{eaftr}{eaf|tr}
-  % leaftrap
-
-\nolig{fftr}{ff|tr}
-  % offtrack
+\if@noftligs  
+\else  % suppress these ligatures selectively...
+    \nolig{ieftain}{ief|tain}
+    \nolig{alftime}{alf|time}
+    \nolig{alftone}{alf|tone}
+    \nolig{ooftop}{oof|top}
+    \nolig{ooftree}{oof|tree}
+      % chieftain halftime halftone
+      % rooftop rooftree
+    
+    \nolig{ifth}{if|th}
+      % fifth(s) 
+    \nolig{elfth}{elf|th}
+      % twelfth(s)
+    
+    \nolig{lftr}{lf|tr}
+      % wolftrap calftrap
+    
+    \nolig{eaftr}{eaf|tr}
+      % leaftrap
+    
+    \nolig{fftr}{ff|tr}
+      % offtrack
+\fi % end of \if@noftligs conditional block
 
 
 % (i) fb, fh, fj, and fk ligatures
@@ -130,28 +133,28 @@
 \nolig{fk}{f|k}
 
 % But, make exceptions for fjord, fjell, etc
-  \keeplig{fjord} % Norwegian spelling
-  \keeplig{fjör}  % Icelandic spelling, e.g., in
-                  % Isafjördur and Ísafjörður
-  \keeplig{fjarð} % Ísafjarðarbær (in Iceland)
-  \keeplig{fjell} % Norwegian
-  \keeplig{fjall} % Swedish (?)
-  \keeplig{fjäll}  
-  \keeplig{fjöll}
+    \keeplig{fjord} % Norwegian spelling
+    \keeplig{fjör}  % Icelandic spelling, e.g., in
+                    % Isafjördur and Ísafjörður
+    \keeplig{fjarð} % Ísafjarðarbær (in Iceland)
+    \keeplig{fjell} % Norwegian
+    \keeplig{fjall} % Swedish (?)
+    \keeplig{fjäll}  
+    \keeplig{fjöll}
 
-  \keeplig{Prokofjew}
-  \keeplig{Sufjan} % Stevens
-  \keeplig{Eefje}  % Dutch first name
-  \keeplig{Astafjew} 
-    % Author (Wiktor) and soccer player (Maksim)
+    \keeplig{Prokofjew}
+    \keeplig{Sufjan} % Stevens
+    \keeplig{Eefje}  % Dutch first name
+    \keeplig{Astafjew} 
+      % Author (Wiktor) and soccer player (Maksim)
 
-% Further exceptions for Kafka, Safka, etc.
-  \keeplig{Kafka}
-  \keeplig{Safka}
-  \keeplig{Potrafke}
-  \keeplig{Sprafke}
-  \keeplig{Shirafkan}
-  \keeplig{Tirafkan}
+% Further exceptions for names that contain 'fk'
+    \keeplig{Kafka}
+    \keeplig{Safka}
+    \keeplig{Potrafke}
+    \keeplig{Sprafke}
+    \keeplig{Shirafkan}
+    \keeplig{Tirafkan}
 
 
 
@@ -326,18 +329,21 @@
 
 % (h) ft -> f-t
 
-\nolig{ifteen}{if|teen}
-  % fifteen fifteens fifteenth
+\if@noftligs
+\else % suppress some more ft ligatures selectively
+    \nolig{ifteen}{if|teen}
+      % fifteen fifteens fifteenth
+    
+    \nolig{fifti}{fif|ti}
+    \nolig{Fifti}{Fif|ti}
+      % fifties fiftieth fiftieths
+    
+    \nolig{fifty}{fif|ty}
+    \nolig{Fifty}{Fif|ty}
+      % fifty fiftyish
+\fi % end of \if@noftligs conditional block
 
-\nolig{fifti}{fif|ti}
-\nolig{Fifti}{Fif|ti}
-  % fifties fiftieth fiftieths
-
-\nolig{fifty}{fif|ty}
-\nolig{Fifty}{Fif|ty}
-  % fifty fiftyish
-
-\fi % end of \if@broadfset block
+\fi % end of \if@broadfset conditional block
 
 
 
@@ -1038,25 +1044,19 @@
 % ............................
 
 %% If you have 'at' and 'et' ligatures as
-%% well as the 'th' ligature (as is the 
-%% case for the font "Garamond Premier Pro",
-%% and any other fonts?!) and want a
+%% well as the 'th' ligature and want a
 %% trailing 'th' ligature to take precedence 
-%% over any preceding 'at' or 'et' ligas, 
-%% make sure the following macros are 
-%% active (i.e., not commented out).
+%% over these ligs, use the following rules:
 
 \nolig{ath}{a|th}
 \nolig{eth}{e|th}
 
-
-% The preceding instructions are a bit too  
-% broad, as they also suppress the 'at' ligature
-% for words such as boathook, flathead, 
-% etc., and the 'et' ligature in words such as
+% The preceding rules are a bit too  
+% broad as they also suppress the 'at' ligature
+% for words such as boathook and flathead
+% and the 'et' ligature in words such as
 % Beethoven, prophethood, and sweetheart.
-% To address these cases, we provide \keeplig
-% macros:
+% Thus, also provide some \keeplig macros:
 
 \keeplig{oathook} % boathook
 \keeplig{eathook} % meathook
@@ -1065,8 +1065,8 @@
 %%\keeplig{Rathole} %   if "at" liga doesn't exist...
 \keeplig{athead} % cathead fathead flathead meathead
 \keeplig{atherd} % goatherd neatherd
-\keeplig{eatheart} % greathearted sweetheart
-\keeplig{eetheart}
+\keeplig{eatheart} % greathearted 
+\keeplig{eetheart} % sweetheart
 
 \keeplig{Beethoven}
 \keeplig{ophethood}
@@ -1081,12 +1081,6 @@
   \keeplig{ratap} % rataplan
   \keeplig{Ratap}
 
-
 \nolig{Loretan}{Lore|tan} % :-)
-
-% All other cases seem to involve 'at'
-% or 'et' crossing a ligature boundary.
-% As such, these cases should be dealt
-% with in Part 3 of this file.
 
 \fi  %% end of \@ifhdligset

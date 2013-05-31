@@ -13,8 +13,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.218}
-\def\selnoligpackagedate{2013/05/28}
+\def\selnoligpackageversion{0.219}
+\def\selnoligpackagedate{2013/05/31}
 
 % Announce who we are. Issue warning message if we're
 % not running under LuaLaTeX.
@@ -127,15 +127,23 @@
 \DeclareOption{noadditionalhyphenationpatterns}{\@addlhyphfalse}
 
 
-% The 'basic' option automatically sets the preceding Booleans 
-% to 'false', even if historic and/or rare ligatures are enabled
+% The 'basic' option automatically sets the preceding 
+% Booleans to 'false', even if historic and/or rare 
+% ligatures are enabled
 
 \DeclareOption{basic}{\@broadfsetfalse\@hdligsetfalse}
 
 
-% Last but not least, an option to set all Boolean
-% variables (other than '@addlhyph') to 'true' 
-% simultaneously.
+% The option 'noftligs' serves to suppress ft and fft
+% ligatures *globally*; default value: 'false'.
+
+\newif\if@noftligs\@noftligsfalse
+\DeclareOption{noftligs}{\@noftligstrue}
+
+
+% Finally, an option to set most language-related 
+% Boolean variables (other than '@addlhyph') to 
+% 'true' simultaneously.
 
 \DeclareOption{all}{%
    \@englishtrue \@broadfsettrue \@hdligsettrue
@@ -143,6 +151,10 @@
 
 % Finally, process all options
 \ProcessOptions\relax
+
+\if@noftligs{% % suppress ft and fft ligatures globally
+  \AtBeginDocument{ \nolig{ft}{f|t} }
+\fi
 
 
 
