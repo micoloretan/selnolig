@@ -15,8 +15,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.218",
-   date         = "2013/05/28",
+   version      = "0.220",
+   date         = "2013/06/01",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
@@ -24,22 +24,12 @@ selnolig.module = {
 }
 
 -- Define variables corresponding to various text nodes 
--- (cf. section 8.1.2 of LuaTeX reference guide)
-local hlist   = node.id('hlist')
-local vlist   = node.id('vlist')
+  -- (cf. section 8.1.2 of LuaTeX reference guide)
 local rule    = node.id('rule')
-local ins     = node.id('ins')
-local mark    = node.id('mark')
-local adjust  = node.id('adjust')
-local disc    = node.id('disc')
-local math    = node.id('math')
 local glue    = node.id("glue") --
 local kern    = node.id('kern')
-local penalty = node.id('penalty')
 local glyph   = node.id('glyph') --
-local margin_kern  = node.id('margin_kern')
-
--- see section 8.1.4 for whatsit nodes:
+  -- (cf. section 8.1.4 for whatsit nodes)
 local whatsit = node.id("whatsit") --
 
 local userdefined
@@ -136,9 +126,8 @@ function process_ligatures(nodes,tail)
   for t in node.traverse(nodes) do
     if t.id==glyph then
       s[#s+1]=unicode.utf8.char(t.char)
-    -- Up until version 0.215, the next instruction was
-    --   coded simply as "elseif (t.id==glue) then"
-    elseif ( t.id==glue or t.id==rule or t.id==kern ) then 
+    end
+    if ( t.id==glue or t.next==nil or t.id==kern or t.id==rule ) then 
       local f=string.gsub(table.concat(s,""),"[\\?!,\\.]+","")
       local throwliga={} 
       for k,v in pairs (noliga) do

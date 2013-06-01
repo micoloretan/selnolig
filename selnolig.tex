@@ -635,26 +635,7 @@ Virtually all words for which an \emph{et} ligature might inappropriately pre-em
 
 \subsection{Known bugs}
 
-\begin{enumerate}
-\item The \cmmd{nolig} directives don't work properly on the \emph{final} word in the argument of certain \TeX\ macros such as |\section{}| and |\subsection{}|. For instance, the ff ligature in |Shelfful| isn't broken up if it's encountered in the instruction |\section{Shelfful}|.
-
-The simplest remedy I know of consists of inserting either a space character or the instruction \cmmd{kern0pt} between the final word of the command's argument and its closing curly brace. To wit, ligature suppression works as expected if the command given in the preceding paragraph is modified to |\section{Shelfful }|\textemdash observe the presence of whitespace\textemdash or to |\section{Shelfful\kern0pt}|.\footnote{In versions of the \pkg{selnolig} package prior to version~0.215, this bug also occurred at the end of the argument of \cmmd{footnote} instructions. That bug has fortunately been fixed; i.e., it's no longer necessary to insert a \cmmd{kern0pt} directive after the final word of the footnote and the command's closing curly brace.}
-
-\item The \cmmd{nolig} rules also don't operate correctly on words (including, if present, any trailing punctuation marks) that are followed \emph{immediately} by a |%| (comment) character. 
-
-The best workaround in this case is to insert the instruction \cmmd{kern0pt} between the final word and the comment character.
-
-\item In \opt{itemize} or \opt{enumerate} environments, if the content of an \cmmd{item} directive \emph{ends} with a word (including an associated punctuation mark) that contains a ligature that should be suppressed \textemdash i.e., if it is followed immediately by either another \cmmd{item} directive or an \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ statement\textemdash ligature  suppression fails yet again. 
-
-The remedy I propose for these cases is to leave a blank line between the end of one \cmmd{item}'s content and the next \cmmd{item} instruction or the \Verb+\end{itemize}+ or \Verb+\end{enumerate}+ directive. Inserting the instruction \cmmd{kern0pt} works too.
-
-\item If the final word (again, possibly, with an associated punctuation character) of a sentence which is followed immediately by an \opt{enumerate}, \opt{itemize}, or other such environment contains a ligature that should be suppressed, ligature suppression again will not work properly. 
-
-I recommend leaving a blank line between that sentence and the start of the \opt{enumerate} or \opt{itemize} environment. Inserting the instruction \cmmd{kern0pt} also works.
-
-\end{enumerate}
-
-I'm not sure if the following matter constitutes a bug or \enquote{merely} a case of incompatibility between two \LaTeX\ packages. The \pkg{selnolig} package does not appear to interact well with the \LaTeX\ package \pkg{ngerman}. As was noted earlier, \pkg{selnolig} does interact nicely with the \pkg{babel} package with one of the options \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} set. Thus, unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package (along with one of the available German language options), I probably won't bother addressing this incompatibility.
+I'm not sure if the following matter constitutes a bug or \enquote{merely} a case of incompatibility between two \LaTeX\ packages. The \pkg{selnolig} package does not appear to interact well with the \LaTeX\ package \pkg{ngerman}. The \pkg{selnolig} package does interact nicely with the \pkg{babel} package if one of the options \opt{ngerman}, \opt{german}, \opt{austrian}, and \opt{naustrian} set. Thus, unless someone can convince me that using the \pkg{ngerman} package is truly preferable to using the \pkg{babel} package, I probably won't bother addressing this incompatibility.
 
 
 
