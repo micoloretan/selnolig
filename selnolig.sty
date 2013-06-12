@@ -13,8 +13,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.220a}
-\def\selnoligpackagedate{2013/06/04}
+\def\selnoligpackageversion{0.221}
+\def\selnoligpackagedate{2013/06/12}
 
 % Announce who we are. Issue warning message if we're
 % not running under LuaLaTeX.
@@ -39,7 +39,6 @@
   \typeout{ *can not* be performed.                 }
   \typeout{=========================================}
 \fi
-
 
 % If the 'fontspec' package isn't loaded by the time
 % the '\begin{document}' directive is encoutered, issue
@@ -157,7 +156,6 @@
 \fi
 
 
-
 % Part 2: Load the lua code and set up the user macros
 % ----------------------------------------------------
 
@@ -169,12 +167,14 @@
   \newcommand\selnoligon{%
     \directlua{ enableselnolig() }%
   }
+
   \newcommand\selnoligoff{%
     \directlua{ disableselnolig() }%
   }
   
   % By default, selnolig's macros are switched on
   \selnoligon
+  
   
   % Record operations of selnolig package to the log 
   % file: Enabled via '\debugon' command
@@ -202,11 +202,21 @@
      }
   }
 
+  % A third user macro turns ligature suppression
+  % off temporarily:
+  \newcommand\uselig[1]{%
+    \directlua{ enable_suppression(false) }%
+    \mbox{#1}%
+    \directlua{ enable_suppression(true) }%
+  }
+
+
 \else
   % If *not* running under LuaLaTeX, provide dummy
   % definitions for package's user macros.
   \newcommand{\nolig}[2]{}
   \newcommand{\keeplig}[1]{}
+  \newcommand{\uselig}[1]{\mbox{#1}}
   \let\selnoligon\relax
   \let\selnoligoff\relax
   \let\debugon\relax
@@ -214,13 +224,12 @@
 \fi
 
 
-% A third user macro: '\breaklig'. This is hopefully 
+% A fourth user macro: '\breaklig'. This is hopefully 
 % easier to remember than having to type "\-\hspace{0pt}".
 % (It's defined outside the \ifluatex conditional since
 % it doesn't use any lua code.)
 
 \newcommand\breaklig{\-{\hspace{0pt}}}
-
 
 
 % Part 3: What to do if the 'english' option is set

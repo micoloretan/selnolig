@@ -15,21 +15,20 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.220",
-   date         = "2013/06/01",
+   version      = "0.221",
+   date         = "2013/06/12",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
    license      = "LPPL 1.3 or later"
 }
 
--- Define variables corresponding to various text nodes 
-  -- (cf. section 8.1.2 of LuaTeX reference guide)
+-- Define variables corresponding to various text nodes;
+-- cf. sections 8.1.2 and 8.1.4 of LuaTeX reference guide
 local rule    = node.id('rule')
 local glue    = node.id("glue") --
 local kern    = node.id('kern')
 local glyph   = node.id('glyph') --
-  -- (cf. section 8.1.4 for whatsit nodes)
 local whatsit = node.id("whatsit") --
 
 local userdefined
@@ -41,7 +40,7 @@ end
 local identifier = 123456  -- any unique identifier
 local noliga={}
 local keepliga={}          -- String -> Boolean
-debug=false
+debug=true
 
 function debug_info(s)
   if debug then
@@ -52,6 +51,8 @@ end
 local blocknode   = node.new(whatsit, userdefined)
 blocknode.type    = 100
 blocknode.user_id = identifier
+
+local suppression_on = true  -- if false, process_ligatures won't do anything
 
 local prefix_length = function(word, byte)
   return unicode.utf8.len( string.sub(word,0,byte) )
@@ -81,6 +82,10 @@ local unicode_find = function(s, pattern, position)
 end
 
 function process_ligatures(nodes,tail)
+  if not suppression_on then
+    return -- suppression disabled
+  end
+  
   local s={}
   local current_node=nodes
   local build_liga_table =  function(strlen,t)
@@ -173,6 +178,15 @@ end
 
 function always_keep_liga(s)
   keepliga[s] = true
+end
+
+function enable_suppression(val)
+  suppression_on = val
+  if val then
+    debug_info("Turning ligature suppression on")
+  else
+    debug_info("Turning ligature suppression off")
+  end
 end
 
 function enableselnolig()
