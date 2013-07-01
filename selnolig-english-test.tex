@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/06/12
+% Date: 2013/06/30
 
 % Check first that we're running Lua(La)TeX.
 \usepackage{ifluatex}
@@ -56,7 +56,7 @@
 \parskip=0.3\baselineskip
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
-\title{selnolig-english-test}
+\title{selnolig-english-test\\ (Package version: \selnoligpackageversion; \selnoligpackagedate)}
 \author{\null}
 \date{}
 
@@ -64,7 +64,7 @@
 \maketitle
 
 \begin{tabular}{@{}*{10}{l}}
-Appearance of f-ligatures 
+Appearance of ``common'' ligatures 
    &ff &fi &fl &ffi &ffl &ft & \mbox{fj} & {\ebg\mbox{fk}} 
    & \emph{fr}\\
 Sample words with these ligatures
@@ -74,15 +74,15 @@ Sample words with these ligatures
 
 \bigskip
 
-\begin{tabular}{@{}*{13}{l}}
-Appearance of other ligatures 
+\begin{tabular}{@{}*{14}{l}}
+Appearance of ``discretionary'' ligatures 
  & st & ct & sp  
  & \emph{as} & \emph{is, th, us}
- & \emph{at} & \emph{et} & {\ebg\emph{sk}}& \emph{ll}\\
+ & \emph{at} & \emph{et} & {\ebg\emph{sk}}& \emph{ll} & \emph{\uselig{ij}, st, ta}\\
 Sample words with these ligatures
  & stay & act & spy 
  & \emph{was} & \emph{\mbox{is}thmus} & \emph{cat} & \emph{net} 
- & {\ebg\emph{ask}} & \emph{ill}\\
+ & {\ebg\emph{ask}} & \emph{ill} & \emph{rijsttafel}\\
 \end{tabular}
 
 
@@ -91,8 +91,8 @@ Sample words with these ligatures
 \makeatletter
 \begin{tabular}{@{}ll}
 Options and other parameters:\\
-Value of \texttt{\textbackslash righthyphenmin} parameter & \the\righthyphenmin\\
-Extent of suppressing f-ligatures: basic or broadf?  & \if@broadfset broadf \else basic \fi \\
+\ \ \ Value of \texttt{\textbackslash righthyphenmin} parameter & \the\righthyphenmin\\
+\ \ \ Extent of suppressing f-ligatures: basic or broadf?  & \if@broadfset broadf \else basic \fi \\
 
 \end{tabular}
 \makeatother

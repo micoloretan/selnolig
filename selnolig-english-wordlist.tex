@@ -1,7 +1,7 @@
 % !TeX root = selnolig-english-test.tex
 % !TEX TS-program = lualatex
 
-% Last updated: 2013/06/12
+% Last updated: 2013/06/30
 % For use with the 'selnolig' package and the
 % driver program 'selnolig-english-test.tex'.
 
@@ -11,16 +11,16 @@
 
 \begin{itemize}
 
-\item ff to f\hspace{0pt}f
+\item ff to f\kern0pt f
 
 shelfful shelffuls bookshelfful selffulfilling
 
 
-\item fi to f\hspace{0pt}i
+\item fi to f\kern0pt i
 
 (None in basic set)
 
-\item fl to f\hspace{0pt}l
+\item fl to f\kern0pt l
 
 beefless briefless hoofless leafless roofless selfless turfless selflessly selflessness
 
@@ -34,15 +34,15 @@ halflines rooflines
 
 leaflet leaflets leafleted leafleting leafletting leafletted leafleteer
 
-pdflatex (even better: pdfLaTeX or pdf\LaTeX\ldots)
+pdflatex (even better: pdfLaTeX or pdf\LaTeX)
 
 
-\item ffi to ff\hspace{0pt}i
+\item ffi to ff\kern0pt i
 
 Pfaffian Wolffian Wulffian
 
 
-\item ffl to ff\hspace{0pt}l
+\item ffl to ff\kern0pt l
 
 cuffless stuffless cufflessly stufflessness
 
@@ -55,17 +55,17 @@ offload offloads offloading offloaded
 rufflike clifflike
 
 
-\item ffi to f\hspace{0pt}fi
+\item ffi to f\kern0pt fi
 
 chaffinch chaffinches wolffish wolffishly
 
-\item ffl to f\hspace{0pt}fl
+\item ffl to f\kern0pt fl
 
 safflower
 
 
 
-\item ft to f\hspace{0pt}t
+\item ft to f\kern0pt t
 
 chieftain chieftaincy chieftaincies chieftainship chieftainships
 
@@ -79,12 +79,12 @@ fifth fifths fifthly twelfth twelfths
 
 
 
-\item \emph{fr} to \emph{f\hspace{0pt}r} (italic font shape only)
+\item \emph{fr} to \emph{f\kern0pt r} (italic font shape only)
 
 \emph{proofread proofreader proofroom}
 
 
-\item \bgroup \ebg \mbox{fb}, \mbox{fh}, \mbox{fj}, and \mbox{fk} ligatures \egroup
+\item \bgroup \ebg \uselig{fb}, \uselig{fh}, \uselig{fj}, and \uselig{fk} ligatures \egroup
 
 halfback golfball goofball wolfberry halfbeak hoofbeat surfbird surfboard surfboarder surfboat
 
@@ -109,12 +109,12 @@ offkey
 
 \begin{itemize}
 
-\item ff to f\hspace{0pt}f
+\item ff to f\kern0pt f
 
 (No extra cases in broadf set)
 
 
-\item fi to f\hspace{0pt}i
+\item fi to f\kern0pt i
 
 elfin
 
@@ -145,12 +145,12 @@ beefiest comfiest goofiest gulfiest leafiest surfiest turfiest
 beefily goofily goofiness
 
 
-\item fl to f\hspace{0pt}l
+\item fl to f\kern0pt l
 
 aloofly briefly chiefly deafly liefly
 
 
-\item ffi to ff\hspace{0pt}i
+\item ffi to ff\kern0pt i
 
 baffing biffing outbluffing bluffing boffing buffing chaffing cheffing chuffing coffing coiffing handcuffing uncuffing cuffing daffing doffing enfeoffing infeoffing feoffing fluffing gaffing gruffing huffing luffing miffing muffing offing piaffing puffing quaffing rebuffing reffing restaffing restuffing riffing crossruffing overruffing underruffing ruffing sclaffing scoffing scuffing shroffing sluffing sniffing snuffing spiffing overstaffing understaffing staffing stiffing overstuffing stuffing tariffing tiffing waffing whiffing yaffing
 
@@ -169,22 +169,22 @@ fluffiness huffiness iffiness puffiness scruffiness sniffiness spiffiness stuffi
 baffies biffies jiffies stuffies taffies toffies waffie waffies
 
 
-\item ffl to ff\hspace{0pt}l
+\item ffl to ff\kern0pt l
 
 bluffly gruffly ruffly snuffly stiffly
 
 
-\item ffi to f\hspace{0pt}fi
+\item ffi to f\kern0pt fi
 
 (No extra cases in broadf set)
 
 
-\item ffl to f\hspace{0pt}fl
+\item ffl to f\kern0pt fl
 
 (No extra cases in broadf set)
 
 
-\item ft to f\hspace{0pt}t
+\item ft to f\kern0pt t
 
 fifty fiftyish
 
@@ -201,12 +201,12 @@ fifteen fifteens fifteenth fifteenths
 
 \begin{itemize}
 
-\item ct to c\hspace{0pt}t
+\item ct to c\kern0pt t
 
 arctangent coarctation 
 
 
-\item st to s\hspace{0pt}t
+\item st to s\kern0pt t
 
 First, some words with ``th'' (from $\theta$ or $\vartheta$) after ``s'':
 
@@ -230,7 +230,7 @@ Maastricht
 
 
 
-\item sp to s\hspace{0pt}p
+\item sp to s\kern0pt p
 
 First, some words with ``ph'' (from $\phi$ or $\varphi$) after ``s'':
 
@@ -357,7 +357,7 @@ Note: The test words in the remainder of this document are generally set in \emp
 
 \begin{itemize}
 
-\item \emph{th} to \emph{t\hspace{0pt}h}
+\item \emph{th} to \emph{t\kern0pt h}
 
 \bgroup \em
 
@@ -395,14 +395,14 @@ posthumous posthumously pothunt warthog watthour kilowatthour
 \egroup
 
 
-\item \emph{at} to \emph{a\hspace{0pt}t}
+\item \emph{at} to \emph{a\kern0pt t}
 
 \bgroup \em
 
 anathema aromatherapy intrathoracic metathesis ultrathin ultrathick 
 \egroup
 
-\item \emph{et} to \emph{e\hspace{0pt}t}
+\item \emph{et} to \emph{e\kern0pt t}
 
 \bgroup \em
 ninetieth ninetieths ninety nineteen
@@ -462,7 +462,7 @@ subtlety teletype teletypewriter
 \egroup
 
 
-\item \emph{as} to \emph{a\hspace{0pt}s}
+\item \emph{as} to \emph{a\kern0pt s}
 
 \bgroup \em
 
@@ -473,7 +473,7 @@ infraspecific intraspecies intraspecific
 \egroup
 
 
-\item \emph{is} to \emph{i\hspace{0pt}s}
+\item \emph{is} to \emph{i\kern0pt s}
 
 \bgroup \em
 
@@ -483,7 +483,7 @@ antisag antisatellite antiscience antisecrecy antisense antiseptic antishark ant
 
 \egroup
 
-\item {\ebg\emph{\mbox{sk}}} to {\ebg{\emph{s\hspace{0pt}k}}} (EB Garamond)
+\item {\ebg\emph{\uselig{sk}}} to {\ebg{\emph{s\kern0pt k}}} (EB Garamond)
 
 \bgroup \ebg \em
 greenskeeper groundskeeper 
@@ -498,7 +498,7 @@ Catskills Peekskill
 
 
 
-\item \emph{ll} to \emph{l\hspace{0pt}}
+\item \emph{ll} to \emph{l\kern0pt l}
 
 \bgroup \em
 animallike bowllike eellike jewellike owllike petallike seallike snaillike soullike taillike tunnellike veillike woollike
@@ -507,7 +507,7 @@ bowelless coalless goalless heelless idealless keelless mailless mealless recoil
 
 \egroup
 
-\item \emph{\mbox{ij}} to \emph{ij}
+\item \emph{\uselig{ij}} to \emph{ij}
 
 \bgroup \em
 antijam hijack demijohns hijinks
@@ -568,7 +568,7 @@ administer statistics statistically
 
 activist agronomist biologist \emph{etc.}
 
-\ \ \ \emph{but:} m\mbox{is}think m\mbox{is}throw cal\mbox{is}thenic
+\ \ \ \emph{but:} m\uselig{is}think m\uselig{is}throw cal\uselig{is}thenic
 
 
 

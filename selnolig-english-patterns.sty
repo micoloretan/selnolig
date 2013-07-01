@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-english-patterns}%
-[2013/06/12]
+[2013/06/30]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -22,10 +22,8 @@
 \nolig{lfful}{lf|ful}
   % shelfful bookshelffuls -- TeXBook, p. 19
 
-
 % (b) fi -> f-i
   % no cases in 'basic' group
-
 
 % (c) fl -> f-l
 
@@ -58,7 +56,6 @@
 \nolig{otfload}{otf|load}
   % for the 'luaotfload' package...
 
-
 % (d) ffi -> ff-i
 
 \nolig{faffian}{faff|ian}
@@ -67,7 +64,6 @@
 
 \nolig{lffian}{lff|ian}
   % Wolffian Wulffian
-
 
 % (e) ffl -> ff-l
 
@@ -80,7 +76,6 @@
 \nolig{ffload}{ff|load}
   % offload offloads offloaded
 
-
 % (f) ffi -> f-fi
 
 \nolig{haffinch}{haf|finch}
@@ -89,12 +84,10 @@
 \nolig{lffish}{lf|fish}
   % wolffish
 
-
 % (g) ffl -> f-fl
 
 \nolig{afflower}{af|flower}
   % safflower
-
 
 % (h) ft -> f-t
 
@@ -122,7 +115,6 @@
     \nolig{fftr}{ff|tr}
       % offtrack
 \fi % end of \if@noftligs conditional block
-
 
 % (i) fb, fh, fj, and fk ligatures
 
@@ -168,13 +160,11 @@
 % (a) ff -> f-f
   % no cases in 'broad' group
 
-
 % (b) fi -> f-i
 
 \nolig{elfin}{elf|in}
 \nolig{Elfin}{Elf|in}
   \keeplig{stelfink} % distelfink
-
 
 % For words ending in -f-ing, allow for 
 % "colloquial" abbreviations (-f-in').
@@ -270,7 +260,6 @@
   % (Mustn't do 'finess -> f-iness'
   % substitution b/c of 'finesse')
 
-
 % (c) fl -> f-l
 
 \nolig{aloofly}{aloof|ly}
@@ -286,7 +275,6 @@
 \nolig{Liefly}{Lief|ly}
   % (Mustn't perform 'fly -> f-ly' subst.
   % b/c of 'fly' 'butterfly' ...)
-
 
 % (d) ffi -> ff-i
 
@@ -313,20 +301,16 @@
   % baffies biffies jiffies stuffies ...
   % buffiest chaffiest ...
 
-
 % (e) ffl -> ff-l
 
 \nolig{ffly}{ff|ly}
   % bluffly gruffly ruffly ...
 
-
 % (f) ffi -> f-fi
   % nothing additional in 'broad' group
 
-
 % (g) ffl -> f-fl
   % nothing additional in 'broad' group
-
 
 % (h) ft -> f-t
 
@@ -345,7 +329,6 @@
 \fi % end of \if@noftligs conditional block
 
 \fi % end of \if@broadfset conditional block
-
 
 
 
@@ -449,6 +432,9 @@
   % aesthetic esthetic unesthetic
   % prosthetist 
 
+\nolig{stown}{s|town}
+  % crosstown Williamstown
+
 
 % (B) ct -> c-t
 % -------------
@@ -531,6 +517,9 @@
 \nolig{ewspr}{ews|pr}
   % newsprint
   % Don't suppress sp lig in "newspeak"!
+
+\nolig{Williamsp}{Williams|p}
+  % Williamsport
 
 
 % (D) th -> t-h
