@@ -313,11 +313,13 @@ Unless the |broadf| option is set (see below), typographic ligatures are suppres
 \item if a main word and a suffix are joined, \emph{if} the suffix is a derivational morpheme that begins with an~f or an~l (other than \enquote{ly}): \uselig{shelfful}~$\to$ shelfful, \uselig{leafless} $\to$ leafless, \uselig{dwarflike}~$\to$ dwarflike, \uselig{leaflet}~$\to$ leaflet, etc. 
 
 \item The ft ligature is also suppressed in words that end in |fth|: \uselig{fifth}~$\to$ fifth, \uselig{twelfth}~$\to$ twelfth. Note that the particle |th| is a derivational morpheme. Moreover, in English the~|th| character pair is pronounced in a distinctive way. It thus seems inadvisable to obscure its presence with an ft ligature.
+
+\item The st and sp ligatures are broken up for place names that end in -town, -ton (usually short for -town), and -port. Examples: Charleston, Keyesport, and Hyannisport. Likewise, the \emph{\uselig{\ebg sk}} ligature is broken up for the place names \emph{\ebg Catskills} and \emph{\ebg Peekskill}, as the relevant morpheme is \emph{\ebg kill}, not \emph{\ebg skill}.
 \end{itemize}
 
-In addition, if the \opt{broadf} option is set, the \pkg{selnolig} package will suppress
+If the \opt{broadf} option is set, the \pkg{selnolig} package will also suppress
 \begin{itemize}
-\item fi and ffi ligatures that arise if the main word ends in~f and the suffix starts with an~i, regardless of whether the suffix is a derivational or an inflectional morpheme: elfin, selfish, golfing, surfing, beefier, fluffily, goofiness, standoffish, jiffies, buffiest,~etc. Setting the \opt{broadf} option also instructs \pkg{selnolig} to split up ffi ligatures in words such as fluffiness and fluffily;
+\item fi and ffi ligatures if the main word ends in~f and the suffix starts with an~i, regardless of whether the suffix is a derivational or an inflectional morpheme: elfin, selfish, golfing, surfing, beefier, fluffily, goofiness, standoffish, jiffies, buffiest,~etc. Setting the \opt{broadf} option also instructs \pkg{selnolig} to split up ffi ligatures in words such as fluffiness and fluffily;
 \item fl and ffl ligatures in words such as chiefly, briefly, and gruffly; and
 \item ft ligatures in words such as fifty and fiftieth.\footnote{If ligatures were not disabled for these words, they would be typeset as \uselig{chiefly}, \uselig{briefly}, \uselig{gruffly}, \uselig{fifty}, and \uselig{fiftieth}, respectively.}
 \end{itemize}
