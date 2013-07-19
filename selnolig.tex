@@ -203,15 +203,13 @@ For English language documents, the \pkg{selnolig} package recognizes an option 
 
 The \pkg{selnolig} package also provides supplemental hyphenation exception lists for both English and German language words. The words in these lists are generally composite and contain one or more typographic ligatures that should be suppressed.
 
-The remainder of this document is organized as follows. \Cref{sec:hurry} provides brief instructions for loading the \pkg{selnolig} package and, if necessary, making one's document(s) suitable for compilation under \LuaLaTeX. The package's overall approach to selective ligature suppression is explained in \cref{sec:approach}. The package's user macros are presented in \cref{sec:structure}, and options users may select to affect the package's workings are explained in \cref{sec:options}. \Cref{sec:further} discusses further issues that may arise when looking to break up typographic ligatures. The package's non-ligation rules for English and German documents are listed in \cref{sec:eng-listing,sec:germ-listing}. The code of the package's main ``style'' file, \pkg{selnolig.sty}, is listed in \cref{sec:sty}, and the package's Lua code, contained in \pkg{selnolig.lua}, is shown in \cref{sec:luacode}. \Cref{sec:template} provides a suggested template for reporting bugs and other issues with the package.
+The remainder of this document is organized as follows. \Cref{sec:hurry} provides brief instructions for loading the \pkg{selnolig} package and, if necessary, making one's document(s) suitable for compilation under \LuaLaTeX. The package's overall approach to selective ligature suppression is explained in \cref{sec:approach}. The package's user macros are presented in \cref{sec:structure}, and options users may select to affect the package's workings are explained in \cref{sec:options}. \Cref{sec:further} discusses further issues that may arise when looking to break up typographic ligatures. The package's ligature suppression rules for English and German documents are listed in \cref{sec:eng-listing,sec:germ-listing}. The code of the package's main ``style'' file, \pkg{selnolig.sty}, is listed in \cref{sec:sty}, and the package's Lua code, contained in the file \pkg{selnolig.lua}, is shown in \cref{sec:luacode}. \Cref{sec:template} provides a suggested template for reporting bugs and other issues with the package.
 
 
 
 \section{I'm in a hurry! How do I start using this package?} \label{sec:hurry}
 
 \subsection[How do I load the selnolig package?]{How do I load the \pkg{selnolig} package?}
-
-%\enlargethispage{0.5\baselineskip}
 
 \begin{itemize}
 \item If your document is in English and you want to enable a \enquote{basic} set of rules to suppress f-ligatures selectively, load the package by issuing the following instruction in the preamble of your document:
@@ -659,8 +657,6 @@ Suppressing an \emph{et} ligature in favor of a subsequent \emph{th} ligature vi
 I say that it's \emph{almost} universally correct to do so; however, there are some words, such as \opt{Beethoven}, \opt{prophethood}, and \opt{sweetheart}, for which the \emph{th} ligature would be inappropriate anyway and for which the use of the \emph{et} ligature would hence be unproblematic. To address this issue, \cmmd{keeplig} rules are provided to override the rule \Verb+\nolig{eth}{e|th}+ for words such as \emph{Beethoven}, \emph{prophethood}, and \emph{sweetheart}.\footnote{Note that this method works if the font being used provides both \emph{et} and \emph{th} ligatures. If the text font you employ provides only the \emph{th} ligature but no \emph{et} ligature, these \cmmd{keeplig} rules should be disabled.}
 
 
-%\enlargethispage{1\baselineskip}
-
 \subsubsection*{Ligatures for \emph{at} and \emph{et} that pre-empt a \emph{ta} ligature}
 
 There seem to be very few English words for which an \emph{at} ligature might inappropriately pre-empt a \emph{ta} ligature. One such word is \opt{atap}, whose readability is enhanced if it's typeset as~\emph{atap} rather than as~\emph{\uselig{atap}}.
@@ -774,7 +770,7 @@ Felix and Steffen started the automated testing of the package's |\nolig| and |\
 
 The \href{http://www.ctan.org/tex-archive/support/rmligs}{\pkg{rmligs}} script lists hundreds of German language words for which various f\nobreak-liga\-tures should be suppressed. I created many of the initial German language ligature suppression rules of the \pkg{selnolig} package to treat the words listed in the \pkg{rmligs} package.\footnote{All versions of the \pkg{rmligs} package are archived at \url{http://www.j3e.de/ispell/igerman98/dict/}.} 
 
-Matthias Vogel very kindly shared with me a set of regular-expression based ligature suppressing macros, named \href{http://www.winedt.org/Macros/LaTeX/Ligatures-German.php}{Ligatures-German}, he wrote for the WinEdt programmer's editor. Matthias's macros work by inserting \pkg{babel}-style (\Verb+"|+) ligature suppressing shortcut directives in the appropriate spots in the |.tex| file (which can then be compiled with pdf\LaTeX). These macros, and a file he sent me containing an extensive list of German words for which one or more f-ligatures should be suppressed, led me to thoroughly refine and extend the scope of the \pkg{selnolig} package's German language ligature suppressing rules.
+Matthias Vogel very kindly shared with me a set of regular-expression based ligature suppressing macros, named \href{http://www.winedt.org/Macros/LaTeX/Ligatures-German.php}{Ligatures-German}, he wrote for the WinEdt programmer's editor. Matthias's macros work by inserting \pkg{babel}-style~\Verb+"|+ ligature-suppressing  directives in the appropriate spots in the |.tex| file (which can then be compiled with pdf\LaTeX). These macros, and a file he sent me containing an extensive list of German words for which one or more f-ligatures should be suppressed, led me to thoroughly refine and extend the scope of the \pkg{selnolig} package's German language ligature suppressing rules.
 
 Barbara Beeton provided careful and incisive comments on an early version of the package's user guide and English language ligature suppression rules.\footnote{She also pointed out to me that the readability of my surname might be enhanced if it were typeset as \emph{Loretan} instead of as \emph{\uselig{Loretan}}\dots} A suggestion received from David Bellows led me to extend some of the \cmmd{nolig} rules in Part~2 (activated by setting the option |broadf|) of the file \pkg{selnolig-english-patterns.sty}. Other contributors to \url{tex.stackexchange.com} and \url{comp.text.tex}, too numerous to name individually, also helped guide and influence the genesis of this package. To all of you, I express my sincere thanks.
 
@@ -788,10 +784,10 @@ The website \url{http://www.morewords.com} provides very convenient methods for 
 \clubpenalty100
 \widowpenalty100
 
-\small % reduce font size by 1pt
+\small % reduce text font size from 11pt to 10pt
 
 
-\section[English-language ligature suppression rules: selnolig-english-patterns.sty]{English-language ligature suppression rules: \\ 
+\section[English-language ligature suppression rules: selnolig-english-patterns.sty]{English-language ligature suppression rules: 
 \pkg{selnolig-english-patterns.sty}}
 \label{sec:eng-listing}
 
@@ -801,8 +797,7 @@ The website \url{http://www.morewords.com} provides very convenient methods for 
 
 \clearpage
 \section[German-language ligature suppression rules:
-selnolig-german-patterns.sty]{German-language ligature suppression rules: \\ 
-\pkg{selnolig-german-patterns.sty}}
+selnolig-german-patterns.sty]{German-language ligature suppression rules: \pkg{selnolig-german-patterns.sty}}
 \label{sec:germ-listing}
 
 Introductory note: To accommodate the practice of Swiss-German writers of not using the \enquote{ß} character and using \enquote{ss} in its place, all search-and-insert strings that contain an \enquote{ß} character are duplicated with equivalent search-and-insert strings containing \enquote{ss}.
