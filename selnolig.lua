@@ -15,8 +15,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.250",
-   date         = "2013/06/30",
+   version      = "0.250a",
+   date         = "2013/07/19",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
@@ -183,7 +183,7 @@ end
 function enable_suppression(val)
   suppression_on = val
   if val then
-    debug_info("Turning ligature suppression on")
+    debug_info("Turning ligature suppression back on")
   else
     debug_info("Turning ligature suppression off")
   end
