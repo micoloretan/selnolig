@@ -15,13 +15,15 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.250a",
-   date         = "2013/07/19",
+   version      = "0.250b",
+   date         = "2013/07/20",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
    license      = "LPPL 1.3 or later"
 }
+
+debug=false -- default: don't output detailed information
 
 -- Define variables corresponding to various text nodes;
 -- cf. sections 8.1.2 and 8.1.4 of LuaTeX reference guide
@@ -40,7 +42,6 @@ end
 local identifier = 123456  -- any unique identifier
 local noliga={}
 local keepliga={}          -- String -> Boolean
-debug=true
 
 function debug_info(s)
   if debug then

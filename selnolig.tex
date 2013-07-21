@@ -56,7 +56,7 @@
 \usepackage[ngerman,english]{babel}
 
 \usepackage[ngerman,english,hdlig,broadf]{selnolig}
-\debugon
+%\debugon
 
 \hyphenation{ver-werf-lich kunst-stoff-lei-tung}
 
@@ -174,7 +174,7 @@ For English and German language documents, the \pkg{selnolig} package provides e
 \newline\hspace*{\parindent}
 For English language documents, the package further provides ligature suppression rules for a number of so-called \enquote{discretionary} or \enquote{rare} ligatures such as~ct, st, and~sp.
 \newline\hspace*{\parindent}
-The \pkg{selnolig} package requires use of the \LuaLaTeX\ format provided by a recent \TeX\ distribution such as \TeX Live\,2012 or~2013 and MiK\TeX\,2.9.
+The \pkg{selnolig} package requires use of the \LuaLaTeX\ format provided by a recent \TeX\ distribution such as \TeX Live\,2013 and MiK\TeX\,2.9.
 \end{abstract}
 
 \tocloftpagestyle{empty}
@@ -203,7 +203,7 @@ For English language documents, the \pkg{selnolig} package recognizes an option 
 
 The \pkg{selnolig} package also provides supplemental hyphenation exception lists for both English and German language words. The words in these lists are generally composite and contain one or more typographic ligatures that should be suppressed.
 
-The remainder of this document is organized as follows. \Cref{sec:hurry} provides brief instructions for loading the \pkg{selnolig} package and, if necessary, making one's document(s) suitable for compilation under \LuaLaTeX. The package's overall approach to selective ligature suppression is explained in \cref{sec:approach}. The package's user macros are presented in \cref{sec:structure}, and options users may select to affect the package's workings are explained in \cref{sec:options}. \Cref{sec:further} discusses further issues that may arise when looking to break up typographic ligatures. The package's ligature suppression rules for English and German documents are listed in \cref{sec:eng-listing,sec:germ-listing}. The code of the package's main ``style'' file, \pkg{selnolig.sty}, is listed in \cref{sec:sty}, and the package's Lua code, contained in the file \pkg{selnolig.lua}, is shown in \cref{sec:luacode}. \Cref{sec:template} provides a suggested template for reporting bugs and other issues with the package.
+The remainder of this document is organized as follows. \Cref{sec:hurry} provides brief instructions for loading the \pkg{selnolig} package and making one's document(s) suitable for compilation under \LuaLaTeX (if you haven't alreadt done so). The package's overall approach to selective ligature suppression, which is based on morphemes (the components of a word that convey meaning), is explained in \cref{sec:approach}. The package's user macros are presented in \cref{sec:structure}, and options users may select to affect the package's workings are explained in \cref{sec:options}. \Cref{sec:further} discusses further issues that may arise when looking to break up typographic ligatures. The package's ligature suppression rules for English and German documents are listed in \cref{sec:eng-listing,sec:germ-listing}. The code of the package's main ``style'' file, \pkg{selnolig.sty}, is listed in \cref{sec:sty}, and the package's Lua code, contained in the file \pkg{selnolig.lua}, is shown in \cref{sec:luacode}. \Cref{sec:template} provides a suggested template for reporting bugs and other issues with the package.
 
 
 
@@ -256,13 +256,13 @@ If you've been using pdf\LaTeX\ until now, the requirement to use \LuaLaTeX\ wil
 Depending on your \TeX\ distribution, the default font family used by \LuaLaTeX\ will be either Computer Modern or Latin Modern. If you wish to use a different font family, further font-related instructions will be required. \emph{How} to specify fonts and font families and set up various font-related options in \LuaLaTeX\ are topics that go far beyond the scope of this user guide. I urge you to become familiar with the very well-written
  \href{http://www.ctan.org/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf}{user guide} of the \pkg{fontspec} package.
 
-You will also need to use a \TeX\ distribution that features a fairly recent version of \LuaLaTeX. \TeX Live 2013, \TeX Live\,2012, and MiK\TeX\,2.9 satisfy this requirement; versions of \TeX Live before 2011 probably do not. If you use a command-line interface to compile a document named, say, |myfile.tex|, type 
+You will also need to use a \TeX\ distribution that features a fairly recent version of \LuaLaTeX. \TeX Live\,\-2013, \TeX Live\,2012, and MiK\TeX\,2.9 satisfy this requirement; versions of \TeX Live before 2011 probably do not. If you use a command-line interface to compile a document named, say, |myfile.tex|, type 
 \begin{Verbatim}
               lualatex myfile
 \end{Verbatim}
 rather than either |latex myfile| or |pdflatex myfile|. If you use a text editing program with pull-down menus or buttons to invoke a suitable compiler, be sure to select |LuaLaTeX|. 
 
-The very first time one runs \LuaLaTeX\ on a document with a new set of fonts, the compilation speed will likely be quite slow, because \LuaLaTeX\ has to create various cache files to store font-related information. Subsequent compilation runs should be much faster. 
+The very first time one runs \LuaLaTeX\ on a document with a new set of fonts, the compilation speed will likely be quite slow, because \LuaLaTeX\ (actually, a package loaded by \LuaLaTeX) has to create various cache files to store font-related information. Subsequent compilation runs should be much faster. 
 
 The answers to the questions \href{http://tex.stackexchange.com/q/28642/5001}{Frequently loaded packages: Differences between pdf\LaTeX\ and \LuaLaTeX?} and \href{http://tex.stackexchange.com/q/32295/5001}{Using Lua\TeX\ as a replacement for pdf\TeX}, both posted to \href{http://tex.stackexchange.com/}{tex.stackexchange.com}, provide very useful information for people who are new to \LuaLaTeX\ and are at least somewhat familiar with pdf\LaTeX's ways of getting things done. Another great resource for people who wish to become more familiar with \LuaLaTeX\ is \href{http://mirror.ctan.org/info/luatex/lualatex-doc/lualatex-doc.pdf}{A Guide to \LuaLaTeX} by Manuel Pégourié-Gonnard.
 
@@ -471,9 +471,9 @@ Probably somewhat surprisingly, at least at first glance, it is \emph{not necess
               \nolig{flich}{f|lich}
               \keeplig{flicht}
 \end{Verbatim}
-Observe that for the word |Lauflicht| the rule \Verb+\keeplig{flicht}+ undoes the action of the rule \Verb+\nolig{flich}{f|lich}+. However, because the string |aufl| is \emph{not} a subset of the string |flicht|, the rule |\keeplig{flicht}| does not undo the action of the rule \Verb+\nolig{aufl}{auf|l}+. Hence, the word |Lauflicht| happily ends up being typeset as Lauflicht, i.e., \emph{without} the fl-ligature. 
+Observe that for the word |Lauflicht|, the rule \Verb+\keeplig{flicht}+ undoes the rule \Verb+\nolig{flich}{f|lich}+. However, because the string |aufl| is \emph{not} a subset of the string |flicht|, the rule |\keeplig{flicht}| doesn't undo the rule \Verb+\nolig{aufl}{auf|l}+. Hence, the word |Lauflicht| ends up being typeset\textemdash correctly\textemdash as Lauflicht, i.e., \emph{without} the fl-ligature. 
 
-Interestingly, the rule |\keeplig{flicht}| is itself a bit too broad because it improperly catches the composite noun |Sumpflicht|, for which the fl-ligature \emph{should} in fact be suppressed. (Note that the word is composed of the free morphemes are |Sumpf| and |licht|, rather than |Sum| and |pflicht|!) To address this issue, the file \pkg{selnolig-german-patterns.sty} provides the rule \Verb+\nolig{Sumpfl}{Sumpf|l}+; this \cmmd{nolig} rule overrides the action of the rule |\keeplig{flicht}| for the word Sumpflicht. It also serves to suppress the fl ligature in words such as Sumpflabkraut and Sumpfleiche.
+Interestingly, the rule |\keeplig{flicht}| is itself a bit too broad because it improperly catches the composite noun |Sumpflicht|, for which the fl-ligature \emph{should} in fact be suppressed.\footnote{The free morphemes contained in the word |Sumpflicht| are |Sumpf| and |licht|\textemdash not |Sum| and |pflicht|!} To address this case, the file \pkg{selnolig-german-patterns.sty} provides the rule \Verb+\nolig{Sumpfl}{Sumpf|l}+; this \cmmd{nolig} rule overrides the action of the rule |\keeplig{flicht}| for the word Sumpflicht. It also serves to suppress the fl ligature in words such as Sumpflabkraut and Sumpfleiche.
 
 
 \subsubsection{The \cmmd{uselig} macro} 
@@ -481,7 +481,7 @@ Interestingly, the rule |\keeplig{flicht}| is itself a bit too broad because it 
 
 The \pkg{selnolig} package further provides the user command \cmmd{uselig}. It acts much like the \cmmd{keeplig} command, but serves to override the action of a \cmmd{nolig} rule purely on a one-off basis. E.g., the command \Verb+\uselig{fj}+ will typeset \enquote{\uselig{fj}} even though the rule \Verb+\nolig{fj}{f|j}+ is active; \emph{without} \cmmd{uselig}, you'd get \enquote{fj}.
 
-You should use \cmmd{uselig} instructions only for words and word fragments, but not for longer stretches of text. If you need to suspend the operation of the ligature suppression macros for longer stretches, including entire paragraphs or more, you should use the macros \cmmd{selnoligoff} and \cmmd{selnoligon}, which are described in more detail in \cref{sec:selnoligon}.
+You should use \cmmd{uselig} instructions only single words and word fragments; don't use them for longer stretches of text. If you need to suspend the operation of the ligature suppression macros for longer stretches, including entire paragraphs or more, you should use the macros \cmmd{selnoligoff} and \cmmd{selnoligon}, which are described in more detail in \cref{sec:selnoligon}.
 
 
 
@@ -762,7 +762,7 @@ Felix Lehmann (a linguist and expert in morphology, i.e., the study of morphemes
 
 Equally importantly, Felix and Steffen created scripts to test systematically and comprehensively the package's German \cmmd{nolig} and \cmmd{keeplig} rules for linguistic adequacy and (relative) completeness.
 They began with a corpus of almost 850 million [!!] words, which they marked up with information on the morphological constituents of each word. From this huge word list, they extracted a set of 462,000 unique word forms containing potential f-ligatures.
-According to their analysis, an early version (ca.\ late October 2012) of the \pkg{selnolig} package already dealt correctly with 85 percent (394,000) of those word forms, while still generating 21,000 Type~I errors and 48,000 Type~II errors!\footnote{In the context of the \pkg{selnolig} package, a Type~I error is the failure to suppress a typographically inappropriate ligature, and a Type~II error is the improper suppression of a typographically valid ligature.}\textsuperscript{,}\footnote{1,000 words contained more than one potential f-ligature, hence the difference.} 
+According to their analysis, an early version (late October 2012) of the \pkg{selnolig} package already dealt correctly with 85 percent (394,000) of those word forms, while still generating 21,000 Type~I errors and 48,000 Type~II errors!\footnote{In the context of the \pkg{selnolig} package, a Type~I error is the failure to suppress a typographically inappropriate ligature, and a Type~II error is the improper suppression of a typographically valid ligature.}\textsuperscript{,}\footnote{1,000 words contained more than one potential f-ligature, hence the difference.} 
 Fortunately (for me at least), they also discovered that a non-negligible part of the 69,000 errors wasn't real but, rather, the result of typos in the words included in the corpus and/or of incorrect morphological analysis. The detailed Type~I and~II error lists they generated were critical in helping me refine\textemdash and occasionally revise completely\textemdash the package's \cmmd{nolig} and \cmmd{keeplig} rules, rapidly bringing down the number of Type~I and~II errors.\footnote{For instance, after Steffen wrote the lua code that made possible the \cmmd{keeplig} macro, I was able to eliminate, in one fell swoop, more than 10,000~[!!] Type~II errors generated by the package's earlier, incorrect suppression of the fl-ligature in words that contain the morpheme \opt{pflicht}. } All major changes to the German language ligature suppression patterns are still being subjected to their testing algorithms to streamline the tasks of detecting what's left to improve and catching any newly introduced errors.
 
 Felix and Steffen started the automated testing of the package's |\nolig| and |\keeplig| rules as their finals project for the course \emph{Introduction to Computational Linguistics} at the University of Massachusetts at Amherst in the fall of 2012.\footnote{Their \href{https://github.com/SHildebrandt/selnolig-check}{code} and \href{https://github.com/SHildebrandt/selnolig-check/blob/master/selnolig-check-documentation.pdf?raw=true}{finals paper} is available online.} They wish to thank the Institut für Maschinelle Sprachverarbeitung at the Universität Stuttgart for granting them a license for the morphological analysis tool SMOR\footnote{Schmid, H., A. Fitschen, and U. Heid, 2004, \enquote{SMOR: A German Computational Morphology Covering Derivation, Composition, and Inflection}, \emph{Proceedings of the IVth International Conference on Language Resources and Evaluation (LREC)}, pp.~1263--1266, Lisbon, Portugal.} and, in particular, Helmut Schmid for his guidance. They also express their gratitude to the \emph{Web-as-Corpus kool ynitiative} (\emph{WaCky}) for letting them use the SDeWaC corpus,%
