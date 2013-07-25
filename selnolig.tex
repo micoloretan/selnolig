@@ -54,6 +54,7 @@
 \usepackage{geometry}
 \usepackage[english=american]{csquotes}
 \usepackage[ngerman,english]{babel}
+\usepackage{tabularx,booktabs}
 
 \usepackage[ngerman,english,hdlig,broadf]{selnolig}
 %\debugon
@@ -61,7 +62,7 @@
 \hyphenation{ver-werf-lich kunst-stoff-lei-tung}
 
 % Suppress st-ligature in some German words
-%    that occur in this document
+%    that would otherwise occur
 \nolig{Kunststo}{Kuns|ts|to} % Kunststoff
 \nolig{Bausto}{Baus|to}      % Baustoff
 \nolig{streif}{s|treif}      % streifte
@@ -72,11 +73,20 @@
 \nolig{Wasserstoff}{Wassers|toff}
 \nolig{stiefl}{s|tiefl} % stiefle
 \nolig{straff}{s|traff}
-\nolig{aufisst}{auf|iss|t} % suppress st liga as well.
-% undo English/broadf \nolig{ffing}{ff|ing} rule: 
+\nolig{aufisst}{auf|iss|t} % suppress st liga as well
+\nolig{löste}{lös|te}
+\nolig{straße}{s|traße}
+\nolig{steifbein}{s|teifbein}
+\nolig{steiflehnig}{s|teiflehnig}
+\nolig{strafbar}{s|trafbar}
+\nolig{belustigt}{belus|tigt}
+\nolig{höflichst}{höflichs|t}
+\nolig{trittst}{tritts|t}
+\nolig{vortrefflichsten}{vortrefflichs|ten}
+\hyphenation{fünf-fing-rig be-hilf-lich un-be-greif-lich}
+% undo broadf \nolig{ffing}{ff|ing} rule for German words
   \keeplig{ffingrig} 
   \keeplig{ffinger}
-\hyphenation{fünf-fing-rig}
 
 
 % Load still more packages...
@@ -199,11 +209,11 @@ For both English and German language documents, the \pkg{selnolig} package provi
 
 For both English and German language documents, the {\ebg \uselig{fb}, \uselig{fh}, \uselig{fj}, and \uselig{fk}} ligatures are suppressed \emph{globally}; see also \cref{sec:global-nolig}. However, exceptions are provided in order not to suppress these ligatures for selected words of \emph{non-English\slash German} origin, such as {\ebg fjord, fjell, Prokofjew, and Kafka}.
 
-For English language documents, the \pkg{selnolig} package recognizes an option called \opt{broadf}; if it is set, additional f-ligatures will be suppressed selectively. The package also features an option called \opt{hdlig} to provide selective ligature suppression for discretionary (aka rare) ligatures such as~ct, st, sp, {\ebg\emph{sk}}, \emph{th}, \emph{at}, \emph{et}, \emph{ll}, \emph{as}, \emph{is}, and~\emph{us}. No rules are currently provided to suppress historic\slash discretionary ligatures for German documents.\footnote{A remark on the classification of various forms of typographic ligatures in OpenType fonts: There appears to little terminological standardization as to which typographic ligatures are labelled \enquote{historic} and which ones are labelled \enquote{discretionary}. To wit, the fonts Latin Modern Roman, Garamond Premier Pro, and Hoefler Text report having \enquote{only} discretionary ligatures, whereas Junicode, Cardo, EB Garamond, and Palatino Linotype report having both historic and discretionary ligatures. Interestingly, none of these fonts report having ligatures classified as either \enquote{contextual} or \enquote{required}. }
+For English language documents, the \pkg{selnolig} package recognizes an option called \opt{broadf}; if it is set, additional f-ligatures will be suppressed selectively. The package also features an option called \opt{hdlig} to provide selective ligature suppression for discretionary (aka rare) ligatures such as~ct, st, sp, {\ebg\emph{sk}}, \emph{th}, \emph{at}, \emph{et}, \emph{ll}, \emph{as}, \emph{is}, and~\emph{us}. No rules are provided to suppress historic\slash rare ligatures for German documents.\footnote{A remark on the classification of various forms of typographic ligatures in OpenType fonts: There appears to little terminological standardization as to which typographic ligatures are labelled \enquote{historic} and which ones are labelled \enquote{discretionary}\slash\enquote{rare}. To wit, the fonts Latin Modern Roman, Garamond Premier Pro, and Hoefler Text report having \enquote{only} discretionary ligatures, whereas Junicode, Cardo, EB Garamond, and Palatino Linotype report having both historic and discretionary ligatures. Interestingly, none of these fonts report having ligatures classified as either \enquote{contextual} or \enquote{required}. }
 
 The \pkg{selnolig} package also provides supplemental hyphenation exception lists for both English and German language words. The words in these lists are generally composite and contain one or more typographic ligatures that should be suppressed.
 
-The remainder of this document is organized as follows. \Cref{sec:hurry} provides brief instructions for loading the \pkg{selnolig} package and making one's document(s) suitable for compilation under \LuaLaTeX (if you haven't alreadt done so). The package's overall approach to selective ligature suppression, which is based on morphemes (the components of a word that convey meaning), is explained in \cref{sec:approach}. The package's user macros are presented in \cref{sec:structure}, and options users may select to affect the package's workings are explained in \cref{sec:options}. \Cref{sec:further} discusses further issues that may arise when looking to break up typographic ligatures. The package's ligature suppression rules for English and German documents are listed in \cref{sec:eng-listing,sec:germ-listing}. The code of the package's main ``style'' file, \pkg{selnolig.sty}, is listed in \cref{sec:sty}, and the package's Lua code, contained in the file \pkg{selnolig.lua}, is shown in \cref{sec:luacode}. \Cref{sec:template} provides a suggested template for reporting bugs and other issues with the package.
+The remainder of this document is organized as follows. \Cref{sec:hurry} provides brief instructions for loading the \pkg{selnolig} package and making one's document(s) suitable for compilation under \LuaLaTeX\ (if you haven't already done so). The package's overall approach to selective ligature suppression, which is based on morphemes (the components of a word that convey meaning), is explained in \cref{sec:approach}, the user macros are presented in \cref{sec:structure}, and options that affect the package's workings are explained in \cref{sec:options}. \Cref{sec:further} discusses further issues that may arise when looking to break up typographic ligatures. The package's ligature suppression rules for English and German documents are listed in \cref{sec:eng-listing,sec:germ-listing}. The code of the package's main ``style'' file, \pkg{selnolig.sty}, and Lua code, in \pkg{selnolig.lua}, are shown in \cref{sec:sty,sec:luacode}. In \cref{sec:budd}, the results of a quick case study into the actual counts of ligature suppression instances in two English novels (\emph{Call Of The Wild} and \emph{The Sea Wolf}) and one German novel (\emph{Die Buddenbrooks}) are reported. Unsurprisingly, morpheme-crossing ligatures occur far more frequently in the German novel\textemdash by a factor 100 or more! \Cref{sec:template} provides a suggested template for reporting bugs and other issues with the package.
 
 
 
@@ -800,7 +810,7 @@ The website \url{http://www.morewords.com} provides very convenient methods for 
 selnolig-german-patterns.sty]{German-language ligature suppression rules: \pkg{selnolig-german-patterns.sty}}
 \label{sec:germ-listing}
 
-Introductory note: To accommodate the practice of Swiss-German writers of not using the \enquote{ß} character and using \enquote{ss} in its place, all search-and-insert strings that contain an \enquote{ß} character are duplicated with equivalent search-and-insert strings containing \enquote{ss}.
+Introductory note: To accommodate the practice of Swiss-German writers of not using the \enquote{ß} character and using \enquote{ss} in its place, all search-and-insert strings that contain an \enquote{ß} character are duplicated with equivalent search-and-insert strings containing~\enquote{ss}.
 
 \bigskip
 
@@ -820,6 +830,250 @@ Introductory note: To accommodate the practice of Swiss-German writers of not us
 \label{sec:luacode}
 
 \VerbatimInput{selnolig.lua}
+
+\clearpage
+\selnoligon
+\section{A case study: f-ligatures suppressed in Thomas Mann's \emph{Die Buddenbrooks}} \label{sec:budd}
+
+
+As noted in the introduction, in English language documents the suppression of ligatures that cross morpheme boundaries is generally not considered to be high on the list of typographical priorities. I did a quick-and-dirty check of this claim by compiling Jack London's novels \emph{Call Of The Wild} and \emph{The Sea Wolf}. Sure enough, in \emph{Call Of The Wild} only one ligature would be suppressed: fl in \enquote{wolflike}. Similarly, in \emph{The Sea Wolf}, only one ligature would be suppressed: ft in \enquote{fifth}. Not exactly a lot of activity, right?!
+
+The situation is quite different for German texts. E.g., in Thomas Mann's novel \emph{Die Buddenbrooks}, more than 440 [!] words are caught by \pkg{selnolig}'s rules; they are listed below. Incidentally, the fi-ligature in the words Kaufinger and Kaufingerstraße is suppressed because \enquote{\uselig{Kaufinger}} (\enquote{chew-finger}!) may look unintentionally comical.
+
+\enlargethispage{1\baselineskip}
+
+\noindent
+\begin{tabularx}{\textwidth}{@{}lX@{}}
+\midrule[\heavyrulewidth]
+f-lig.\ & Words for which the f-lig.\ is suppressed by \pkg{selnolig}'s rules\\
+\midrule
+{\ebg \uselig{fb}, \uselig{ffb}} &
+Aufbahrung,
+aufbegehrt,
+aufbegehrte,
+Aufbewahrungsort,
+Aufbietung,
+aufblicken,
+aufblitzenden,
+aufblitzt,
+aufblitzten,
+aufblühende,
+aufbrach,
+aufbrechen,
+aufbringen,
+aufbringt,
+Aufblick,
+Aufbrausen~(2),
+Aufbruch~(4),
+Briefbeschwerer,
+Dampfbrot,
+daraufbringen,
+greifbaren,
+Greifbares,
+heraufbefördert,
+hinaufblickte,
+Hofbräu,
+Hofbräuhaus~(3),
+Hofbräuhause,
+Kopfbewegung~(3),
+Kopfbewegungen,
+Krippenaufbaus,
+Laufbahn,
+Privatbriefbogen,
+Scharfblick,
+Schiffbrüchen,
+Schlafbedürfnis,
+steifbeinigen,
+Stiefbruder~(4),
+strafbar~(2),
+tiefbelustigt,
+tiefblauen~(2),
+unangreifbar\\ %%
+ff &
+Auffahren,
+Auffahrt,
+auffallend~(5),
+auffassen,
+Auffassung,
+auffordern~(2),
+aufforderte~(4),
+Aufforderung~(2),
+Aufforderungen,
+Aufführung,
+auffällig~(2),
+auffällige~(2),
+auffälliger~(2),
+auffällt,
+aufführen,
+aufführte,
+fünffacher~(2),
+herauffuhr,
+heraufführte,
+Kauffahrteischiffen,
+Liebhaberaufführung,
+Schlaffrisur,
+unauffällig,
+unauffällige\\ %%
+ffi & Auffinden\\ %%
+ffl & 
+Aufflackern, 
+aufflog,
+unübertrefflich~(3),
+unübertrefflichen,
+vortrefflich~(11),
+vortreffliche~(2),
+vortrefflichen,
+vortrefflicher,
+vortreffliches,
+vortrefflichsten\\ %%
+{\ebg \uselig{fh}, \uselig{ffh}} & 
+aufheben~(3),
+Aufhebens,
+aufhebt,
+Aufhebung,
+aufheitert,
+aufhellte,
+aufhielt~(3),
+Aufhorchend,
+aufhorchenden,
+aufhält~(2),
+aufhören~(14),
+aufhörte~(6),
+daraufhin~(2),
+Fünfhausen~(2),
+fünfhundert~(5),
+Hundertsiebenundzwanzigtausendfünfhundert~[!!],
+Kaufherren~(2),
+krampfhaft~(6),
+krampfhafte~(2),
+krampfhafte,
+krampfhaften~(4),
+Schlaffheit,
+Steifheit~(2),
+unaufhaltsam~(5),
+unaufhaltsame,
+unaufhaltsamen,
+unaufhaltsamer,
+unaufhörlich~(14),
+unaufhörliche,
+unaufhörlichen\\ %%
+fi &
+Kaufinger,
+Kaufingerstraße,
+tiefinnere\\ %%
+{\ebg \uselig{fj}} &
+Aufjauchzen,
+elfjährig,
+fünfjährigen,
+zwölfjährig~(2)\\
+{\ebg \uselig{fk}, \uselig{ffk}} &
+aufkam,
+aufklingen,
+aufklärte,
+Aufklärung,
+aufkommen,
+Briefkas\breaklig{}ten,
+Haffkrug,
+heraufkamen,
+heraufkommen~(3),
+Heraufkommenden,
+Kehlkopfknoten,
+Kopfkissen~(2),
+Napfkuchens,
+Stopfkugel~(2)\\
+fl &
+auflehnte,
+aufleuchtete~(2),
+auflösen,
+auflöste,
+Auflösung~(11),
+begreiflich,
+Begreiflicherweise,
+behilflich~(6),
+beruflichen~(3),
+glimpflich~(2),
+gräflichen,
+Großkaufleuten,
+Handgreifliches,
+hilflos~(7),
+hilfloses,
+Hilf\-losigkeit~(2),
+Hilflosigkeitsgefühl,
+hinaufläuft,
+höflich~(7),
+höfliche~(2),
+höflichen,
+Höflichkeit~(6),
+Höflichkeitsform,
+höflichst,
+kampflose,
+kampflosen,
+Kaufleute~(9),
+Kaufleute-Witwenkasse,
+Kauf\-leuten~(3),
+Knopfloch,
+käuflich~(2),
+reiflich,
+schimpfliche,
+schimpflichen,
+schlaflos,
+schlaflose,
+schlaflosen,
+Schlaflosigkeit,
+steiflehnige,
+teuflischem,
+teuflischer,
+teuflisches,
+tiefliegende,
+tiefliegenden~(20),
+unbegreif\-lich~(3),
+unbegreifliche,
+unbegreiflichen~(3),
+unbegreiflicher,
+Unbegreiflicherweise,
+unerschöpflich,
+unhöflichen,
+Verzweiflung~(23),
+verzweiflungsvoll~(2),
+Zöpflein,
+zweifle~(2)\\
+ft &
+auftat~(2),
+auftauchen,
+auftauchte,
+auftauen,
+auftreten,
+Auftreten~(3),
+Auftritt~(3),
+Auftritte~(2),
+Auftritten,
+Auftrittes,
+auftrittst,
+Aufträge,
+Briefträger,
+elftausend,
+Elfter,
+Elftes~(3),
+fünftausend~(2),
+fünften~(3),
+fünfter,
+Fünfter,
+Fünftes~(9),
+Hoftheater,
+Hoftheaterbesuchen,
+Hoftore,
+Hoftore,
+Hoftür,
+schlaftrunkenen,
+schlaftrunkener,
+Schnupftuch~(3),
+Schnupftuche,
+Schnupftuches,
+Tauftages,
+Zwölftes\\
+\bottomrule
+\end{tabularx}
+\selnoligoff
 
 
 \clearpage

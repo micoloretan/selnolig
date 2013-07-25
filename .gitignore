@@ -41,6 +41,7 @@ x*.*
 *.idx
 *.ilg
 *.ind
+*.ins
 *.ist
 *.lof
 *.log
