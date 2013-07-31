@@ -1,5 +1,5 @@
 % !TEX TS-program = lualatex
-\documentclass{article}
+\documentclass[english]{article}
 
 % Test program: Apply the 'selnolig' package, with
 % 'english' language option set, to a list of English
@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/06/30
+% Date: 2013/07/31
 
 % Check first that we're running Lua(La)TeX.
 \usepackage{ifluatex}
@@ -22,7 +22,7 @@
 
 \usepackage[margin=1in]{geometry}
 
-\righthyphenmin=2 % set this to either 3 (normal) or 2
+
 
 \usepackage{fancyvrb}
 
@@ -48,7 +48,9 @@
     {EB Garamond 12 Regular}
 
 \usepackage[document]{ragged2e}
-\usepackage[english,hdlig,broadf]{selnolig}
+\usepackage{babel}
+\usepackage[hdlig,broadf]{selnolig}
+\righthyphenmin=3 % set this to either 3 (normal) or 2
 
 \usepackage{showhyphens}
 
@@ -81,7 +83,7 @@ Appearance of ``discretionary'' ligatures
  & \emph{at} & \emph{et} & {\ebg\emph{sk}}& \emph{ll} & \emph{\uselig{ij}, st, ta}\\
 Sample words with these ligatures
  & stay & act & spy 
- & \emph{was} & \emph{\mbox{is}thmus} & \emph{cat} & \emph{net} 
+ & \emph{was} & \emph{\uselig{isthmus}} & \emph{cat} & \emph{net} 
  & {\ebg\emph{ask}} & \emph{ill} & \emph{rijsttafel}\\
 \end{tabular}
 
@@ -90,10 +92,9 @@ Sample words with these ligatures
 
 \makeatletter
 \begin{tabular}{@{}ll}
-Options and other parameters:\\
-\ \ \ Value of \texttt{\textbackslash righthyphenmin} parameter & \the\righthyphenmin\\
-\ \ \ Extent of suppressing f-ligatures: basic or broadf?  & \if@broadfset broadf \else basic \fi \\
-
+Package options and other parameters:\\
+\ \ \ \ \ Extent of suppressing f-ligatures: basic or broadf?  & \if@broadfset broadf \else basic \fi \\
+\ \ \ \ \ Value of \texttt{\textbackslash righthyphenmin} parameter & \the\righthyphenmin\\
 \end{tabular}
 \makeatother
 

@@ -4,7 +4,7 @@
 -- from a (Lua)LaTeX .sty file.
 --
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
---    (with crucial contributions by Taco Hoekwater, 
+--    (with crucial contributions from Taco Hoekwater, 
 --    Patrick Gundlach, and Steffen Hildebrandt)
 --
 -- The entire selnolig package is placed under the terms 
@@ -15,8 +15,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.250b",
-   date         = "2013/07/20",
+   version      = "0.252",
+   date         = "2013/07/31",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
