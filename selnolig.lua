@@ -1,5 +1,5 @@
--- Lua code for the selnolig package, to be loaded
--- with an instruction such as 
+-- Lua code for the selnolig package.
+-- To be loaded with an instruction such as 
 --    \directlua{  require("selnolig.lua")  }
 -- from a (Lua)LaTeX .sty file.
 --
@@ -15,8 +15,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.253",
-   date         = "2013/08/04",
+   version      = "0.254",
+   date         = "2013/08/08",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
