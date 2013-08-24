@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-english-patterns}%
-[2013/08/08]
+[2013/08/25]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -164,7 +164,7 @@
 
 \nolig{elfin}{elf|in}
 \nolig{Elfin}{Elf|in}
-  \keeplig{stelfink} % distelfink
+  \keeplig{elfink} % distelfink
 
 % For words ending in -f-ing, allow for 
 % "colloquial" abbreviations (-f-in').
@@ -343,6 +343,8 @@
 % (A) st -> s-t
 % -------------
 
+\nolig{aspidistra}{a|spidi|stra}
+\nolig{Aspidistra}{Aspidi|stra}
 \nolig{osstalk}{oss|talk}
   % crosstalk
 \nolig{gstai}{gs|tai}
@@ -355,29 +357,31 @@
   % houndstooth
 \nolig{steeth}{s|teeth}
   % houndsteeth
+\nolig{astime}{as|time}
+  % pastime
 
 %%% dis-t... words
-\nolig{dista}{dis|ta}
-\nolig{Dista}{Dis|ta}
-  % distant distasteful 
+\nolig{distast}{dis|tast}
+\nolig{Distast}{Dis|tast}
+  % distasteful 
 \nolig{distem}{dis|tem}
 \nolig{Distem}{Dis|tem}
   % distemperate 
 \nolig{disten}{dis|ten}
 \nolig{Disten}{Dis|ten}
   % distended
-\nolig{distil}{dis|til}
-\nolig{Distil}{Dis|til}
-  % distil distillation 
-\nolig{distin}{dis|tin}
-\nolig{Distin}{Dis|tin}
-  % distinct distinguish
-\nolig{disto}{dis|to}
-\nolig{Disto}{Dis|to}
+\nolig{distor}{dis|tor}
+\nolig{Distor}{Dis|tor}
   % distort distortion 
-\nolig{distr}{dis|tr}
-\nolig{Distr}{Dis|tr}
-  % distract distribution distrust
+\nolig{distra[cu]}{dis|tra}
+\nolig{Distra[cu]}{Dis|tra}
+  % distract distraught
+\nolig{distrib}{dis|trib}
+\nolig{Distrib}{Dis|trib}
+  % distribution 
+\nolig{distrust}{dis|trust}
+\nolig{Distrust}{Dis|trust}
+  % distrust distrustful
 \nolig{distu}{dis|tu}
 \nolig{Distu}{Dis|tu}
   % disturb
@@ -410,6 +414,9 @@
 \nolig{mistran}{mis|tran}
 \nolig{Mistran}{Mis|tran}
   % Mistranscribe Mistranslate 
+\nolig{mistrain}{mis|train}
+\nolig{Mistrain}{Mis|train}
+  % mistrain
 \nolig{istrea}{is|trea}
   % mistreat mistreatment
 \nolig{mistru}{mis|tru}
@@ -432,10 +439,7 @@
   % aesthetic esthetic unesthetic
   % prosthetist 
 
-\nolig{Charlest}{Charles|t}
-  % Charleston 
-\nolig{Reston}{Res|ton}
-  % Reston (Washington DC suburb)
+\nolig{Esth}{Es|th} % Esther
 
 \nolig{stown}{s|town}
   % crosstown Williamstown
@@ -466,24 +470,52 @@
 \nolig{isplat}{is|plat}
   % cisplatin (cis-platin, not cisp-latin!)
 
-\nolig{desp}{des|p}
-\nolig{Desp}{Des|p}
-  % despair desperado despot desperate
-  \keeplig{despond} % despondency despondent
-  \keeplig{Despond}
-  \keeplig{despirit}
-  \keeplig{Despirit}
-  \keeplig{despoil}
-  \keeplig{Despoil}
-  \keeplig{sidesp} % sidespin, sidesplitting	
-  \keeplig{Sidesp}
-  \keeplig{widesp} % widespread
-  \keeplig{Widesp}
-  \keeplig{desprung} % gelandesprung
+\nolig{despot}{des|pot}
+\nolig{Despot}{Des|pot}
+  % despot despotic
 
-\nolig{disp}{dis|p}
-\nolig{Disp}{Dis|p}
-  % disparage disparaging ...
+\nolig{spresso}{s|presso}
+
+  \nolig{despon}{de|spon} 
+  \nolig{Despon}{De|spon}
+  \nolig{despir}{de|spir}
+  \nolig{Despir}{De|spir}
+  \nolig{despoil}{de|spoil}
+  \nolig{Despoil}{De|spoil}
+  \nolig{sidesp}{side|sp} % sidespin, sidesplitting	
+  \nolig{Sidesp}{Side|sp}
+  \nolig{widesp}{wide|sp} % widespread
+  \nolig{Widesp}{Wide|sp}
+  \nolig{desprung}{Wide|sp} % gelandesprung
+
+\nolig{dispa[rst]}{dis|pa}
+\nolig{Dispa[rst]}{Dis|pa}
+  % disparage disparaging dispart
+  % dispassion dispatch
+\nolig{dispel}{dis|pel}
+\nolig{Dispel}{Dis|pel}
+  % dispel
+\nolig{dispen[ds]}{dis|pen}
+\nolig{Dispen[ds]}{Dis|pe}
+  % dispend dispense dispensation
+\nolig{displa[cny]}{dis|pla}
+\nolig{Displa[cny]}{Dis|pla}
+  % display displant displace
+\nolig{displea}{dis|plea}
+\nolig{Displea}{Dis|plea}
+  % displease displeasure
+\nolig{displ[ou]}{dis|pl}
+\nolig{Displ[ou]}{Dis|pl}
+  % displode displume
+\nolig{disp[ou]}{dis|p}
+\nolig{Disp[ou]}{Dis|p}
+  % disport dispose disposition 
+  % dispossess dispute
+\nolig{dispr[aio]}{dis|pr}
+\nolig{Dispr[aio]}{Dis|pr}
+  % dispraise disprize disproof 
+  % disproportion disprove
+
 
 \nolig{misp}{mis|p}
 \nolig{Misp}{Mis|p}
@@ -515,21 +547,21 @@
 
 \nolig{risprud}{ris|prud}
   % jurisprudence
-\nolig{spiec}{s|piec}
+\nolig{spiece}{s|piece}
   % crosspiece frontispiece
 
-\nolig{ewspa}{ews|pa}
-  % newspaper 
-\nolig{ewspr}{ews|pr}
-  % newsprint
-  % Don't suppress sp lig in "newspeak"!
+\nolig{ewsp[ae]}{ews|p}
+  % newspaper newsprint
 
 \nolig{Hyannisp}{Hyannis|p}
   % Hyannisport
-\nolig{Keyespo}{Keyes|po}
+\nolig{Keyesp}{Keyes|p}
   % Keyesport
 \nolig{Williamsp}{Williams|p}
   % Williamsport
+
+\nolig{assport}{ass|port} 
+  % passport
 
 
 % (D) th -> t-h
@@ -562,6 +594,8 @@
   % apartheid antiapartheid
 \nolig{thead}{t|head}
   % bolthead cathead fathead ...
+\nolig{thard}{t|hard}
+  % Gotthard 
 \nolig{therd}{t|herd}
   % goatherd neatherd
 \nolig{theap}{t|heap}
@@ -578,6 +612,9 @@
   % pothunt outhunt
 \nolig{orthol}{ort|hol}
   % porthole
+\nolig{posth}{post|h}
+\nolig{Posth}{post|h}
+  % postharvest
 \nolig{sthum}{st|hum}
   % posthumous
 \nolig{uthau}{ut|hau}
@@ -812,14 +849,23 @@
 % (G) as -> a-s 
 % -------------
 
+\nolig{asea}{a|sea}
+  % asea
+  \keeplig{casea}  % casease caseate
+  \keeplig{Casea}
+  \keeplig{haseal} % phaseal
+\nolig{asplut}{a|splut}
+  % asplutter
 \nolig{eastran}{ea|stran}
   % seastrand
-\nolig{aspore}{a|spore}
+\nolig{aspor[ae]}{a|spor}
   % diaspora megaspore tetraspore
-\nolig{aseps}{a|seps}
-  % asepsis
-\nolig{asept}{a|sept}
-  % aseptic aseptically
+\nolig{asep[st]}{a|sep}
+  % asepsis aseptic aseptically
+\nolig{asophist}{a|sophist}
+  % ultrasophisticated
+\nolig{asound}{a|sound}
+  % ultrasound
 \nolig{asund}{a|sund}
 \nolig{Asund}{A|sund}
   % asunder
@@ -839,7 +885,6 @@
 \nolig{aspoon}{a|spoon}
   % teaspoon
 
-% how to do 'asea'?
 
 % (H) is -> i-s 
 % -------------
@@ -851,63 +896,40 @@
 \nolig{fist}{fi|st}
 \nolig{Fist}{Fi|st}
 
+
 % (b) across morpheme boundaries
 
 %% Mustn't do global \nolig{antis}{anti|s}
 %% because of words such as sycophantism, 
 %% vigilantism, and mantissa.
 
-\nolig{antisa}{anti|sa}
-\nolig{Antisa}{Anti|sa}
+\nolig{antis[ace]}{anti|s}
+\nolig{Antis[ace]}{Anti|s}
   % antisag antisatellite
-\nolig{antisc}{anti|sc}
-\nolig{Antisc}{Anti|sc}
   % antiscience 
-\nolig{antise}{anti|se}
-\nolig{Antise}{Anti|se}
   % antisecrecy antisense antiseptic
-\nolig{antisha}{anti|sha}
-\nolig{Antisha}{Anti|sha}
+\nolig{antish[aio]}{anti|sh}
+\nolig{Antish[aio]}{Anti|sh}
   % antishark antiship antishock
-\nolig{antishi}{anti|shi}
-\nolig{Antishi}{Anti|shi}
-  % antishark antiship antishock
-\nolig{antisho}{anti|sh}
-\nolig{Antisho}{Anti|sh}
-  % antishark antiship antishock
-\nolig{antisk}{anti|sk}
-\nolig{Antisk}{Anti|sk}
+\nolig{antis[kl]}{anti|s}
+\nolig{Antis[kl]}{Anti|s}
   % antiskid
-\nolig{antisl}{anti|sl}
-\nolig{Antisl}{Anti|sl}
   % antislavery antislip 
-\nolig{antismo}{anti|smo}
-\nolig{Antismo}{Anti|smo}
+\nolig{antism[ou]}{anti|sm}
+\nolig{Antism[ou]}{Anti|sm}
   % antismog antismoke 
-\nolig{antismu}{anti|smu}
-\nolig{Antismu}{Anti|smu}
   % antismuggling antismut
-\nolig{antisn}{anti|sn}
-\nolig{Antisn}{Anti|sn}
+\nolig{antis[noptuy]}{anti|s}
+\nolig{Antis[noptuy]}{Anti|s}
   % antisnob
-\nolig{antiso}{anti|so}
-\nolig{Antiso}{Anti|so}
   % antisocial antisolar
-\nolig{antisp}{anti|sp}
-\nolig{Antisp}{Anti|sp}
   % antispasmodic antispeculative
-\nolig{antist}{anti|st}
-\nolig{Antist}{Anti|st}
   % antistatic antistick antistress 
-\nolig{antisu}{anti|su}
-\nolig{Antisu}{Anti|su}
   % antisubmarine antisubversion 
-\nolig{antisy}{anti|sy}
-\nolig{Antisy}{Anti|sy}
   % antisymmetric antisyphilitics 
 
-\nolig{multis}{multi|s}
-\nolig{Multis}{Multi|s}
+\nolig{multis[a-z]}{multi|s}
+\nolig{Multis[a-z]}{Multi|s}
   % multiscreen multisense multisensory
   % multiservice multisided multisite
   % multisize multiskilled multisource
@@ -919,6 +941,7 @@
 
 \nolig{isph}{i|sph}
   % hemisphere planisphere hemispheric
+  \keeplig{isphr} % misphrase misphrased ...
 
 % (I) us -> u-s
 % -------------
@@ -977,6 +1000,7 @@
 \nolig{ij}{i|j} 
   \keeplig{ijs} % rijsttafel (Indonesian dish)
   \keeplig{ijn} % de Bruijn
+  \keeplig{eije}% Meijer
 
 
 
@@ -992,8 +1016,8 @@
 \nolig{ust}{u|st}
 \nolig{ist}{i|st}
 
-% (ii) as, is, and us preceding sp
-% .................--.............
+% (ii) as, es, is, and us preceding sp
+% .............................-......
 
 \nolig{aspar}{a|spar}
 \nolig{Aspar}{A|spar}
@@ -1019,10 +1043,18 @@
 \nolig{Wasp}{Wa|sp}
   % wasp waspish
 
+
+\nolig{espi[ct]}{e|spi}
+  % despicable despite
+%%% more rules to come...
+
 \nolig{risp}{ri|sp}
   % crisp 
 \nolig{ispani}{i|spani}
   % hispanic
+\nolig{hispid}{hi|spid}
+\nolig{Hispid}{Hi|spid}
+  % hispid hispidulous
 \nolig{lisp}{li|sp}
 \nolig{Lisp}{Li|sp}
   % lisp lisping 

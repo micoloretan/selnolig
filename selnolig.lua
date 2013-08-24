@@ -15,8 +15,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.254",
-   date         = "2013/08/08",
+   version      = "0.255",
+   date         = "2013/08/25",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",

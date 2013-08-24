@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/08/08
+% Date: 2013/08/25
 
 % Check first that we're running Lua(La)TeX.
 \usepackage{ifluatex}
@@ -50,9 +50,9 @@
 \usepackage[document]{ragged2e}
 \usepackage{babel}
 \usepackage[hdlig,broadf]{selnolig}
-\righthyphenmin=3 % set this to either 3 (normal) or 2
 
-%\usepackage{showhyphens}
+\usepackage{showhyphens}
+\debugon
 
 \setlength\parindent{0pt}
 \parskip=0.3\baselineskip
@@ -61,7 +61,9 @@
 \title{selnolig-english-test\\ (Package version: \selnoligpackageversion; \selnoligpackagedate)}
 \author{\null}
 \date{}
-\debugon
+
+\righthyphenmin=2 % set this to either 3 (normal) or 2
+
 
 \begin{document}
 \maketitle
@@ -77,14 +79,14 @@ Sample words with these ligatures
 
 \bigskip
 
-\begin{tabular}{@{}*{14}{l}}
-Appearance of ``discretionary'' ligatures 
+\begin{tabular}{@{}*{15}{l}}
+Appearance of ``discretionary'' (``rare'') ligatures 
  & st & ct & sp  
- & \emph{as} & \emph{is, th, us}
+ & \emph{as} & {\ebg\em es} & \emph{is, th, us}
  & \emph{at} & \emph{et} & {\ebg\emph{sk}}& \emph{ll} & \emph{\uselig{ij}, st, ta}\\
 Sample words with these ligatures
  & stay & act & spy 
- & \emph{was} & \emph{\uselig{isthmus}} & \emph{cat} & \emph{net} 
+ & \emph{was} & {\ebg\em sees}& \emph{\uselig{isthmus}} & \emph{cat} & \emph{net} 
  & {\ebg\emph{ask}} & \emph{ill} & \emph{rijsttafel}\\
 \end{tabular}
 

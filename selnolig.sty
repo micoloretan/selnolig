@@ -13,21 +13,22 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.254}
-\def\selnoligpackagedate{2013/08/08}
+\def\selnoligpackageversion{0.255}
+\def\selnoligpackagedate{2013/08/25}
 
-% Announce who we are. Issue warning message if we're
-% not running under LuaLaTeX.
+% Announce who we are. 
 
 \typeout{=== Package \selnoligpackagename, 
              Version \selnoligpackageversion, 
              Date    \selnoligpackagedate\space ===}
 \ProvidesPackage{selnolig}[\selnoligpackagedate]
 
-\RequirePackage{ifluatex}
 
+% Issue warning message if not running under LuaLaTeX.
+
+\RequirePackage{ifluatex}
 \ifluatex
-  \RequirePackage{luatexbase,luacode,expl3}
+  \RequirePackage{luatexbase}
 \else
   \typeout{ ======================================= }
   \typeout{      WARNING   WARNING    WARNING       }
@@ -101,19 +102,23 @@
 % Among them are the "standard five" (ff, fi, fl, ffi,
 % and ffl) ligatures as well as the ft ligature.
 %
-% Two options to override this "basic" setting:
-% - broadf  Many more non-ligation rules for f-ligatures,
-%            incl. fb, fh, fj, and fk character pairs.
+% Two options to augment the "basic" setting:
+% - broadf   More non-ligation rules for f-ligatures
 % - hdlig    Additional ligature suppression rules for 
 %            'historic' and/or 'discretionary' ligatures, 
 %            e.g., ct, sp, st, sk, th, as, is, us, fr, 
-%            ll, et, at, and ta.
+%            ll, et, at, and ta
 
 \newif\if@broadfset\@broadfsetfalse
 \DeclareOption{broadf}{\@broadfsettrue}
 
 \newif\if@hdligset\@hdligsetfalse 
 \DeclareOption{hdlig}{\@hdligsettrue}
+
+% The 'basic' option automatically sets the preceding 
+% Booleans to 'false'. 
+
+\DeclareOption{basic}{\@broadfsetfalse\@hdligsetfalse}
 
 
 % The package also provides hyphenation exception 
@@ -126,15 +131,9 @@
 \DeclareOption{noadditionalhyphenationpatterns}{\@addlhyphfalse}
 
 
-% The 'basic' option automatically sets the preceding 
-% Booleans to 'false', even if historic and/or rare 
-% ligatures are enabled
-
-\DeclareOption{basic}{\@broadfsetfalse\@hdligsetfalse}
-
 
 % The option 'noftligs' serves to suppress ft and fft
-% ligatures *globally*; default value: 'false'.
+% ligatures *globally*. Default value: 'false'.
 
 \newif\if@noftligs\@noftligsfalse
 \DeclareOption{noftligs}{\@noftligstrue}
@@ -151,9 +150,11 @@
 % Finally, process all options
 \ProcessOptions\relax
 
+
 \if@noftligs{% % suppress ft and fft ligatures globally
   \AtBeginDocument{ \nolig{ft}{f|t} }
 \fi
+
 
 
 % Part 2: Load the lua code and set up the user macros
@@ -176,8 +177,11 @@
   \selnoligon
   
   
-  % Record operations of selnolig package to the log 
-  % file: Enabled via '\debugon' command
+  % Recording operations of selnolig package to the log 
+  % file is enabled via the '\debugon' command. 
+  % Note: the default value of 'debug' (set in 
+  %    'selnolig.lua') is 'false'. To turn off logging 
+  % of selnolig's activity, use the command \debugoff.
   \newcommand\debugon{%
      \directlua{ debug=true }
   }
@@ -202,46 +206,45 @@
      }
   }
 
-  % A third user macro turns ligature suppression
-  % off temporarily:
+  % A third user macro turns ligature suppression off
+  % temporarily:
   \newcommand\uselig[1]{%
     \directlua{ enable_suppression(false) }%
     \mbox{#1}%
     \directlua{ enable_suppression(true) }%
   }
 
+  % A fourth user macro: '\breaklig'. This is  
+  % hopefully easier to remember than having to 
+  % type "\-\hspace{0pt}".
+
+  \newcommand{\breaklig}{\-{\hspace{0pt}}}
+
 
 \else
   % If *not* running under LuaLaTeX, provide dummy
-  % definitions for package's user macros.
+  % definitions for package's four main user macros
+  % as well as for the auxilliary macros \selnoligon,
+  % \selnoligoff, \debugon, and \debugoff.
   \newcommand{\nolig}[2]{}
   \newcommand{\keeplig}[1]{}
   \newcommand{\uselig}[1]{\mbox{#1}}
+  \newcommand{\breaklig}{\-{\hspace{0pt}}} 
   \let\selnoligon\relax
   \let\selnoligoff\relax
   \let\debugon\relax
   \let\debugoff\relax
+
 \fi
-
-
-% A fourth user macro: '\breaklig'. This is hopefully 
-% easier to remember than having to type "\-\hspace{0pt}".
-% (It's defined outside the \ifluatex conditional since
-% it doesn't use any lua code.)
-
-\newcommand\breaklig{\-{\hspace{0pt}}}
 
 
 % Part 3: What to do if the 'english' option is set
 % -------------------------------------------------
 
 \if@english
-   % load English-language ligature suppression rules
-   \ifluatex
+   \ifluatex % English ligature suppression rules
       \RequirePackage{selnolig-english-patterns}
    \fi
-
-   % load additional hyphenation exception patterns
    \if@addlhyph
       \RequirePackage{selnolig-english-hyphex}
    \fi
@@ -252,12 +255,9 @@
 % -------------------------------------------------
 
 \if@german
-   % load German-language ligature suppression rules
-   \ifluatex
+   \ifluatex % German ligature suppression rules
       \RequirePackage{selnolig-german-patterns}
    \fi
-
-   % load additional hyphenation exception patterns
    \if@addlhyph
       \RequirePackage{selnolig-german-hyphex}
    \fi
