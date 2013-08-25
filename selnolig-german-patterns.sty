@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2013/08/25]
+[2013/08/26]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -161,6 +161,8 @@
   % Totenkopffahne Dorffahne Wahlkampffahnen
 \nolig{ffahr}{f|fahr}
   % Schifffahrt Schleiffahrt Tariffahrplan
+  \keeplig{iffahrt} 
+    % Schiffahrt [alte Rechtschreibung...]
 \nolig{ffähr}{f|fähr}
   % Dampffährdienst
 \nolig{ffaktor}{f|faktor}
@@ -1000,6 +1002,10 @@
   \keeplig{huffleb} % shuffleboard
 \nolig{flehn}{f|lehn}
   % steiflehnig
+  \keeplig{nflehn} % anflehn dahinflehn
+      % Seelenflehn (Faust I)
+  \keeplig{rflehn} % erflehn Schwesterflehn
+  \keeplig{Hoflehn} % Hof[f]flehner (arch.)
 \nolig{flehr}{f|lehr}
   % Dorflehrer Eislauflehrerin
 \nolig{fleiden}{f|leiden}
@@ -1021,7 +1027,7 @@
   % Schenkelklopflektüre
 \nolig{fler}{f|ler}
   % Freiberufler Löffler Büffler Schnüffler Höfler
-  \keeplig{Hoefler} % a famous font designer!
+  \keeplig{Hoefler} % famous American font designer
 \nolig{fleut}{f|leut}
   % Hofleute Kaufleute
 
@@ -1074,10 +1080,12 @@
 \nolig{flohn}{f|lohn}
   % Tariflohn Tieflohnland
   \keeplig{flohnetz} % Wasserflohnetz
+  \keeplig{ntflohn}  % entflohn (Faust I)
 \nolig{flöhn}{f|löhn}
   % Tariflöhne
 \nolig{flok}{f|lok}
-  % Dampflokomotive
+  % Dampflokomotive dampflokartig
+  % Dorflokal Trefflokal 
 \nolig{flord}{f|lord}
   % Wolflord
 \nolig{flösch}{f|lösch}
@@ -1304,9 +1312,6 @@
 \nolig{Stoffl}{Stoff|l}
 \nolig{stoffl}{stoff|l}
   % lots of words...
-\nolig{Treffl}{Treff|l}
-\nolig{treffl}{treff|l}
-  % Trefflokal
 
 \nolig{afflu}{aff|lu}
   % Gafflust
