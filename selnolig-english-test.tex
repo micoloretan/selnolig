@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/08/26
+% Date: 2013/08/28
 
 % Check first that we're running Lua(La)TeX.
 \usepackage{ifluatex}
@@ -32,33 +32,40 @@
      Ligatures={TeX,Common,Rare},
      Numbers  = OldStyle}
 
-\setmainfont[ FeatureFile= gpp-ft.fea,
-              ItalicFont = {Garamond Premier Pro Italic},
-              BoldItalicFont = {Garamond Premier Pro Italic},
-              BoldFont   = {Garamond Premier Pro}]
+\setmainfont[ 
+    FeatureFile    = gpp-ft.fea,
+    ItalicFont     = {Garamond Premier Pro Italic},
+    BoldItalicFont = {Garamond Premier Pro Italic},
+    BoldFont       = {Garamond Premier Pro}]
     {Garamond Premier Pro}
 
 \setmonofont[Scale=MatchLowercase,
              Ligatures=NoCommon]
             {Consolas}
 
-\newfontfamily\ebg[ 
-    Ligatures = {TeX,Common,Rare,Historic},
-    ItalicFont = {EB Garamond 12 Italic}]
+\newfontfamily\ebg[ Scale = MatchLowercase,
+    Ligatures      = {TeX,Common,Rare,Historic},
+    ItalicFont     = {EB Garamond 12 Italic},
+    ItalicFeatures = {Scale = MatchLowercase}]
     {EB Garamond 12 Regular}
 
 \usepackage[document]{ragged2e}
 \usepackage{babel}
-\usepackage[hdlig,broadf]{selnolig}
+\usepackage[broadf,hdlig]{selnolig}
+\debugon
+
+\usepackage{sectsty}
+  \allsectionsfont{\mdseries}
 
 \usepackage{showhyphens}
-\debugon
 
 \setlength\parindent{0pt}
 \parskip=0.3\baselineskip
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
-\title{selnolig-english-test\\ (Package version: \selnoligpackageversion; \selnoligpackagedate)}
+\title{selnolig: List of English test words\\ 
+(Package version: \selnoligpackageversion \quad
+\selnoligpackagedate)}
 \author{\null}
 \date{}
 
@@ -86,8 +93,8 @@ Appearance of ``discretionary'' (``rare'') ligatures
  & \emph{at} & \emph{et} & {\ebg\emph{sk}}& \emph{ll} & \emph{\uselig{ij}, st, ta}\\
 Sample words with these ligatures
  & stay & act & spy 
- & \emph{was} & {\ebg\em sees}& \emph{\uselig{isthmus}} & \emph{cat} & \emph{net} 
- & {\ebg\emph{ask}} & \emph{ill} & \emph{rijsttafel}\\
+ & \emph{was} & {\ebg\em sees}& \emph{is\kern0ptthmus} & \emph{cat} & \emph{net} 
+ & {\ebg\em ask} & \emph{ill} & \emph{rijsttafel}\\
 \end{tabular}
 
 
