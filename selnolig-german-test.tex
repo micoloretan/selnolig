@@ -7,7 +7,7 @@
 % of test words is in 'selnolig-german-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/08/28
+% Date: 2013/09/10
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -26,16 +26,18 @@
    Ligatures={TeX,Common},
    Numbers  = OldStyle}
 \setmainfont{EB Garamond 12 Regular}
-\newfontfamily\ebg{EB Garamond 12 Regular}
 
 \usepackage[document]{ragged2e}
 \setlength\parindent{0pt}
 \parskip=0.3\baselineskip
 
 \usepackage{babel}
-\usepackage{selnolig}
+
+\usepackage[zwnj]{selnolig}
+\debugon
 
 \usepackage{showhyphens}
+
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
 \title{selnolig: List of German test words\\ 

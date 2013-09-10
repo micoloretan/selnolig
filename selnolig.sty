@@ -13,8 +13,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.257}
-\def\selnoligpackagedate{2013/08/28}
+\def\selnoligpackageversion{0.259}
+\def\selnoligpackagedate{2013/09/10}
 
 % Announce who we are. 
 
@@ -139,6 +139,9 @@
 \DeclareOption{noftligs}{\@noftligstrue}
 
 
+\newif\if@zwnj\@zwnjfalse
+\DeclareOption{zwnj}{\@zwnjtrue}
+
 % Finally, an option to set most language-related 
 % Boolean variables (other than '@addlhyph') to 
 % 'true' simultaneously.
@@ -153,6 +156,10 @@
 
 \if@noftligs{% % suppress ft and fft ligatures globally
   \AtBeginDocument{ \nolig{ft}{f|t} }
+\fi
+
+\if@zwnj{%
+  \AtBeginDocument{ \directlua{ zwnj=true } }
 \fi
 
 

@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-english-patterns}%
-[2013/08/28]
+[2013/08/31]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -991,19 +991,17 @@
 % -------------
 
 % The 'ij' ligature seems to have no good 
-% use in English-language words -- incl.
-% words introduced to English from other
-% languages, such as marijuana, gaijin, and 
-% bijou; the 'ij' ligature seems to span 
-% morpheme boundaries in all of these cases. 
-% Hence, we disable this ligature globally. 
-% We do make exceptions for words of Dutch 
-% origin, where the ij ligature does have 
-% legitimate uses.
+% use in English-language words. Hence we 
+% disable it globally. 
+% We do make exceptions for names and words 
+% of Dutch origin. In Dutch, the ij ligature 
+% is in fact quite appropriate...
 
 \nolig{ij}{i|j} 
-  \keeplig{ijs} % rijsttafel (Indonesian dish)
+  \keeplig{ijk} % Eijkhout (author of "TeX by Topic")
   \keeplig{ijn} % de Bruijn
+  \keeplig{ijs} % rijsttafel (Indonesian dish, very
+                % popular in the Netherlands)
   \keeplig{eije}% Meijer
 
 

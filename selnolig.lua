@@ -4,8 +4,8 @@
 -- from a (Lua)LaTeX .sty file.
 --
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
---    (with crucial contributions from Taco Hoekwater, 
---    Patrick Gundlach, and Steffen Hildebrandt)
+--    With crucial contributions from Taco Hoekwater, 
+--    Patrick Gundlach, and Steffen Hildebrandt.
 --
 -- The entire selnolig package is placed under the terms 
 -- of the LaTeX Project Public License, version 1.3 or 
@@ -15,8 +15,8 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.257",
-   date         = "2013/08/28",
+   version      = "0.259",
+   date         = "2013/09/10",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
@@ -24,13 +24,16 @@ selnolig.module = {
 }
 
 debug=false -- default: don't output detailed information
+zwnj =false -- default: don't insert a zwnj (but a "nolig whatsit")
 
 -- Define variables corresponding to various text nodes;
 -- cf. sections 8.1.2 and 8.1.4 of LuaTeX reference guide
 local rule    = node.id('rule')
-local glue    = node.id("glue") --
+local glue    = node.id("glue") 
 local kern    = node.id('kern')
-local glyph   = node.id('glyph') --
+local glyph   = node.id('glyph')
+local typechar= node.subtype('char')
+
 local whatsit = node.id("whatsit") --
 
 local userdefined
@@ -54,6 +57,15 @@ blocknode.type    = 100
 blocknode.user_id = identifier
 
 local suppression_on = true  -- if false, process_ligatures won't do anything
+
+function unicode2utf(c)
+  -- Parameter 'c': hexadecimal unicode code point
+  return unicode.utf8.char(tonumber(c,16))
+end
+
+zwnjnode = node.new("glyph",1)
+zwnjnode.char = unicode2utf("038F") -- 200c
+
 
 local prefix_length = function(word, byte)
   return unicode.utf8.len( string.sub(word,0,byte) )
@@ -114,8 +126,13 @@ function process_ligatures(nodes,tail)
      local last=node.tail(head)
      for curr in node.traverse_id(glyph,head) do
        if ligatures[i]==1 then
-         debug_info("Inserting nolig whatsit before glyph: " ..unicode.utf8.char(curr.char))
-         node.insert_before(hh,curr, node.copy(blocknode))
+         if zwnj then
+           debug_info("Inserting zwnj whatsit before glyph: " ..unicode.utf8.char(curr.char))
+           node.insert_before(hh, curr, node.copy(zwnjnode) )
+         else
+           debug_info("Inserting nolig whatsit before glyph: " ..unicode.utf8.char(curr.char))
+           node.insert_before(hh, curr, node.copy(blocknode) )
+         end
          hh=curr
        end
        last=curr
