@@ -13,8 +13,8 @@
 % ---------------------
 
 \def\selnoligpackagename{selnolig}
-\def\selnoligpackageversion{0.259}
-\def\selnoligpackagedate{2013/09/10}
+\def\selnoligpackageversion{0.260}
+\def\selnoligpackagedate{2013/09/21}
 
 % Announce who we are. 
 
@@ -131,7 +131,6 @@
 \DeclareOption{noadditionalhyphenationpatterns}{\@addlhyphfalse}
 
 
-
 % The option 'noftligs' serves to suppress ft and fft
 % ligatures *globally*. Default value: 'false'.
 
@@ -139,8 +138,14 @@
 \DeclareOption{noftligs}{\@noftligstrue}
 
 
+% The option 'zwnj' (synonym: ZWNJ) directs selnolig
+% to use the unicode character x200C (aka ZERO WIDTH
+% NO JOiNER) as the item to break up ligatures.
+
 \newif\if@zwnj\@zwnjfalse
 \DeclareOption{zwnj}{\@zwnjtrue}
+\DeclareOption{ZWNJ}{\@zwnjtrue}
+
 
 % Finally, an option to set most language-related 
 % Boolean variables (other than '@addlhyph') to 
@@ -154,12 +159,12 @@
 \ProcessOptions\relax
 
 
-\if@noftligs{% % suppress ft and fft ligatures globally
+\if@noftligs % suppress ft and fft ligatures globally
   \AtBeginDocument{ \nolig{ft}{f|t} }
 \fi
 
-\if@zwnj{%
-  \AtBeginDocument{ \directlua{ zwnj=true } }
+\if@zwnj%
+  \directlua{ zwnj=true }
 \fi
 
 
@@ -223,10 +228,14 @@
 
   % A fourth user macro: '\breaklig'. This is  
   % hopefully easier to remember than having to 
-  % type "\-\hspace{0pt}".
-
-  \newcommand{\breaklig}{\-{\hspace{0pt}}}
-
+  % type "\-\hspace{0pt}". If the zwnj option is
+  % enabled, insert a ZWNJ character instead.
+  
+  \if@zwnj
+    \newcommand{\breaklig}{\-\char"200C}
+  \else
+    \newcommand{\breaklig}{\-\hspace{0pt}}
+  \fi
 
 \else
   % If *not* running under LuaLaTeX, provide dummy

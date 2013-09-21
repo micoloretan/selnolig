@@ -7,7 +7,7 @@
 % of test words is in 'selnolig-german-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/09/10
+% Date: 2013/09/21
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -23,9 +23,10 @@
 
 \usepackage{fontspec}
 \defaultfontfeatures{%
-   Ligatures={TeX,Common},
-   Numbers  = OldStyle}
-\setmainfont{EB Garamond 12 Regular}
+   Ligatures  = {TeX,Common},
+   Contextuals= Alternate,
+   Numbers    = OldStyle}
+\setmainfont{EB Garamond}
 
 \usepackage[document]{ragged2e}
 \setlength\parindent{0pt}
@@ -35,8 +36,6 @@
 
 \usepackage[zwnj]{selnolig}
 \debugon
-
-\usepackage{showhyphens}
 
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
@@ -60,4 +59,6 @@ Beispiele
 \begin{multicols}{2}
 \input selnolig-german-wordlist
 \end{multicols}
+
+
 \end{document}

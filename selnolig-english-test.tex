@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/09/10
+% Date: 2013/09/21
 
 % Check first that we're running Lua(La)TeX.
 \usepackage{ifluatex}
@@ -44,20 +44,21 @@
             {Consolas}
 
 \newfontfamily\ebg[ Scale = MatchLowercase,
-    Ligatures      = {TeX,Common,Rare,Historic},
+    Ligatures      = {TeX,Common,Rare,Historic,Contextual},
+    RawFeature = +calt,
     ItalicFont     = {EB Garamond 12 Italic},
     ItalicFeatures = {Scale = MatchLowercase}]
-    {EB Garamond 12 Regular}
+    {EB Garamond}
 
 \usepackage[document]{ragged2e}
 \usepackage{babel}
-\usepackage[broadf,hdlig]{selnolig}
+\usepackage[broadf,hdlig,zwnj]{selnolig}
 \debugon
 
 \usepackage{sectsty}
   \allsectionsfont{\mdseries}
 
-\usepackage{showhyphens}
+%\usepackage{showhyphens}
 
 \setlength\parindent{0pt}
 \parskip=0.3\baselineskip
@@ -113,4 +114,6 @@ Package options and other parameters:\\
 \begin{multicols}{2}
 \input selnolig-english-wordlist
 \end{multicols}
+
+
 \end{document}

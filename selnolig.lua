@@ -15,16 +15,13 @@
 selnolig = { }
 selnolig.module = {
    name         = "selnolig",
-   version      = "0.259",
-   date         = "2013/09/10",
+   version      = "0.260",
+   date         = "2013/09/21",
    description  = "Selective suppression of typographic ligatures",
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
    license      = "LPPL 1.3 or later"
 }
-
-debug=false -- default: don't output detailed information
-zwnj =false -- default: don't insert a zwnj (but a "nolig whatsit")
 
 -- Define variables corresponding to various text nodes;
 -- cf. sections 8.1.2 and 8.1.4 of LuaTeX reference guide
@@ -32,19 +29,31 @@ local rule    = node.id('rule')
 local glue    = node.id("glue") 
 local kern    = node.id('kern')
 local glyph   = node.id('glyph')
-local typechar= node.subtype('char')
 
+debug=false -- default: don't output detailed information
+zwnj =true -- default: don't use zwnj method
+
+
+-- Define the "blocknodes"
+-- 1st blocknode type: whatsit of type "userdefined"
 local whatsit = node.id("whatsit") --
-
 local userdefined
-
 for n,v in pairs ( node.whatsits() ) do
   if v == 'user_defined' then userdefined = n end
 end
-
 local identifier = 123456  -- any unique identifier
-local noliga={}
-local keepliga={}          -- String -> Boolean
+local blocknode   = node.new(whatsit, userdefined)
+blocknode.type    = 100
+blocknode.user_id = identifier
+
+-- second type of blocknode: a ZWNJ character
+local zwnjnode = node.new(glyph)
+zwnjnode.char  = 8204 -- hex "200C" = 2*16*16*16+12
+-- Further attributes, such as subtype, font, and lang,
+-- will be assigned later
+
+local noliga   = {}
+local keepliga = {}          -- String -> Boolean
 
 function debug_info(s)
   if debug then
@@ -52,25 +61,12 @@ function debug_info(s)
   end
 end
 
-local blocknode   = node.new(whatsit, userdefined)
-blocknode.type    = 100
-blocknode.user_id = identifier
-
-local suppression_on = true  -- if false, process_ligatures won't do anything
-
-function unicode2utf(c)
-  -- Parameter 'c': hexadecimal unicode code point
-  return unicode.utf8.char(tonumber(c,16))
-end
-
-zwnjnode = node.new("glyph",1)
-zwnjnode.char = unicode2utf("038F") -- 200c
-
+local suppression_on = true  
+  -- if false, process_ligatures won't do anything
 
 local prefix_length = function(word, byte)
   return unicode.utf8.len( string.sub(word,0,byte) )
 end
-
   -- Problem: string.find and unicode.utf8.find return 
   -- the byte-position at which the pattern is found 
   -- instead of the character-position. Fix this by
@@ -94,13 +90,18 @@ local unicode_find = function(s, pattern, position)
   end
 end
 
-function process_ligatures(nodes,tail)
-  if not suppression_on then
-    return -- suppression disabled
-  end
-  
+-- The main function is called 'process_ligatures'
+-- After checking that ligature suppression is to be performed,
+-- two local functions, build_liga_table and apply_ligatures
+-- are set up. The function's work is done in a 'for' loop.
+
+function process_ligatures( nodes )
+  -- don't do anything if suppression_on isn't 'true'
+  if suppression_on then 
+ 
   local s={}
   local current_node=nodes
+
   local build_liga_table =  function(strlen,t)
     local p={}
     for i = 1, strlen do
@@ -120,38 +121,45 @@ function process_ligatures(nodes,tail)
     --debug_info("Liga table: "..table.concat(p, ""))
     return p
   end
-  local apply_ligatures=function(head,ligatures)
-     local i=1
-     local hh=head
-     local last=node.tail(head)
-     for curr in node.traverse_id(glyph,head) do
-       if ligatures[i]==1 then
-         if zwnj then
-           debug_info("Inserting zwnj whatsit before glyph: " ..unicode.utf8.char(curr.char))
-           node.insert_before(hh, curr, node.copy(zwnjnode) )
-         else
-           debug_info("Inserting nolig whatsit before glyph: " ..unicode.utf8.char(curr.char))
-           node.insert_before(hh, curr, node.copy(blocknode) )
-         end
-         hh=curr
-       end
-       last=curr
-       if i==#ligatures then
-         -- debug_info("Leave node list on position: "..i)
-         break
-       end
-       i=i+1
-     end
-     if(last~=nil) then
-       debug_info("Last char: "..unicode.utf8.char(last.char))
-     end
+
+  local apply_ligatures = function(head,ligatures)
+    local i=1
+    local hh=head
+    local last=node.tail(head)
+    for curr in node.traverse_id(glyph,head) do
+      if ligatures[i]==1 then
+        if zwnj then
+          debug_info("Inserting zwnj character before glyph: " 
+            ..unicode.utf8.char(curr.char))
+          zwnjnode.subtype = curr.subtype
+          zwnjnode.font    = curr.font
+          node.insert_before(hh, curr, node.copy(zwnjnode) )
+        else
+          debug_info("Inserting nolig whatsit before glyph: " 
+            ..unicode.utf8.char(curr.char))
+          node.insert_before(hh, curr, node.copy(blocknode) )
+        end
+        hh=curr
+      end
+      last=curr
+      if i==#ligatures then
+        -- debug_info("Leave node list on position: "..i)
+        break
+      end
+      i=i+1
+    end
+    if(last~=nil) then
+      debug_info("Last char: "..unicode.utf8.char(last.char))
+    end
   end
+
+  -- The main loop starts here
   for t in node.traverse(nodes) do
     if t.id==glyph then
       s[#s+1]=unicode.utf8.char(t.char)
     end
-    if ( t.id==glue or t.next==nil or t.id==kern or t.id==rule ) then 
-      local f=string.gsub(table.concat(s,""),"[\\?!,\\.]+","")
+    if (t.id==glue or t.next==nil or t.id==kern or t.id==rule) then 
+      local f=unicode.utf8.gsub(table.concat(s,""),"[\\?!,\\.]+","")
       local throwliga={} 
       for k,v in pairs (noliga) do
         local count=1
@@ -172,7 +180,8 @@ function process_ligatures(nodes,tail)
             local n = match + string.len(k) - 1
             table.insert(throwliga,{prefix_length(f,match),n,k})
           else
-            debug_info("pattern match nolig and keeplig: "..f .." - "..k.." - "..debug_k1)
+            debug_info("pattern match nolig and keeplig: "
+              ..f .." - "..k.." - "..debug_k1)
           end
           match= string.find(f,k,count+1)
         end
@@ -187,8 +196,10 @@ function process_ligatures(nodes,tail)
       s = {}
       current_node = t
     end
-  end
-end -- end of function process_ligatures(nodes,tail)
+  end -- end of main loop
+  end -- end of "if suppression_on"
+return nodes
+end
 
 function suppress_liga(s,t)
   noliga[s] = t
@@ -208,11 +219,10 @@ function enable_suppression(val)
 end
 
 function enableselnolig()
-  luatexbase.add_to_callback( "ligaturing", 
+  luatexbase.add_to_callback( "pre_linebreak_filter", 
     process_ligatures, "Suppress ligatures selectively", 1 )
 end
-
 function disableselnolig()
-  luatexbase.remove_from_callback( "ligaturing", 
+  luatexbase.remove_from_callback( "pre_linebreak_filter",  
     "Suppress ligatures selectively" )
 end

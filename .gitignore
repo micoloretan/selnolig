@@ -38,6 +38,7 @@ x*.*
 *.glg
 *.glo
 *.gls
+*.gv
 *.idx
 *.ilg
 *.ind
