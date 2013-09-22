@@ -221,6 +221,7 @@
   % A third user macro turns ligature suppression off
   % temporarily:
   \newcommand\uselig[1]{%
+    \typeout{Disabling ligature suppression for "#1"}%
     \directlua{ enable_suppression(false) }%
     \mbox{#1}%
     \directlua{ enable_suppression(true) }%

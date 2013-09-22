@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2013/08/31]
+[2013/09/21]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -1253,8 +1253,9 @@
 \nolig{ffixier}{f|fixier}
   % Dampffixiergerät
 
-\nolig{hoffing}{hof|fing}
-  % Bischoffinger
+%%\nolig{hoffing}{hof|fing}
+  % No need to suppress ffi ligature in
+  % Bischoffingen and Bischoffinger!
 
 \nolig{iffind}{if|find}
   % Tariffindung
@@ -1909,6 +1910,7 @@
   \keeplig{Shirafkan}
   \keeplig{Tirafkan}
   \keeplig{Selfkant}
+  \keeplig{Rifkin}
 
 
 % 10. fj -> f-j

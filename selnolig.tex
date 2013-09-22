@@ -42,11 +42,10 @@
 
 \setmonofont[Ligatures = NoCommon,
              Scale=0.81]{Consolas}
-             %Scale=MatchLowercase,
-             %StylisticSet={1,3}]{Inconsolatazi4}
 
 \newfontfamily\ebg[ Numbers = OldStyle,
-     Ligatures  = {TeX, Common, Discretionary, Historic},
+     Ligatures   = {TeX,Common,Discretionary,Historic},
+     Contextuals = Alternate,
      ItalicFeatures = {Scale = MatchLowercase},
      ItalicFont = {EB Garamond 12 Italic}]
      {EB Garamond 12 Regular}
@@ -71,6 +70,7 @@
 \usepackage[ngerman,english]{babel}
 
 \usepackage[ngerman,english,hdlig,broadf,zwnj]{selnolig}
+\debugon
 
 % Suppress st ligatures for German words that
 % occur in this user guide.
@@ -157,7 +157,7 @@
 
 % Some frequently-used commands in this document:
 \newcommand{\pkg}[1]{\textsf{#1}}
-\newcommand{\opt}[1]{\texttt{#1}}
+\newcommand{\opt}[1]{\uselig{\texttt{#1}}}
 \newcommand{\cmmd}[1]{\texttt{\textbackslash #1}}
 
 \newcommand\utf{\textsc{utf-8}}
@@ -189,7 +189,7 @@
 Selective suppression of typographic ligatures\thanks{ 
 Current version: \selnoligpackageversion. Features of the \pkg{selnolig} package are subject to change without prior notice. 
 \newline\hspace*{\parindent}
-The main text font used in this document is Garamond Premier Pro. {\ebg EB Garamond} is used for words that use the {\ebg fb, fh, fj, fk, ffb, ffh, ffj, ffk, \emph{es}, and \emph{sk}} ligatures. \enquote{Common}, \enquote{discretionary}, and \enquote{historic} typographic ligatures are enabled for these text fonts\textemdash \emph{and} are suppressed selectively using the rules of the \pkg{selnolig} package.} }
+The main text font family used in this document is Garamond Premier Pro. The font family {\ebg EB Garamond} is used for words that use the {\ebg \uselig{fb}, \uselig{fh}, \uselig{fj}, \uselig{fk}, \uselig{ffb}, \uselig{ffh}, \uselig{ffj}, \uselig{ffk}, \emph{es}}, and {\ebg\emph{sk}} ligatures. \enquote{Common}, \enquote{discretionary}, and \enquote{historic} typographic ligatures are enabled for these  fonts\textemdash \emph{and} are suppressed selectively using the rules of the \pkg{selnolig} package.} }
 
 \author{Mico Loretan\thanks{
 \href{mailto:loretan.mico@gmail.com}{loretan dot mico at gmail dot com}.}}
@@ -200,9 +200,8 @@ The main text font used in this document is Garamond Premier Pro. {\ebg EB Garam
 \VerbatimFootnotes
 \pagenumbering{roman}
 
-\selnoligoff
 \maketitle
-\selnoligon
+
 
 \begin{abstract}
 
@@ -299,7 +298,7 @@ If you've been using pdf\LaTeX\ until now, the requirement to use \LuaLaTeX\ wil
 The two most important changes you'll need to make are: 
 \begin{enumerate}
 \item Do not load either the |inputenc| or the |fontenc| package. 
-\item Be sure to load the |fontspec| package,\footnote{If the \pkg{selnolig} package is run under \LuaLaTeX\ but the \pkg{fontspec} package isn't loaded by the time the \Verb+\begin{document}+ statement is encountered, \pkg{selnolig} will terminate with an error message.} and use \cmmd{setmainfont}, \cmmd{setsansfont}, and related commands to load the fonts you wish to use.
+\item Be sure to load the |fontspec| package,\footnote{If the \pkg{selnolig} package is run under \LuaLaTeX\ but the \pkg{fontspec} package isn't loaded by the time the \Verb+\begin{document}+ statement is encountered, \pkg{selnolig} will terminate with an error message.} and use the commands \cmmd{setmainfont}, \cmmd{setsansfont}, etc.\ to load the fonts you wish to use.
 \end{enumerate}
 \endgroup
 
@@ -821,7 +820,7 @@ Do be on the lookout for cases of persons' names which include the string |eta| 
 
 \subsection{Known bugs}
 
-I'm not sure if the following constitutes a bug or \enquote{merely} a case of incompatibility between  \LaTeX\ packages. The \pkg{selnolig} package does not interact well with the \LaTeX\ packages \pkg{ngerman} and \pkg{german}. Fortunately, the \pkg{selnolig} package \emph{does} interact nicely with the \pkg{babel} package if one of the options \opt{ngerman}, \opt{german}, \opt{austrian}, \opt{naustrian}, \opt{swissgerman}, or \opt{swiss} is set. Unless someone can convince me that using the \pkg{ngerman} or \pkg{german} packages is preferable to using the \pkg{babel} package, I probably won't bother addressing this incompatibility.
+I'm not sure if the following constitutes a bug or \enquote{merely} a case of incompatibility between  \LaTeX\ packages. The \pkg{selnolig} package does not interact well with the \LaTeX\ packages \pkg{ngerman} and \pkg{german}. Fortunately, the \pkg{selnolig} package \emph{does} interact nicely with the \pkg{babel} package if one of the options \opt{ngerman}, \opt{german}, \opt{austrian}, \opt{naustrian}, \opt{swissgerman}, or \opt{swiss} is set. Unless someone can convince me that using the \pkg{ngerman} or \pkg{german} packages is preferable to using the \pkg{babel} package (with language options \opt{ngerman} and \opt{german}, respectively, I probably won't bother addressing this incompatibility.
 
 
 
@@ -831,7 +830,7 @@ I'm not sure if the following constitutes a bug or \enquote{merely} a case of in
 
 The German-language hyphenation exception list is currently still the shorter of the two. The German word list is shorter in part because it is assumed that writers of German-language documents use the \pkg{babel} package and select the option \opt{ngerman} (or one of the synonymous language options); doing so also loads specialized hyphenation patterns suitable for German texts.\footnote{As was already noted earlier, the \pkg{selnolig} package is also compatible with the \pkg{hyphsubst} and \pkg{polyglossia} packages.} 
 
-It is possible to instruct \pkg{selnolig} \emph{not} to load the package's hyphenation exception lists. You may want to do so, for instance, if you must use UK-English hyphenation patterns and therefore shouln't use the US English-based hyphenation patterns provided by the package. (To the best of my knowledge, most of the hyphenation patterns employed in \pkg{selnolig-english-hyphex.sty} are common to UK and US English.) To skip loading the additional hyphenation patterns when invoking the \pkg{selnolig} package, you should specify the option \opt{noadditional\-hyphen\-a\-tion\-patterns}. (I am obviously not trying to make it too easy to invoke this option~\dots)
+It is possible to instruct \pkg{selnolig} \emph{not} to load the package's hyphenation exception lists. You may want to do so, for instance, if you must use UK-English hyphenation patterns and therefore shouln't use the US English-based hyphenation patterns provided by the package. (To the best of my knowledge, most of the hyphenation patterns employed in \pkg{selnolig-english-hyphex.sty} are common to UK and US English.) To skip loading the additional hyphenation patterns when invoking the \pkg{selnolig} package, you should specify the option \opt{noadditional\-hyphen\-a\-tion\-patterns}.\footnote{I am obviously not trying to make it too easy to invoke this option~\dots}
 
 As was already noted in \cref{sec:anythingelse}, if you use the \pkg{babel} package with, say, the \opt{ngerman} option, be sure to load \pkg{selnolig} package \emph{after} the \pkg{babel} package. That way, the \pkg{selnolig} package's additional hyphenation exception patterns won't be overridden by \pkg{babel}'s settings.
 
@@ -1002,9 +1001,11 @@ Introductory note: To accommodate the practice of Swiss-German writers of not us
 \selnoligon
 \section{A small-scale case study: f-ligatures suppressed in selected English and German pieces of literature} \label{sec:budd}
 
-As noted in the introduction, the suppression of ligatures that cross morpheme boundaries is generally not considered to be an urgent typographical priority in English language documents, possibly because words with ligatures that cross morpheme boundaries aren't used particularly frequently. I performed a quick\textemdash and statistically certainly entirely unrepresentative\textemdash check of this conjecture by typesetting three novels by Charles Dickens (\emph{\ebg David Copperfield}, \emph{\ebg Bleak House}, and \emph{\ebg Nicholas Nickleby}), two novels by Jack London (\emph{\ebg Call of the Wild} and \emph{\ebg The Sea Wolf}), and Charles Darwin's \emph{\ebg Origin of Species} with \pkg{selnolig}, with the package set to capture only \enquote{basic} f-ligatures. The outcome:
+As noted in the introduction, the suppression of ligatures that cross morpheme boundaries is generally not considered to be an urgent typographical priority in English language documents, possibly because words with ligatures that cross morpheme boundaries aren't used particularly frequently. I performed a quick\textemdash and statistically certainly entirely unrepresentative\textemdash check of this conjecture by typesetting three novels by Charles Dickens (\emph{David Copperfield}, \emph{Bleak House}, and \emph{Nicholas Nickleby}), two novels by Jack London (\emph{Call of the Wild} and \emph{The Sea Wolf}), and Charles Darwin's \emph{Origin of Species} with \pkg{selnolig}, with the package set to capture only \enquote{basic} f-ligatures. The outcome:
 
-{\ebg\RaggedRight 
+{\ebg \addfontfeature{Contextuals=Alternate}
+\RaggedRight 
+
 \smallskip\noindent 
 \begin{tabularx}{\textwidth}{@{}llX@{}}
 \toprule
@@ -1283,7 +1284,7 @@ And here are the analogous compilations for Johann Wolfgang Goethe's \emph{Faust
 \toprule
 f-lig.\ & Words for which the f-ligatures are suppressed by \pkg{selnolig}'s rules\\
 \midrule
-\multicolumn{2}{@{}l@{}}{\emph{Faust I} (30 words total)}\\
+\multicolumn{2}{@{}l@{}}{\emph{Fau\breaklig s\breaklig t I} (30 words total)}\\
 \uselig{fb}\phantom{, \uselig{ffb}} &
 aufbewahrt,
 aufbindend,
@@ -1310,7 +1311,7 @@ trefflichen,
 trefflicher\\
 ft & 
 Auftrag\\[1ex]
-\multicolumn{2}{@{}l@{}}{\emph{Faust II} (31 words total)}\\
+\multicolumn{2}{@{}l@{}}{\emph{Fau\breaklig s\breaklig t II} (31 words total)}\\
 \uselig{fb} &
 Aufbau,
 aufbewahrt,

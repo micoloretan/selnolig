@@ -3,9 +3,10 @@
 --    \directlua{  require("selnolig.lua")  }
 -- from a (Lua)LaTeX .sty file.
 --
--- Author: Mico Loretan (loretan dot mico at gmail dot com)
---    With crucial contributions from Taco Hoekwater, 
---    Patrick Gundlach, and Steffen Hildebrandt.
+-- Author: Mico Loretan (loretan dot mico at gmail dot 
+-- com), with crucial contributions from Taco Hoekwater, 
+-- Patrick Gundlach, Steffen Hildebrandt, and Khaled
+-- Hosny.
 --
 -- The entire selnolig package is placed under the terms 
 -- of the LaTeX Project Public License, version 1.3 or 
@@ -31,11 +32,11 @@ local kern    = node.id('kern')
 local glyph   = node.id('glyph')
 
 debug=false -- default: don't output detailed information
-zwnj =true -- default: don't use zwnj method
+zwnj =true  -- default: use zwnj method
 
 
--- Define the "blocknodes"
--- 1st blocknode type: whatsit of type "userdefined"
+-- Define two types of "blocknodes"
+-- 1st type: whatsit of type "userdefined"
 local whatsit = node.id("whatsit") --
 local userdefined
 for n,v in pairs ( node.whatsits() ) do
@@ -48,9 +49,9 @@ blocknode.user_id = identifier
 
 -- second type of blocknode: a ZWNJ character
 local zwnjnode = node.new(glyph)
-zwnjnode.char  = 8204 -- hex "200C" = 2*16*16*16+12
--- Further attributes, such as subtype, font, and lang,
--- will be assigned later
+zwnjnode.char  = 8204 -- hex "200C"
+-- Further attributes of this node, such as subtype, 
+-- font, and lang, will be assigned later.
 
 local noliga   = {}
 local keepliga = {}          -- String -> Boolean
@@ -77,13 +78,13 @@ local unicode_find = function(s, pattern, position)
   if position ~= nil then
     -- debug_info("Position: "..position)
     sub = string.sub(s, 1, position)
-    position=position+string.len(sub) - unicode.utf8.len(sub)
+    position = position + string.len(sub) - unicode.utf8.len(sub)
     -- debug_info("Corrected position: "..position)
   end
   -- Now execute find and fix it accordingly
   byte_pos = unicode.utf8.find(s, pattern, position)
   if byte_pos ~= nil then
-    -- "convert" byte_pos to "unicode_pos"
+    -- convert from "byte_pos" to "unicode_pos"
     return unicode.utf8.len( string.sub(s, 1, byte_pos) )
   else
     return nil
@@ -91,9 +92,10 @@ local unicode_find = function(s, pattern, position)
 end
 
 -- The main function is called 'process_ligatures'
--- After checking that ligature suppression is to be performed,
--- two local functions, build_liga_table and apply_ligatures
--- are set up. The function's work is done in a 'for' loop.
+-- After checking that ligature suppression is to be 
+-- performed, two local functions, build_liga_table and 
+-- apply_ligatures are set up. The function's work is 
+-- done in a 'for' loop.
 
 function process_ligatures( nodes )
   -- don't do anything if suppression_on isn't 'true'
@@ -129,15 +131,15 @@ function process_ligatures( nodes )
     for curr in node.traverse_id(glyph,head) do
       if ligatures[i]==1 then
         if zwnj then
-          debug_info("Inserting zwnj character before glyph: " 
+          debug_info("Inserting zwnj char. before glyph: " 
             ..unicode.utf8.char(curr.char))
           zwnjnode.subtype = curr.subtype
           zwnjnode.font    = curr.font
-          node.insert_before(hh, curr, node.copy(zwnjnode) )
+          node.insert_before(hh,curr,node.copy(zwnjnode))
         else
-          debug_info("Inserting nolig whatsit before glyph: " 
+          debug_info("Inserting whatsit before glyph: " 
             ..unicode.utf8.char(curr.char))
-          node.insert_before(hh, curr, node.copy(blocknode) )
+          node.insert_before(hh,curr,node.copy(blocknode))
         end
         hh=curr
       end
@@ -158,7 +160,7 @@ function process_ligatures( nodes )
     if t.id==glyph then
       s[#s+1]=unicode.utf8.char(t.char)
     end
-    if (t.id==glue or t.next==nil or t.id==kern or t.id==rule) then 
+    if (t.id==glue or t.id==kern or t.id==rule or t.next==nil) then 
       local f=unicode.utf8.gsub(table.concat(s,""),"[\\?!,\\.]+","")
       local throwliga={} 
       for k,v in pairs (noliga) do
@@ -211,11 +213,11 @@ end
 
 function enable_suppression(val)
   suppression_on = val
-  if val then
-    debug_info("Turning ligature suppression back on")
-  else
-    debug_info("Turning ligature suppression off")
-  end
+--  if val then
+--    debug_info("Turning ligature suppression back on")
+--  else
+--    debug_info("Turning ligature suppression off")
+--  end
 end
 
 function enableselnolig()
