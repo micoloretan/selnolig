@@ -38,44 +38,45 @@
 %\fi
 
 \directlua{
-    fonts.handlers.otf.addfeature {
+  fonts.handlers.otf.addfeature {
         name = "norareft",
         type = "substitution",
         data = {
             ["f_t.alt"] = "f_t",
+            ["f_t.alt"] = "f_t",
         }
-    }
+  }
 }
 
-\setmainfont[%FeatureFile= gpp-ft.fea,
-             Path = /Library/Fonts/,
-             RawFeature=+norareft,
-             Numbers    = OldStyle,
-             Ligatures  = {TeX, Common, Rare},
-             BoldFont   = {GaramondPremrPro-Smbd.otf},
-             ItalicFont = {GaramondPremrPro-It.otf}]
-             {GaramondPremrPro.otf}
+\setmainfont[Path = /Users/mico/Library/Fonts/,
+   RawFeature = +norareft,
+   Numbers    = OldStyle,
+   Ligatures  = {TeX, Common, Rare},
+   BoldFont   = {Garamond-Premier-Pro-Semibold_19593.ttf},
+   ItalicFont = {Garamond-Premier-Pro-Italic_19575.ttf}]
+  {Garamond-Premier-Pro_19595.ttf}
 
 \setsansfont[Scale=MatchLowercase,
-             Ligatures = NoCommon]
-            {Myriad Pro}
+   Ligatures = NoCommon]
+  {Myriad Pro}
 
 \setmonofont[Scale=0.81,
-             Ligatures = NoCommon]
-            {Consolas}
+   Ligatures = NoCommon]
+  {Consolas}
 
-\newfontfamily\ebg[ Numbers = OldStyle,
-     Ligatures  = {TeX, Common, Discretionary, Historic},
-     ItalicFeatures = {Scale = MatchLowercase},
-     ItalicFont = {EB Garamond 12 Italic}]
-     {EB Garamond 12 Regular}
+\newfontfamily\ebg[Path = /Users/mico/Library/Fonts/,
+   Numbers = OldStyle,
+   Ligatures  = {TeX, Common, Discretionary, Historic},
+   ItalicFeatures = {Scale = MatchLowercase},
+   ItalicFont = {EBGaramond12-Italic.otf}]
+  {EBGaramond12-Regular.otf}
 
 \newfontfamily\sabon[Ligatures={Common,Rare,TeX},
-     Scale=MatchLowercase]
-     {Sabon Next LT Pro}
+   Scale=MatchLowercase]
+  {Sabon Next LT Pro}
 
 \newfontfamily\blackletter[Ligatures=NoCommon]
-     {UnifrakturMaguntia}
+  {UnifrakturMaguntia}
      
 
 
@@ -124,7 +125,7 @@
   \keeplig{ffingrig} 
   \keeplig{ffinger}
 
-\nolig{tzeit}{t|zeit} % for Fraktur example in section 6
+\nolig{tzeit}{t|zeit} % for Fraktur ex. in section 6
 
 \hyphenation{charles-town}
 % provide some German hyphenation patterns for ...
@@ -135,7 +136,6 @@
    schlaf-lo-sig-keit ver-werf-li-che}
    
 \debugon
-
 
 % Load still a few more packages...
 \usepackage{microtype}
@@ -200,9 +200,9 @@
 % \selnoligpackageversion, and \selnoligpackagedate 
 % used below are defined in 'selnolig.sty'.
 
-\title{The \selnoligpackagename\ package: \\
-Selective suppression of typographic ligatures\thanks{ 
-Current version: \selnoligpackageversion. Features of the \pkg{selnolig} package are subject to change without prior notice. 
+\title{The \pkg{\selnoligpackagename} package: \\
+Selective suppression of typographic ligatures%
+\thanks{Current version: \selnoligpackageversion. Features of the \pkg{selnolig} package are subject to change without prior notice. 
 \newline\hspace*{\parindent}
 The main text font used in this document is Garamond Premier Pro. {\ebg EB Garamond} is used for words that use the {\ebg fb, fh, fj, fk, ffb, ffh, ffj, ffk, \emph{es}, and \emph{sk}} ligatures. \enquote{Common}, \enquote{discretionary}, and \enquote{historic} typographic ligatures are enabled for these text fonts\textemdash \emph{and} are suppressed selectively using the rules of the \pkg{selnolig} package.} }
 
