@@ -1,5 +1,5 @@
 % !TEX TS-program = lualatex
-\documentclass[ngerman,11pt]{article}
+\documentclass[ngerman]{article}
 
 % Test program: Apply the 'selnolig' package, with
 % 'german' language option set, to a list of German words
@@ -7,7 +7,7 @@
 % of test words is in 'selnolig-german-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2013/09/21
+% Date: 2015/10/26
 
 % Check first that we're running lua(la)tex.
 \usepackage{ifluatex}
@@ -23,28 +23,27 @@
 
 \usepackage{fontspec}
 \defaultfontfeatures{%
-   Ligatures  = {TeX,Common},
-   Contextuals= Alternate,
-   Numbers    = OldStyle}
-\setmainfont{EB Garamond}
+   Ligatures={TeX,Common},
+   Numbers  = OldStyle}
+\setmainfont{EB Garamond 12 Regular}
+%\newfontfamily\gpp{Garamond Premier Pro}
+\newfontfamily\ebg{EB Garamond 12 Regular}
 
 \usepackage[document]{ragged2e}
 \setlength\parindent{0pt}
 \parskip=0.3\baselineskip
 
 \usepackage{babel}
+\usepackage{selnolig}
 
-\usepackage[zwnj]{selnolig}
-\debugon
-
+%%%\usepackage{showhyphens}
 \usepackage{multicol}
   \setlength\columnseprule{.4pt}
-\title{selnolig: List of German test words\\ 
-(Package version: \selnoligpackageversion \quad
-\selnoligpackagedate)}
+\title{selnolig-german-test\\ (Package version: \selnoligpackageversion; \selnoligpackagedate)}
 \author{\null}
 \date{}
 \begin{document}
+%\gpp
 \maketitle
 
 \begin{tabular}{@{} *{9}{l} }
@@ -59,6 +58,4 @@ Beispiele
 \begin{multicols}{2}
 \input selnolig-german-wordlist
 \end{multicols}
-
-
 \end{document}

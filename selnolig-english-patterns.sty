@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-english-patterns}%
-[2013/09/21]
+[2015/10/26]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -91,8 +91,9 @@
 
 % (h) ft -> f-t
 
-\if@noftligs  
-\else  % suppress these ligatures selectively...
+\if@noftligs  % suppress ft ligatures globally
+    \nolig{ft}{f|t}
+\else  % suppress ft ligatures selectively...
     \nolig{ieftain}{ief|tain}
     \nolig{alftime}{alf|time}
     \nolig{alftone}{alf|tone}
@@ -211,7 +212,6 @@
 \nolig{dwarfish}{dwarf|ish}
 \nolig{elfish}{elf|ish}
   % elfish selfish unselfish, etc.
-  \keeplig{angelfish}
   \keeplig{amselfish} % damselfish
 
 \nolig{oafish}{oaf|ish}
@@ -475,7 +475,7 @@
 \nolig{Despot}{Des|pot}
   % despot despotic
 
-%%\nolig{spresso}{s|presso}
+\nolig{spresso}{s|presso}
 
   \nolig{despon}{de|spon} 
   \nolig{Despon}{De|spon}
@@ -897,23 +897,31 @@
 \nolig{fist}{fi|st}
 \nolig{Fist}{Fi|st}
 
-\nolig{ish}{i|sh} % many words...
-\nolig{ism}{i|sm} % many words...
-\nolig{iss}{i|ss} % bliss kiss swiss mantissa...
-
 
 % (b) across morpheme boundaries
 
-\nolig{antis}{anti|s}
-\nolig{Antis}{Anti|s}
+%% Mustn't do global \nolig{antis}{anti|s}
+%% because of words such as sycophantism, 
+%% vigilantism, and mantissa.
+
+\nolig{antis[ace]}{anti|s}
+\nolig{Antis[ace]}{Anti|s}
   % antisag antisatellite
   % antiscience 
   % antisecrecy antisense antiseptic
+\nolig{antish[aio]}{anti|sh}
+\nolig{Antish[aio]}{Anti|sh}
   % antishark antiship antishock
+\nolig{antis[kl]}{anti|s}
+\nolig{Antis[kl]}{Anti|s}
   % antiskid
   % antislavery antislip 
+\nolig{antism[ou]}{anti|sm}
+\nolig{Antism[ou]}{Anti|sm}
   % antismog antismoke 
   % antismuggling antismut
+\nolig{antis[noptuy]}{anti|s}
+\nolig{Antis[noptuy]}{Anti|s}
   % antisnob
   % antisocial antisolar
   % antispasmodic antispeculative
@@ -935,7 +943,6 @@
 \nolig{isph}{i|sph}
   % hemisphere planisphere hemispheric
   \keeplig{isphr} % misphrase misphrased ...
-
 
 % (I) us -> u-s
 % -------------
@@ -975,27 +982,25 @@
 
 \nolig{oofr}{oof|r}
   % proofread proofroom proofrock
-\nolig{fframp}{ff|ramp}
-  % offramp
-\nolig{ffrail}{ff|rail}
-  % taffrail
 
 
 % (M) ij -> i-j
 % -------------
 
 % The 'ij' ligature seems to have no good 
-% use in English-language words. Hence we 
-% disable it globally. 
-% We do make exceptions for names and words 
-% of Dutch origin. In Dutch, the ij ligature 
-% is in fact quite appropriate...
+% use in English-language words -- incl.
+% words introduced to English from other
+% languages, such as marijuana, gaijin, and 
+% bijou; the 'ij' ligature seems to span 
+% morpheme boundaries in all of these cases. 
+% Hence, we disable this ligature globally. 
+% We do make exceptions for words of Dutch 
+% origin, where the ij ligature does have 
+% legitimate uses.
 
 \nolig{ij}{i|j} 
-  \keeplig{ijk} % Eijkhout (author of "TeX by Topic")
+  \keeplig{ijs} % rijsttafel (Indonesian dish)
   \keeplig{ijn} % de Bruijn
-  \keeplig{ijs} % rijsttafel (Indonesian dish, very
-                % popular in the Netherlands)
   \keeplig{eije}% Meijer
 
 
@@ -1044,7 +1049,6 @@
   % despicable despite
 %%% more rules to come...
 
-
 \nolig{risp}{ri|sp}
   % crisp 
 \nolig{ispani}{i|spani}
@@ -1074,7 +1078,6 @@
   % suspect suspects
 \nolig{uspici}{u|spici}
   % suspicion suspicious
-
 
 % (iii) at and et preceding th
 % ............................

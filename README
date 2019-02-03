@@ -1,0 +1,25 @@
+The selnolig package suppresses typographic ligatures selectively, i.e., based 
+on predefined search patterns. The search patterns identify ligatures that are 
+deemed inappropriate because they span morpheme boundaries. For example, the 
+word *shelfful*, which is mentioned in the TeXbook as a word for which the "ff" 
+ligature might be inappropriate, is automatically typeset as shelf{}ful, 
+i.e., without the ff ligature.
+
+For English and German language documents, the selnolig package provides 
+extensive rules for the selective suppression of so-called "common" ligatures. 
+These comprise the ff, fi, fl, ffi, and ffl ligatures as well as the ft and 
+fft ligatures. Other f-ligatures, such as fb, fh, fj and fk, are suppressed 
+globally. However, the package provides exceptions for names and words of 
+non-English/German origin, such as fjord and Kafka.
+
+For English language documents, the package further provides ligature 
+suppression rule for a number of so-called "discretionary" or "rare" 
+ligatures, such as ct, st, and sp.
+
+The package's user guide is in the file selnolig.pdf. If you're not (yet) 
+familiar with this package, you may want to at least skim the user guide in 
+order to get a sense of how the package may be used.
+
+The selnolig package requires use of the LuaLaTeX format provided by a recent 
+TeX distribution, such as TeXLive2015 or MiKTeX2.9.
+

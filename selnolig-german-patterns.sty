@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2013/09/21]
+[2015/10/26]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -114,13 +114,18 @@
   % Rumpffassung
 \nolig{Schaffang}{Schaf|fang}
 \nolig{Schaffarm}{Schaf|farm}
+\nolig{Schaffels}{Schaf|fels}
 
 \nolig{Schilff}{Schilf|f}
 \nolig{schilff}{schilf|f}
   % Schilffeld Schilfflöte Schilffloß
 \nolig{Senff}{Senf|f}
 \nolig{senffa}{senf|fa}
-  % Senffabrik senffarbig Senffleck 
+  % Senffabrik senffarbig 
+\nolig{senffl}{senf|fl}
+  % senffleckig
+\nolig{senfl[aä]}{senf|l}
+  % senfladen senflädchen
 \nolig{Sumpff}{Sumpf|f}
 \nolig{sumpff}{sumpf|f}
   % (viele Fälle!)
@@ -218,6 +223,7 @@
   % Schärffehler
 \nolig{ffeier}{f|feier}
   % Hoffeierlichkeiten
+  \keeplig{toffeier} % kunststoffeier
 \nolig{ffeind[els]}{f|feind}
   % -f-feinde -f-feindlich -f-feindschaft
   \keeplig{ffeindealer} % Koffeindealer
@@ -375,6 +381,8 @@
   \keeplig{toffries} % Rohstoffriese
 \nolig{ffrist}{f|frist}
   % Prüffrist Ablauffrist
+\nolig{ffriseu}{f|friseu}
+  % Hoffriseur Dorffriseur
 \nolig{ffrisur}{f|frisur}
   % Schlaffrisur Topffrisur Zopffrisur
 
@@ -390,6 +398,8 @@
   % Rumtopffrucht
 \nolig{ffrücht}{f|frücht}
   % Rumtopffrüchte
+\nolig{ffrüh}{f|früh}
+  % Hoffrühstück Cheffrühstück
 
 \nolig{ffund}{f|fund}
   % Brückenkopffundament
@@ -485,6 +495,8 @@
 \nolig{Briefi}{Brief|i}
 \nolig{briefi}{brief|i}
   % Briefidiom Briefinhalt Pfandbriefinhaber
+  \keeplig{Briefing} % neu-Deutsch...
+  \keeplig{ebriefing} % debriefing, Debriefing
 
 \nolig{Chefi}{Chef|i}
 \nolig{chefi}{chef|i}
@@ -750,6 +762,7 @@
   \keeplig{schauflöß} % Wahrschauflöße
   \keeplig{schauflug}
   \keeplig{schauflüg} 
+  \keeplig{Taufliege}
   
 
 \nolig{Briefl}{Brief|l}
@@ -800,6 +813,7 @@
   % Impflegende
   \keeplig{eimpfleg}  % Heimpfleger
   \keeplig{timpfleg}  % Intimpflege
+\nolig{impflücke}{impf|lück}
 \nolig{Kampfl}{Kampf|l}
 \nolig{kampfl}{kampf|l}
   % Kampflegende kampflüstern 
@@ -816,7 +830,9 @@
   \keeplig{kopflaum}  % Schokopflaumen
 \nolig{Pfeifl}{Pfeif|l}
 \nolig{pfeifl}{pfeif|l}
-  % Pfeiflaute
+\nolig{Pfiffl}{Pfiff|l}
+\nolig{pfiffl}{pfiff|l}
+   % Pfeiflaute Pfifflaut
 \nolig{Prüfl}{Prüf|l}
 \nolig{prüfl}{prüf|l}
   % Prüflabor Prüflast Prüflampe
@@ -866,7 +882,14 @@
 \nolig{strumpfl}{strumpf|l}
   % Strumpfladen Strumpfloch
 \nolig{Sumpfl}{Sumpf|l}
-  % Sumpflabkraut -leiche -licht
+  % Sumpflabkraut -land -ländern
+  %    -leiche -licht
+  % lowercase version: allow for words that are
+  % based on Visum/Konsum/Impressum-pflicht
+\nolig{sumpfl}{sumpf|l}
+  \keeplig{nsumpfl} % konsumpflichtig
+  \keeplig{isumpfl} % visumpflichtig
+  \keeplig{ssumpfl} % impressumpflichtig
 
 \nolig{Surfl}{Surf|l}
 \nolig{surfl}{surf|l}
@@ -932,6 +955,8 @@
 \nolig{würfl}{würf|l} 
   % Würflung würfle
 
+\nolig{alflede}{alf|lede}
+  % Boxcalfleder
 \nolig{aflied}{af|lied}
   % Schlaflied
 \nolig{aflos}{af|los}
@@ -1000,13 +1025,13 @@
 \nolig{fleb}{f|leb}
   % Hofleben Kopfleben 
   % Druckkopflebensdauer
-  \keeplig{huffleb} % shuffleboard
-\nolig{flehn}{f|lehn}
-  % steiflehnig
+  \keeplig{huffleb}   % shuffleboard
+\nolig{alfleder}{alf|leder} % boxcalfleder
+\nolig{flehn}{f|lehn} % steiflehnig
   \keeplig{nflehn} % anflehn dahinflehn
-      % Seelenflehn (Faust I)
+      % Seelenflehn (found in "Faust I")
   \keeplig{rflehn} % erflehn Schwesterflehn
-  \keeplig{Hoflehn} % Hof[f]flehner (arch.)
+  \keeplig{Hoflehn} % Hoflehner (arch.)
 \nolig{flehr}{f|lehr}
   % Dorflehrer Eislauflehrerin
 \nolig{fleiden}{f|leiden}
@@ -1030,14 +1055,15 @@
   % Freiberufler Löffler Büffler Schnüffler Höfler
   \keeplig{Hoefler} % famous American font designer
   \keeplig{Knoepffler}
+  \keeplig{fflerhyth} % Shufflerhythmus
 \nolig{fleut}{f|leut}
   % Hofleute Kaufleute
 
 \nolig{flich}{f|lich}
   % tariflich reiflich glimpflich ...
-  % (many words!)
+  % (Viele Wörter!)
   %% Vorsicht aber mit Pflicht und pflicht,
-  %% sowie mit einflicht, verflicht, etc.:
+  %%   sowie mit einflicht, verflicht, etc.:
   \keeplig{flicht}
     \nolig{öpflicht}{öpf|licht} 
       % kröpflicht (??)
@@ -1046,6 +1072,8 @@
   % freiberufliebend riffliebend
 \nolig{flief}{f|lief}
   % schieflief Hoflieferant
+\nolig{flift}{f|lift}
+  % Sattelkopflift
 \nolig{flig}{f|lig}
   % schweflig würflig knifflig mufflig
   % zweigipflig fünfzipflig
@@ -1057,6 +1085,7 @@
 \nolig{fling}{f|ling}
   % Prüfling Fünfling Sträfling Täufling
   \keeplig{Bempfling} % Bempflingen 
+  \keeplig{Haflinge} % Haflinger Haflingergestüt
 \nolig{flini}{f|lini}
   % Wurflinie Straflinie Rumpflinie
 \nolig{flinse}{f|linse}
@@ -1082,7 +1111,7 @@
 \nolig{flohn}{f|lohn}
   % Tariflohn Tieflohnland
   \keeplig{flohnetz} % Wasserflohnetz
-  \keeplig{ntflohn}  % entflohn (Faust I)
+  \keeplig{ntflohn}  % entflohn (Faust I [!])
 \nolig{flöhn}{f|löhn}
   % Tariflöhne
 \nolig{flok}{f|lok}
@@ -1120,8 +1149,6 @@
   % Walflosse Kiel- Paddel-
   \keeplig{lflosk}
   % Moralfloskel Sozial- Spiel-
-\nolig{lürfl}{lürf|l}
-  % Schlürflaut
 
 \nolig{nflehm}{nf|lehm}
   % Hanflehm
@@ -1179,6 +1206,7 @@
   % Abwurfluke Einwurfluke
 
 \nolig{reifl}{reif|l}
+\nolig{Reifl}{Reif|l}
   % Greiflippe Stegreiflieder Streiflacher
   \keeplig{Breifl}
   \keeplig{breifl}
@@ -1205,8 +1233,13 @@
 
 \nolig{urflad}{urf|lad}
   % Surfladen
+\nolig{ürfla}{ürf|la}
+  % Schlürflaut Schürflader
+
 \nolig{urfloch}{urf|loch}
   % Balleinwurfloch
+\nolig{ürfloch}{ürf|loch}
+  % Schürfloch
 
 \nolig{wafle}{waf|le}
   % schwafle
@@ -1353,10 +1386,12 @@
   % Suffläden
 \nolig{luffleck}{luff|leck}
   % Bluffleck
+\nolig{äfle}{äf|le}
+  % Schäfle
 \nolig{üffle}{üff|le}
   % schnüffle büffle trüffle
-\nolig{ufflon}{uff|lon}
-  % Mufflon
+%%%\nolig{ufflon}{uff|lon}
+  %%% Mufflon
 
 
 
@@ -1409,18 +1444,24 @@
 \nolig{lfflach}{lf|flach}
   % Zwölfflach 
 
-\nolig{pffl}{pf|fl}
+\nolig{mpffl}{mpf|fl}
+\nolig{opffl}{opf|fl}
+\nolig{upffl}{upf|fl}
   % Sumpffläche Sturzkampfflieger 
-  % Totenkopfflagge Impfflüssigkeit
-  \keeplig{Knoepffl}  % Knoepffler
+  % Impfflüssigkeit
+  % Totenkopfflagge 
+  % Hupfflug
 
 \nolig{rfflad}{rf|flad}
   % Torffladen
 \nolig{rfflasch}{rf|flasch}
   % Wegwerfflasche
 
-\nolig{ufflot}{uff|lot}
-  % Sufflot
+%%\nolig{ufflot}{uff|lot}
+  % originally meant to capture "Sufflot" 
+  %% But: - Jacques-Germain Soufflot (1713-80)
+  %%   "Rue Soufflot" in Paris, sometimes 
+  %%   mis-spelled as "Rue Sufflot"
 
 \nolig{wurfl}{wurf|l}
   % Freiwurflinie Maulwurflobbyist 
@@ -1432,11 +1473,12 @@
 % ------------
 
 \if@noftligs
-\else % suppress them selectively...
+  \nolig{ft}{f|t} % "ft"-Ligatur global unterdrücken
+\else % "ft"-Ligatur selektiv unterdrücken
   \nolig{Auft[aähioöruüy]}{Auf|t}
   \nolig{auft[aähioöruüy]}{auf|t}
-    % (viele viele Fälle; aber: ft-Ligatur wird
-    % doch verwendet für "Auft.")
+    % (viele viele Fälle)
+    % Aber: ft-Ligatur wird doch verwendet für "Auft.")
   
   \nolig{Brieft}{Brief|t}
   \nolig{brieft}{brief|t}
@@ -1473,11 +1515,18 @@
   
   \nolig{Greift[eio]}{Greif|t}
     % Greiftest -tentakeln -tier -tor
-  \nolig{Hanft}{Hanf|t}
-    % Hanftaler Hanftau
+  \nolig{Hanftau}{Hanf|tau}
+    % Hanftau
+    % aber: ft-Lig. OK im Familienname "Hanftaler"
   \nolig{Hoft[aäehioäruüy]}{Hof|t}
   \nolig{hoft[aähioöruü]}{hof|t}
     % Hoftor Klosterhoftor
+
+  \nolig{Huftra}{Huf|tra}
+    % Huftragrand(es)
+
+  \nolig{Kopft[aäehioäruüy]}{Kopf|t}
+    % Kopfteil Kopftetanus Kopftreffer Kopftyp
   
   \nolig{Laufte}{Lauf|te}
     % Lauftermin Lauftest Lauftext
@@ -1487,9 +1536,12 @@
   \nolig{Ruft[aäehioäruüy]}{Ruf|t}
     % Ruftaxi Rufterz Rufton Ruftöne
   
-  \nolig{Schaftal}{Schaf|tal}
+  \nolig{Schaftal}{Schaf|tal} % Schaftalg, Schaftal
   \nolig{Schaftor}{Schaf|tor}
   \nolig{Schaftreib}{Schaf|treib}
+  \nolig{schaftal}{schaf|tal}
+  \nolig{schaftor}{schaf|tor}
+  \nolig{schaftreib}{schaf|treib}
   
   \nolig{Schlaft}{Schlaf|t}
   \nolig{schlaft[aähioäruüy]}{schlaf|t}
@@ -1628,9 +1680,11 @@
   \nolig{fteil}{f|teil}
     % fünfteilig Friedhofteil
     % Raumschiffteil Riffteil Stoffteil
+    \keeplig{fteilfr} % Lufteilfracht
   \nolig{ftelef}{f|telef}
   \nolig{fteleph}{f|teleph} % old spelling...
     % Wegwerftelefon Notruftelefonnummern
+  \nolig{ftelegr}{f|telegr} % Aufruftelegramm
   \nolig{fteller}{f|teller}
     % Schiefteller
   \nolig{ftempel}{f|tempel}
@@ -1941,8 +1995,7 @@
   \keeplig{Prokofjew}
   \keeplig{Sufjan} % Stevens
   \keeplig{Eefje}  % Dutch first name
-  \keeplig{Astafjew} 
-    % Author (Wiktor) and soccer player (Maksim)
+  \keeplig{Astafjew} % Wiktor, Maksim, ...
 
 
 % 11. fff -> ff-f
@@ -1951,9 +2004,14 @@
   % features a triple-f ligature:
 
 \nolig{fff}{ff|f}
-  % grifffest Stofffarbe Schifffahrt
+  % grifffest Futterstofffabrik Hafffischer
+  % sauerstofffrei Schifffahrt 
+  % Stofffarbe Stofffaser Stofffülle
 
   % This macro will also break up any 'fffl'
   % ligatures into 'ff' and 'fl' parts.
-  % Examples: Sauerstoffflasche Stofffleck
-  %           Schlifffläche Kunststoffflügel
+  % Examples: Auspuffflamme Kunststoffflügel
+  %           Sauerstoffflasche Sauserstoffflamme
+  %           Schlifffläche Stofffleck 
+  %           Treibstofffluss
+
