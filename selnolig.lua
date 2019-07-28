@@ -182,7 +182,15 @@ function selnolig.suppress_liga(s,t)
 end
 
 function selnolig.always_keep_liga(s)
-  keepliga[s] = true
+  for _, v in ipairs(s:explode(',')) do
+    local item = v:gsub('\n', ''):gsub(
+        '^%s+',''):gsub(
+        '%s+$', ''):gsub(
+        '%s-%%x+$', '')
+    if item ~= '' then
+        keepliga[item] = true
+    end
+  end
 end
 
 function selnolig.enable_suppression(val)
