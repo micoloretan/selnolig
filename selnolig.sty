@@ -157,15 +157,15 @@
 
 \ifluatex
   % Load the lua code contained in 'selnolig.lua'.
-  \directlua{  require("selnolig.lua")  }
+  \directlua{ selnolig = require("selnolig.lua")  }
 
   % Commands to switch selnolig's routines on and off
   \newcommand\selnoligon{%
-    \directlua{ enableselnolig() }%
+    \directlua{ selnolig.enableselnolig() }%
   }
 
   \newcommand\selnoligoff{%
-    \directlua{ disableselnolig() }%
+    \directlua{ selnolig.disableselnolig() }%
   }
 
   % By default, selnolig's macros are switched on
@@ -178,17 +178,17 @@
   %    'selnolig.lua') is 'false'. To turn off logging
   % of selnolig's activity, use the command \debugoff.
   \newcommand\debugon{%
-     \directlua{ selnolig_debug_on }
+     \directlua{ selnolig.activate_debug(true) }
   }
   \newcommand\debugoff{%
-     \directlua{ selnolig_debug_off }
+     \directlua{ selnolig.activate_debug(false) }
   }
 
 
   % The first main user macro is called '\nolig':
   \newcommand\nolig[2]{
      \directlua{
-        suppress_liga( "\luatexluaescapestring{#1}",
+        selnolig.suppress_liga( "\luatexluaescapestring{#1}",
                        "\luatexluaescapestring{#2}" )
      }
   }
@@ -197,16 +197,16 @@
   % rules set by \nolig instructions:
   \newcommand\keeplig[1]{
      \directlua{
-        always_keep_liga( "\luatexluaescapestring{#1}" )
+        selnolig.always_keep_liga( "\luatexluaescapestring{#1}" )
      }
   }
 
   % A third user macro turns ligature suppression off
   % temporarily:
   \newcommand\uselig[1]{%
-    \directlua{ enable_suppression(false) }%
+    \directlua{ selnolig.enable_suppression(false) }%
     \mbox{#1}%
-    \directlua{ enable_suppression(true) }%
+    \directlua{ selnolig.enable_suppression(true) }%
   }
 
   % A fourth user macro: '\breaklig'. This is

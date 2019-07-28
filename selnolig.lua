@@ -12,8 +12,7 @@
 -- later. (http://www.latex-project.org/lppl.txt).
 -- It has the status "maintained".
 
-selnolig = { }
-selnolig.module = {
+local err, warn, info, log = luatexbase.provides_module({
    name         = "selnolig",
    version      = "0.256",
    date         = "2015/10/26",
@@ -21,15 +20,14 @@ selnolig.module = {
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
    license      = "LPPL 1.3 or later"
-}
+})
+selnolig = { }
 
 local debug=false -- default: don't output detailed information
 
--- Preliminary functions to fix the worst issue.
--- TODO: wrap the whole module in one table and return *that*
--- to have a single global variable exposed.
-function selnolig_debug_on() debug=true end
-function selnolig_debug_off() debug=false end
+function selnolig.activate_debug(status)
+    debug=status
+end
 
 -- Define variables corresponding to various text nodes;
 -- cf. sections 8.1.2 and 8.1.4 of LuaTeX reference guide
@@ -49,7 +47,7 @@ local identifier = 123456  -- any unique identifier
 local noliga={}
 local keepliga={}          -- String -> Boolean
 
-function debug_info(s)
+local function debug_info(s)
   if debug then
     texio.write_nl(s)
   end
@@ -88,7 +86,7 @@ local unicode_find = function(s, pattern, position)
   end
 end
 
-function process_ligatures(nodes,tail)
+local function process_ligatures(nodes,tail)
   if not suppression_on then
     return -- suppression disabled
   end
@@ -179,15 +177,15 @@ function process_ligatures(nodes,tail)
   end
 end -- end of function process_ligatures(nodes,tail)
 
-function suppress_liga(s,t)
+function selnolig.suppress_liga(s,t)
   noliga[s] = t
 end
 
-function always_keep_liga(s)
+function selnolig.always_keep_liga(s)
   keepliga[s] = true
 end
 
-function enable_suppression(val)
+function selnolig.enable_suppression(val)
   suppression_on = val
   if val then
     debug_info("Turning ligature suppression back on")
@@ -196,12 +194,14 @@ function enable_suppression(val)
   end
 end
 
-function enableselnolig()
+function selnolig.enableselnolig()
   luatexbase.add_to_callback( "ligaturing",
     process_ligatures, "Suppress ligatures selectively", 1 )
 end
 
-function disableselnolig()
+function selnolig.disableselnolig()
   luatexbase.remove_from_callback( "ligaturing",
     "Suppress ligatures selectively" )
 end
+
+return selnolig
