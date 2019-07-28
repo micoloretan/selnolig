@@ -178,10 +178,10 @@
   %    'selnolig.lua') is 'false'. To turn off logging 
   % of selnolig's activity, use the command \debugoff.
   \newcommand\debugon{%
-     \directlua{ debug=true }
+     \directlua{ selnolig_debug_on }
   }
-  \newcommand\debugoff{% 
-     \directlua{ debug=false }
+  \newcommand\debugoff{%
+     \directlua{ selnolig_debug_off }
   }
 
 

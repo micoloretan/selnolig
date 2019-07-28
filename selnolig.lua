@@ -23,7 +23,13 @@ selnolig.module = {
    license      = "LPPL 1.3 or later"
 }
 
-debug=false -- default: don't output detailed information
+local debug=false -- default: don't output detailed information
+
+-- Preliminary functions to fix the worst issue.
+-- TODO: wrap the whole module in one table and return *that*
+-- to have a single global variable exposed.
+function selnolig_debug_on() debug=true end
+function selnolig_debug_off() debug=false end
 
 -- Define variables corresponding to various text nodes;
 -- cf. sections 8.1.2 and 8.1.4 of LuaTeX reference guide
