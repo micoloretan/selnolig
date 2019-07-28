@@ -1,14 +1,14 @@
 -- Lua code for the selnolig package.
--- To be loaded with an instruction such as 
+-- To be loaded with an instruction such as
 --    \directlua{  require("selnolig.lua")  }
 -- from a (Lua)LaTeX .sty file.
 --
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
---    (with crucial contributions from Taco Hoekwater, 
+--    (with crucial contributions from Taco Hoekwater,
 --    Patrick Gundlach, and Steffen Hildebrandt)
 --
--- The entire selnolig package is placed under the terms 
--- of the LaTeX Project Public License, version 1.3 or 
+-- The entire selnolig package is placed under the terms
+-- of the LaTeX Project Public License, version 1.3 or
 -- later. (http://www.latex-project.org/lppl.txt).
 -- It has the status "maintained".
 
@@ -65,8 +65,8 @@ local prefix_length = function(word, byte)
   return unicode.utf8.len( string.sub(word,0,byte) )
 end
 
-  -- Problem: string.find and unicode.utf8.find return 
-  -- the byte-position at which the pattern is found 
+  -- Problem: string.find and unicode.utf8.find return
+  -- the byte-position at which the pattern is found
   -- instead of the character-position. Fix this by
   -- providing a dedicated string search function.
 
@@ -92,7 +92,7 @@ function process_ligatures(nodes,tail)
   if not suppression_on then
     return -- suppression disabled
   end
-  
+
   local s={}
   local current_node=nodes
   local build_liga_table =  function(strlen,t)
@@ -139,9 +139,9 @@ function process_ligatures(nodes,tail)
     if t.id==glyph then
       s[#s+1]=unicode.utf8.char(t.char)
     end
-    if ( t.id==glue or t.next==nil or t.id==kern or t.id==rule ) then 
+    if ( t.id==glue or t.next==nil or t.id==kern or t.id==rule ) then
       local f=string.gsub(table.concat(s,""),"[\\?!,\\.]+","")
-      local throwliga={} 
+      local throwliga={}
       for k,v in pairs (noliga) do
         local count=1
         local match = string.find(f,k)
@@ -197,11 +197,11 @@ function enable_suppression(val)
 end
 
 function enableselnolig()
-  luatexbase.add_to_callback( "ligaturing", 
+  luatexbase.add_to_callback( "ligaturing",
     process_ligatures, "Suppress ligatures selectively", 1 )
 end
 
 function disableselnolig()
-  luatexbase.remove_from_callback( "ligaturing", 
+  luatexbase.remove_from_callback( "ligaturing",
     "Suppress ligatures selectively" )
 end

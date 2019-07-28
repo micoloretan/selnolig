@@ -16,10 +16,10 @@
 \def\selnoligpackageversion{0.302}
 \def\selnoligpackagedate{2015/10/26}
 
-% Announce who we are. 
+% Announce who we are.
 
-\typeout{=== Package \selnoligpackagename, 
-             Version \selnoligpackageversion, 
+\typeout{=== Package \selnoligpackagename,
+             Version \selnoligpackageversion,
              Date    \selnoligpackagedate\space ===}
 \ProvidesPackage{selnolig}[\selnoligpackagedate]
 
@@ -43,11 +43,11 @@
 
 % If the 'fontspec' package isn't loaded by the time
 % the '\begin{document}' directive is encoutered, issue
-% an error message and exit. 
+% an error message and exit.
 
 \AtBeginDocument{%
 \ifluatex
-  \@ifpackageloaded{fontspec}{}{%  
+  \@ifpackageloaded{fontspec}{}{%
   \PackageError{selnolig}{%
      ========================================== \MessageBreak
           Error Alert      Error Alert          \MessageBreak
@@ -65,7 +65,7 @@
 
 % The main language options are 'english' and 'german'.
 % We provide the option 'otherlang' option just in case
-% a user wants to provide ligature suppression patterns 
+% a user wants to provide ligature suppression patterns
 % for languages other than English and German.
 
 \newif\if@english\@englishfalse
@@ -104,25 +104,25 @@
 %
 % Two options to augment the "basic" setting:
 % - broadf   More non-ligation rules for f-ligatures
-% - hdlig    Additional ligature suppression rules for 
-%            'historic' and/or 'discretionary' ligatures, 
-%            e.g., ct, sp, st, sk, th, as, is, us, fr, 
+% - hdlig    Additional ligature suppression rules for
+%            'historic' and/or 'discretionary' ligatures,
+%            e.g., ct, sp, st, sk, th, as, is, us, fr,
 %            ll, et, at, and ta
 
 \newif\if@broadfset\@broadfsetfalse
 \DeclareOption{broadf}{\@broadfsettrue}
 
-\newif\if@hdligset\@hdligsetfalse 
+\newif\if@hdligset\@hdligsetfalse
 \DeclareOption{hdlig}{\@hdligsettrue}
 
-% The 'basic' option automatically sets the preceding 
-% Booleans to 'false'. 
+% The 'basic' option automatically sets the preceding
+% Booleans to 'false'.
 
 \DeclareOption{basic}{\@broadfsetfalse\@hdligsetfalse}
 
 
-% The package also provides hyphenation exception 
-% patterns for English and German language words. 
+% The package also provides hyphenation exception
+% patterns for English and German language words.
 % Loading these patterns is enabled by default. This
 % can be disabled by providing the option
 % 'noadditionalhyphenationpatterns'.
@@ -139,8 +139,8 @@
 \DeclareOption{noftligs}{\@noftligstrue}
 
 
-% Finally, an option to set most language-related 
-% Boolean variables (other than '@addlhyph') to 
+% Finally, an option to set most language-related
+% Boolean variables (other than '@addlhyph') to
 % 'true' simultaneously.
 
 \DeclareOption{all}{%
@@ -155,10 +155,10 @@
 % Part 2: Load the lua code and set up the user macros
 % ----------------------------------------------------
 
-\ifluatex 
+\ifluatex
   % Load the lua code contained in 'selnolig.lua'.
   \directlua{  require("selnolig.lua")  }
-  
+
   % Commands to switch selnolig's routines on and off
   \newcommand\selnoligon{%
     \directlua{ enableselnolig() }%
@@ -167,15 +167,15 @@
   \newcommand\selnoligoff{%
     \directlua{ disableselnolig() }%
   }
-  
+
   % By default, selnolig's macros are switched on
   \selnoligon
-  
-  
-  % Recording operations of selnolig package to the log 
-  % file is enabled via the '\debugon' command. 
-  % Note: the default value of 'debug' (set in 
-  %    'selnolig.lua') is 'false'. To turn off logging 
+
+
+  % Recording operations of selnolig package to the log
+  % file is enabled via the '\debugon' command.
+  % Note: the default value of 'debug' (set in
+  %    'selnolig.lua') is 'false'. To turn off logging
   % of selnolig's activity, use the command \debugoff.
   \newcommand\debugon{%
      \directlua{ selnolig_debug_on }
@@ -192,7 +192,7 @@
                        "\luatexluaescapestring{#2}" )
      }
   }
-  
+
   % A second user macro allows global overriding of
   % rules set by \nolig instructions:
   \newcommand\keeplig[1]{
@@ -209,8 +209,8 @@
     \directlua{ enable_suppression(true) }%
   }
 
-  % A fourth user macro: '\breaklig'. This is  
-  % hopefully easier to remember than having to 
+  % A fourth user macro: '\breaklig'. This is
+  % hopefully easier to remember than having to
   % type "\-\hspace{0pt}".
 
   \newcommand{\breaklig}{\-{\hspace{0pt}}}
@@ -224,7 +224,7 @@
   \newcommand{\nolig}[2]{}
   \newcommand{\keeplig}[1]{}
   \newcommand{\uselig}[1]{\mbox{#1}}
-  \newcommand{\breaklig}{\-{\hspace{0pt}}} 
+  \newcommand{\breaklig}{\-{\hspace{0pt}}}
   \let\selnoligon\relax
   \let\selnoligoff\relax
   \let\debugon\relax
