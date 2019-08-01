@@ -1,19 +1,18 @@
 -- Lua code for the selnolig package.
--- To be loaded with an instruction such as 
+-- To be loaded with an instruction such as
 --    \directlua{  require("selnolig.lua")  }
 -- from a (Lua)LaTeX .sty file.
 --
 -- Author: Mico Loretan (loretan dot mico at gmail dot com)
---    (with crucial contributions from Taco Hoekwater, 
+--    (with crucial contributions from Taco Hoekwater,
 --    Patrick Gundlach, and Steffen Hildebrandt)
 --
--- The entire selnolig package is placed under the terms 
--- of the LaTeX Project Public License, version 1.3 or 
+-- The entire selnolig package is placed under the terms
+-- of the LaTeX Project Public License, version 1.3 or
 -- later. (http://www.latex-project.org/lppl.txt).
 -- It has the status "maintained".
 
-selnolig = { }
-selnolig.module = {
+local err, warn, info, log = luatexbase.provides_module({
    name         = "selnolig",
    version      = "0.256",
    date         = "2015/10/26",
@@ -21,9 +20,14 @@ selnolig.module = {
    author       = "Mico Loretan",
    copyright    = "Mico Loretan",
    license      = "LPPL 1.3 or later"
-}
+})
+selnolig = { }
 
-debug=false -- default: don't output detailed information
+local debug=false -- default: don't output detailed information
+
+function selnolig.activate_debug(status)
+    debug=status
+end
 
 -- Define variables corresponding to various text nodes;
 -- cf. sections 8.1.2 and 8.1.4 of LuaTeX reference guide
@@ -43,7 +47,7 @@ local identifier = 123456  -- any unique identifier
 local noliga={}
 local keepliga={}          -- String -> Boolean
 
-function debug_info(s)
+local function debug_info(s)
   if debug then
     texio.write_nl(s)
   end
@@ -59,8 +63,8 @@ local prefix_length = function(word, byte)
   return unicode.utf8.len( string.sub(word,0,byte) )
 end
 
-  -- Problem: string.find and unicode.utf8.find return 
-  -- the byte-position at which the pattern is found 
+  -- Problem: string.find and unicode.utf8.find return
+  -- the byte-position at which the pattern is found
   -- instead of the character-position. Fix this by
   -- providing a dedicated string search function.
 
@@ -82,11 +86,11 @@ local unicode_find = function(s, pattern, position)
   end
 end
 
-function process_ligatures(nodes,tail)
+local function process_ligatures(nodes,tail)
   if not suppression_on then
     return -- suppression disabled
   end
-  
+
   local s={}
   local current_node=nodes
   local build_liga_table =  function(strlen,t)
@@ -133,9 +137,9 @@ function process_ligatures(nodes,tail)
     if t.id==glyph then
       s[#s+1]=unicode.utf8.char(t.char)
     end
-    if ( t.id==glue or t.next==nil or t.id==kern or t.id==rule ) then 
+    if ( t.id==glue or t.next==nil or t.id==kern or t.id==rule ) then
       local f=string.gsub(table.concat(s,""),"[\\?!,\\.]+","")
-      local throwliga={} 
+      local throwliga={}
       for k,v in pairs (noliga) do
         local count=1
         local match = string.find(f,k)
@@ -173,15 +177,15 @@ function process_ligatures(nodes,tail)
   end
 end -- end of function process_ligatures(nodes,tail)
 
-function suppress_liga(s,t)
+function selnolig.suppress_liga(s,t)
   noliga[s] = t
 end
 
-function always_keep_liga(s)
+function selnolig.always_keep_liga(s)
   keepliga[s] = true
 end
 
-function enable_suppression(val)
+function selnolig.enable_suppression(val)
   suppression_on = val
   if val then
     debug_info("Turning ligature suppression back on")
@@ -190,12 +194,14 @@ function enable_suppression(val)
   end
 end
 
-function enableselnolig()
-  luatexbase.add_to_callback( "ligaturing", 
+function selnolig.enableselnolig()
+  luatexbase.add_to_callback( "ligaturing",
     process_ligatures, "Suppress ligatures selectively", 1 )
 end
 
-function disableselnolig()
-  luatexbase.remove_from_callback( "ligaturing", 
+function selnolig.disableselnolig()
+  luatexbase.remove_from_callback( "ligaturing",
     "Suppress ligatures selectively" )
 end
+
+return selnolig
