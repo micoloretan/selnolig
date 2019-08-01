@@ -8,7 +8,7 @@
 % in the companion file 'selnolig-english-wordlist.tex'.
 %
 % Author: Mico Loretan (loretan dot mico at gmail dot com)
-% Date: 2015/10/26
+% Date: 2019/08/01
 
 % Check first that we're running Lua(La)TeX.
 \usepackage{ifluatex}
@@ -32,11 +32,24 @@
      Ligatures={TeX,Common,Rare},
      Numbers  = OldStyle}
 
-\setmainfont[ FeatureFile= gpp-ft.fea,
-              ItalicFont = {Garamond Premier Pro Italic},
-              BoldItalicFont = {Garamond Premier Pro Italic},
-              BoldFont   = {Garamond Premier Pro}]
-    {Garamond Premier Pro}
+\directlua{
+  fonts.handlers.otf.addfeature {
+        name = "norareft",
+        type = "substitution",
+        data = {
+            ["f_t.alt"] = "f_t",
+            ["f_t.alt"] = "f_t",
+        }
+  }
+}
+
+\setmainfont[Path = /Users/mico/Library/Fonts/,
+   RawFeature = +norareft,
+   Numbers    = OldStyle,
+   Ligatures  = {TeX, Common, Rare},
+   BoldFont   = {Garamond-Premier-Pro-Semibold_19593.ttf},
+   ItalicFont = {Garamond-Premier-Pro-Italic_19575.ttf}]
+  {Garamond-Premier-Pro_19595.ttf}
 
 \setmonofont[Scale=MatchLowercase,
              Ligatures=NoCommon]

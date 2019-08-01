@@ -2,7 +2,7 @@
 % !TEX TS-program = lualatex
 
 \ProvidesPackage{selnolig-german-patterns}%
-[2015/10/26]
+[2019/08/01]
 
 % This entire package is placed under the
 % terms of the LaTeX Project Public License,
@@ -65,7 +65,6 @@
     cheffizi, % hocheffizient
     cheffé % Scheffé (a statistician)
   }
-\nolig{cheffl[aiou]}{chef|fl}
 \nolig{Dampff}{Dampf|f}
 \nolig{dampff}{dampf|f}
   % (viele Fälle!)
@@ -728,6 +727,8 @@
   % Strafisolator Schaumstoffisolation
 \nolig{fisolie}{f|isolie}
   % Griffisolierung
+\nolig{fisoth}{f|isoth}
+  % Nassdampfisotherme
 
 \nolig{uffax}{uf|fax}
   % Notruffax Abruffax
@@ -1345,13 +1346,15 @@
 % 6. ffl -> ff-l
 % --------------
 
+\nolig{cheffl[aiou]}{chef|fl}
+
 \nolig{Griffl}{Griff|l}
 \nolig{griffl}{griff|l}
   % Grifflängen -laschen -leiste
   % grifflos angrifflustig
 \nolig{Offline}{Off|line}
 \nolig{offline}{off|line}
-  % offline, Offline
+  % offline, Offline % ein nettes neudeutsches Wort!
 \nolig{Pfiffl}{Pfiff|l}
   % Pfifflaute
 \nolig{Scheffle}{Scheff|le}
