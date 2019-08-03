@@ -239,9 +239,9 @@
 \if@english
    \ifluatex % English ligature suppression rules
       \RequirePackage{selnolig-english-patterns}
-   \fi
-   \if@addlhyph
-      \RequirePackage{selnolig-english-hyphex}
+      \if@addlhyph
+         \RequirePackage{selnolig-english-hyphex}
+      \fi
    \fi
 \fi
 
@@ -250,11 +250,11 @@
 % -------------------------------------------------
 
 \if@german
-   \ifluatex % German ligature suppression rules
-      \RequirePackage{selnolig-german-patterns}
-   \fi
-   \if@addlhyph
-      \RequirePackage{selnolig-german-hyphex}
+    \ifluatex % German ligature suppression rules
+       \RequirePackage{selnolig-german-patterns}
+       \if@addlhyph
+          \RequirePackage{selnolig-german-hyphex}
+       \fi
    \fi
 \fi
 
